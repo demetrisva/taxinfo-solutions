@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taxinfo.solutions - Modern tax information, guidance, and digital solutions. Empowering individuals and businesses with accurate, expert tax resources.">
+    <title>Taxinfo.Solutions - Your Tax Resource Hub</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; color: #233142; margin: 0; background: #f6f7fb; }
+        header { background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%); color: #fff; padding: 36px 0 28px 0; text-align: center; box-shadow: 0 2px 8px rgba(60,48,90,0.08); }
+        .logo { font-size: 2.5em; font-weight: bold; letter-spacing: -1px; }
+        .subtitle { font-size: 1.3em; margin-top: 10px; opacity: .93; }
+        .cta-btn { margin: 40px auto 0; display: block; padding: 18px 48px; background: #fff; color: #4776e6; font-weight: bold; font-size: 1.05em; border: none; border-radius: 40px; cursor: pointer; box-shadow: 0 4px 14px rgba(51,51,110,0.13); transition: .22s; letter-spacing: 1px; }
+        .cta-btn:hover { background: #f6f7fb; color: #8e54e9; }
+        section { max-width: 1080px; margin: 0 auto; padding: 64px 22px 44px; }
+        h2 { color: #4776e6; font-size: 2em; margin-bottom: 24px; }
+        .features { display: flex; flex-wrap: wrap; gap: 36px 52px; margin-top: 22px; }
+        .feature { flex: 1 1 300px; background: #fff; box-shadow: 0 2px 16px rgba(60,48,90,0.06); padding: 36px 32px 28px; border-radius: 12px; text-align: center; }
+        .feature-icon { font-size: 2.7em; margin-bottom: 18px; color: #8e54e9; }
+        .feature h3 { margin-bottom: 10px; }
+        .info-blurb { font-size: 1.15em; color: #3a3a6a; opacity: .92; max-width: 750px; margin: 28px auto; }
+        .contact-form { max-width: 420px; background: #fff; margin: 34px auto 0; padding: 34px 30px 28px; border-radius: 10px; box-shadow: 0 1px 8px rgba(51,51,110,0.12); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 13px; margin-bottom: 17px; border: 1px solid #e4e6f0; border-radius: 6px; font-size: 1em; }
+        .contact-form textarea { min-height: 84px; resize: vertical; }
+        .contact-form button { background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%); color: #fff; padding: 13px 32px; border: none; border-radius: 22px; font-weight: bold; font-size: 1.08em; cursor: pointer; transition: .18s; }
+        .contact-form button:hover { background: #8e54e9; opacity: 0.93; }
+        footer { background: #353466; color: #e4e6f0; padding: 30px 0; text-align: center; margin-top: 64px; font-size: .99em; }
+        @media (max-width: 986px) { .features { flex-direction: column; gap: 26px; } section { padding: 38px 9px 34px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Taxinfo.Solutions</div>
+        <div class="subtitle">Modern tax info & digital guidance for Europe</div>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});" class="cta-btn">Start Your Tax Journey</button>
+    </header>
+    <section>
+        <h2>Discover Smart Tax Solutions</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💼</div>
+                <h3>Business & Personal Advice</h3>
+                <div>Information for both individual taxpayers and businesses, always up-to-date with EU and global tax trends.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧮</div>
+                <h3>Automated Calculators</h3>
+                <div>Easy-to-use tax calculators for income tax, crypto, VAT, and more—tailored by country and scenario.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h3>Multi-Jurisdiction Guidance</h3>
+                <div>Compare regulations and rules across EU countries. Get practical guides for compliance and cross-border tax matters.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Private & Secure</h3>
+                <div>No registration required for basic info; any inquiries are handled confidentially and securely.</div>
+            </div>
+        </div>
+        <div class="info-blurb">Your independent resource for simplified, transparent tax guidance. Whether you're an individual, small business, or startup, we offer insights and digital tools for hassle-free tax management in today's rapidly changing world.</div>
+    </section>
+    <section id="contact">
+        <h2>Contact & Enquiries</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required/>
+            <input type="email" placeholder="Your Email" required/>
+            <textarea placeholder="How can we help? Tax topic, business type, etc."></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        &copy; 2025 Taxinfo.Solutions — Smart Tax Guidance for a Digital Era
+    </footer>
+</body>
+</html>
