@@ -1,246 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Taxinfo.solutions - Modern tax information, guidance, and digital solutions. Empowering individuals and businesses with accurate, expert tax resources.">
-    <title>Taxinfo.Solutions - Your Tax Resource Hub</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            color: #233142;
-            margin: 0;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f6f8ff 0%, #e4e8fa 45%, #dde9ea 100%);
-            background-attachment: fixed;
-            -webkit-font-smoothing: antialiased;
-        }
-        header {
-            background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
-            color: #fff;
-            padding: 46px 0 28px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(60,48,90,0.09);
-            position: relative;
-        }
-        .logo {
-            font-size: 2.7em;
-            font-weight: bold;
-            letter-spacing: -1px;
-        }
-        .subtitle {
-            font-size: 1.38em;
-            margin-top: 14px;
-            opacity: .96;
-            font-weight: 500;
-        }
-        .cta-btn {
-            margin: 44px auto 0;
-            display: block;
-            padding: 20px 58px;
-            background: linear-gradient(90deg, #fff 0%, #eef1fa 100%);
-            color: #476fe6;
-            font-weight: bold;
-            font-size: 1.13em;
-            border: none;
-            border-radius: 44px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(51,51,110,0.16);
-            letter-spacing: 2px;
-            transition: .23s box-shadow, .22s background, .22s color;
-        }
-        .cta-btn:hover {
-            background: #f4f7fe;
-            color: #9d65fc;
-            box-shadow: 0 12px 32px rgba(110,81,230,0.19);
-        }
-        section {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 78px 24px 54px 24px;
-        }
-        h2 {
-            color: #4776e6;
-            font-size: 2.16em;
-            margin-bottom: 32px;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 36px 44px;
-            margin-top: 32px;
-            justify-content: center;
-        }
-        .feature {
-            flex: 1 1 280px;
-            background: #fff;
-            box-shadow: 0 4px 22px rgba(67,67,140,0.07);
-            padding: 40px 36px 34px;
-            border-radius: 14px;
-            text-align: center;
-            transition: .18s transform, .16s box-shadow;
-            min-width: 260px;
-        }
-        .feature:hover {
-            transform: translateY(-8px) scale(1.04);
-            box-shadow: 0 14px 36px rgba(67,68,195,.14);
-        }
-        .feature-icon {
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            color: #8e54e9;
-        }
-        .feature h3 {
-            margin-bottom: 10px;
-            font-size: 1.15em;
-        }
-        .info-blurb {
-            font-size: 1.21em;
-            color: #3a3a6a;
-            opacity: .94;
-            max-width: 760px;
-            margin: 44px auto 26px auto;
-            text-align: center;
-        }
-        .highlights {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 32px 46px;
-            justify-content: center;
-            margin-bottom: 26px;
-        }
-        .highlight {
-            flex: 1 1 220px;
-            background: linear-gradient(66deg, #f8f4ff 12%, #f7fafb 88%);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(60,48,90,0.06);
-            padding: 22px 18px 19px 19px;
-            margin-bottom: 8px;
-            text-align: left;
-            min-width: 170px;
-        }
-        .highlight-title {
-            font-size: 1em;
-            font-weight: 600;
-            color: #8e54e9;
-            margin-bottom: 7px;
-        }
-        .highlight-desc {
-            font-size: .98em;
-            color: #444464;
-        }
-        .contact-form {
-            max-width: 430px;
-            background: #fff;
-            margin: 44px auto 0;
-            padding: 36px 32px 28px;
-            border-radius: 13px;
-            box-shadow: 0 2px 12px rgba(51,51,110,0.14);
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 19px;
-            border: 1.3px solid #e5e7f7;
-            border-radius: 7px;
-            font-size: 1.05em;
-            background: #f6f7fb;
-            transition: border .16s;
-        }
-        .contact-form input:focus, .contact-form textarea:focus {
-            border: 1.6px solid #8e54e9;
-            outline: none;
-            background: #faf8ff;
-        }
-        .contact-form textarea { min-height: 84px; resize: vertical; }
-        .contact-form button {
-            background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
-            color: #fff;
-            padding: 15px 36px;
-            border: none;
-            border-radius: 23px;
-            font-weight: bold;
-            font-size: 1.15em;
-            cursor: pointer;
-            transition: .19s background, .17s opacity;
-        }
-        .contact-form button:hover { background: #8e54e9; opacity: 0.96; }
-        footer {
-            background: #353466;
-            color: #e4e6f0;
-            padding: 32px 0;
-            text-align: center;
-            margin-top: 68px;
-            font-size: 1em;
-            letter-spacing: .04em;
-            box-shadow: 0 -2px 12px rgba(51,55,110,0.11);
-        }
-        @media (max-width: 986px) {
-            .features { flex-direction: column; gap: 26px; }
-            section { padding: 38px 9px 34px; }
-            .highlights { flex-direction: column; gap: 13px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Taxinfo.solutions - Modern tax information, guidance, and digital solutions. Empowering individuals and businesses with accurate, expert tax resources." />
+  <title>Taxinfo.Solutions - Your Tax Resource Hub</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle 800px at 10% 40%, #e4e8fa 0%, #dde9ea 80%) fixed;
+      position: relative;
+      overflow-x: hidden;
+      color: #303050;
+      -webkit-font-smoothing: antialiased;
+      animation: fadeInBody 1.6s ease forwards;
+    }
+
+    /* Animation for body fade in */
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Abstract background shapes with subtle floating animation */
+    .abstract-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 560px;
+      pointer-events: none;
+      z-index: 0;
+      overflow: visible;
+    }
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(24px);
+      opacity: 0.22;
+      animation: floatShape 8s ease-in-out infinite alternate;
+    }
+    .shape1 {
+      width: 300px;
+      height: 300px;
+      background: #8e54e9;
+      left: -120px;
+      top: 100px;
+      animation-delay: 0s;
+    }
+    .shape2 {
+      width: 220px;
+      height: 220px;
+      background: #4776e6;
+      right: -90px;
+      top: 40px;
+      animation-delay: 3s;
+    }
+    .shape3 {
+      width: 160px;
+      height: 160px;
+      background: #ffe7e6;
+      left: 36%;
+      top: 230px;
+      opacity: 0.09;
+      animation-delay: 6s;
+    }
+    @keyframes floatShape {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(-18px) translateX(14px);
+      }
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 80px 20px 70px 20px;
+      z-index: 1;
+    }
+    .logo {
+      font-size: 3.4em;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #7a3cff;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 1.3em;
+      margin-top: 18px;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 0.5s;
+      font-weight: 500;
+      color: #4b4d79;
+    }
+    .hero-card {
+      display: inline-block;
+      background: #fff;
+      box-shadow: 0 8px 32px 0 rgba(80,78,140,0.14);
+      border-radius: 18px;
+      padding: 42px 48px 40px 48px;
+      margin-top: 28px;
+      text-align: left;
+      min-width: 345px;
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 1s;
+      transition: box-shadow 0.25s ease;
+    }
+    .hero-card:hover {
+      box-shadow: 0 16px 50px 0 rgba(110,81,230,0.22);
+    }
+
+    /* Call to Action button with pulse animation on hover */
+    .cta-btn {
+      margin-top: 28px;
+      display: inline-block;
+      padding: 22px 66px;
+      background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.18em;
+      border: none;
+      border-radius: 46px;
+      cursor: pointer;
+      letter-spacing: 0.6px;
+      text-shadow: 0 1px 12px #6d6aa679;
+      box-shadow: 0 8px 26px #5957bba9;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(270deg, #7a3cff 0%, #4776e6 100%);
+      box-shadow: 0 0 28px 6px rgba(122,60,255,0.6);
+      animation: pulseGlow 2.6s infinite;
+      color: #ffdada;
+    }
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 20px 3px rgba(122,60,255,0.6);
+      }
+      50% {
+        box-shadow: 0 0 32px 8px rgba(122,60,255,0.85);
+      }
+      100% {
+        box-shadow: 0 0 20px 3px rgba(122,60,255,0.6);
+      }
+    }
+
+    /* Sections */
+    section {
+      max-width: 1140px;
+      margin: 0 auto 72px auto;
+      padding: 0 26px;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 2.4s ease forwards;
+      animation-delay: 2s;
+    }
+    h2 {
+      color: #7a3cff;
+      font-size: 2.15em;
+      margin-bottom: 32px;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 34px 44px;
+      margin-top: 38px;
+      justify-content: center;
+    }
+    .feature {
+      flex: 1 1 270px;
+      background: #f8f7ff;
+      border: 2px solid #f0efff;
+      box-shadow: 0 2px 14px rgba(67,67,140,0.07);
+      padding: 42px 36px 34px;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 250px;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      cursor: default;
+    }
+    .feature:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 16px 38px rgba(67,68,195,0.16);
+    }
+    .feature-icon {
+      font-size: 2.8em;
+      margin-bottom: 20px;
+      color: #7a3cff;
+      user-select: none;
+    }
+    .feature h3 {
+      margin-bottom: 14px;
+      font-size: 1.18em;
+      font-weight: 600;
+    }
+    .info-blurb {
+      font-size: 1.21em;
+      color: #3a3a6a;
+      opacity: 0.92;
+      max-width: 780px;
+      margin: 48px auto 38px auto;
+      text-align: center;
+      line-height: 1.44;
+      font-weight: 500;
+      user-select: none;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      max-width: 800px;
+      margin: 60px auto 12px auto;
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeInUp 2.6s ease forwards;
+      animation-delay: 2.5s;
+    }
+    .testimonial {
+      background: #f9f7fd;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(154,118,230,0.14);
+      padding: 26px 20px;
+      font-size: 1.02em;
+      color: #48488a;
+      min-width: 230px;
+      flex: 1 1 230px;
+      user-select: none;
+      transition: box-shadow 0.15s ease;
+    }
+    .testimonial:hover {
+      box-shadow: 0 10px 26px rgba(154,118,230,0.34);
+      transform: translateY(-4px);
+    }
+    .testimonial .user {
+      font-weight: 700;
+      font-size: 0.97em;
+      margin-top: 16px;
+      color: #7a3cff;
+      user-select: text;
+    }
+
+    /* Contact form styles */
+    .contact-form {
+      max-width: 460px;
+      background: #fff;
+      margin: 52px auto 18px;
+      padding: 42px 38px 34px;
+      border-radius: 15px;
+      box-shadow: 0 3px 15px rgba(51,71,110,0.15);
+      opacity: 0;
+      animation: fadeInUp 2.8s ease forwards;
+      animation-delay: 3s;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 22px;
+      border: 1.4px solid #e5e7f7;
+      border-radius: 8px;
+      font-size: 1.06em;
+      background: #f8f7ff;
+      transition: border 0.18s ease;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border: 1.9px solid #7a3cff;
+      outline: none;
+      background: #faf8ff;
+    }
+    .contact-form textarea { min-height: 94px; resize: vertical; }
+    .contact-form button {
+      background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
+      color: #fff;
+      padding: 17px 40px;
+      border: none;
+      border-radius: 26px;
+      font-weight: 700;
+      font-size: 1.17em;
+      cursor: pointer;
+      transition: background 0.21s, opacity 0.17s;
+      user-select: none;
+    }
+    .contact-form button:hover {
+      background: #7a3cff;
+      opacity: 0.94;
+    }
+
+    /* Footer */
+    footer {
+      background: #354066;
+      color: #e4e6f0;
+      padding: 38px 0;
+      text-align: center;
+      margin-top: 86px;
+      font-size: 1.04em;
+      letter-spacing: 0.045em;
+      box-shadow: 0 -2px 11px rgba(44,55,110,0.13);
+      position: relative;
+      z-index: 2;
+      user-select: none;
+    }
+    .footer-social {
+      margin: 14px 0 24px 0;
+    }
+    .footer-social a {
+      display: inline-block;
+      color: #b5aafe;
+      margin: 0 12px;
+      font-size: 1.32em;
+      text-decoration: none;
+      transition: color 0.22s ease;
+    }
+    .footer-social a:hover {
+      color: #ffdada;
+    }
+
+    /* Fade in upwards animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 987px) {
+      .features {
+        flex-direction: column;
+        gap: 26px;
+      }
+      .testimonials {
+        flex-direction: column;
+        gap: 22px;
+      }
+      section {
+        padding: 18px 12px 20px;
+      }
+      .hero-card {
+        padding: 32px 24px 30px;
+        min-width: auto;
+      }
+      .contact-form {
+        margin: 44px 12px 12px;
+        padding: 26px 24px 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Taxinfo.Solutions</div>
-        <div class="subtitle">Modern tax info & digital guidance for Europe</div>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});" class="cta-btn">Start Your Tax Journey</button>
-    </header>
-    <section>
-        <h2>Discover Smart Tax Solutions</h2>
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">💼</div>
-                <h3>Business & Personal Advice</h3>
-                <div>Information for both individual taxpayers and businesses, always up-to-date with EU and global tax trends.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🧮</div>
-                <h3>Automated Calculators</h3>
-                <div>Easy-to-use tax calculators for income tax, crypto, VAT, and more—tailored by country and scenario.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌍</div>
-                <h3>Multi-Jurisdiction Guidance</h3>
-                <div>Compare regulations and rules across EU countries. Get practical guides for compliance and cross-border tax matters.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <h3>Private & Secure</h3>
-                <div>No registration required for basic info; any inquiries are handled confidentially and securely.</div>
-            </div>
-        </div>
-        <div class="info-blurb">Your independent resource for simplified, transparent tax guidance. Whether you're an individual, small business, or startup, we offer insights and digital tools for hassle-free tax management in today's rapidly changing world.</div>
-        <div class="highlights">
-            <div class="highlight">
-                <div class="highlight-title">Fast Updates</div>
-                <div class="highlight-desc">Latest EU tax provisions, updated regularly for accuracy and speed.</div>
-            </div>
-            <div class="highlight">
-                <div class="highlight-title">Expert Insights</div>
-                <div class="highlight-desc">Trustworthy, expert-reviewed answers to common tax dilemmas.</div>
-            </div>
-            <div class="highlight">
-                <div class="highlight-title">Digital Tools</div>
-                <div class="highlight-desc">Easily access calculators, tips, and checklists for your needs.</div>
-            </div>
-        </div>
-    </section>
-    <section id="contact">
-        <h2>Contact & Enquiries</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required/>
-            <input type="email" placeholder="Your Email" required/>
-            <textarea placeholder="How can we help? Tax topic, business type, etc."></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-    <footer>
-        &copy; 2025 Taxinfo.Solutions — Smart Tax Guidance for a Digital Era
-    </footer>
+  <!-- Abstract animated background shapes -->
+  <div class="abstract-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
+
+  <!-- Header and hero -->
+  <header>
+    <div class="logo">Taxinfo.Solutions</div>
+    <div class="subtitle">Modern tax info & digital guidance for Europe</div>
+    <div class="hero-card" aria-label="Hero card with tax guidance description">
+      <h2>Expert Tax Guidance for All</h2>
+      <p>Your trusted portal for accurate advice, real-time calculators, multi-country solutions, and confidential support.</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});" class="cta-btn" aria-label="Start your tax journey button">Start Your Tax Journey</button>
+    </div>
+  </header>
+
+  <!-- Why choose us -->
+  <section aria-labelledby="whychoose">
+    <h2 id="whychoose">Why Choose Taxinfo.Solutions?</h2>
+    <div class="features">
+      <div class="feature" role="article" aria-label="Business and personal advice feature">
+        <div class="feature-icon" aria-hidden="true">💼</div>
+        <h3>Business & Personal Advice</h3>
+        <p>Tailored information for individual and business needs, always up-to-date with EU and global tax trends.</p>
+      </div>
+      <div class="feature" role="article" aria-label="Automated calculators feature">
+        <div class="feature-icon" aria-hidden="true">🧮</div>
+        <h3>Automated Calculators</h3>
+        <p>Easy-to-use tax tools for income, crypto, VAT—instantly personalized for your scenario.</p>
+      </div>
+      <div class="feature" role="article" aria-label="Multi-jurisdiction guidance feature">
+        <div class="feature-icon" aria-hidden="true">🌍</div>
+        <h3>Multi-Jurisdiction Guidance</h3>
+        <p>Compare or check rules across EU countries. Practical guides for compliance and cross-border matters.</p>
+      </div>
+      <div class="feature" role="article" aria-label="Private and secure feature">
+        <div class="feature-icon" aria-hidden="true">🔒</div>
+        <h3>Private & Secure</h3>
+        <p>No registration required for basic info. All inquiries handled confidentially and securely.</p>
+      </div>
+    </div>
+    <div class="info-blurb" aria-label="Summary description">
+      Your resource for simplified, transparent tax guidance.<br />
+      Insights and digital tools for hassle-free tax management in today's rapidly changing world.
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials" aria-label="User testimonials">
+      <div class="testimonial" role="complementary">
+        <p>“Fast, clear tax advice. Saved us hours!”</p>
+        <div class="user">– Elena P., Startup Owner</div>
+      </div>
+      <div class="testimonial" role="complementary">
+        <p>“Brilliant calculators that work for Cyprus and EU.”</p>
+        <div class="user">– Andreas M., Freelancer</div>
+      </div>
+      <div class="testimonial" role="complementary">
+        <p>“Confidential support really matters for financial topics.”</p>
+        <div class="user">– Marina G., Consultant</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form section -->
+  <section id="contact" aria-label="Contact form section">
+    <h2>Contact & Enquiries</h2>
+    <form class="contact-form" aria-describedby="contactInstructions">
+      <input type="text" placeholder="Your Name" aria-label="Your Name" required />
+      <input type="email" placeholder="Your Email" aria-label="Your Email" required />
+      <textarea placeholder="How can we help? Tax topic, business type, etc." aria-label="Message" ></textarea>
+      <button type="submit" aria-label="Send Message button">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" title="Twitter" aria-label="Twitter">&#x1F426;</a>
+      <a href="#" title="LinkedIn" aria-label="LinkedIn">&#x1F465;</a>
+      <a href="#" title="Email" aria-label="Email">&#x2709;&#xFE0F;</a>
+    </div>
+    &copy; 2025 Taxinfo.Solutions — Smart Tax Guidance for a Digital Era
+  </footer>
 </body>
 </html>
