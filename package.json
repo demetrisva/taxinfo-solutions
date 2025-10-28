@@ -1,0 +1,9 @@
+{
+  "name": "taxinfo-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "resend": "^3.4.0"
+  }
+}
