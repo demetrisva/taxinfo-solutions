@@ -12,39 +12,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling (sends JSON to Vercel function)
+// Form submission handling for Netlify (retains all your animations)
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // This is the Vercel API route you will create
-    const formEndpoint = "/api/send-email"; 
+    // Netlify submissions post to the same page
+    const formEndpoint = "/"; 
     
     const form = e.target;
+    const formData = new FormData(form);
+    
     const submitBtn = form.querySelector('.submit-btn');
     const loadingDiv = form.querySelector('.loading');
     const successMessage = form.querySelector('.success-message');
 
-    // 1. Get form data and convert to a plain object
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    // 2. Show loading state
+    // 1. Show loading state
     successMessage.style.display = 'none';
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
     loadingDiv.style.display = 'block';
 
     try {
-        // 3. Submit data as JSON
+        // 2. Submit data in the format Netlify expects
         const response = await fetch(formEndpoint, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+            headers: { 
+                "Content-Type": "application/x-www-form-urlencoded" 
             },
-            body: JSON.stringify(data)
+            // URL-encode the form data and include the form-name
+            body: new URLSearchParams(formData).toString()
         });
 
-        // 4. Handle response
+        // 3. Handle response
         if (response.ok) {
             // Success
             successMessage.textContent = 'Thank you! Your message has been sent successfully.';
@@ -69,7 +68,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         successMessage.style.backgroundColor = '#ef4444'; // Red
         successMessage.style.display = 'block';
     } finally {
-        // 5. Restore button state
+        // 4. Restore button state
         loadingDiv.style.display = 'none';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
