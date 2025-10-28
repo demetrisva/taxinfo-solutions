@@ -12,12 +12,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling for Netlify (retains all your animations)
+// Form submission handling for FormSubmit.co
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // Netlify submissions post to the same page
-    const formEndpoint = "/"; 
+    // ⚠️ UPDATE THIS with your email address
+    const formEndpoint = "https://formsubmit.co/info@taxinfo.solutions"; 
     
     const form = e.target;
     const formData = new FormData(form);
@@ -26,28 +26,31 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const loadingDiv = form.querySelector('.loading');
     const successMessage = form.querySelector('.success-message');
 
-    // 1. Show loading state
+    // 1. Get form data and convert to a plain object
+    const data = Object.fromEntries(formData.entries());
+
+    // 2. Show loading state
     successMessage.style.display = 'none';
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
     loadingDiv.style.display = 'block';
 
     try {
-        // 2. Submit data in the format Netlify expects
+        // 3. Submit data as JSON (as required by FormSubmit for AJAX)
         const response = await fetch(formEndpoint, {
             method: 'POST',
             headers: { 
-                "Content-Type": "application/x-www-form-urlencoded" 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            // URL-encode the form data and include the form-name
-            body: new URLSearchParams(formData).toString()
+            body: JSON.stringify(data)
         });
 
-        // 3. Handle response
+        // 4. Handle response
         if (response.ok) {
             // Success
             successMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            successMessage.style.backgroundColor = '#10b981'; // Green
+            successMessage.style.backgroundColor = 'var(--accent-light-green)'; // Green
             successMessage.style.display = 'block';
             form.reset(); // Reset the form
             
@@ -68,7 +71,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         successMessage.style.backgroundColor = '#ef4444'; // Red
         successMessage.style.display = 'block';
     } finally {
-        // 4. Restore button state
+        // 5. Restore button state
         loadingDiv.style.display = 'none';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message';
@@ -104,4 +107,62 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all service cards
 document.querySelectorAll('.service-card').forEach(card => {
     observer.observe(card);
+});
+
+// Cookie Banner Script
+document.addEventListener("DOMContentLoaded", () => {
+    const consentBanner = document.getElementById("cookie-consent-banner");
+    const acceptBtn = document.getElementById("cookie-accept");
+    const declineBtn = document.getElementById("cookie-decline");
+
+    // Helper functions for cookies
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i=0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+
+    // Check if consent was already given
+    if (!getCookie("cookie_consent")) {
+        // Show the banner
+        consentBanner.style.display = "flex";
+        // Trigger the animation
+        setTimeout(() => {
+            consentBanner.classList.add("show");
+        }, 100); // Small delay to ensure transition works
+    }
+
+    // Accept cookies
+    acceptBtn.addEventListener("click", () => {
+        setCookie("cookie_consent", "accepted", 365);
+        consentBanner.classList.remove("show");
+        // Wait for animation to finish before hiding
+        setTimeout(() => {
+            consentBanner.style.display = "none";
+        }, 500);
+    });
+
+    // Decline cookies
+    declineBtn.addEventListener("click", () => {
+        setCookie("cookie_consent", "declined", 365); // Remember the choice
+        consentBanner.classList.remove("show");
+        setTimeout(() => {
+            consentBanner.style.display = "none";
+        }, 500);
+    });
 });
