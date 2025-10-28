@@ -17,7 +17,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     e.preventDefault();
     
     // ⚠️ UPDATE THIS with your email address
-    const formEndpoint = "https://formsubmit.co/info@taxinfo.solutions"; 
+    const formEndpoint = "https://formsubmit.co/7339b1415ac00608f8768e3b7acd1d02"; 
     
     const form = e.target;
     const formData = new FormData(form);
