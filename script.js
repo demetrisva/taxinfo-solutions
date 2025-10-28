@@ -16,7 +16,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    // ⚠️ UPDATE THIS with your email address
+    // The FormSubmit endpoint (using your new secure ID)
     const formEndpoint = "https://formsubmit.co/7339b1415ac00608f8768e3b7acd1d02"; 
     
     const form = e.target;
@@ -36,7 +36,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     loadingDiv.style.display = 'block';
 
     try {
-        // 3. Submit data as JSON (as required by FormSubmit for AJAX)
+        // 3. Submit data as JSON
         const response = await fetch(formEndpoint, {
             method: 'POST',
             headers: { 
@@ -50,11 +50,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
         if (response.ok) {
             // Success
             successMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            successMessage.style.backgroundColor = 'var(--accent-light-green)'; // Green
+            successMessage.style.backgroundColor = 'var(--accent-light-green)';
             successMessage.style.display = 'block';
-            form.reset(); // Reset the form
+            form.reset();
             
-            // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 5000);
@@ -89,25 +88,28 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Intersection Observer for animations
+
+// ===== UPDATED Intersection Observer for Scroll-Triggered Animations =====
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.1, // Trigger when 10% of the element is visible
+    rootMargin: '0px 0px -50px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target); // Stop observing once it's visible
         }
     });
 }, observerOptions);
 
-// Observe all service cards
-document.querySelectorAll('.service-card').forEach(card => {
-    observer.observe(card);
+// Observe all elements with the .fade-in-on-scroll class
+document.querySelectorAll('.fade-in-on-scroll').forEach(element => {
+    observer.observe(element);
 });
+// ===================================================================
+
 
 // Cookie Banner Script
 document.addEventListener("DOMContentLoaded", () => {
@@ -141,17 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!getCookie("cookie_consent")) {
         // Show the banner
         consentBanner.style.display = "flex";
-        // Trigger the animation
         setTimeout(() => {
             consentBanner.classList.add("show");
-        }, 100); // Small delay to ensure transition works
+        }, 100);
     }
 
     // Accept cookies
     acceptBtn.addEventListener("click", () => {
         setCookie("cookie_consent", "accepted", 365);
         consentBanner.classList.remove("show");
-        // Wait for animation to finish before hiding
         setTimeout(() => {
             consentBanner.style.display = "none";
         }, 500);
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Decline cookies
     declineBtn.addEventListener("click", () => {
-        setCookie("cookie_consent", "declined", 365); // Remember the choice
+        setCookie("cookie_consent", "declined", 365);
         consentBanner.classList.remove("show");
         setTimeout(() => {
             consentBanner.style.display = "none";

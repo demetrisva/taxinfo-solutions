@@ -7,26 +7,27 @@
 
 /* Color Variables */
 :root {
-    --primary-dark-green: #0A3D2F; /* Deep, professional green */
-    --secondary-gold: #B8860B;   /* Muted gold, not too bright */
-    --accent-light-green: #3D8B6C; /* Lighter green for contrast/accents */
-    --text-dark: #2C3E50;     /* Dark charcoal for main text */
-    --text-light: #7F8C8D;    /* Muted gray for secondary text */
-    --bg-light: #F8F9FA;      /* Very light gray for section backgrounds */
+    --primary-dark-green: #0A3D2F;
+    --secondary-gold: #B8860B;
+    --accent-light-green: #3D8B6C;
+    --text-dark: #2C3E50;
+    --text-light: #7F8C8D;
+    --bg-light: #F8F9FA; /* Old light background */
+    --bg-darker: #F1F3F5; /* NEW darker background */
     --white: #ffffff;
     --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Modern, professional font */
+    font-family: 'Roboto', sans-serif;
     line-height: 1.7;
     color: var(--text-dark);
     overflow-x: hidden;
     background-color: var(--white);
 }
 
-/* Custom Scrollbar (Optional, for aesthetics) */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -35,13 +36,13 @@ body {
 }
 ::-webkit-scrollbar-thumb {
     background: var(--accent-light-green);
-    border-radius: 4px; /* Keeping this slightly rounded is fine for a scrollbar */
+    border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark-green);
 }
 
-/* ===== NEW "BLUEPRINT GRID" BACKGROUND ===== */
+/* ===== UPDATED "BLUEPRINT GRID" BACKGROUND ===== */
 .animated-bg {
     position: fixed;
     top: 0;
@@ -49,13 +50,12 @@ body {
     width: 100%;
     height: 100%;
     z-index: -2;
-    background-color: var(--bg-light); /* Base color */
+    background-color: var(--bg-darker); /* CHANGED to darker gray */
     
-    /* A subtle, static cross-hatch 'blueprint' pattern */
-    /* This creates one faint line every 30px, horizontally and vertically */
+    /* Grid lines are now fainter to look cleaner on the darker bg */
     background-image: 
-        linear-gradient(rgba(10, 61, 47, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(10, 61, 47, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(10, 61, 47, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 61, 47, 0.04) 1px, transparent 1px);
     background-size: 30px 30px;
 }
 /* =========================================== */
@@ -67,7 +67,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    animation: slideDown 0.5s ease-out;
+    /* We keep the slideDown animation for the header */
+    animation: slideDown 0.5s ease-out; 
 }
 
 @keyframes slideDown {
@@ -95,7 +96,7 @@ nav {
 }
 
 .logo img {
-    height: 35px; /* Adjust based on logo size */
+    height: 35px;
     width: auto;
 }
 
@@ -117,7 +118,7 @@ nav {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -8px; /* Adjust underline position */
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
@@ -141,12 +142,7 @@ nav {
     margin: 0 auto;
     padding: 6rem 2rem 5rem;
     text-align: center;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    /* REMOVED old animation */
 }
 
 .hero h1 {
@@ -174,7 +170,7 @@ nav {
     background: var(--primary-dark-green);
     color: var(--white);
     padding: 1.1rem 3rem;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -207,7 +203,7 @@ section {
 
 /* Services Section */
 .services {
-    background-color: var(--bg-light);
+    background-color: var(--bg-light); /* Kept this light for contrast */
 }
 
 .services-grid {
@@ -219,27 +215,16 @@ section {
 .service-card {
     background: var(--white);
     padding: 2.8rem;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     box-shadow: var(--shadow-light);
     transition: all 0.4s ease;
-    animation: fadeIn 0.7s ease-out backwards;
-    border-left: 5px solid var(--secondary-gold); /* RECTANGULAR ACCENT */
+    /* REMOVED old animation */
+    border-left: 5px solid var(--secondary-gold);
     display: flex;
     flex-direction: column;
 }
 
-/* Staggered animation for service cards */
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-.service-card:nth-child(4) { animation-delay: 0.4s; }
-.service-card:nth-child(5) { animation-delay: 0.5s; }
-.service-card:nth-child(6) { animation-delay: 0.6s; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* REMOVED old animation-delay rules */
 
 .service-card:hover {
     transform: translateY(-12px) scale(1.02);
@@ -250,18 +235,18 @@ section {
     width: 65px;
     height: 65px;
     background: var(--primary-dark-green);
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.8rem;
     font-size: 2rem;
-    color: var(--secondary-gold); /* Gold icons */
+    color: var(--secondary-gold);
     box-shadow: 0 4px 10px rgba(10, 61, 47, 0.2);
     transition: transform 0.3s ease;
 }
 .service-card:hover .service-icon {
-    transform: scale(1.1); /* Changed from rotateY for a 'blockier' feel */
+    transform: scale(1.1);
 }
 
 .service-card h3 {
@@ -273,13 +258,13 @@ section {
 
 .service-card p {
     color: var(--text-light);
-    flex-grow: 1; /* Ensures cards are same height if content differs */
+    flex-grow: 1;
 }
 
 
 /* Contact Form */
 .contact {
-    background-color: var(--white); /* Ensure contrast from hero */
+    background-color: var(--white);
 }
 
 .form-container {
@@ -287,25 +272,17 @@ section {
     margin: 0 auto;
     background: var(--white);
     padding: 3.5rem;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     box-shadow: var(--shadow-hover);
-    border-top: 5px solid var(--primary-dark-green); /* RECTANGULAR ACCENT */
+    border-top: 5px solid var(--primary-dark-green);
 }
 
 .form-group {
     margin-bottom: 1.8rem;
-    animation: slideIn 0.5s ease-out backwards;
+    /* REMOVED old animation */
 }
-.form-group:nth-child(1) { animation-delay: 0.1s; }
-.form-group:nth-child(2) { animation-delay: 0.2s; }
-.form-group:nth-child(3) { animation-delay: 0.3s; }
-.form-group:nth-child(4) { animation-delay: 0.4s; }
-.form-group:nth-child(5) { animation-delay: 0.5s; }
+/* REMOVED old animation-delay rules */
 
-@keyframes slideIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
-}
 
 .form-group label {
     display: block;
@@ -321,7 +298,7 @@ section {
     width: 100%;
     padding: 1.1rem;
     border: 1px solid #DCE1E6;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     font-size: 1rem;
     transition: all 0.3s ease;
     font-family: 'Roboto', sans-serif;
@@ -355,7 +332,7 @@ section {
     background: var(--primary-dark-green);
     color: var(--white);
     border: none;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
@@ -462,8 +439,8 @@ footer {
 
 .spinner {
     border: 4px solid #f3f3f3;
-    border-top: 4px solid var(--secondary-gold); /* Gold spinner */
-    border-radius: 50%; /* Spinners need to be round */
+    border-top: 4px solid var(--secondary-gold);
+    border-radius: 50%;
     width: 45px;
     height: 45px;
     animation: spin 1s linear infinite;
@@ -478,10 +455,10 @@ footer {
 /* Success Message */
 .success-message {
     display: none;
-    background: var(--accent-light-green); /* Green success message */
+    background: var(--accent-light-green);
     color: white;
     padding: 1.2rem;
-    border-radius: 0; /* RECTANGULAR CHANGE */
+    border-radius: 0;
     margin-top: 1.5rem;
     text-align: center;
     font-weight: 500;
@@ -498,7 +475,7 @@ footer {
     color: var(--white);
     padding: 1.5rem 2rem;
     z-index: 2000;
-    display: none; /* Hidden by default, JS will show it */
+    display: none;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
@@ -531,7 +508,7 @@ footer {
 .cookie-buttons {
     display: flex;
     gap: 1rem;
-    flex-shrink: 0; /* Prevents buttons from wrapping on small screens */
+    flex-shrink: 0;
 }
 
 .cookie-btn {
@@ -541,7 +518,7 @@ footer {
     padding: 0.8rem 1.5rem;
     cursor: pointer;
     font-weight: 600;
-    border-radius: 0; /* Rectangular */
+    border-radius: 0;
     transition: background 0.3s ease, color 0.3s ease;
     white-space: nowrap;
 }
@@ -570,3 +547,29 @@ footer {
         text-align: center;
     }
 }
+
+/* ===== NEW SCROLL-TRIGGERED TRANSITIONS ===== */
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delay for service cards and form elements */
+.service-card, .form-group {
+    transition-delay: 0s; /* default */
+}
+
+/* Re-add staggered delays using transition-delay */
+.service-card:nth-child(1), .form-group:nth-child(1) { transition-delay: 0.1s; }
+.service-card:nth-child(2), .form-group:nth-child(2) { transition-delay: 0.2s; }
+.service-card:nth-child(3), .form-group:nth-child(3) { transition-delay: 0.3s; }
+.service-card:nth-child(4), .form-group:nth-child(4) { transition-delay: 0.4s; }
+.service-card:nth-child(5), .form-group:nth-child(5) { transition-delay: 0.5s; }
+.service-card:nth-child(6) { transition-delay: 0.6s; }
+/* =========================================== */
