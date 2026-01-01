@@ -108,3 +108,38 @@ function calculateBusiness() {
 function formatMoney(amount) {
     return amount.toLocaleString('en-EU', { maximumFractionDigits: 0 });
 }
+
+// --- TAX CALENDAR LOGIC ---
+function initCalendar() {
+    const deadlines = [
+        { date: "2026-01-31", title: "Deemed Dividend Deadline" },
+        { date: "2026-03-31", title: "Tax Return (TD4/TD1) Submission" },
+        { date: "2026-06-30", title: "SDC & GHS Payment (1st Sem)" },
+        { date: "2026-07-31", title: "1st Provisional Tax Installment" },
+        { date: "2026-12-31", title: "2nd Provisional Tax Installment" }
+    ];
+
+    const today = new Date();
+    const displayBox = document.getElementById("next-deadline-title");
+    const daysBox = document.getElementById("days-left");
+
+    // Find first future deadline
+    const next = deadlines.find(d => new Date(d.date) > today);
+
+    if (next) {
+        const diffTime = Math.abs(new Date(next.date) - today);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+        
+        displayBox.innerText = next.title;
+        daysBox.innerText = `${diffDays} Days Left`;
+        
+        // Color coding urgency
+        if(diffDays < 7) daysBox.style.color = "#c0392b"; // Red if < 1 week
+    } else {
+        displayBox.innerText = "All 2026 Deadlines Passed";
+        daysBox.innerText = "✅";
+    }
+}
+
+// Run on load
+document.addEventListener('DOMContentLoaded', initCalendar);

@@ -80,6 +80,40 @@ body {
     font-size: 1rem;
 }
 
+/* CALENDAR WIDGET */
+.calendar-widget {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.d-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+}
+.d-item.passed { text-decoration: line-through; color: #aaa; }
+.d-item .date { font-weight: bold; color: #2c3e50; }
+
+/* DOWNLOAD BUTTONS */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #f4f6f8;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+.download-btn:hover { background: #e2e6ea; border-color: #ccc; }
+.download-btn.secondary { background: transparent; border: 1px dashed #aaa; color: #666; }
+
 /* RESULTS */
 .hidden { display: none !important; }
 .result-box { margin-top: 20px; padding: 15px; background: #f1f8e9; border-radius: 5px; }
