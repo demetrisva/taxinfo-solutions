@@ -1,18 +1,14 @@
 // --- TAB SWITCHING LOGIC ---
 function openTab(tabName) {
-    // Hide all tab contents
     const contents = document.getElementsByClassName('tab-content');
     for (let content of contents) {
         content.classList.remove('active');
     }
-    // Remove active class from buttons
     const buttons = document.getElementsByClassName('tab-btn');
     for (let btn of buttons) {
         btn.classList.remove('active');
     }
-    // Show specific tab
     document.getElementById(tabName).classList.add('active');
-    // Highlight specific button (simple approximation)
     event.currentTarget.classList.add('active');
 }
 

@@ -12,14 +12,26 @@ body {
     padding: 0 20px;
 }
 
-/* HERO SECTION */
+/* HERO SECTION & LOGO */
 .hero {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     padding: 60px 0;
     text-align: center;
 }
-.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+.hero-logo {
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 600px) {
+    .hero-logo { max-width: 220px; }
+}
+.hero h1 { font-size: 2.5rem; margin-bottom: 10px; display: none; /* Hidden because we use logo */ }
+
 .btn {
     display: inline-block;
     background: #27ae60;
@@ -29,7 +41,9 @@ body {
     border-radius: 5px;
     font-weight: bold;
     margin-top: 20px;
+    transition: background 0.2s;
 }
+.btn:hover { background: #219150; }
 
 /* INFO GRID */
 .info-grid {
@@ -78,7 +92,22 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bold;
 }
+.calc-btn:hover { background: #1a252f; }
+
+/* RESULTS */
+.hidden { display: none !important; }
+.result-box { margin-top: 20px; padding: 15px; background: #f1f8e9; border-radius: 5px; }
+.row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.text-red { color: #c0392b; }
+.total-row { font-weight: 800; font-size: 1.2rem; color: #27ae60; border-top: 1px solid #ccc; padding-top: 10px; display: flex; justify-content: space-between; }
+
+/* BUSINESS GRID RESULTS */
+.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+.res-col { padding: 15px; border-radius: 5px; background: #f9f9f9; border: 1px solid #eee; }
+.new-rules { border: 2px solid #27ae60; position: relative; }
+.verdict-box { margin-top: 15px; padding: 10px; text-align: center; font-weight: bold; border-radius: 5px; }
 
 /* CALENDAR WIDGET */
 .calendar-widget {
@@ -87,7 +116,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
-
 .d-item {
     display: flex;
     justify-content: space-between;
@@ -110,22 +138,10 @@ body {
     border-radius: 6px;
     border: 1px solid #ddd;
     transition: 0.2s;
+    font-size: 0.9rem;
 }
 .download-btn:hover { background: #e2e6ea; border-color: #ccc; }
 .download-btn.secondary { background: transparent; border: 1px dashed #aaa; color: #666; }
 
-/* RESULTS */
-.hidden { display: none !important; }
-.result-box { margin-top: 20px; padding: 15px; background: #f1f8e9; border-radius: 5px; }
-.row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-.text-red { color: #c0392b; }
-.total-row { font-weight: 800; font-size: 1.2rem; color: #27ae60; border-top: 1px solid #ccc; padding-top: 10px; display: flex; justify-content: space-between; }
-
-/* BUSINESS GRID RESULTS */
-.result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.res-col { padding: 15px; border-radius: 5px; background: #f9f9f9; border: 1px solid #eee; }
-.new-rules { border: 2px solid #27ae60; position: relative; }
-.verdict-box { margin-top: 15px; padding: 10px; text-align: center; font-weight: bold; border-radius: 5px; }
-
 /* FOOTER */
-footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #666; }
+footer { text-align: center; padding: 20px; font-size: 0.9rem; color: #666; margin-top: 40px;}
