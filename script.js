@@ -1,168 +1,110 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// --- TAB SWITCHING LOGIC ---
+function openTab(tabName) {
+    // Hide all tab contents
+    const contents = document.getElementsByClassName('tab-content');
+    for (let content of contents) {
+        content.classList.remove('active');
+    }
+    // Remove active class from buttons
+    const buttons = document.getElementsByClassName('tab-btn');
+    for (let btn of buttons) {
+        btn.classList.remove('active');
+    }
+    // Show specific tab
+    document.getElementById(tabName).classList.add('active');
+    // Highlight specific button (simple approximation)
+    event.currentTarget.classList.add('active');
+}
 
-// Form submission handling for FormSubmit.co
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+// --- 1. SALARY CALCULATOR LOGIC (2026 REFORM) ---
+function calculateSalary() {
+    const gross = parseFloat(document.getElementById('grossSalary').value);
+    if (!gross || gross < 0) return;
+
+    // Social Deductions: 8.3% Social Ins + 2.65% GESY = 10.95%
+    const socialDeductions = gross * 0.1095;
+    const taxableIncome = gross - socialDeductions;
+
+    let tax = 0;
+
+    // 2026 Progressive Brackets
+    // 0 - 22,000: 0%
+    if (taxableIncome > 22000) {
+        // 22,001 - 32,000: 20%
+        const taxableAmount = Math.min(taxableIncome, 32000) - 22000;
+        tax += taxableAmount * 0.20;
+    }
+    if (taxableIncome > 32000) {
+        // 32,001 - 42,000: 25%
+        const taxableAmount = Math.min(taxableIncome, 42000) - 32000;
+        tax += taxableAmount * 0.25;
+    }
+    if (taxableIncome > 42000) {
+        // 42,001 - 72,000: 30%
+        const taxableAmount = Math.min(taxableIncome, 72000) - 42000;
+        tax += taxableAmount * 0.30;
+    }
+    if (taxableIncome > 72000) {
+        // 72,000+: 35%
+        const taxableAmount = taxableIncome - 72000;
+        tax += taxableAmount * 0.35;
+    }
+
+    const net = gross - socialDeductions - tax;
+
+    // Render Salary Results
+    document.getElementById('outGross').innerText = formatMoney(gross);
+    document.getElementById('outSocial').innerText = formatMoney(socialDeductions);
+    document.getElementById('outTax').innerText = formatMoney(tax);
+    document.getElementById('outNet').innerText = formatMoney(net);
+    document.getElementById('salaryResult').classList.remove('hidden');
+}
+
+// --- 2. BUSINESS PROFIT CALCULATOR LOGIC ---
+function calculateBusiness() {
+    const profit = parseFloat(document.getElementById('profitInput').value);
+    if (!profit || profit < 0) return;
+
+    // 2025 Rules
+    const corpTax25 = profit * 0.125;
+    const afterCorp25 = profit - corpTax25;
+    const divTax25 = afterCorp25 * 0.17; 
+    const net25 = afterCorp25 - divTax25;
+
+    // 2026 Rules
+    const corpTax26 = profit * 0.15;
+    const afterCorp26 = profit - corpTax26;
+    const divTax26 = afterCorp26 * 0.05; // New 5% SDC
+    const net26 = afterCorp26 - divTax26;
+
+    // Render Business Results
+    document.getElementById('tax25').innerText = formatMoney(corpTax25);
+    document.getElementById('div25').innerText = formatMoney(divTax25);
+    document.getElementById('net25').innerText = formatMoney(net25);
+
+    document.getElementById('tax26').innerText = formatMoney(corpTax26);
+    document.getElementById('div26').innerText = formatMoney(divTax26);
+    document.getElementById('net26').innerText = formatMoney(net26);
+
+    document.getElementById('businessResult').classList.remove('hidden');
+
+    // Verdict Logic
+    const diff = net26 - net25;
+    const verdictDiv = document.getElementById('verdict');
+    verdictDiv.classList.remove('hidden');
     
-    // The FormSubmit endpoint (using your new secure ID)
-    const formEndpoint = "https://formsubmit.co/7339b1415ac00608f8768e3b7acd1d02"; 
-    
-    const form = e.target;
-    const formData = new FormData(form);
-    
-    const submitBtn = form.querySelector('.submit-btn');
-    const loadingDiv = form.querySelector('.loading');
-    const successMessage = form.querySelector('.success-message');
-
-    // 1. Get form data and convert to a plain object
-    const data = Object.fromEntries(formData.entries());
-
-    // 2. Show loading state
-    successMessage.style.display = 'none';
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    loadingDiv.style.display = 'block';
-
-    try {
-        // 3. Submit data as JSON
-        const response = await fetch(formEndpoint, {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        // 4. Handle response
-        if (response.ok) {
-            // Success
-            successMessage.textContent = 'Thank you! Your message has been sent successfully.';
-            successMessage.style.backgroundColor = 'var(--accent-light-green)';
-            successMessage.style.display = 'block';
-            form.reset();
-            
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-
-        } else {
-            // Failure
-            throw new Error('Form submission failed.');
-        }
-
-    } catch (error) {
-        // Catch any error (network or server)
-        console.error('Submission Error:', error);
-        successMessage.textContent = 'Oops! There was an issue. Please try again.';
-        successMessage.style.backgroundColor = '#ef4444'; // Red
-        successMessage.style.display = 'block';
-    } finally {
-        // 5. Restore button state
-        loadingDiv.style.display = 'none';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+    if (diff > 0) {
+        verdictDiv.innerText = `Winner! You save €${formatMoney(diff)} with the new rules.`;
+        verdictDiv.style.background = "#e8f5e9";
+        verdictDiv.style.color = "#2e7d32";
+    } else {
+        verdictDiv.innerText = `You pay €${formatMoney(Math.abs(diff))} more under the new rules.`;
+        verdictDiv.style.background = "#ffebee";
+        verdictDiv.style.color = "#c62828";
     }
-});
+}
 
-
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-        hero.style.opacity = 1 - scrolled / 600;
-    }
-});
-
-
-// ===== UPDATED Intersection Observer for Scroll-Triggered Animations =====
-const observerOptions = {
-    threshold: 0.1, // Trigger when 10% of the element is visible
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target); // Stop observing once it's visible
-        }
-    });
-}, observerOptions);
-
-// Observe all elements with the .fade-in-on-scroll class
-document.querySelectorAll('.fade-in-on-scroll').forEach(element => {
-    observer.observe(element);
-});
-// ===================================================================
-
-
-// Cookie Banner Script
-document.addEventListener("DOMContentLoaded", () => {
-    const consentBanner = document.getElementById("cookie-consent-banner");
-    const acceptBtn = document.getElementById("cookie-accept");
-    const declineBtn = document.getElementById("cookie-decline");
-
-    // Helper functions for cookies
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i=0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    // Check if consent was already given
-    if (!getCookie("cookie_consent")) {
-        // Show the banner
-        consentBanner.style.display = "flex";
-        setTimeout(() => {
-            consentBanner.classList.add("show");
-        }, 100);
-    }
-
-    // Accept cookies
-    acceptBtn.addEventListener("click", () => {
-        setCookie("cookie_consent", "accepted", 365);
-        consentBanner.classList.remove("show");
-        setTimeout(() => {
-            consentBanner.style.display = "none";
-        }, 500);
-    });
-
-    // Decline cookies
-    declineBtn.addEventListener("click", () => {
-        setCookie("cookie_consent", "declined", 365);
-        consentBanner.classList.remove("show");
-        setTimeout(() => {
-            consentBanner.style.display = "none";
-        }, 500);
-    });
-});
+// Helper for currency formatting
+function formatMoney(amount) {
+    return amount.toLocaleString('en-EU', { maximumFractionDigits: 0 });
+}

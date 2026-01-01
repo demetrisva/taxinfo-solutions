@@ -3,131 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaxInfo Solutions - Professional Tax & Accounting Services</title>
+    <title>Cyprus Tax Reforms 2026 | Impact Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="animated-bg"></div>
 
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="TaxInfo Solutions Logo">
-                <span>TaxInfo Solutions</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#about">About</a></li> </ul>
-        </nav>
+    <header class="hero">
+        <div class="container">
+            <h1>Cyprus Tax Reform 2026</h1>
+            <p>The biggest tax overhaul in 20 years is here. Find out exactly how your wallet is affected.</p>
+            <a href="#calculator-section" class="btn">Calculate My Tax</a>
+        </div>
     </header>
 
-    <section id="home" class="hero fade-in-on-scroll">
-        <h1>Professional <span class="highlight">Tax & Accounting</span> Services</h1>
-        <p>Expert financial solutions tailored to your business needs. We help you navigate complex tax regulations and optimize your financial performance.</p>
-        <a href="#contact" class="cta-button">Get Started Today</a>
+    <section class="info-grid container">
+        <div class="card">
+            <h3>For Employees</h3>
+            <p>Tax-free threshold raised to <strong>€22,000</strong>. New progressive brackets help middle earners.</p>
+        </div>
+        <div class="card">
+            <h3>For Business</h3>
+            <p>Corporate Tax up to <strong>15%</strong>, but Dividend Tax slashed to <strong>5%</strong>.</p>
+        </div>
+        <div class="card">
+            <h3>For Investors</h3>
+            <p>New <strong>8% Flat Tax</strong> on Crypto assets. 0% Defence Tax on rental income.</p>
+        </div>
     </section>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title fade-in-on-scroll">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">📊</div>
-                    <h3>Tax Planning</h3>
-                    <p>Strategic tax planning to minimize liabilities and maximize savings for individuals and businesses.</p>
+    <section id="calculator-section" class="calculator-wrapper container">
+        <h2>Impact Calculator</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Choose your status to see the math.</p>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('salary')">I am an Employee</button>
+            <button class="tab-btn" onclick="openTab('business')">I am a Business Owner</button>
+        </div>
+
+        <div id="salary" class="tab-content active">
+            <div class="calc-box">
+                <label>Annual Gross Salary (€)</label>
+                <input type="number" id="grossSalary" placeholder="e.g. 35000">
+                <button onclick="calculateSalary()" class="calc-btn">Calculate Net Income</button>
+                
+                <div id="salaryResult" class="result-box hidden">
+                    <div class="row"><span>Gross:</span> <span id="outGross">€0</span></div>
+                    <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span id="outSocial">€0</span></span></div>
+                    <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span id="outTax">€0</span></span></div>
+                    <div class="total-row">
+                        <span>Net Pay (Yearly):</span>
+                        <span id="outNet">€0</span>
+                    </div>
+                    <p class="note">*Based on €22k tax-free limit & 2026 brackets.</p>
                 </div>
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">📈</div>
-                    <h3>Accounting Services</h3>
-                    <p>Comprehensive bookkeeping and accounting solutions to keep your finances organized and compliant.</p>
+            </div>
+        </div>
+
+        <div id="business" class="tab-content">
+            <div class="calc-box">
+                <label>Annual Net Profit (€)</label>
+                <input type="number" id="profitInput" placeholder="e.g. 100000">
+                <button onclick="calculateBusiness()" class="calc-btn">Compare 2025 vs 2026</button>
+
+                <div id="businessResult" class="result-grid hidden">
+                    <div class="res-col old-rules">
+                        <h4>Old Rules (2025)</h4>
+                        <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
+                        <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
+                        <p class="total-net">Net: €<span id="net25">0</span></p>
+                    </div>
+                    <div class="res-col new-rules">
+                        <h4>New Rules (2026)</h4>
+                        <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
+                        <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
+                        <p class="total-net">Net: €<span id="net26">0</span></p>
+                    </div>
                 </div>
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">💼</div>
-                    <h3>Business Consulting</h3>
-                    <p>Expert guidance on business structure, growth strategies, and financial management.</p>
-                </div>
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">📋</div>
-                    <h3>Tax Preparation</h3>
-                    <p>Accurate and timely tax return preparation for individuals, businesses, and corporations.</p>
-                </div>
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">🔍</div>
-                    <h3>Audit Support</h3>
-                    <p>Professional representation and support during tax audits and regulatory reviews.</p>
-                </div>
-                <div class="service-card fade-in-on-scroll">
-                    <div class="service-icon">💰</div>
-                    <h3>Payroll Services</h3>
-                    <p>Efficient payroll processing and compliance management for businesses of all sizes.</p>
-                </div>
+                <div id="verdict" class="verdict-box hidden"></div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title fade-in-on-scroll">Get In Touch</h2>
-            <div class="form-container">
-                <form id="contactForm" method="POST">
-                    
-                    <div class="form-group fade-in-on-scroll">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                    </div>
-                    <div class="form-group fade-in-on-scroll">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group fade-in-on-scroll">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+357 12 345678">
-                    </div>
-                    <div class="form-group fade-in-on-scroll">
-                        <label for="service">Service Interested In</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service...</option>
-                            <option value="tax-planning">Tax Planning</option>
-                            <option value="accounting">Accounting Services</option>
-                            <option value="consulting">Business Consulting</option>
-                            <option value="preparation">Tax Preparation</option>
-                            <option value="audit">Audit Support</option>
-                            <option value="payroll">Payroll Services</option>
-                        </select>
-                    </div>
-                    <div class="form-group fade-in-on-scroll">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Tell us about your needs..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                    <div class="loading">
-                        <div class="spinner"></div>
-                    </div>
-                    <div class="success-message">Thank you! Your message has been sent successfully.</div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <div id="cookie-consent-banner" class="cookie-banner">
-        <p>This website uses cookies to ensure you get the best experience. Read our <a href="cookies.html">Cookie Policy</a>.</p>
-        <div class="cookie-buttons">
-            <button id="cookie-decline" class="cookie-btn cookie-btn-decline">Decline</button>
-            <button id="cookie-accept" class="cookie-btn">Accept</button>
-        </div>
-    </div>
     <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
-                <a href="cookies.html">Cookies Policy</a>
-                <a href="#contact">Contact Us</a> </div>
-            <p>&copy; 2025 TaxInfo Solutions. All rights reserved.</p>
-        </div>
+        <p>&copy; 2026 TaxInfo.solutions. <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+        <p style="font-size: 0.8rem; color: #777;">Disclaimer: This tool provides estimates based on the Jan 1, 2026 reform bill. Consult a professional for filings.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
