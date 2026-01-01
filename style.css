@@ -17,33 +17,53 @@ body {
 }
 
 /* =========================
-   2. HERO SECTION & LOGO 
+   2. HERO SECTION (NEW LAYOUT) 
    ========================= */
 .hero {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     padding: 60px 0;
-    text-align: center;
+}
+
+/* Flexbox Layout: Logo Left, Text Right */
+.hero-layout {
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: center;
+    gap: 30px; /* Space between logo and text */
+}
+
+/* Logo Box */
+.hero-logo-box {
+    flex-shrink: 0; /* Prevents logo from shrinking too much */
 }
 
 .hero-logo {
-    max-width: 280px;  /* Desktop Size */
+    max-width: 150px; /* SMALLER LOGO SIZE */
     height: auto;
-    margin-bottom: 20px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    background: rgba(255,255,255,0.1); /* Optional: faint glow behind logo */
+    padding: 10px;
+    border-radius: 12px;
 }
 
-.hero p {
+/* Text Content Box */
+.hero-content {
+    text-align: left; /* Text aligns left next to logo */
+    max-width: 500px;
+}
+
+.hero-content h1 {
+    margin-top: 0;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
     font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
     opacity: 0.9;
-}
-
-.hero h1 { 
-    display: none; /* Hidden because we use the logo image */ 
+    margin-bottom: 25px;
 }
 
 /* CTA BUTTON */
@@ -55,7 +75,6 @@ body {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    margin-top: 25px;
     transition: background 0.2s ease;
 }
 .btn:hover {
@@ -63,16 +82,23 @@ body {
 }
 
 /* =========================
-   3. MOBILE RESPONSIVENESS
+   3. MOBILE RESPONSIVENESS (HERO FIX)
    ========================= */
-@media (max-width: 600px) {
-    .hero-logo {
-        max-width: 160px; /* Smaller Logo for Phones */
-        padding-left: 15px;
-        padding-right: 15px;
+@media (max-width: 700px) {
+    /* Stack them vertically on phone */
+    .hero-layout {
+        flex-direction: column; 
+        text-align: center;
+        gap: 20px;
     }
-    .hero {
-        padding: 40px 0; /* Slightly tighter vertical spacing */
+
+    .hero-content {
+        text-align: center; /* Center text on mobile */
+    }
+    
+    .hero-logo {
+        max-width: 120px; /* Even smaller on phone */
+        margin: 0 auto;
     }
 }
 
