@@ -87,6 +87,7 @@ h1, h2, h3, h4 {
     line-height: 1.1;
     background: -webkit-linear-gradient(#fff, #e0e0e0);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
