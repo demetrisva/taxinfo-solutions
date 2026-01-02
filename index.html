@@ -6,13 +6,15 @@
     
     <title>Cyprus Tax Calculator 2026 | Salary & Dividend Impact</title>
     <meta name="description" content="Calculate your net income under the new 2026 Cyprus Tax Reforms. Compare Old vs. New rules for Salary, Dividends (5%), Crypto (8%), and Corporate Tax (15%). Free instant tool.">
-    <meta name="keywords" content="Cyprus tax calculator 2026, Cyprus salary calculator, Cyprus tax reform 2026, 15% corporate tax Cyprus, dividend tax Cyprus, crypto tax Cyprus, taxinfo solutions, Cyprus tax brackets 2026, Cyprus non-dom status">
+    <meta name="keywords" content="Cyprus tax calculator 2026, Cyprus salary calculator, Cyprus tax reform 2026, 15% corporate tax Cyprus, dividend tax Cyprus, crypto tax Cyprus, non-dom status Cyprus">
     <meta name="author" content="TaxInfo Solutions">
     <meta name="robots" content="index, follow">
 
     <link rel="stylesheet" href="style.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <meta property="og:site_name" content="TaxInfo Solutions">
     <meta property="og:title" content="Cyprus Tax Reform 2026 | Do you save money?">
@@ -22,30 +24,7 @@
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cyprus Tax Reform 2026 | Impact Calculator">
-    <meta name="twitter:description" content="Calculate your new salary and dividend income under the 2026 Cyprus tax changes.">
     <meta name="twitter:image" content="https://taxinfo.solutions/images/og-image.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Cyprus Tax Calculator 2026",
-      "url": "https://taxinfo.solutions",
-      "description": "A free tool to calculate personal income tax and corporate profit distribution under the Cyprus 2026 Tax Reforms.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "TaxInfo Solutions"
-      }
-    }
-    </script>
 </head>
 <body>
 
@@ -56,221 +35,263 @@
             </div>
             
             <div class="hero-content">
+                <span class="badge-new">Updated for Jan 1, 2026</span>
                 <h1>Cyprus Tax Reform 2026</h1>
-                <p>The biggest tax overhaul in 20 years is here. Find out exactly how your wallet is affected.</p>
-                <a href="#calculator-section" class="btn">Calculate My Tax</a>
+                <p>The most significant tax overhaul in two decades. Discover if you pay less or more under the new regime.</p>
+                <a href="#calculator-section" class="btn-hero">Start Calculation</a>
             </div>
         </div>
     </header>
 
-    <section class="info-grid container">
-        <div class="card">
-            <h3>For Employees</h3>
-            <p>Tax-free threshold raised to <strong>€22,000</strong>. New progressive brackets help middle earners.</p>
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <span class="stat-label">Corp Tax</span>
+                <span class="stat-value">15%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Dividend Tax</span>
+                <span class="stat-value">5%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Tax-Free Income</span>
+                <span class="stat-value">€22,000</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">VAT Standard</span>
+                <span class="stat-value">19%</span>
+            </div>
         </div>
-        <div class="card">
-            <h3>For Business</h3>
-            <p>Corporate Tax up to <strong>15%</strong>, but Dividend Tax slashed to <strong>5%</strong>.</p>
-        </div>
-        <div class="card">
-            <h3>For Investors</h3>
-            <p>New <strong>8% Flat Tax</strong> on Crypto assets. 0% Defence Tax on rental income.</p>
-        </div>
-    </section>
+    </div>
 
-    <section class="container" style="margin-bottom: 40px;">
-        <h2 style="text-align: center; color: #2c3e50; font-size: 1.5rem; margin-bottom: 20px;">Common Questions on 2026 Reforms</h2>
-        <div style="background: white; padding: 25px; border-radius: 8px; color: #555; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-            <p style="margin-bottom: 15px;">
-                <strong>What is the tax-free salary in Cyprus for 2026?</strong><br>
-                The tax-free threshold has increased to €22,000. Income above this is taxed at progressive rates starting at 20%.
-            </p>
-            <p style="margin-bottom: 15px;">
-                <strong>How does the 15% Corporate Tax affect dividends?</strong><br>
-                While the corporate tax rate rose to 15%, the Special Defence Contribution (SDC) on dividends for tax residents was reduced to 5%, often lowering the total effective tax rate.
-            </p>
-            <p>
-                <strong>Is there a tax on Cryptocurrency in Cyprus?</strong><br>
-                Yes, effective 2026, a flat tax of 8% applies to profits from the disposal of crypto-assets.
-            </p>
-        </div>
-    </section>
-
-    <section id="calculator-section" class="calculator-wrapper container">
-        <h2>Impact Calculator</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Choose your status to see the math.</p>
+    <div class="main-wrapper">
         
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab('salary')">I am an Employee</button>
-            <button class="tab-btn" onclick="openTab('business')">I am a Business Owner</button>
-        </div>
-
-        <div id="salary" class="tab-content active">
-            <div class="calc-box">
-                <label>Annual Gross Salary (€)</label>
-                <input type="number" id="grossSalary" placeholder="e.g. 35000">
-                <button onclick="calculateSalary()" class="calc-btn">Calculate Net Income</button>
-                
-                <div id="salaryResult" class="result-box hidden">
-                    <div class="row"><span>Gross:</span> <span id="outGross">€0</span></div>
-                    <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span id="outSocial">€0</span></span></div>
-                    <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span id="outTax">€0</span></span></div>
-                    <div class="total-row">
-                        <span>Net Pay (Yearly):</span>
-                        <span id="outNet">€0</span>
-                    </div>
-                    <p class="note">*Based on €22k tax-free limit & 2026 brackets.</p>
-                </div>
+        <section class="info-grid container">
+            <div class="card">
+                <div class="icon-circle">👨‍💼</div>
+                <h3>For Employees</h3>
+                <p>Tax-free threshold raised to <strong>€22,000</strong>. New progressive brackets significantly reduce the burden for middle earners.</p>
             </div>
-        </div>
-
-        <div id="business" class="tab-content">
-            <div class="calc-box">
-                <label>Annual Net Profit (€)</label>
-                <input type="number" id="profitInput" placeholder="e.g. 100000">
-                <button onclick="calculateBusiness()" class="calc-btn">Compare 2025 vs 2026</button>
-
-                <div id="businessResult" class="result-grid hidden">
-                    <div class="res-col old-rules">
-                        <h4>Old Rules (2025)</h4>
-                        <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
-                        <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
-                        <p class="total-net">Net: €<span id="net25">0</span></p>
-                    </div>
-                    <div class="res-col new-rules">
-                        <h4>New Rules (2026)</h4>
-                        <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
-                        <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
-                        <p class="total-net">Net: €<span id="net26">0</span></p>
-                    </div>
-                </div>
-                <div id="verdict" class="verdict-box hidden"></div>
+            <div class="card">
+                <div class="icon-circle">🏢</div>
+                <h3>For Business</h3>
+                <p>Corporate Tax increased to <strong>15%</strong>, balanced by a sharp cut in Dividend Tax (SDC) to just <strong>5%</strong>.</p>
             </div>
-        </div>
-    </section>
+            <div class="card">
+                <div class="icon-circle">📈</div>
+                <h3>For Investors</h3>
+                <p>New <strong>8% Flat Tax</strong> on Crypto assets. Special Defence Contribution (SDC) on rental income is fully abolished.</p>
+            </div>
+        </section>
 
-    <section class="container" style="margin-bottom: 50px;">
-        <h2 style="text-align: center; color: #2c3e50; font-size: 1.6rem; margin-bottom: 30px;">
-            ✨ Special Tax Exemptions
-        </h2>
-        <div class="exemptions-grid">
+        <section id="calculator-section" class="calculator-wrapper container">
+            <div class="section-header">
+                <h2>Impact Calculator</h2>
+                <p>Select your status to see the numbers</p>
+            </div>
             
-            <details class="exemption-card">
-                <summary>
-                    <span class="ex-icon">🌍</span>
-                    <span class="ex-title">Non-Dom Status</span>
-                    <span class="ex-tag">0% Tax</span>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>The Benefit:</strong> Individuals who have not been tax residents of Cyprus for 17 of the last 20 years are exempt from SDC.</p>
-                    <ul>
-                        <li><strong>Dividends:</strong> 0% Tax (vs 5% standard)</li>
-                        <li><strong>Interest Income:</strong> 0% Tax</li>
-                        <li><strong>Rental Income:</strong> 0% SDC</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="exemption-card">
-                <summary>
-                    <span class="ex-icon">💼</span>
-                    <span class="ex-title">Foreign High Earners</span>
-                    <span class="ex-tag">50% Off</span>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>First Employment Rule:</strong> If you relocate to Cyprus for a job paying over <strong>€55,000/year</strong>, you get a 50% tax exemption on your salary.</p>
-                    <p><em>Example: Earn €100k → Taxed only on €50k.</em></p>
-                </div>
-            </details>
-
-            <details class="exemption-card">
-                <summary>
-                    <span class="ex-icon">🏖️</span>
-                    <span class="ex-title">Foreign Pensioners</span>
-                    <span class="ex-tag">5% Flat</span>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>The Choice:</strong> Retirees receiving a foreign pension can choose how to be taxed.</p>
-                    <ul>
-                        <li><strong>Option A:</strong> Normal progressive rates (First €22k tax-free).</li>
-                        <li><strong>Option B:</strong> Flat <strong>5% tax</strong> on amounts over €3,420.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="exemption-card">
-                <summary>
-                    <span class="ex-icon">🌱</span>
-                    <span class="ex-title">Green & Crypto</span>
-                    <span class="ex-tag">New 2026</span>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>Crypto Assets:</strong> Profits from disposal are now taxed at a flat <strong>8%</strong>.</p>
-                    <p><strong>Green Deductions:</strong> New deductions apply for purchasing Electric Vehicles (EVs) and energy-efficient home upgrades (Solar/Insulation) to offset the carbon tax.</p>
-                </div>
-            </details>
-
-        </div>
-    </section>
-
-    <section class="container" style="margin-bottom: 50px;">
-        
-        <div class="calendar-widget">
-            <h2 style="color: #2c3e50; display: flex; align-items: center; gap: 10px;">
-                📅 Tax Calendar 2026
-                <span style="font-size: 0.8rem; background: #e74c3c; color: white; padding: 2px 8px; border-radius: 4px;">LIVE</span>
-            </h2>
-            <div id="countdown-box" style="background: #2c3e50; color: white; padding: 20px; border-radius: 8px; margin-top: 15px; text-align: center;">
-                <p style="margin: 0; opacity: 0.8;">NEXT DEADLINE</p>
-                <h3 id="next-deadline-title" style="margin: 10px 0; font-size: 1.5rem;">Loading...</h3>
-                <div id="days-left" style="font-size: 2.5rem; font-weight: bold; color: #27ae60;">-- Days</div>
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('salary')">Personal Income</button>
+                <button class="tab-btn" onclick="openTab('business')">Business Owner</button>
             </div>
 
-            <div class="deadline-list" style="margin-top: 20px; display: grid; gap: 10px;">
-                <div class="d-item">
-                    <span class="date">Jan 31</span>
-                    <span class="desc">Deemed Dividend (2023 Profits) Payment</span>
-                </div>
-                <div class="d-item">
-                    <span class="date">Mar 31</span>
-                    <span class="desc">2024 Tax Return Submission (TD4/TD1)</span>
-                </div>
-                <div class="d-item">
-                    <span class="date">Jun 30</span>
-                    <span class="desc">Payment of SDC on Rents & Dividends (1st Sem)</span>
-                </div>
-                <div class="d-item">
-                    <span class="date">Jul 31</span>
-                    <span class="desc">1st Provisional Tax Installment (2026)</span>
-                </div>
-                <div class="d-item">
-                    <span class="date">Dec 31</span>
-                    <span class="desc">2nd Provisional Tax Installment (2026)</span>
+            <div id="salary" class="tab-content active">
+                <div class="calc-box">
+                    <label>Annual Gross Salary (€)</label>
+                    <div class="input-group">
+                        <input type="number" id="grossSalary" placeholder="e.g. 35000">
+                        <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
+                    </div>
+                    
+                    <div id="salaryResult" class="result-box hidden">
+                        <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
+                        <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span id="outSocial">€0</span></span></div>
+                        <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span id="outTax">€0</span></span></div>
+                        <div class="total-row">
+                            <span>Net Pay (Yearly):</span>
+                            <span id="outNet">€0</span>
+                        </div>
+                        <p class="note">*Calculated using the new €22,000 tax-free threshold.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="downloads-section" style="margin-top: 40px;">
-            <h3>📥 Official MOF Forms</h3>
-            <p>Direct links to the Ministry of Finance repository.</p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/All/3F0C2F6E7321260CC2258474003B5272/$file/TD1_2024.pdf" target="_blank" class="download-btn">
-                    📄 <strong>TD.1</strong> (Employee Return)
-                </a>
-                <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/All/6A9B0C5E7321260CC2258474003B5272/$file/TD4_2024.pdf" target="_blank" class="download-btn">
-                    🏢 <strong>TD.4</strong> (Company Return)
-                </a>
-                <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/page31_en/page31_en?OpenDocument" target="_blank" class="download-btn secondary">
-                    🔗 View All Forms (MOF)
-                </a>
+            <div id="business" class="tab-content">
+                <div class="calc-box">
+                    <label>Annual Net Profit (€)</label>
+                    <div class="input-group">
+                        <input type="number" id="profitInput" placeholder="e.g. 100000">
+                        <button onclick="calculateBusiness()" class="calc-btn">Compare</button>
+                    </div>
+
+                    <div id="businessResult" class="result-grid hidden">
+                        <div class="res-col old-rules">
+                            <h4>Old Rules (2025)</h4>
+                            <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
+                            <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
+                            <p class="total-net">Net: €<span id="net25">0</span></p>
+                        </div>
+                        <div class="res-col new-rules">
+                            <h4>New Rules (2026)</h4>
+                            <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
+                            <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
+                            <p class="total-net">Net: €<span id="net26">0</span></p>
+                        </div>
+                    </div>
+                    <div id="verdict" class="verdict-box hidden"></div>
+                </div>
             </div>
-        </div>
+        </section>
 
-    </section>
+        <section class="container" style="margin-bottom: 60px;">
+            <h2 class="section-title-center">✨ Special Tax Exemptions</h2>
+            <p class="section-subtitle">You might be eligible for special tax treatments.</p>
+            
+            <div class="exemptions-grid">
+                
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🌍</span>
+                            <span class="ex-title">Non-Dom Status</span>
+                            <span class="ex-tag">0% Tax</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>The "Holy Grail" of Cyprus Tax:</strong> Individuals who have not been tax residents of Cyprus for 17 of the last 20 years are exempt from SDC.</p>
+                        <ul class="check-list">
+                            <li>Dividends: <strong>0% Tax</strong> (vs 5% standard)</li>
+                            <li>Interest Income: <strong>0% Tax</strong></li>
+                            <li>Rental Income: <strong>0% SDC</strong></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🚀</span>
+                            <span class="ex-title">Foreign High Earners</span>
+                            <span class="ex-tag">50% Off</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>First Employment Rule:</strong> Relocating to Cyprus for a job paying over <strong>€55,000/year</strong>?</p>
+                        <ul class="check-list">
+                            <li><strong>50% of your salary</strong> is completely tax-exempt.</li>
+                            <li>Valid for up to 17 years.</li>
+                            <li><em>Example: Earn €100k → Taxed only on €50k.</em></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🏖️</span>
+                            <span class="ex-title">Foreign Pensioners</span>
+                            <span class="ex-tag">5% Flat</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>The Golden Years Choice:</strong> Retirees receiving a foreign pension can choose the better tax option each year.</p>
+                        <ul class="check-list">
+                            <li><strong>Option A:</strong> Normal progressive rates (First €22k tax-free).</li>
+                            <li><strong>Option B:</strong> Flat <strong>5% tax</strong> on amounts over €3,420.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🌱</span>
+                            <span class="ex-title">Green & Crypto</span>
+                            <span class="ex-tag">New 2026</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>Crypto Assets:</strong> Profits from disposal are now taxed at a flat <strong>8%</strong>.</p>
+                        <p><strong>Green Deductions:</strong> New deductions apply for:</p>
+                        <ul class="check-list">
+                            <li>Purchasing Electric Vehicles (EVs).</li>
+                            <li>Energy-efficient home upgrades (Solar/Insulation).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="container grid-2-col" style="margin-bottom: 80px; gap: 30px;">
+            
+            <div class="calendar-widget">
+                <div class="widget-header">
+                    <h3>📅 Tax Calendar 2026</h3>
+                    <span class="live-dot"></span>
+                </div>
+                
+                <div id="countdown-box" class="countdown-box">
+                    <p class="label">NEXT DEADLINE</p>
+                    <h3 id="next-deadline-title">Loading...</h3>
+                    <div id="days-left">-- Days</div>
+                </div>
+
+                <div class="deadline-list">
+                    <div class="d-item">
+                        <span class="date">Jan 31</span>
+                        <span class="desc">Deemed Dividend (2023 Profits)</span>
+                    </div>
+                    <div class="d-item">
+                        <span class="date">Mar 31</span>
+                        <span class="desc">2024 Tax Return (TD4/TD1)</span>
+                    </div>
+                    <div class="d-item">
+                        <span class="date">Jun 30</span>
+                        <span class="desc">SDC on Rents (1st Sem)</span>
+                    </div>
+                    <div class="d-item">
+                        <span class="date">Jul 31</span>
+                        <span class="desc">1st Provisional Tax (2026)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="downloads-section">
+                <h3>📥 Official MOF Forms</h3>
+                <p>Direct links to the Tax Department.</p>
+                <div class="download-grid">
+                    <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/All/3F0C2F6E7321260CC2258474003B5272/$file/TD1_2024.pdf" target="_blank" class="download-btn">
+                        <span>📄 TD.1 (Employee)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/All/6A9B0C5E7321260CC2258474003B5272/$file/TD4_2024.pdf" target="_blank" class="download-btn">
+                        <span>🏢 TD.4 (Company)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/page31_en/page31_en?OpenDocument" target="_blank" class="download-btn secondary">
+                        <span>🔗 View All Forms</span>
+                    </a>
+                </div>
+
+                <div class="faq-mini">
+                    <h4>Quick FAQ</h4>
+                    <p><strong>Tax-Free Limit?</strong> €22,000</p>
+                    <p><strong>Crypto Tax?</strong> 8% Flat</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 TaxInfo.solutions. <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
-        <p style="font-size: 0.8rem; color: #777;">Disclaimer: This tool provides estimates based on the Jan 1, 2026 reform bill. Consult a professional for filings.</p>
+        <div class="container">
+            <p>&copy; 2026 TaxInfo.solutions</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+            </div>
+            <p class="disclaimer">Disclaimer: This tool provides estimates based on the Jan 1, 2026 reform bill. Consult a professional for filings.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
