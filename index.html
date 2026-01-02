@@ -29,6 +29,11 @@
 <body>
 
     <header class="hero">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+            <span class="sun-icon">☀️</span>
+            <span class="moon-icon">🌙</span>
+        </button>
+
         <div class="container hero-layout">
             <div class="hero-logo-box">
                 <img src="images/logo.png" alt="Cyprus Tax Reform 2026" class="hero-logo">
@@ -148,7 +153,6 @@
             <p class="section-subtitle">You might be eligible for special tax treatments.</p>
             
             <div class="exemptions-grid">
-                
                 <details class="exemption-card">
                     <summary>
                         <div class="summary-flex">
@@ -180,7 +184,6 @@
                         <ul class="check-list">
                             <li><strong>50% of your salary</strong> is completely tax-exempt.</li>
                             <li>Valid for up to 17 years.</li>
-                            <li><em>Example: Earn €100k → Taxed only on €50k.</em></li>
                         </ul>
                     </div>
                 </details>
@@ -212,47 +215,28 @@
                     </summary>
                     <div class="ex-content">
                         <p><strong>Crypto Assets:</strong> Profits from disposal are now taxed at a flat <strong>8%</strong>.</p>
-                        <p><strong>Green Deductions:</strong> New deductions apply for:</p>
-                        <ul class="check-list">
-                            <li>Purchasing Electric Vehicles (EVs).</li>
-                            <li>Energy-efficient home upgrades (Solar/Insulation).</li>
-                        </ul>
+                        <p><strong>Green Deductions:</strong> New deductions apply for purchasing Electric Vehicles (EVs) and energy-efficient home upgrades.</p>
                     </div>
                 </details>
             </div>
         </section>
 
         <section class="container grid-2-col" style="margin-bottom: 80px; gap: 30px;">
-            
             <div class="calendar-widget">
                 <div class="widget-header">
                     <h3>📅 Tax Calendar 2026</h3>
                     <span class="live-dot"></span>
                 </div>
-                
                 <div id="countdown-box" class="countdown-box">
                     <p class="label">NEXT DEADLINE</p>
                     <h3 id="next-deadline-title">Loading...</h3>
                     <div id="days-left">-- Days</div>
                 </div>
-
                 <div class="deadline-list">
-                    <div class="d-item">
-                        <span class="date">Jan 31</span>
-                        <span class="desc">Deemed Dividend (2023 Profits)</span>
-                    </div>
-                    <div class="d-item">
-                        <span class="date">Mar 31</span>
-                        <span class="desc">2024 Tax Return (TD4/TD1)</span>
-                    </div>
-                    <div class="d-item">
-                        <span class="date">Jun 30</span>
-                        <span class="desc">SDC on Rents (1st Sem)</span>
-                    </div>
-                    <div class="d-item">
-                        <span class="date">Jul 31</span>
-                        <span class="desc">1st Provisional Tax (2026)</span>
-                    </div>
+                    <div class="d-item"><span class="date">Jan 31</span><span class="desc">Deemed Dividend (2023 Profits)</span></div>
+                    <div class="d-item"><span class="date">Mar 31</span><span class="desc">2024 Tax Return (TD4/TD1)</span></div>
+                    <div class="d-item"><span class="date">Jun 30</span><span class="desc">SDC on Rents (1st Sem)</span></div>
+                    <div class="d-item"><span class="date">Jul 31</span><span class="desc">1st Provisional Tax (2026)</span></div>
                 </div>
             </div>
 
@@ -272,14 +256,12 @@
                         <span>🔗 View All Forms</span>
                     </a>
                 </div>
-
                 <div class="faq-mini">
                     <h4>Quick FAQ</h4>
                     <p><strong>Tax-Free Limit?</strong> €22,000</p>
                     <p><strong>Crypto Tax?</strong> 8% Flat</p>
                 </div>
             </div>
-
         </section>
     </div>
 

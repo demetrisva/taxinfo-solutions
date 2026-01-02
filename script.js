@@ -1,3 +1,39 @@
+// --- THEME SWITCHING LOGIC ---
+const themeToggleBtn = document.getElementById('theme-toggle');
+const userTheme = localStorage.getItem('theme');
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Initial Theme Check
+const setInitialTheme = () => {
+    if (userTheme === 'dark' || (!userTheme && systemTheme)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+};
+
+// Toggle Function
+const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+};
+
+// Event Listeners
+themeToggleBtn.addEventListener('click', toggleTheme);
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+});
+
+// Run on load
+setInitialTheme();
+
+
+// --- TAB SWITCHING LOGIC ---
 function openTab(tabName) {
     const contents = document.getElementsByClassName('tab-content');
     for (let content of contents) {
@@ -11,14 +47,18 @@ function openTab(tabName) {
     event.currentTarget.classList.add('active');
 }
 
+// --- 1. SALARY CALCULATOR LOGIC (2026 REFORM) ---
 function calculateSalary() {
     const gross = parseFloat(document.getElementById('grossSalary').value);
     if (!gross || gross < 0) return;
 
+    // Social Deductions: 8.3% Social Ins + 2.65% GESY = 10.95%
     const socialDeductions = gross * 0.1095;
     const taxableIncome = gross - socialDeductions;
+
     let tax = 0;
 
+    // 2026 Progressive Brackets
     if (taxableIncome > 22000) {
         const taxableAmount = Math.min(taxableIncome, 32000) - 22000;
         tax += taxableAmount * 0.20;
@@ -38,6 +78,7 @@ function calculateSalary() {
 
     const net = gross - socialDeductions - tax;
 
+    // Render Salary Results
     document.getElementById('outGross').innerText = formatMoney(gross);
     document.getElementById('outSocial').innerText = formatMoney(socialDeductions);
     document.getElementById('outTax').innerText = formatMoney(tax);
@@ -45,15 +86,18 @@ function calculateSalary() {
     document.getElementById('salaryResult').classList.remove('hidden');
 }
 
+// --- 2. BUSINESS PROFIT CALCULATOR LOGIC ---
 function calculateBusiness() {
     const profit = parseFloat(document.getElementById('profitInput').value);
     if (!profit || profit < 0) return;
 
+    // 2025 Rules
     const corpTax25 = profit * 0.125;
     const afterCorp25 = profit - corpTax25;
     const divTax25 = afterCorp25 * 0.17; 
     const net25 = afterCorp25 - divTax25;
 
+    // 2026 Rules
     const corpTax26 = profit * 0.15;
     const afterCorp26 = profit - corpTax26;
     const divTax26 = afterCorp26 * 0.05; 
@@ -62,9 +106,11 @@ function calculateBusiness() {
     document.getElementById('tax25').innerText = formatMoney(corpTax25);
     document.getElementById('div25').innerText = formatMoney(divTax25);
     document.getElementById('net25').innerText = formatMoney(net25);
+
     document.getElementById('tax26').innerText = formatMoney(corpTax26);
     document.getElementById('div26').innerText = formatMoney(divTax26);
     document.getElementById('net26').innerText = formatMoney(net26);
+
     document.getElementById('businessResult').classList.remove('hidden');
 
     const diff = net26 - net25;
@@ -82,10 +128,12 @@ function calculateBusiness() {
     }
 }
 
+// Helper for currency formatting
 function formatMoney(amount) {
     return amount.toLocaleString('en-EU', { maximumFractionDigits: 0 });
 }
 
+// --- TAX CALENDAR LOGIC ---
 function initCalendar() {
     const deadlines = [
         { date: "2026-01-31", title: "Deemed Dividend Deadline" },
