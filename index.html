@@ -42,7 +42,23 @@
                 TaxInfo<span class="dot">.</span>
             </a>
             <div class="nav-menu">
-                <a href="#info-section" class="nav-link">Solutions</a>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link">Tax Reforms ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#news-hub" onclick="filterNews('corporate')" class="dropdown-item">Corporate Tax
+                            (15%)</a>
+                        <a href="#news-hub" onclick="filterNews('personal')" class="dropdown-item">Personal Income</a>
+                        <a href="#news-hub" onclick="filterNews('crypto')" class="dropdown-item">Crypto & Green</a>
+                    </div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="#" class="nav-link">Resources ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#calculator-section" class="dropdown-item">Tax Calculator</a>
+                        <a href="#calendar-section" class="dropdown-item">Tax Calendar</a>
+                        <a href="#downloads-section" class="dropdown-item">Download Forms</a>
+                    </div>
+                </div>
                 <a href="#mission-section" class="nav-link">Vision</a>
                 <a href="#calculator-section" class="btn-nav">Get Started</a>
             </div>
@@ -82,6 +98,80 @@
     </div>
 
     <div class="main-wrapper">
+
+        <!-- New News Hub Section -->
+        <section id="news-hub" class="news-hub-section container">
+            <div class="section-header">
+                <span class="badge-new">Latest Updates</span>
+                <h2>Cyprus Tax <span class="text-accent">News Hub</span></h2>
+                <p>Stay ahead with the latest announcements on the 2026 Tax Reform.</p>
+            </div>
+
+            <div class="news-tabs">
+                <button class="news-tab-btn active" onclick="filterNews('all')">All News</button>
+                <button class="news-tab-btn" onclick="filterNews('corporate')">Corporate</button>
+                <button class="news-tab-btn" onclick="filterNews('personal')">Personal</button>
+                <button class="news-tab-btn" onclick="filterNews('crypto')">Crypto & Tech</button>
+            </div>
+
+            <div id="news-grid-all" class="news-grid active">
+                <!-- Corporate Article -->
+                <article class="news-card" data-category="corporate">
+                    <div class="news-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=600');">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Corporate</span>
+                        <h3 class="news-title">Corporate Tax Hikes to 15% in 2026</h3>
+                        <p class="news-excerpt">Cyprus aligns with the global minimum tax framework. Learn how the new
+                            15% rate impacts your business and what exemptions apply.</p>
+                        <a href="#calculator-section" class="read-more">Analyze Impact →</a>
+                    </div>
+                </article>
+
+                <!-- Dividend Article -->
+                <article class="news-card" data-category="corporate">
+                    <div class="news-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600');">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Business</span>
+                        <h3 class="news-title">Dividend Tax Slashed to 5%</h3>
+                        <p class="news-excerpt">Great news for shareholders! The Special Defence Contribution (SDC) on
+                            dividends drops from 17% to just 5%, balancing the corporate hike.</p>
+                        <a href="#calculator-section" class="read-more">Calculate Savings →</a>
+                    </div>
+                </article>
+
+                <!-- Personal Tax Article -->
+                <article class="news-card" data-category="personal">
+                    <div class="news-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&q=80&w=600');">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Personal</span>
+                        <h3 class="news-title">Tax-Free Income Raised to €22,000</h3>
+                        <p class="news-excerpt">Middle-income earners get a break. The tax-free threshold increases, and
+                            new progressive brackets are introduced to lower the burden.</p>
+                        <a href="#calculator-section" class="read-more">Check Your Salary →</a>
+                    </div>
+                </article>
+
+                <!-- Crypto Article -->
+                <article class="news-card" data-category="crypto">
+                    <div class="news-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&q=80&w=600');">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-tag">Crypto</span>
+                        <h3 class="news-title">Crypto Tax Set at Flat 8%</h3>
+                        <p class="news-excerpt">Digital assets get regulatory clarity. Profits from crypto disposals
+                            will be taxed at a competitive flat rate of 8% starting 2026.</p>
+                        <a href="#mission-section" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
 
         <section class="info-grid container">
             <div class="card">

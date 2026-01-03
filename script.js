@@ -133,4 +133,41 @@ function initCalendar() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', initCalendar);
+// --- NEWS FILTER LOGIC ---
+function filterNews(category) {
+    const allArticles = document.querySelectorAll('.news-card');
+    const buttons = document.querySelectorAll('.news-tab-btn');
+
+    // Update active button state
+    buttons.forEach(btn => {
+        // Simple text matching for active state or exact match
+        const btnText = btn.innerText.toLowerCase();
+        if (category === 'all' && btnText.includes('all')) {
+            btn.classList.add('active');
+        } else if (category !== 'all' && btnText.includes(category)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Filter articles
+    allArticles.forEach(article => {
+        const articleCategory = article.getAttribute('data-category');
+        if (category === 'all' || articleCategory === category) {
+            article.style.display = 'block';
+            // Trigger reflow for animation
+            article.style.animation = 'none';
+            article.offsetHeight; /* trigger reflow */
+            article.style.animation = 'fadeIn 0.4s ease';
+        } else {
+            article.style.display = 'none';
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCalendar();
+    // Initialize news with 'all'
+    // filterNews('all'); // functions exposed globally, HTML calls them.
+});
