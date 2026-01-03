@@ -20,6 +20,7 @@
     extensions = [
       # "vscodevim.vim"
     ];
+    # ... rest of your idx configuration
 
     # Enable previews
     previews = {
