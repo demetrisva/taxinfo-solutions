@@ -170,4 +170,32 @@ document.addEventListener('DOMContentLoaded', () => {
     initCalendar();
     // Initialize news with 'all'
     // filterNews('all'); // functions exposed globally, HTML calls them.
+
+    // --- MOBILE DROPDOWN TOGGLE ---
+    const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.nav-link');
+        if (link) {
+            link.addEventListener('click', (e) => {
+                // Prevent default anchor jump if it's a dropdown toggle
+                e.preventDefault();
+                // Toggle active class
+                dropdown.classList.toggle('active');
+
+                // Close other dropdowns
+                dropdowns.forEach(other => {
+                    if (other !== dropdown) {
+                        other.classList.remove('active');
+                    }
+                });
+            });
+        }
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item-dropdown')) {
+            dropdowns.forEach(d => d.classList.remove('active'));
+        }
+    });
 });
