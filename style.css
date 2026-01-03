@@ -1143,8 +1143,99 @@ footer {
     }
 }
 
+/* =========================
+   HAMBURGER MENU (MOBILE)
+   ========================= */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 2000;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-main);
+}
+
+/* Animation for Hamburger */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
 /* Mobile */
 @media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        /* Below navbar */
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--bg-body);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item-dropdown {
+        width: 100%;
+    }
+
+    .nav-link,
+    .btn-nav {
+        display: block;
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    /* Fix dropdowns for mobile menu */
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        transform: none;
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: none;
+        margin-top: 10px;
+        display: none;
+    }
+
+    .nav-item-dropdown.active .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+    /* ... Existing Mobile Styles ... */
     .split-section {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1164,8 +1255,14 @@ footer {
         margin: 0 auto;
     }
 
-    .hero h1 {
-        font-size: 2.2rem;
+    .hero-section {
+        padding: 120px 0 60px 0;
+        /* Reduce padding on mobile */
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        /* Smaller title on mobile */
     }
 
     .stats-grid {
@@ -1188,6 +1285,10 @@ footer {
     }
 
     .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
         grid-template-columns: 1fr;
     }
 }

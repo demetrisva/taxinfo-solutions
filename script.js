@@ -117,6 +117,9 @@ function initCalendar() {
     const displayBox = document.getElementById("next-deadline-title");
     const daysBox = document.getElementById("days-left");
 
+    // Only run if calendar elements exist (e.g. index.html)
+    if (!displayBox || !daysBox) return;
+
     const next = deadlines.find(d => new Date(d.date) > today);
 
     if (next) {
@@ -171,6 +174,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize news with 'all'
     // filterNews('all'); // functions exposed globally, HTML calls them.
 
+    // --- MOBILE HAMBURGER TOGGLE ---
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll(".nav-link, .btn-nav, .dropdown-item").forEach(n => n.addEventListener("click", () => {
+            // Only close if it's not a dropdown toggle
+            if (!n.parentElement.classList.contains('nav-item-dropdown')) {
+                hamburger.classList.remove("active");
+                navMenu.classList.remove("active");
+            }
+        }));
+    }
+
     // --- MOBILE DROPDOWN TOGGLE ---
     const dropdowns = document.querySelectorAll('.nav-item-dropdown');
     dropdowns.forEach(dropdown => {
@@ -194,8 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-item-dropdown')) {
+        if (!e.target.closest('.nav-item-dropdown') && !e.target.closest('.hamburger')) {
             dropdowns.forEach(d => d.classList.remove('active'));
+            // Optional: Close main menu if clicking outside? Maybe not for standard mobile feel.
         }
     });
 });
