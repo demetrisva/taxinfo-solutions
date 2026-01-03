@@ -1,36 +1,6 @@
-// --- THEME SWITCHING LOGIC ---
-const themeToggleBtn = document.getElementById('theme-toggle');
-const userTheme = localStorage.getItem('theme');
-const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-// Initial Theme Check
-const setInitialTheme = () => {
-    if (userTheme === 'dark' || (!userTheme && systemTheme)) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-};
-
-// Toggle Function
-const toggleTheme = () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-};
-
-// Event Listeners
-themeToggleBtn.addEventListener('click', toggleTheme);
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) {
-        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    }
-});
-
-// Run on load
-setInitialTheme();
+// --- THEME SETUP (Enforced Dark Mode) ---
+// No toggle logic needed as we are Dark Mode exclusive now.
+console.log("TaxInfo 2026 Loaded");
 
 
 // --- TAB SWITCHING LOGIC ---
@@ -94,13 +64,13 @@ function calculateBusiness() {
     // 2025 Rules
     const corpTax25 = profit * 0.125;
     const afterCorp25 = profit - corpTax25;
-    const divTax25 = afterCorp25 * 0.17; 
+    const divTax25 = afterCorp25 * 0.17;
     const net25 = afterCorp25 - divTax25;
 
     // 2026 Rules
     const corpTax26 = profit * 0.15;
     const afterCorp26 = profit - corpTax26;
-    const divTax26 = afterCorp26 * 0.05; 
+    const divTax26 = afterCorp26 * 0.05;
     const net26 = afterCorp26 - divTax26;
 
     document.getElementById('tax25').innerText = formatMoney(corpTax25);
@@ -116,7 +86,7 @@ function calculateBusiness() {
     const diff = net26 - net25;
     const verdictDiv = document.getElementById('verdict');
     verdictDiv.classList.remove('hidden');
-    
+
     if (diff > 0) {
         verdictDiv.innerText = `You save €${formatMoney(diff)} with the new 2026 rules!`;
         verdictDiv.style.background = "#e8f5e9";
@@ -151,12 +121,12 @@ function initCalendar() {
 
     if (next) {
         const diffTime = Math.abs(new Date(next.date) - today);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-        
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
         displayBox.innerText = next.title;
         daysBox.innerText = `${diffDays} Days Left`;
-        
-        if(diffDays < 7) daysBox.style.color = "#ff6b6b"; 
+
+        if (diffDays < 7) daysBox.style.color = "#ff6b6b";
     } else {
         displayBox.innerText = "All 2026 Deadlines Passed";
         daysBox.innerText = "✅";
