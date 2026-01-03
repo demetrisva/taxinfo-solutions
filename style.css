@@ -558,18 +558,28 @@ h4 {
     border-color: var(--accent);
 }
 
-.calc-btn {
+.calc-btn,
+.btn {
     background: var(--text-main);
     color: var(--bg-card);
     border: none;
+    padding: 12px 30px; /* Adjusted to match calc-btn original padding if needed, but keeping existing is safer. Original was 0 30px, let's stick to 12px 30px to match tab-btn or just copy calc-btn properties */
     padding: 0 30px;
+    height: 48px; /* inferred from context or standard */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* For <a> tags */
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s;
+    font-size: 1rem;
+    font-family: var(--font-body);
 }
 
-.calc-btn:hover {
+.calc-btn:hover,
+.btn:hover {
     opacity: 0.9;
 }
 
