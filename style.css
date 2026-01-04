@@ -1291,4 +1291,19 @@ footer {
     .news-grid {
         grid-template-columns: 1fr;
     }
+
+    /* News Hub Mobile Fix */
+    .news-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .news-tab-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        flex: 1 0 auto;
+        /* Allow growth */
+        text-align: center;
+    }
 }
