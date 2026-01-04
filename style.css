@@ -351,7 +351,10 @@ h4 {
 
 .news-tab-btn {
     padding: 8px 22px;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly more transparent */
+    backdrop-filter: blur(5px);
+    /* Glass effect */
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-muted);
     border-radius: 50px;
@@ -363,15 +366,16 @@ h4 {
 }
 
 .news-tab-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
     color: var(--text-main);
     transform: translateY(-2px);
 }
 
 .news-tab-btn.active {
-    background: var(--accent);
+    background: rgba(255, 90, 95, 0.8);
+    /* Semi-transparent accent */
     color: white;
-    border-color: var(--accent);
+    border-color: rgba(255, 90, 95, 0.5);
     box-shadow: 0 8px 20px rgba(255, 90, 95, 0.3);
 }
 
@@ -425,7 +429,8 @@ h4 {
 }
 
 .news-img {
-    height: 200px;
+    height: 140px;
+    /* Reduced height */
     width: 100%;
     /* Use CSS Gradients instead of external images for reliability */
     background: linear-gradient(135deg, #2c3e50, #000000);
