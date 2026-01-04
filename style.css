@@ -38,6 +38,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-body);
+    background-image: url('images/bg-network.png');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -344,7 +349,7 @@ h4 {
 }
 
 .news-tab-btn {
-    padding: 12px 30px;
+    padding: 8px 22px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-muted);
@@ -352,7 +357,7 @@ h4 {
     cursor: pointer;
     font-weight: 600;
     font-family: var(--font-head);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
