@@ -14,14 +14,15 @@
 
     --bg-body: #111111;
     /* Deep Black */
-    --bg-card: #1A1A1A;
-    /* Slightly lighter black for cards */
-    --bg-input: #222222;
-    /* Input fields */
+    --bg-card: rgba(20, 20, 20, 0.6);
+    /* Semi-transparent for glassmorphism */
+    --bg-input: rgba(30, 30, 30, 0.5);
+    /* Semi-transparent input */
+    --blur-amount: 12px;
 
     --text-main: #FFFFFF;
     --text-muted: #B0B0B0;
-    --border-color: #333333;
+    --border-color: rgba(255, 255, 255, 0.1);
 
     --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     --hero-overlay: linear-gradient(180deg, rgba(17, 17, 17, 0.8) 0%, #111111 100%);
@@ -38,7 +39,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-body);
-    background-image: url('images/bg-network.png');
+    background-image: url('images/bg-main.png');
     background-size: cover;
     background-attachment: fixed;
     background-position: center top;
@@ -405,10 +406,11 @@ h4 {
 }
 
 .news-card {
-    background: #1e1e1e;
+    background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
@@ -523,6 +525,7 @@ h4 {
 
 .card {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     padding: 40px 30px;
     border-radius: 4px;
     /* More squared off for tech feel */
@@ -584,6 +587,7 @@ h4 {
    ========================= */
 .calculator-wrapper {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     padding: 40px;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -745,9 +749,11 @@ h4 {
 }
 
 .new-rules {
-    background: var(--bg-card);
+    background: rgba(255, 90, 95, 0.05);
+    /* Slight tint for differentiation */
     border: 2px solid var(--accent);
     position: relative;
+    backdrop-filter: blur(5px);
 }
 
 .verdict-box {
@@ -783,6 +789,7 @@ h4 {
 
 .exemption-card {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     border-radius: 12px;
     border: 1px solid var(--border-color);
     overflow: hidden;
@@ -797,7 +804,7 @@ h4 {
     list-style: none;
     padding: 20px;
     cursor: pointer;
-    background: var(--bg-card);
+    background: transparent;
     font-weight: 600;
     color: var(--text-main);
 }
@@ -868,6 +875,7 @@ h4 {
 /* Calendar */
 .calendar-widget {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     padding: 30px;
     border-radius: 16px;
     box-shadow: var(--card-shadow);
@@ -938,6 +946,7 @@ h4 {
 /* Downloads */
 .downloads-section {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     padding: 30px;
     border-radius: 16px;
     box-shadow: var(--card-shadow);
@@ -1048,6 +1057,7 @@ h4 {
 
 .mini-card {
     background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
     padding: 25px;
     border-radius: 8px;
     border-left: 3px solid var(--accent);
