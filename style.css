@@ -94,6 +94,19 @@ h4 {
     font-weight: 600;
     letter-spacing: 0.5px;
     margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.stamp-duty-banner {
+    background: rgba(39, 174, 96, 0.15);
+    border: 1px solid #27ae60;
+    color: #2ec16d;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    animation: fadeIn 1s ease;
 }
 
 .hero-title {
@@ -1152,6 +1165,40 @@ h4 {
 
 .d-item .desc {
     color: var(--text-muted);
+}
+
+.text-red {
+    color: #ff5a5f;
+}
+
+.warning-card {
+    border: 1px solid rgba(255, 90, 95, 0.4);
+    background: rgba(255, 90, 95, 0.05);
+}
+
+.warning-card h3 {
+    color: #ff5a5f;
+}
+
+.warning-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.warning-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.warning-list li::before {
+    content: '⚠️';
+    position: absolute;
+    left: 0;
+    font-size: 0.8rem;
 }
 
 /* Downloads */
