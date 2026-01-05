@@ -120,10 +120,10 @@
             </div>
 
             <div class="news-tabs">
-                <button class="news-tab-btn active" onclick="filterNews('all')">All News</button>
-                <button class="news-tab-btn" onclick="filterNews('corporate')">Corporate</button>
-                <button class="news-tab-btn" onclick="filterNews('personal')">Personal</button>
-                <button class="news-tab-btn" onclick="filterNews('crypto')">Crypto & Tech</button>
+                <button class="news-tab-btn active btn-all" onclick="filterNews('all')">All</button>
+                <button class="news-tab-btn btn-corp" onclick="filterNews('corporate')">Corporate</button>
+                <button class="news-tab-btn btn-personal" onclick="filterNews('personal')">Personal</button>
+                <button class="news-tab-btn btn-crypto" onclick="filterNews('crypto')">Crypto</button>
             </div>
 
             <div id="news-grid-all" class="news-grid active">
@@ -453,7 +453,12 @@
                     <div class="input-group">
                         <input type="number" id="grossSalary" placeholder="e.g. 35000">
                         <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
-                        <button onclick="multiplyBy12()" class="calc-btn-secondary" title="Multiply by 12">x12</button>
+                        <div class="calc-actions-secondary">
+                            <button onclick="multiplyBy12()" class="calc-btn-secondary"
+                                title="Monthly x 12">x12</button>
+                            <button onclick="multiplyBy13()" class="calc-btn-secondary"
+                                title="Monthly x 13">x13</button>
+                        </div>
                     </div>
 
                     <div id="salaryResult" class="result-box hidden">

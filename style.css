@@ -697,6 +697,32 @@ h4 {
 .input-group {
     display: flex;
     gap: 10px;
+    align-items: center;
+}
+
+/* Secondary Calculator Buttons Wrapper */
+.calc-actions-secondary {
+    display: flex;
+    gap: 5px;
+}
+
+.calc-btn-secondary {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0 15px;
+    /* Horizontal padding, height set by flex stretch usually or inherit */
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    height: 100%;
+    /* Match height of input if container aligns items stretch */
+    min-height: 48px;
+    /* Explicit minimum height to match typical inputs */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .calc-box input {
@@ -1546,6 +1572,20 @@ footer {
 
     .input-group {
         flex-direction: column;
+        gap: 10px;
+    }
+
+    .calc-actions-secondary {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .calc-btn-secondary {
+        flex: 1;
+        /* Make them equal width on mobile */
+        padding: 15px;
+        /* Bigger touch target */
     }
 
     .calc-btn {
