@@ -180,38 +180,26 @@ function filterNews(category) {
 
 
 // --- SEARCH LOGIC ---
+// --- SEARCH LOGIC ---
 function searchContent() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toUpperCase();
 
-    // Elements to search in: News cards, TP cards, Calculator sections
-    // Simple implementation: Highlight or separate logic?
-    // Let's filter the main sections or cards.
+    // Select ALL content cards: News, Transfer Pricing, Info Grid, Tax Tables, Residency, Exemptions
+    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
 
-    // 1. Search in News
-    const newsCards = document.querySelectorAll('.news-card');
-    newsCards.forEach(card => {
+    allCards.forEach(card => {
         const text = card.textContent || card.innerText;
         if (text.toUpperCase().indexOf(filter) > -1) {
             card.style.display = "";
+            // If it's inside a hidden grid/section, logic might be needed to unhide the parent, 
+            // but usually standard grids flow fine. 
+            // For news-grid, we might need to reset filters? 
+            // Simple approach: show if matches.
         } else {
             card.style.display = "none";
         }
     });
-
-    // 2. Search in TP Section
-    const tpCards = document.querySelectorAll('.tp-card');
-    tpCards.forEach(card => {
-        const text = card.textContent || card.innerText;
-        if (text.toUpperCase().indexOf(filter) > -1) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-
-    // If input is empty, ensure layout resets (grids might need display:block vs flex fix, but display="" usually reverts to stylesheet default)
-    // For specific grids like news-grid, we rely on the active class, but hiding children works.
 }
 
 document.addEventListener('DOMContentLoaded', () => {

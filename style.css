@@ -454,8 +454,10 @@ h4 {
 }
 
 .news-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(var(--blur-amount));
+    background: rgba(20, 20, 20, 0.4);
+    /* More transparent than default */
+    backdrop-filter: blur(15px);
+    /* Stronger blur for glass effect */
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--border-color);
