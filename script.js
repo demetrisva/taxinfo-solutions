@@ -56,6 +56,15 @@ function calculateSalary() {
     document.getElementById('salaryResult').classList.remove('hidden');
 }
 
+function multiplyBy12() {
+    const input = document.getElementById('grossSalary');
+    if (input.value) {
+        input.value = parseFloat(input.value) * 12;
+        // Optionally auto-calculate
+        // calculateSalary(); 
+    }
+}
+
 // --- 2. BUSINESS PROFIT CALCULATOR LOGIC ---
 function calculateBusiness() {
     const profit = parseFloat(document.getElementById('profitInput').value);
@@ -167,6 +176,42 @@ function filterNews(category) {
             article.style.display = 'none';
         }
     });
+}
+
+
+// --- SEARCH LOGIC ---
+function searchContent() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toUpperCase();
+
+    // Elements to search in: News cards, TP cards, Calculator sections
+    // Simple implementation: Highlight or separate logic?
+    // Let's filter the main sections or cards.
+
+    // 1. Search in News
+    const newsCards = document.querySelectorAll('.news-card');
+    newsCards.forEach(card => {
+        const text = card.textContent || card.innerText;
+        if (text.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    // 2. Search in TP Section
+    const tpCards = document.querySelectorAll('.tp-card');
+    tpCards.forEach(card => {
+        const text = card.textContent || card.innerText;
+        if (text.toUpperCase().indexOf(filter) > -1) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    // If input is empty, ensure layout resets (grids might need display:block vs flex fix, but display="" usually reverts to stylesheet default)
+    // For specific grids like news-grid, we rely on the active class, but hiding children works.
 }
 
 document.addEventListener('DOMContentLoaded', () => {

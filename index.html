@@ -67,6 +67,10 @@
                 <a href="#mission-section" class="nav-link">Vision</a>
                 <a href="#calculator-section" class="btn-nav">Get Started</a>
             </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search topics..." onkeyup="searchContent()">
+            </div>
+        </div>
         </div>
     </nav>
 
@@ -200,6 +204,51 @@
             </div>
         </section>
 
+        <!-- New Transfer Pricing & SIT Section -->
+        <section id="tp-sit-section" class="container" style="margin-bottom: 60px;">
+            <div class="section-header">
+                <h2>Transfer Pricing & <span class="text-accent">SIT</span></h2>
+                <p>Essential compliance for related party transactions.</p>
+            </div>
+
+            <div class="tp-grid">
+                <div class="tp-card">
+                    <h3>Transfer Pricing Study</h3>
+                    <p class="tp-subtitle">Benefits & When you need it</p>
+                    <ul class="check-list">
+                        <li><strong>Compliance:</strong> Mandatory for "related party" transactions (e.g., between
+                            companies with >25% common ownership).</li>
+                        <li><strong>Risk Reduction:</strong> Avoids tax adjustments and penalties by proving "arm's
+                            length" pricing.</li>
+                        <li><strong>Thresholds:</strong> Required if category transactions >€750k/year (or €5m for
+                            financing).</li>
+                    </ul>
+                </div>
+                <div class="tp-card">
+                    <h3>SIT (Summary Information Table)</h3>
+                    <p class="tp-subtitle">Mandatory Filing Requirements</p>
+                    <ul class="check-list">
+                        <li><strong>What is it?</strong> A summary table listing all intercompany transactions.</li>
+                        <li><strong>Who files?</strong> ALL companies with related party transactions (no threshold).
+                        </li>
+                        <li><strong>Deadline:</strong> Filed electronically with your Tax Return (15 months after
+                            year-end).</li>
+                        <li><strong>Penalty:</strong> €500 fine for late submission.</li>
+                    </ul>
+                </div>
+                <div class="tp-card">
+                    <h3>SDC on Dividends & Interest</h3>
+                    <p class="tp-subtitle">Special Defence Contribution</p>
+                    <ul class="check-list">
+                        <li><strong>Dividends:</strong> Reduced to <strong>5%</strong> (from 17%) under 2026 rules for
+                            tax residents.</li>
+                        <li><strong>Interest:</strong> Passive interest income taxed at <strong>30% SDC</strong>.</li>
+                        <li><strong>Exemption:</strong> Non-Doms are 100% exempt from SDC.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section id="calculator-section" class="calculator-wrapper container">
             <div class="section-header">
                 <h2>Impact Calculator</h2>
@@ -217,6 +266,7 @@
                     <div class="input-group">
                         <input type="number" id="grossSalary" placeholder="e.g. 35000">
                         <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
+                        <button onclick="multiplyBy12()" class="calc-btn-secondary" title="Multiply by 12">x12</button>
                     </div>
 
                     <div id="salaryResult" class="result-box hidden">
