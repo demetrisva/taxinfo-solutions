@@ -955,6 +955,134 @@ h4 {
     grid-template-columns: 1fr 1fr;
 }
 
+.grid-2-col-wide {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    /* Give slightly more space to complex column if needed, or 1fr 1fr */
+    gap: 30px;
+}
+
+@media (max-width: 900px) {
+    .grid-2-col-wide {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tax Tables Styles */
+.data-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.card-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.badge-neutral {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.tax-table th {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.tax-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tax-table tr:last-child td {
+    border-bottom: none;
+}
+
+.total-row-table td {
+    color: var(--accent);
+    border-top: 1px solid var(--border-color);
+}
+
+.table-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 15px;
+    opacity: 0.7;
+}
+
+/* Residency Cards */
+.residency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.res-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(var(--blur-amount));
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.res-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 90, 95, 0.3);
+}
+
+.res-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.check-list-sm {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.check-list-sm li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.check-list-sm li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
 /* Calendar */
 .calendar-widget {
     background: var(--bg-card);
