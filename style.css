@@ -454,7 +454,7 @@ h4 {
 }
 
 .news-card {
-    background: rgba(20, 20, 20, 0.4);
+    background: rgba(20, 20, 20, 0.2);
     /* More transparent than default */
     backdrop-filter: blur(15px);
     /* Stronger blur for glass effect */
@@ -475,7 +475,7 @@ h4 {
 }
 
 .news-img {
-    height: 140px;
+    height: 80px;
     /* Reduced height */
     width: 100%;
     /* Use CSS Gradients instead of external images for reliability */
