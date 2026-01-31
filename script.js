@@ -1,7 +1,8 @@
 // --- THEME SETUP (Enforced Dark Mode) ---
-// No toggle logic needed as we are Dark Mode exclusive now.
 console.log("TaxInfo 2026 Loaded");
 
+// --- GLOBAL VARIABLES for Chart ---
+let taxChartInstance = null;
 
 // --- TAB SWITCHING LOGIC ---
 function openTab(tabName) {
@@ -17,14 +18,64 @@ function openTab(tabName) {
     event.currentTarget.classList.add('active');
 }
 
-// --- 1. SALARY CALCULATOR LOGIC (2026 REFORM) ---
+// --- ADVANCED MODE TOGGLE ---
+function toggleAdvancedMode() {
+    const isChecked = document.getElementById('advancedModeToggle').checked;
+    const inputsDiv = document.getElementById('advancedInputs');
+    if (isChecked) {
+        inputsDiv.classList.remove('hidden');
+    } else {
+        inputsDiv.classList.add('hidden');
+    }
+}
+
+// --- 1. SALARY CALCULATOR LOGIC (2026 REFORM + ADVANCED) ---
 function calculateSalary() {
+    // 1. Get Base Inputs
     const gross = parseFloat(document.getElementById('grossSalary').value);
     if (!gross || gross < 0) return;
 
-    // Social Deductions: 8.3% Social Ins + 2.65% GESY = 10.95%
-    const socialDeductions = gross * 0.1095;
-    const taxableIncome = gross - socialDeductions;
+    // 2. Social Deductions (Standard)
+    // Social Ins: 8.3% | GESY: 2.65% | Total: 10.95%
+    const socialRate = 0.1095;
+    const socialDeductions = gross * socialRate;
+
+    // 3. Advanced Deductions
+    let totalDeductions = 0;
+    
+    // Check if Advanced Mode is Active
+    const isAdvanced = document.getElementById('advancedModeToggle').checked;
+    let expatExemption = 0;
+
+    if (isAdvanced) {
+        // A. Children
+        const children = parseInt(document.getElementById('childrenCount').value);
+        if (children === 1) totalDeductions += 1000;
+        else if (children === 2) totalDeductions += 2250;
+        else if (children === 3) totalDeductions += 3750; // Approximated 3+ logic
+
+        // B. Housing Interest (Max 2000)
+        let housing = parseFloat(document.getElementById('housingDeduction').value) || 0;
+        housing = Math.min(housing, 2000);
+        totalDeductions += housing;
+
+        // C. Green Investment (Max 1000)
+        let green = parseFloat(document.getElementById('greenDeduction').value) || 0;
+        green = Math.min(green, 1000);
+        totalDeductions += green;
+
+        // D. Expat 50% Exemption
+        const isExpat = document.getElementById('expatExemption').checked;
+        if (isExpat && gross > 55000) {
+            expatExemption = gross * 0.5;
+        }
+    }
+
+    // 4. Calculate Taxable Income
+    // Formula: Gross - Social - ExpatExemption - Deductions = Taxable Base
+    // Note: Deductions usually reduce the Taxable Base.
+    let taxableIncome = gross - socialDeductions - expatExemption - totalDeductions;
+    if (taxableIncome < 0) taxableIncome = 0;
 
     let tax = 0;
 
@@ -48,20 +99,77 @@ function calculateSalary() {
 
     const net = gross - socialDeductions - tax;
 
-    // Render Salary Results
+    // 5. Render Salary Results
     document.getElementById('outGross').innerText = formatMoney(gross);
     document.getElementById('outSocial').innerText = formatMoney(socialDeductions);
     document.getElementById('outTax').innerText = formatMoney(tax);
     document.getElementById('outNet').innerText = formatMoney(net);
     document.getElementById('salaryResult').classList.remove('hidden');
+
+    // 6. Update Chart
+    updateChart(net, tax, socialDeductions);
+}
+
+function updateChart(net, tax, social) {
+    const ctx = document.getElementById('taxChart').getContext('2d');
+    
+    if (taxChartInstance) {
+        taxChartInstance.destroy();
+    }
+
+    taxChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Net Pay', 'Income Tax', 'Social Ins & GESY'],
+            datasets: [{
+                data: [net, tax, social],
+                backgroundColor: [
+                    '#2ec16d', // Green for Net
+                    '#ff5a5f', // Red for Tax
+                    '#f1c40f'  // Yellow for Social
+                ],
+                borderWidth: 0,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { color: '#b0b0b0' }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed !== null) {
+                                label += formatMoney(context.parsed) + ' €';
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+    });
 }
 
 function multiplyBy12() {
     const input = document.getElementById('grossSalary');
     if (input.value) {
         input.value = parseFloat(input.value) * 12;
-        // Optionally auto-calculate
-        // calculateSalary(); 
+    }
+}
+
+function multiplyBy13() {
+    const input = document.getElementById('grossSalary');
+    if (input.value) {
+        input.value = parseFloat(input.value) * 13;
     }
 }
 
@@ -145,14 +253,12 @@ function initCalendar() {
     }
 }
 
-// --- NEWS FILTER LOGIC ---
+// --- NEWS SEARCH & FILTER LOGIC ---
 function filterNews(category) {
     const allArticles = document.querySelectorAll('.news-card');
     const buttons = document.querySelectorAll('.news-tab-btn');
 
-    // Update active button state
     buttons.forEach(btn => {
-        // Simple text matching for active state or exact match
         const btnText = btn.innerText.toLowerCase();
         if (category === 'all' && btnText.includes('all')) {
             btn.classList.add('active');
@@ -163,14 +269,12 @@ function filterNews(category) {
         }
     });
 
-    // Filter articles
     allArticles.forEach(article => {
         const articleCategory = article.getAttribute('data-category');
         if (category === 'all' || articleCategory === category) {
-            article.style.display = 'block';
-            // Trigger reflow for animation
+            article.style.display = 'flex'; // Restore filtered logic
             article.style.animation = 'none';
-            article.offsetHeight; /* trigger reflow */
+            article.offsetHeight; 
             article.style.animation = 'fadeIn 0.4s ease';
         } else {
             article.style.display = 'none';
@@ -178,24 +282,15 @@ function filterNews(category) {
     });
 }
 
-
-// --- SEARCH LOGIC ---
-// --- SEARCH LOGIC ---
 function searchContent() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toUpperCase();
-
-    // Select ALL content cards: News, Transfer Pricing, Info Grid, Tax Tables, Residency, Exemptions
     const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
 
     allCards.forEach(card => {
         const text = card.textContent || card.innerText;
         if (text.toUpperCase().indexOf(filter) > -1) {
             card.style.display = "";
-            // If it's inside a hidden grid/section, logic might be needed to unhide the parent, 
-            // but usually standard grids flow fine. 
-            // For news-grid, we might need to reset filters? 
-            // Simple approach: show if matches.
         } else {
             card.style.display = "none";
         }
@@ -204,10 +299,7 @@ function searchContent() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initCalendar();
-    // Initialize news with 'all'
-    // filterNews('all'); // functions exposed globally, HTML calls them.
-
-    // --- MOBILE HAMBURGER TOGGLE ---
+    
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
@@ -216,10 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.toggle("active");
             navMenu.classList.toggle("active");
         });
-
-        // Close menu when clicking a link
         document.querySelectorAll(".nav-link, .btn-nav, .dropdown-item").forEach(n => n.addEventListener("click", () => {
-            // Only close if it's not a dropdown toggle
             if (!n.parentElement.classList.contains('nav-item-dropdown')) {
                 hamburger.classList.remove("active");
                 navMenu.classList.remove("active");
@@ -227,32 +316,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
     }
 
-    // --- MOBILE DROPDOWN TOGGLE ---
     const dropdowns = document.querySelectorAll('.nav-item-dropdown');
     dropdowns.forEach(dropdown => {
         const link = dropdown.querySelector('.nav-link');
         if (link) {
             link.addEventListener('click', (e) => {
-                // Prevent default anchor jump if it's a dropdown toggle
                 e.preventDefault();
-                // Toggle active class
                 dropdown.classList.toggle('active');
-
-                // Close other dropdowns
                 dropdowns.forEach(other => {
-                    if (other !== dropdown) {
-                        other.classList.remove('active');
-                    }
+                    if (other !== dropdown) other.classList.remove('active');
                 });
             });
         }
     });
 
-    // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.nav-item-dropdown') && !e.target.closest('.hamburger')) {
             dropdowns.forEach(d => d.classList.remove('active'));
-            // Optional: Close main menu if clicking outside? Maybe not for standard mobile feel.
         }
     });
 });

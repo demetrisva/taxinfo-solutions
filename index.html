@@ -14,7 +14,8 @@
     <meta name="robots" content="index, follow">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942670124765473"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -34,6 +35,58 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://taxinfo.solutions/images/og-image.png">
+
+    <!-- JSON-LD SEO Structure -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Cyprus Tax Calculator 2026",
+          "operatingSystem": "Web",
+          "applicationCategory": "FinanceApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+          },
+          "description": "Calculate your net income under the new 2026 Cyprus Tax Reforms. Compare Old vs. New rules for Salary, Dividends (5%), Crypto (8%), and Corporate Tax (15%)."
+        },
+        {
+          "@type": "Organization",
+          "name": "TaxInfo Solutions",
+          "url": "https://taxinfo.solutions",
+          "logo": "https://taxinfo.solutions/images/logo.png"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": "What is the 2026 Tax-Free Income Limit in Cyprus?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The new tax-free income threshold is €22,000 per year."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What is the new Crypto Tax rate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Profits from the disposal of crypto assets are taxed at a flat rate of 8%."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What is the Non-Dom status benefit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Individuals who have not been tax residents of Cyprus for 17 of the last 20 years are exempt from SDC, meaning 0% tax on dividends and interest."
+            }
+          }]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -455,16 +508,59 @@
                     <label>Annual Gross Salary (€)</label>
                     <div class="input-group">
                         <input type="number" id="grossSalary" placeholder="e.g. 35000">
-                        <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
+                        <button onclick="calculateSalary()" class="calc-btn">Calculate <span class="badge-verified">✓
+                                2026</span></button>
                         <div class="calc-actions-secondary">
                             <button onclick="multiplyBy12()" class="calc-btn-secondary"
                                 title="Monthly x 12">x12</button>
                             <button onclick="multiplyBy13()" class="calc-btn-secondary"
                                 title="Monthly x 13">x13</button>
                         </div>
+
+                        <div class="advanced-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="advancedModeToggle" onchange="toggleAdvancedMode()">
+                                <span class="slider round"></span>
+                            </label>
+                            <span class="toggle-label">Advanced Mode (Deductions & Exemptions)</span>
+                        </div>
+
+                        <div id="advancedInputs" class="advanced-inputs hidden">
+                            <div class="input-row-flex">
+                                <div class="flex-col">
+                                    <label>Dependent Children</label>
+                                    <select id="childrenCount">
+                                        <option value="0">None</option>
+                                        <option value="1">1 Child (-€1,000)</option>
+                                        <option value="2">2 Children (-€2,250)</option>
+                                        <option value="3">3 Children (-€3,750)</option>
+                                    </select>
+                                </div>
+                                <div class="flex-col">
+                                    <label>Housing/Rent Interest (€)</label>
+                                    <input type="number" id="housingDeduction" placeholder="Max 2000">
+                                </div>
+                            </div>
+                            <div class="input-row-flex">
+                                <div class="flex-col">
+                                    <label>Green Investment (€)</label>
+                                    <input type="number" id="greenDeduction" placeholder="Max 1000">
+                                </div>
+                                <div class="flex-col checkbox-col">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="expatExemption">
+                                        <span class="checkmark"></span>
+                                        Foreign High Earner (50% Off)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="salaryResult" class="result-box hidden">
+                        <div class="chart-container">
+                            <canvas id="taxChart"></canvas>
+                        </div>
                         <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
                         <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span
                                     id="outSocial">€0</span></span></div>
