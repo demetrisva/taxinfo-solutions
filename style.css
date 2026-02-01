@@ -369,7 +369,8 @@ h4 {
    ========================= */
 .news-hub-section {
     padding: 100px 0 80px 0;
-    background: linear-gradient(180deg, var(--bg-body) 0%, #161616 100%);
+    background: transparent;
+    /* Changed to merge with body */
     position: relative;
 }
 
@@ -389,6 +390,7 @@ h4 {
 .news-tabs {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 60px;
     position: relative;
@@ -566,6 +568,14 @@ h4 {
 
     .news-grid {
         grid-template-columns: 1fr;
+    }
+
+    .news-hub-section {
+        padding: 60px 0 40px 0;
+    }
+
+    .news-content {
+        padding: 20px;
     }
 }
 
