@@ -1907,3 +1907,19 @@ input:checked+.slider:before {
         height: 220px;
     }
 }
+
+/* Advanced Inputs Vertical Stack */
+.form-item {
+    margin-bottom: 20px;
+}
+
+.form-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.checkbox-row {
+    margin-top: 10px;
+}

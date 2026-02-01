@@ -517,6 +517,9 @@
                                 title="Monthly x 13">x13</button>
                         </div>
 
+                    </div>
+                    <!-- Moved Advanced Toggle & Inputs OUTSIDE the flex input-group -->
+                    <div class="advanced-section-wrapper" style="margin-top: 20px;">
                         <div class="advanced-toggle">
                             <label class="switch">
                                 <input type="checkbox" id="advancedModeToggle" onchange="toggleAdvancedMode()">
@@ -526,10 +529,11 @@
                         </div>
 
                         <div id="advancedInputs" class="advanced-inputs hidden">
-                            <div class="input-row-flex">
-                                <div class="flex-col">
+                            <!-- Vertical Stack Layout -->
+                            <div class="input-stack">
+                                <div class="form-item">
                                     <label>Dependent Children</label>
-                                    <select id="childrenCount">
+                                    <select id="childrenCount" style="width: 100%;">
                                         <option value="0">None</option>
                                         <option value="1">1 Child (-€1,000)</option>
                                         <option value="2">2 Children (-€2,250)</option>
@@ -538,242 +542,241 @@
                                         <option value="5">5 Children (-€7,500)</option>
                                     </select>
                                 </div>
-                                <label>Housing Loan Interest (€)</label>
-                                <input type="number" id="housingInterest" placeholder="Max 2000">
+                                <div class="form-item">
+                                    <label>Housing Loan Interest (€)</label>
+                                    <input type="number" id="housingInterest" placeholder="Max 2000"
+                                        style="width: 100%;">
+                                </div>
+                                <div class="form-item">
+                                    <label>Rent Allowance (€)</label>
+                                    <input type="number" id="rentDeduction" placeholder="Max 2000" style="width: 100%;">
+                                </div>
+                                <div class="form-item">
+                                    <label>Green Investment (€)</label>
+                                    <input type="number" id="greenDeduction" placeholder="Max 1000"
+                                        style="width: 100%;">
+                                </div>
+                                <div class="form-item">
+                                    <label>Other IR59 Deductions (€) <span class="info-tooltip"
+                                            title="Union subscriptions, Professional subscriptions, Donations to approved charities">?</span></label>
+                                    <input type="number" id="ir59Deductions" placeholder="Unions, Charities, Prof. Subs"
+                                        style="width: 100%;">
+                                    <small class="field-note">Trade unions, professional bodies, approved
+                                        charities.</small>
+                                </div>
+                                <div class="form-item checkbox-row">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" id="expatExemption">
+                                        <span class="checkmark"></span>
+                                        Foreign High Earner (50% Off)
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                        <div class="input-row-flex">
-                            <div class="flex-col">
-                                <label>Rent Allowance (€)</label>
-                                <input type="number" id="rentDeduction" placeholder="Max 2000">
-                            </div>
-                            <div class="flex-col">
-                                <label>Green Investment (€)</label>
-                                <input type="number" id="greenDeduction" placeholder="Max 1000">
-                            </div>
+                    </div>
+
+                    <div id="salaryResult" class="result-box hidden">
+                        <div class="chart-container">
+                            <canvas id="taxChart"></canvas>
                         </div>
-                        <!-- New Row for IR59 Deductions -->
-                        <div class="input-row-flex">
-                            <div class="flex-col" style="width: 100%;">
-                                <label>Other IR59 Deductions (€) <span class="info-tooltip"
-                                        title="Union subscriptions, Professional subscriptions, Donations to approved charities">?</span></label>
-                                <input type="number" id="ir59Deductions" placeholder="Unions, Charities, Prof. Subs">
-                                <small class="field-note">Trade unions, professional bodies, approved
-                                    charities.</small>
-                            </div>
-                            <div class="flex-col checkbox-col">
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="expatExemption">
-                                    <span class="checkmark"></span>
-                                    Foreign High Earner (50% Off)
-                                </label>
-                            </div>
+                        <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
+                        <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span
+                                    id="outSocial">€0</span></span></div>
+                        <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span
+                                    id="outTax">€0</span></span></div>
+                        <div class="total-row">
+                            <span>Net Pay (Yearly):</span>
+                            <span id="outNet">€0</span>
+                        </div>
+                        <p class="note">*Calculated using the new €22,000 tax-free threshold.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="business" class="tab-content">
+                <div class="calc-box">
+                    <label>Annual Net Profit (€)</label>
+                    <div class="input-group">
+                        <input type="number" id="profitInput" placeholder="e.g. 100000">
+                        <button onclick="calculateBusiness()" class="calc-btn">Compare</button>
+                    </div>
+
+                    <div id="businessResult" class="result-grid hidden">
+                        <div class="res-col old-rules">
+                            <h4>Old Rules (2025)</h4>
+                            <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
+                            <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
+                            <p class="total-net">Net: €<span id="net25">0</span></p>
+                        </div>
+                        <div class="res-col new-rules">
+                            <h4>New Rules (2026)</h4>
+                            <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
+                            <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
+                            <p class="total-net">Net: €<span id="net26">0</span></p>
                         </div>
                     </div>
+                    <div id="verdict" class="verdict-box hidden"></div>
                 </div>
+            </div>
+        </section>
 
-                <div id="salaryResult" class="result-box hidden">
-                    <div class="chart-container">
-                        <canvas id="taxChart"></canvas>
+        <!-- Mission / About Section (Split Layout) -->
+        <section id="mission-section" class="split-section container">
+            <div class="split-content">
+                <span class="section-tag">Vision</span>
+                <h2>Understanding the <br> <span class="text-accent">Cyprus Tax System</span></h2>
+                <p>The 2026 reform isn't just a tweak—it's a complete overhaul designed to attract talent and
+                    investment. We break down the complex legal frameworks into actionable insights for you.</p>
+                <a href="#calculator-section" class="btn-text">Check Your Impact →</a>
+            </div>
+            <div class="split-grid">
+                <div class="mini-card">
+                    <h4>Personal Income</h4>
+                    <p>New €22k tax-free limit.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>Corporate Tax</h4>
+                    <p>Standard rate at 15%.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>VAT Standard</h4>
+                    <p>Remains at 19%.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="margin-bottom: 60px;">
+            <h2 class="section-title-center">✨ Special Tax Exemptions</h2>
+            <p class="section-subtitle">You might be eligible for special tax treatments.</p>
+
+            <div class="exemptions-grid">
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🌍</span>
+                            <span class="ex-title">Non-Dom Status</span>
+                            <span class="ex-tag">0% Tax</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>The "Holy Grail" of Cyprus Tax:</strong> Individuals who have not been tax
+                            residents
+                            of Cyprus for 17 of the last 20 years are exempt from SDC.</p>
+                        <ul class="check-list">
+                            <li>Dividends: <strong>0% Tax</strong> (vs 5% standard)</li>
+                            <li>Interest Income: <strong>0% Tax</strong></li>
+                            <li>Rental Income: <strong>0% SDC</strong></li>
+                        </ul>
                     </div>
-                    <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
-                    <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span
-                                id="outSocial">€0</span></span></div>
-                    <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span
-                                id="outTax">€0</span></span></div>
-                    <div class="total-row">
-                        <span>Net Pay (Yearly):</span>
-                        <span id="outNet">€0</span>
+                </details>
+
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🚀</span>
+                            <span class="ex-title">Foreign High Earners</span>
+                            <span class="ex-tag">50% Off</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>First Employment Rule:</strong> Relocating to Cyprus for a job paying over
+                            <strong>€55,000/year</strong>?
+                        </p>
+                        <ul class="check-list">
+                            <li><strong>50% of your salary</strong> is completely tax-exempt.</li>
+                            <li>Valid for up to 17 years.</li>
+                        </ul>
                     </div>
-                    <p class="note">*Calculated using the new €22,000 tax-free threshold.</p>
-                </div>
-            </div>
-    </div>
+                </details>
 
-    <div id="business" class="tab-content">
-        <div class="calc-box">
-            <label>Annual Net Profit (€)</label>
-            <div class="input-group">
-                <input type="number" id="profitInput" placeholder="e.g. 100000">
-                <button onclick="calculateBusiness()" class="calc-btn">Compare</button>
-            </div>
-
-            <div id="businessResult" class="result-grid hidden">
-                <div class="res-col old-rules">
-                    <h4>Old Rules (2025)</h4>
-                    <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
-                    <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
-                    <p class="total-net">Net: €<span id="net25">0</span></p>
-                </div>
-                <div class="res-col new-rules">
-                    <h4>New Rules (2026)</h4>
-                    <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
-                    <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
-                    <p class="total-net">Net: €<span id="net26">0</span></p>
-                </div>
-            </div>
-            <div id="verdict" class="verdict-box hidden"></div>
-        </div>
-    </div>
-    </section>
-
-    <!-- Mission / About Section (Split Layout) -->
-    <section id="mission-section" class="split-section container">
-        <div class="split-content">
-            <span class="section-tag">Vision</span>
-            <h2>Understanding the <br> <span class="text-accent">Cyprus Tax System</span></h2>
-            <p>The 2026 reform isn't just a tweak—it's a complete overhaul designed to attract talent and
-                investment. We break down the complex legal frameworks into actionable insights for you.</p>
-            <a href="#calculator-section" class="btn-text">Check Your Impact →</a>
-        </div>
-        <div class="split-grid">
-            <div class="mini-card">
-                <h4>Personal Income</h4>
-                <p>New €22k tax-free limit.</p>
-            </div>
-            <div class="mini-card">
-                <h4>Corporate Tax</h4>
-                <p>Standard rate at 15%.</p>
-            </div>
-            <div class="mini-card">
-                <h4>VAT Standard</h4>
-                <p>Remains at 19%.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" style="margin-bottom: 60px;">
-        <h2 class="section-title-center">✨ Special Tax Exemptions</h2>
-        <p class="section-subtitle">You might be eligible for special tax treatments.</p>
-
-        <div class="exemptions-grid">
-            <details class="exemption-card">
-                <summary>
-                    <div class="summary-flex">
-                        <span class="ex-icon">🌍</span>
-                        <span class="ex-title">Non-Dom Status</span>
-                        <span class="ex-tag">0% Tax</span>
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🏖️</span>
+                            <span class="ex-title">Foreign Pensioners</span>
+                            <span class="ex-tag">5% Flat</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>The Golden Years Choice:</strong> Retirees receiving a foreign pension can
+                            choose the
+                            better tax option each year.</p>
+                        <ul class="check-list">
+                            <li><strong>Option A:</strong> Normal progressive rates (First €22k tax-free).</li>
+                            <li><strong>Option B:</strong> Flat <strong>5% tax</strong> on amounts over €3,420.
+                            </li>
+                        </ul>
                     </div>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>The "Holy Grail" of Cyprus Tax:</strong> Individuals who have not been tax
-                        residents
-                        of Cyprus for 17 of the last 20 years are exempt from SDC.</p>
-                    <ul class="check-list">
-                        <li>Dividends: <strong>0% Tax</strong> (vs 5% standard)</li>
-                        <li>Interest Income: <strong>0% Tax</strong></li>
-                        <li>Rental Income: <strong>0% SDC</strong></li>
-                    </ul>
-                </div>
-            </details>
+                </details>
 
-            <details class="exemption-card">
-                <summary>
-                    <div class="summary-flex">
-                        <span class="ex-icon">🚀</span>
-                        <span class="ex-title">Foreign High Earners</span>
-                        <span class="ex-tag">50% Off</span>
+                <details class="exemption-card">
+                    <summary>
+                        <div class="summary-flex">
+                            <span class="ex-icon">🌱</span>
+                            <span class="ex-title">Green & Crypto</span>
+                            <span class="ex-tag">New 2026</span>
+                        </div>
+                    </summary>
+                    <div class="ex-content">
+                        <p><strong>Crypto Assets:</strong> Profits from disposal are now taxed at a flat
+                            <strong>8%</strong>.
+                        </p>
+                        <p><strong>Green Deductions:</strong> New deductions apply for purchasing Electric
+                            Vehicles
+                            (EVs) and energy-efficient home upgrades.</p>
                     </div>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>First Employment Rule:</strong> Relocating to Cyprus for a job paying over
-                        <strong>€55,000/year</strong>?
-                    </p>
-                    <ul class="check-list">
-                        <li><strong>50% of your salary</strong> is completely tax-exempt.</li>
-                        <li>Valid for up to 17 years.</li>
-                    </ul>
-                </div>
-            </details>
+                </details>
+            </div>
+        </section>
 
-            <details class="exemption-card">
-                <summary>
-                    <div class="summary-flex">
-                        <span class="ex-icon">🏖️</span>
-                        <span class="ex-title">Foreign Pensioners</span>
-                        <span class="ex-tag">5% Flat</span>
+        <section class="container grid-2-col" style="margin-bottom: 80px; gap: 30px;">
+            <div id="calendar-section" class="calendar-widget">
+                <div class="widget-header">
+                    <h3>📅 Tax Calendar 2026</h3>
+                    <span class="live-dot"></span>
+                </div>
+                <div id="countdown-box" class="countdown-box">
+                    <p class="label">NEXT DEADLINE</p>
+                    <h3 id="next-deadline-title">Loading...</h3>
+                    <div id="days-left">-- Days</div>
+                </div>
+                <div class="deadline-list">
+                    <div class="d-item"><span class="date">Jan 31</span><span class="desc">Deemed Dividend (2023
+                            Profits)</span></div>
+                    <div class="d-item"><span class="date">Mar 31</span><span class="desc">2024 Tax Return
+                            (TD4/TD1)</span></div>
+                    <div class="d-item"><span class="date">Jun 30</span><span class="desc">SDC on Rents (1st
+                            Sem)</span>
                     </div>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>The Golden Years Choice:</strong> Retirees receiving a foreign pension can
-                        choose the
-                        better tax option each year.</p>
-                    <ul class="check-list">
-                        <li><strong>Option A:</strong> Normal progressive rates (First €22k tax-free).</li>
-                        <li><strong>Option B:</strong> Flat <strong>5% tax</strong> on amounts over €3,420.
-                        </li>
-                    </ul>
+                    <div class="d-item"><span class="date">Jul 31</span><span class="desc">1st Provisional Tax
+                            (2026)</span></div>
                 </div>
-            </details>
+            </div>
 
-            <details class="exemption-card">
-                <summary>
-                    <div class="summary-flex">
-                        <span class="ex-icon">🌱</span>
-                        <span class="ex-title">Green & Crypto</span>
-                        <span class="ex-tag">New 2026</span>
-                    </div>
-                </summary>
-                <div class="ex-content">
-                    <p><strong>Crypto Assets:</strong> Profits from disposal are now taxed at a flat
-                        <strong>8%</strong>.
-                    </p>
-                    <p><strong>Green Deductions:</strong> New deductions apply for purchasing Electric
-                        Vehicles
-                        (EVs) and energy-efficient home upgrades.</p>
+            <div id="downloads-section" class="downloads-section">
+                <h3>📥 Official MOF Forms</h3>
+                <p>Direct links to the Tax Department.</p>
+                <div class="download-grid">
+                    <a href="https://www.gov.cy/assets/modules/mof/tfa/documents/application-forms/employer-withholding-return-paye/ir59/IR59_2026_English__.pdf"
+                        target="_blank" class="download-btn">
+                        <span>📄 TD.1 (Employee 2026)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn">
+                        <span>🏢 TD.4 (Company)</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn secondary">
+                        <span>🔗 View All Forms</span>
+                    </a>
                 </div>
-            </details>
-        </div>
-    </section>
-
-    <section class="container grid-2-col" style="margin-bottom: 80px; gap: 30px;">
-        <div id="calendar-section" class="calendar-widget">
-            <div class="widget-header">
-                <h3>📅 Tax Calendar 2026</h3>
-                <span class="live-dot"></span>
-            </div>
-            <div id="countdown-box" class="countdown-box">
-                <p class="label">NEXT DEADLINE</p>
-                <h3 id="next-deadline-title">Loading...</h3>
-                <div id="days-left">-- Days</div>
-            </div>
-            <div class="deadline-list">
-                <div class="d-item"><span class="date">Jan 31</span><span class="desc">Deemed Dividend (2023
-                        Profits)</span></div>
-                <div class="d-item"><span class="date">Mar 31</span><span class="desc">2024 Tax Return
-                        (TD4/TD1)</span></div>
-                <div class="d-item"><span class="date">Jun 30</span><span class="desc">SDC on Rents (1st
-                        Sem)</span>
+                <div class="faq-mini">
+                    <h4>Quick FAQ</h4>
+                    <p><strong>Tax-Free Limit?</strong> €22,000</p>
+                    <p><strong>Crypto Tax?</strong> 8% Flat</p>
                 </div>
-                <div class="d-item"><span class="date">Jul 31</span><span class="desc">1st Provisional Tax
-                        (2026)</span></div>
             </div>
-        </div>
-
-        <div id="downloads-section" class="downloads-section">
-            <h3>📥 Official MOF Forms</h3>
-            <p>Direct links to the Tax Department.</p>
-            <div class="download-grid">
-                <a href="https://www.gov.cy/assets/modules/mof/tfa/documents/application-forms/employer-withholding-return-paye/ir59/IR59_2026_English__.pdf"
-                    target="_blank" class="download-btn">
-                    <span>📄 TD.1 (Employee 2026)</span>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn">
-                    <span>🏢 TD.4 (Company)</span>
-                    <span class="arrow">→</span>
-                </a>
-                <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn secondary">
-                    <span>🔗 View All Forms</span>
-                </a>
-            </div>
-            <div class="faq-mini">
-                <h4>Quick FAQ</h4>
-                <p><strong>Tax-Free Limit?</strong> €22,000</p>
-                <p><strong>Crypto Tax?</strong> 8% Flat</p>
-            </div>
-        </div>
-    </section>
+        </section>
     </div>
 
     <footer>
