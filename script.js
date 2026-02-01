@@ -56,10 +56,15 @@ function calculateSalary() {
         else if (children === 4) totalDeductions += 5500;
         else if (children === 5) totalDeductions += 7500;
 
-        // B. Housing Interest (Max 2000)
-        let housing = parseFloat(document.getElementById('housingDeduction').value) || 0;
-        housing = Math.min(housing, 2000);
-        totalDeductions += housing;
+        // B1. Housing Loan Interest (Max 2000)
+        let housingInt = parseFloat(document.getElementById('housingInterest').value) || 0;
+        housingInt = Math.min(housingInt, 2000);
+        totalDeductions += housingInt;
+
+        // B2. Rent Allowance (Max 2000)
+        let rentDed = parseFloat(document.getElementById('rentDeduction').value) || 0;
+        rentDed = Math.min(rentDed, 2000);
+        totalDeductions += rentDed;
 
         // C. Green Investment (Max 1000)
         let green = parseFloat(document.getElementById('greenDeduction').value) || 0;
