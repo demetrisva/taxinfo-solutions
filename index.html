@@ -505,6 +505,15 @@
 
             <div id="salary" class="tab-content active">
                 <div class="calc-box">
+                    <div class="input-group-row" style="margin-bottom: 15px;">
+                        <label style="width: 100%; display: block; margin-bottom: 5px;">Tax Year</label>
+                        <select id="taxYear"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main);">
+                            <option value="2026">2026 (New Reform)</option>
+                            <option value="2025">2025 (Current Rules)</option>
+                        </select>
+                    </div>
+
                     <label>Annual Gross Salary (€)</label>
                     <div class="input-group">
                         <input type="number" id="grossSalary" placeholder="e.g. 35000">
@@ -582,7 +591,7 @@
                         <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
                         <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span
                                     id="outSocial">€0</span></span></div>
-                        <div class="row text-red"><span>Income Tax (2026 Rules):</span> <span>- <span
+                        <div class="row text-red"><span id="outTaxLabel">Income Tax (2026 Rules):</span> <span>- <span
                                     id="outTax">€0</span></span></div>
                         <div class="total-row">
                             <span>Net Pay (Yearly):</span>

@@ -89,23 +89,51 @@ function calculateSalary() {
     if (taxableIncome < 0) taxableIncome = 0;
 
     let tax = 0;
+    const year = document.getElementById('taxYear').value;
 
-    // 2026 Progressive Brackets
-    if (taxableIncome > 22000) {
-        const taxableAmount = Math.min(taxableIncome, 32000) - 22000;
-        tax += taxableAmount * 0.20;
-    }
-    if (taxableIncome > 32000) {
-        const taxableAmount = Math.min(taxableIncome, 42000) - 32000;
-        tax += taxableAmount * 0.25;
-    }
-    if (taxableIncome > 42000) {
-        const taxableAmount = Math.min(taxableIncome, 72000) - 42000;
-        tax += taxableAmount * 0.30;
-    }
-    if (taxableIncome > 72000) {
-        const taxableAmount = taxableIncome - 72000;
-        tax += taxableAmount * 0.35;
+    if (year === '2026') {
+        // 2026 Progressive Brackets
+        if (taxableIncome > 22000) {
+            const taxableAmount = Math.min(taxableIncome, 32000) - 22000;
+            tax += taxableAmount * 0.20;
+        }
+        if (taxableIncome > 32000) {
+            const taxableAmount = Math.min(taxableIncome, 42000) - 32000;
+            tax += taxableAmount * 0.25;
+        }
+        if (taxableIncome > 42000) {
+            const taxableAmount = Math.min(taxableIncome, 72000) - 42000;
+            tax += taxableAmount * 0.30;
+        }
+        if (taxableIncome > 72000) {
+            const taxableAmount = taxableIncome - 72000;
+            tax += taxableAmount * 0.35;
+        }
+        document.getElementById('outTaxLabel').innerText = "Income Tax (2026 Rules):";
+    } else {
+        // 2025 Progressive Brackets
+        // 0 - 19,500: 0%
+        // 19,501 - 28,000: 20%
+        // 28,001 - 36,300: 25%
+        // 36,301 - 60,000: 30%
+        // 60,001+: 35%
+        if (taxableIncome > 19500) {
+            const taxableAmount = Math.min(taxableIncome, 28000) - 19500;
+            tax += taxableAmount * 0.20;
+        }
+        if (taxableIncome > 28000) {
+            const taxableAmount = Math.min(taxableIncome, 36300) - 28000;
+            tax += taxableAmount * 0.25;
+        }
+        if (taxableIncome > 36300) {
+            const taxableAmount = Math.min(taxableIncome, 60000) - 36300;
+            tax += taxableAmount * 0.30;
+        }
+        if (taxableIncome > 60000) {
+            const taxableAmount = taxableIncome - 60000;
+            tax += taxableAmount * 0.35;
+        }
+        document.getElementById('outTaxLabel').innerText = "Income Tax (2025 Rules):";
     }
 
     const net = gross - socialDeductions - tax;
