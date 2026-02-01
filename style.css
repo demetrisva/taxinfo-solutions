@@ -756,6 +756,28 @@ h4 {
     border-color: var(--accent);
 }
 
+.info-tooltip {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: var(--text-muted);
+    color: var(--bg-card);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 0.75rem;
+    cursor: help;
+    margin-left: 5px;
+}
+
+.field-note {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
 .calc-btn,
 .btn {
     background: var(--text-main);

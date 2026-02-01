@@ -42,7 +42,7 @@ function calculateSalary() {
 
     // 3. Advanced Deductions
     let totalDeductions = 0;
-    
+
     // Check if Advanced Mode is Active
     const isAdvanced = document.getElementById('advancedModeToggle').checked;
     let expatExemption = 0;
@@ -52,7 +52,9 @@ function calculateSalary() {
         const children = parseInt(document.getElementById('childrenCount').value);
         if (children === 1) totalDeductions += 1000;
         else if (children === 2) totalDeductions += 2250;
-        else if (children === 3) totalDeductions += 3750; // Approximated 3+ logic
+        else if (children === 3) totalDeductions += 3750;
+        else if (children === 4) totalDeductions += 5500;
+        else if (children === 5) totalDeductions += 7500;
 
         // B. Housing Interest (Max 2000)
         let housing = parseFloat(document.getElementById('housingDeduction').value) || 0;
@@ -63,6 +65,10 @@ function calculateSalary() {
         let green = parseFloat(document.getElementById('greenDeduction').value) || 0;
         green = Math.min(green, 1000);
         totalDeductions += green;
+
+        // D. Other IR59 Deductions (Unions, Donations, etc.)
+        let ir59 = parseFloat(document.getElementById('ir59Deductions').value) || 0;
+        totalDeductions += ir59;
 
         // D. Expat 50% Exemption
         const isExpat = document.getElementById('expatExemption').checked;
@@ -112,7 +118,7 @@ function calculateSalary() {
 
 function updateChart(net, tax, social) {
     const ctx = document.getElementById('taxChart').getContext('2d');
-    
+
     if (taxChartInstance) {
         taxChartInstance.destroy();
     }
@@ -142,7 +148,7 @@ function updateChart(net, tax, social) {
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(context) {
+                        label: function (context) {
                             let label = context.label || '';
                             if (label) {
                                 label += ': ';
@@ -274,7 +280,7 @@ function filterNews(category) {
         if (category === 'all' || articleCategory === category) {
             article.style.display = 'flex'; // Restore filtered logic
             article.style.animation = 'none';
-            article.offsetHeight; 
+            article.offsetHeight;
             article.style.animation = 'fadeIn 0.4s ease';
         } else {
             article.style.display = 'none';
@@ -299,7 +305,7 @@ function searchContent() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initCalendar();
-    
+
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
 
