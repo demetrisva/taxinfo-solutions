@@ -7,10 +7,10 @@
     /* White text for headings */
     --secondary: #B0B0B0;
     /* Light gray for body text */
-    --accent: #FF5A5F;
-    /* Coral Red for CTAs */
-    --accent-hover: #E0484D;
-    /* Darker Coral */
+    --accent: #8fb8ff;
+    /* Icy blue accent for actions */
+    --accent-hover: #74a2f6;
+    /* Stronger accent state */
 
     --bg-body: #0f172a;
     /* Deep Slate Blue - Softer & More Professional */
@@ -37,8 +37,8 @@
     --bg-grid-line-soft: rgba(168, 184, 225, 0.016);
 
     /* Typography */
-    --font-head: 'Montserrat', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'Manrope', sans-serif;
 }
 
 body {
@@ -158,9 +158,9 @@ h4 {
 
 .badge-new {
     display: inline-block;
-    background: rgba(255, 90, 95, 0.1);
+    background: rgba(143, 184, 255, 0.16);
     color: var(--accent);
-    border: 1px solid rgba(255, 90, 95, 0.2);
+    border: 1px solid rgba(143, 184, 255, 0.3);
     padding: 6px 16px;
     border-radius: 50px;
     font-size: 0.85rem;
@@ -190,7 +190,7 @@ h4 {
 }
 
 .hero-title .text-gradient {
-    background: linear-gradient(135deg, #FFFFFF 0%, #B0B0B0 100%);
+    background: linear-gradient(120deg, #ffffff 0%, #bcd4ff 55%, #90b8ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -206,21 +206,22 @@ h4 {
 
 .btn-hero-main {
     display: inline-block;
-    background: var(--accent);
-    color: #fff;
+    background: linear-gradient(130deg, #8fb8ff 0%, #6fa0f1 100%);
+    color: #031224;
     padding: 15px 40px;
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 10px 25px rgba(255, 90, 95, 0.3);
+    box-shadow: 0 14px 34px rgba(88, 138, 230, 0.34);
     transition: all 0.3s ease;
     margin-top: 10px;
+    border: 1px solid rgba(188, 213, 255, 0.65);
 }
 
 .btn-hero-main:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(255, 90, 95, 0.4);
+    box-shadow: 0 20px 40px rgba(88, 138, 230, 0.4);
     background: var(--accent-hover);
 }
 
@@ -300,27 +301,37 @@ h4 {
 .nav-link {
     text-decoration: none;
     color: var(--text-main);
-    font-weight: 500;
-    font-size: 0.95rem;
-    opacity: 0.8;
-    transition: opacity 0.2s;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .nav-link:hover {
     opacity: 1;
+    color: #dce9ff;
 }
 
 .btn-nav {
     text-decoration: none;
-    color: var(--accent);
+    color: #eaf2ff;
     font-weight: 600;
-    font-size: 0.95rem;
-    padding: 8px 0;
-    transition: color 0.2s;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(150, 183, 246, 0.45);
+    border-radius: 999px;
+    background: rgba(120, 162, 237, 0.12);
 }
 
 .btn-nav:hover {
-    color: var(--accent-hover);
+    color: #f6f9ff;
+    background: rgba(120, 162, 237, 0.22);
+    border-color: rgba(176, 203, 255, 0.75);
 }
 
 /* Search Bar Styles */
@@ -331,8 +342,8 @@ h4 {
 #searchInput {
     padding: 8px 15px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(150, 183, 246, 0.32);
+    background: rgba(16, 30, 55, 0.62);
     color: var(--text-main);
     font-family: var(--font-body);
     font-size: 0.9rem;
@@ -342,7 +353,7 @@ h4 {
 
 #searchInput:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(16, 30, 55, 0.9);
     border-color: var(--accent);
     width: 220px;
 }
@@ -375,14 +386,14 @@ h4 {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: #1e1e1e;
+    background: linear-gradient(180deg, rgba(10, 21, 42, 0.96), rgba(8, 16, 33, 0.96));
     /* Solid dark background */
     min-width: 260px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
     border-radius: 12px;
     padding: 8px;
     /* Inner padding for floating effect */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(143, 184, 255, 0.2);
     z-index: 2000;
     margin-top: 10px;
     opacity: 0;
@@ -409,9 +420,9 @@ h4 {
     transform: translateX(-50%) rotate(45deg);
     width: 12px;
     height: 12px;
-    background: #1e1e1e;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 21, 42, 0.96);
+    border-top: 1px solid rgba(143, 184, 255, 0.2);
+    border-left: 1px solid rgba(143, 184, 255, 0.2);
 }
 
 .dropdown-item {
@@ -428,8 +439,7 @@ h4 {
 }
 
 .dropdown-item:hover {
-    background: rgba(255, 90, 95, 0.1);
-    /* Subtle accent tint */
+    background: rgba(143, 184, 255, 0.14);
     color: var(--accent);
     transform: translateX(5px);
     /* Small nudge */
@@ -453,7 +463,7 @@ h4 {
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 90, 95, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(118, 170, 255, 0.08) 0%, transparent 70%);
     z-index: 0;
     pointer-events: none;
 }
@@ -474,7 +484,7 @@ h4 {
     /* Slightly more transparent */
     backdrop-filter: blur(5px);
     /* Glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(150, 183, 246, 0.2);
     color: var(--text-muted);
     border-radius: 50px;
     cursor: pointer;
@@ -491,11 +501,10 @@ h4 {
 }
 
 .news-tab-btn.active {
-    background: rgba(255, 90, 95, 0.8);
-    /* Semi-transparent accent */
-    color: white;
-    border-color: rgba(255, 90, 95, 0.5);
-    box-shadow: 0 8px 20px rgba(255, 90, 95, 0.3);
+    background: rgba(132, 174, 247, 0.9);
+    color: #051326;
+    border-color: rgba(184, 212, 255, 0.72);
+    box-shadow: 0 8px 24px rgba(77, 127, 218, 0.32);
 }
 
 .news-grid {
@@ -529,24 +538,22 @@ h4 {
 }
 
 .news-card {
-    background: rgba(20, 20, 20, 0.2);
-    /* More transparent than default */
-    backdrop-filter: blur(15px);
-    /* Stronger blur for glass effect */
-    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(9, 18, 36, 0.9), rgba(8, 16, 30, 0.84));
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
     overflow: hidden;
     border: 1px solid var(--border-color);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
     height: 100%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 44px rgba(1, 6, 16, 0.45);
 }
 
 .news-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 90, 95, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(145, 186, 252, 0.35);
+    box-shadow: 0 24px 50px rgba(1, 6, 16, 0.55);
 }
 
 .news-img {
@@ -554,8 +561,19 @@ h4 {
     /* Reduced height */
     width: 100%;
     /* Use CSS Gradients instead of external images for reliability */
-    background: linear-gradient(135deg, #2c3e50, #000000);
+    background: linear-gradient(135deg, #1e2f4f, #0a1322);
     position: relative;
+    filter: saturate(0.62) brightness(0.86);
+}
+
+.news-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(7, 14, 27, 0.06), rgba(7, 14, 27, 0.56)),
+        repeating-linear-gradient(135deg, rgba(175, 201, 248, 0.08) 0, rgba(175, 201, 248, 0.08) 1px, transparent 1px, transparent 8px);
+    pointer-events: none;
 }
 
 /* Category Badge on Image */
@@ -585,12 +603,12 @@ h4 {
     font-size: 1.25rem;
     margin: 0 0 15px 0;
     line-height: 1.3;
-    color: #fff;
+    color: #edf4ff;
 }
 
 .news-excerpt {
     font-size: 0.95rem;
-    color: #a0a0a0;
+    color: #9db1d3;
     margin-bottom: 25px;
     flex-grow: 1;
 }
@@ -658,11 +676,10 @@ h4 {
 }
 
 .card {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, rgba(11, 22, 41, 0.78), rgba(8, 17, 33, 0.74));
     backdrop-filter: blur(var(--blur-amount));
     padding: 40px 30px;
-    border-radius: 4px;
-    /* More squared off for tech feel */
+    border-radius: 12px;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     position: relative;
@@ -674,16 +691,16 @@ h4 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 3px;
+    width: 2px;
     height: 0;
-    background: var(--accent);
+    background: linear-gradient(180deg, rgba(157, 195, 255, 0.95), rgba(104, 152, 240, 0.75));
     transition: height 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(160, 194, 255, 0.22);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
 }
 
 .card:hover::before {
@@ -720,10 +737,10 @@ h4 {
    5. CALCULATOR
    ========================= */
 .calculator-wrapper {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, rgba(10, 20, 38, 0.88), rgba(8, 16, 31, 0.82));
     backdrop-filter: blur(var(--blur-amount));
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 24px;
     box-shadow: var(--card-shadow);
     margin-bottom: 60px;
     border: 1px solid var(--border-color);
@@ -735,7 +752,8 @@ h4 {
 }
 
 .section-header h2 {
-    font-size: 2rem;
+    font-size: clamp(2rem, 2.8vw, 2.8rem);
+    letter-spacing: -0.03em;
     margin: 0 0 10px 0;
 }
 
@@ -764,10 +782,9 @@ h4 {
 }
 
 .tab-btn.active {
-    background: var(--text-main);
-    /* Inverts nicely */
-    color: var(--bg-card);
-    border-color: var(--text-main);
+    background: linear-gradient(135deg, #d8e7ff 0%, #9fc2ff 100%);
+    color: #071628;
+    border-color: #d8e7ff;
 }
 
 .tab-content {
@@ -825,6 +842,7 @@ h4 {
 .calc-box input:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(143, 184, 255, 0.16);
 }
 
 .info-tooltip {
@@ -851,8 +869,8 @@ h4 {
 
 .calc-btn,
 .btn {
-    background: var(--text-main);
-    color: var(--bg-card);
+    background: linear-gradient(135deg, #dce9ff 0%, #a9c7ff 100%);
+    color: #031325;
     border: none;
     padding: 0 30px;
     height: 48px;
@@ -864,14 +882,15 @@ h4 {
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     font-size: 1rem;
     font-family: var(--font-body);
 }
 
 .calc-btn:hover,
 .btn:hover {
-    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(84, 128, 207, 0.26);
 }
 
 .calc-btn-secondary {
@@ -942,15 +961,14 @@ h4 {
 
 .res-col {
     padding: 20px;
-    background: var(--bg-body);
+    background: linear-gradient(180deg, rgba(7, 15, 29, 0.8), rgba(6, 13, 24, 0.74));
     border-radius: 12px;
     border: 1px solid var(--border-color);
 }
 
 .new-rules {
-    background: rgba(255, 90, 95, 0.05);
-    /* Slight tint for differentiation */
-    border: 2px solid var(--accent);
+    background: rgba(128, 178, 255, 0.08);
+    border: 2px solid rgba(150, 193, 255, 0.66);
     position: relative;
     backdrop-filter: blur(5px);
 }
@@ -1013,7 +1031,7 @@ h4 {
 
 .tp-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 90, 95, 0.3);
+    border-color: rgba(143, 184, 255, 0.35);
 }
 
 .tp-subtitle {
@@ -1268,7 +1286,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 
 .res-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 90, 95, 0.3);
+    border-color: rgba(143, 184, 255, 0.35);
 }
 
 .res-icon {
@@ -1301,7 +1319,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 
 /* Calendar */
 .calendar-widget {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, rgba(10, 21, 40, 0.82), rgba(7, 15, 28, 0.78));
     backdrop-filter: blur(var(--blur-amount));
     padding: 30px;
     border-radius: 16px;
@@ -1319,15 +1337,15 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 .live-dot {
     height: 10px;
     width: 10px;
-    background: #e74c3c;
+    background: #78b1ff;
     border-radius: 50%;
-    box-shadow: 0 0 10px #e74c3c;
+    box-shadow: 0 0 12px #78b1ff;
     animation: pulse 1.5s infinite;
 }
 
 .countdown-box {
-    background: var(--text-main);
-    color: var(--bg-card);
+    background: linear-gradient(135deg, rgba(222, 236, 255, 0.96), rgba(178, 205, 248, 0.94));
+    color: #0a1a30;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
@@ -1337,7 +1355,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 .countdown-box h3 {
     margin: 5px 0;
     font-size: 1.4rem;
-    color: var(--bg-card);
+    color: #0a1a30;
 }
 
 #days-left {
@@ -1350,7 +1368,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
     font-size: 0.7rem;
     opacity: 0.7;
     letter-spacing: 1px;
-    color: var(--bg-card);
+    color: #0f2745;
 }
 
 .d-item {
@@ -1406,7 +1424,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 
 /* Downloads */
 .downloads-section {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, rgba(10, 21, 40, 0.82), rgba(7, 15, 28, 0.78));
     backdrop-filter: blur(var(--blur-amount));
     padding: 30px;
     border-radius: 16px;
@@ -1427,7 +1445,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
     justify-content: space-between;
     align-items: center;
     padding: 12px 15px;
-    background: var(--bg-body);
+    background: rgba(9, 17, 31, 0.72);
     border-radius: 8px;
     text-decoration: none;
     color: var(--text-main);
@@ -1438,7 +1456,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 }
 
 .download-btn:hover {
-    background: var(--bg-card);
+    background: rgba(13, 24, 44, 0.96);
     border-color: var(--accent);
 }
 
@@ -1517,17 +1535,17 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 }
 
 .mini-card {
-    background: var(--bg-card);
+    background: linear-gradient(180deg, rgba(11, 22, 41, 0.8), rgba(8, 17, 33, 0.75));
     backdrop-filter: blur(var(--blur-amount));
     padding: 25px;
-    border-radius: 8px;
-    border-left: 3px solid var(--accent);
+    border-radius: 12px;
+    border-left: 2px solid rgba(149, 190, 255, 0.8);
     transition: transform 0.2s;
 }
 
 .mini-card:hover {
     transform: translateX(5px);
-    background: rgba(255, 255, 255, 0.03);
+    background: linear-gradient(180deg, rgba(16, 30, 55, 0.9), rgba(12, 22, 39, 0.86));
 }
 
 .mini-card h4 {
@@ -1545,7 +1563,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
    9. FOOTER & ANIMATIONS
    ========================= */
 footer {
-    background-color: #0f0f0f;
+    background: linear-gradient(180deg, rgba(6, 11, 22, 0.98), rgba(4, 8, 17, 0.99));
     padding: 80px 0 40px;
     border-top: 1px solid var(--border-color);
 }
