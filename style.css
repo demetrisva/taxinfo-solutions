@@ -1818,18 +1818,6 @@ footer {
 /* =========================
    6. ADVANCED CALCULATOR UI
    ========================= */
-.badge-verified {
-    background: rgba(39, 174, 96, 0.2);
-    color: #2ec16d;
-    font-size: 0.75rem;
-    padding: 3px 10px;
-    border-radius: 12px;
-    margin-left: 10px;
-    font-weight: 600;
-    border: 1px solid rgba(39, 174, 96, 0.3);
-    vertical-align: middle;
-}
-
 .advanced-toggle {
     display: flex;
     align-items: center;

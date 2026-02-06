@@ -106,6 +106,7 @@ function calculateSalary() {
 
     let tax = 0;
     const year = document.getElementById('taxYear').value;
+    const noteElement = document.getElementById('taxComputationNote');
 
     if (year === '2026') {
         // 2026 Progressive Brackets
@@ -126,6 +127,9 @@ function calculateSalary() {
             tax += taxableAmount * 0.35;
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2026 Rules):";
+        if (noteElement) {
+            noteElement.innerText = "*Calculated using 2026 rules, including the €22,000 tax-free threshold.";
+        }
     } else {
         // 2025 Progressive Brackets
         // 0 - 19,500: 0%
@@ -150,6 +154,9 @@ function calculateSalary() {
             tax += taxableAmount * 0.35;
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2025 Rules):";
+        if (noteElement) {
+            noteElement.innerText = "*Calculated using 2025 rules, including the €19,500 tax-free threshold.";
+        }
     }
 
     const net = gross - socialDeductions - tax;

@@ -536,8 +536,7 @@
                     <label>Annual Gross Salary (€)</label>
                     <div class="input-group">
                         <input type="number" id="grossSalary" placeholder="e.g. 35000">
-                        <button onclick="calculateSalary()" class="calc-btn">Calculate <span class="badge-verified">✓
-                                2026</span></button>
+                        <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
                         <div class="calc-actions-secondary">
                             <button onclick="multiplyBy12()" class="calc-btn-secondary"
                                 title="Monthly x 12">x12</button>
@@ -610,13 +609,13 @@
                         <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
                         <div class="row text-red"><span>Social Ins & GESY (~10.95%):</span> <span>- <span
                                     id="outSocial">€0</span></span></div>
-                        <div class="row text-red"><span id="outTaxLabel">Income Tax (2026 Rules):</span> <span>- <span
+                        <div class="row text-red"><span id="outTaxLabel">Income Tax:</span> <span>- <span
                                     id="outTax">€0</span></span></div>
                         <div class="total-row">
                             <span>Net Pay (Yearly):</span>
                             <span id="outNet">€0</span>
                         </div>
-                        <p class="note">*Calculated using the new €22,000 tax-free threshold.</p>
+                        <p id="taxComputationNote" class="note">*Select a tax year and calculate to view rule-specific notes.</p>
                     </div>
                 </div>
             </div>
