@@ -139,7 +139,6 @@
                 <input type="text" id="searchInput" placeholder="Search topics..." onkeyup="searchContent()">
             </div>
         </div>
-        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -511,8 +510,8 @@
             </div>
 
             <div class="tabs">
-                <button class="tab-btn active" onclick="openTab('salary')">Personal Income</button>
-                <button class="tab-btn" onclick="openTab('business')">Business Owner</button>
+                <button class="tab-btn active" onclick="openTab('salary', this)">Personal Income</button>
+                <button class="tab-btn" onclick="openTab('business', this)">Business Owner</button>
             </div>
 
             <div id="salary" class="tab-content active">
@@ -817,6 +816,7 @@
                     <h5>Legal</h5>
                     <div class="footer-links-col">
                         <a href="privacy.html">Privacy Policy</a>
+                        <a href="cookies.html">Cookie Policy</a>
                         <a href="terms.html">Terms of Use</a>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ console.log("TaxInfo 2026 Loaded");
 let taxChartInstance = null;
 
 // --- TAB SWITCHING LOGIC ---
-function openTab(tabName) {
+function openTab(tabName, targetButton) {
     const contents = document.getElementsByClassName('tab-content');
     for (let content of contents) {
         content.classList.remove('active');
@@ -14,8 +14,16 @@ function openTab(tabName) {
     for (let btn of buttons) {
         btn.classList.remove('active');
     }
-    document.getElementById(tabName).classList.add('active');
-    event.currentTarget.classList.add('active');
+    const activeTab = document.getElementById(tabName);
+    if (!activeTab) return;
+
+    activeTab.classList.add('active');
+
+    const activeButton =
+        targetButton || (typeof event !== 'undefined' ? event.currentTarget : null);
+    if (activeButton) {
+        activeButton.classList.add('active');
+    }
 }
 
 // --- ADVANCED MODE TOGGLE ---
@@ -139,10 +147,10 @@ function calculateSalary() {
     const net = gross - socialDeductions - tax;
 
     // 5. Render Salary Results
-    document.getElementById('outGross').innerText = formatMoney(gross);
-    document.getElementById('outSocial').innerText = formatMoney(socialDeductions);
-    document.getElementById('outTax').innerText = formatMoney(tax);
-    document.getElementById('outNet').innerText = formatMoney(net);
+    document.getElementById('outGross').innerText = formatCurrency(gross);
+    document.getElementById('outSocial').innerText = formatCurrency(socialDeductions);
+    document.getElementById('outTax').innerText = formatCurrency(tax);
+    document.getElementById('outNet').innerText = formatCurrency(net);
     document.getElementById('salaryResult').classList.remove('hidden');
 
     // 6. Update Chart
@@ -150,7 +158,10 @@ function calculateSalary() {
 }
 
 function updateChart(net, tax, social) {
-    const ctx = document.getElementById('taxChart').getContext('2d');
+    const chartCanvas = document.getElementById('taxChart');
+    if (!chartCanvas || typeof Chart === 'undefined') return;
+
+    const ctx = chartCanvas.getContext('2d');
 
     if (taxChartInstance) {
         taxChartInstance.destroy();
@@ -187,7 +198,7 @@ function updateChart(net, tax, social) {
                                 label += ': ';
                             }
                             if (context.parsed !== null) {
-                                label += formatMoney(context.parsed) + ' €';
+                                label += formatCurrency(context.parsed);
                             }
                             return label;
                         }
@@ -247,16 +258,30 @@ function calculateBusiness() {
         verdictDiv.innerText = `You save €${formatMoney(diff)} with the new 2026 rules!`;
         verdictDiv.style.background = "#e8f5e9";
         verdictDiv.style.color = "#2e7d32";
-    } else {
+    } else if (diff < 0) {
         verdictDiv.innerText = `You pay €${formatMoney(Math.abs(diff))} more under the new rules.`;
         verdictDiv.style.background = "#ffebee";
         verdictDiv.style.color = "#c62828";
+    } else {
+        verdictDiv.innerText = "No net difference between the 2025 and 2026 rules.";
+        verdictDiv.style.background = "#eef2ff";
+        verdictDiv.style.color = "#334155";
     }
 }
 
 // Helper for currency formatting
+const moneyFormatter = new Intl.NumberFormat('en-US', {
+    maximumFractionDigits: 0,
+    minimumFractionDigits: 0
+});
+
 function formatMoney(amount) {
-    return amount.toLocaleString('en-EU', { maximumFractionDigits: 0 });
+    const safeAmount = Number.isFinite(amount) ? amount : 0;
+    return moneyFormatter.format(Math.round(safeAmount));
+}
+
+function formatCurrency(amount) {
+    return `€${formatMoney(amount)}`;
 }
 
 // --- TAX CALENDAR LOGIC ---
