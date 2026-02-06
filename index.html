@@ -22,17 +22,17 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942670124765473"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
     <link rel="stylesheet" href="style.css">
 
     <!-- Background is now CSS gradient-based -->
-    <meta name="theme-color" content="#060b14">
+    <meta name="theme-color" content="#050505">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <meta property="og:site_name" content="TaxInfo Solutions">
@@ -100,6 +100,7 @@
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -107,12 +108,13 @@
             <a href="#" class="nav-logo">
                 TaxInfo<span class="dot">.</span>
             </a>
-            <button class="hamburger" aria-label="Toggle navigation">
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="primary-navigation">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            <div class="nav-menu">
+            <div class="nav-menu" id="primary-navigation">
                 <div class="nav-item-dropdown">
                     <a href="#" class="nav-link">Tax Reforms ▾</a>
                     <div class="dropdown-menu">
@@ -134,11 +136,13 @@
                 <a href="#calculator-section" class="btn-nav">Get Started</a>
             </div>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search topics..." onkeyup="searchContent()">
+                <input type="text" id="searchInput" placeholder="Search topics..." aria-label="Search tax topics"
+                    onkeyup="searchContent()">
             </div>
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <header class="hero-section">
         <div class="container hero-content-center">
@@ -185,10 +189,14 @@
             </div>
 
             <div class="news-tabs">
-                <button class="news-tab-btn active btn-all" onclick="filterNews('all')">All</button>
-                <button class="news-tab-btn btn-corp" onclick="filterNews('corporate')">Corporate</button>
-                <button class="news-tab-btn btn-personal" onclick="filterNews('personal')">Personal</button>
-                <button class="news-tab-btn btn-crypto" onclick="filterNews('crypto')">Crypto</button>
+                <button class="news-tab-btn active btn-all" data-category="all" aria-pressed="true"
+                    onclick="filterNews('all')">All</button>
+                <button class="news-tab-btn btn-corp" data-category="corporate" aria-pressed="false"
+                    onclick="filterNews('corporate')">Corporate</button>
+                <button class="news-tab-btn btn-personal" data-category="personal" aria-pressed="false"
+                    onclick="filterNews('personal')">Personal</button>
+                <button class="news-tab-btn btn-crypto" data-category="crypto" aria-pressed="false"
+                    onclick="filterNews('crypto')">Crypto</button>
             </div>
 
             <div id="news-grid-all" class="news-grid active">
@@ -507,12 +515,14 @@
                 <p>Select your status to see the numbers</p>
             </div>
 
-            <div class="tabs">
-                <button class="tab-btn active" onclick="openTab('salary', this)">Personal Income</button>
-                <button class="tab-btn" onclick="openTab('business', this)">Business Owner</button>
+            <div class="tabs" role="tablist" aria-label="Calculator mode">
+                <button id="tab-salary" class="tab-btn active" role="tab" aria-selected="true"
+                    aria-controls="salary" onclick="openTab('salary', this)">Personal Income</button>
+                <button id="tab-business" class="tab-btn" role="tab" aria-selected="false" aria-controls="business"
+                    onclick="openTab('business', this)">Business Owner</button>
             </div>
 
-            <div id="salary" class="tab-content active">
+            <div id="salary" class="tab-content active" role="tabpanel" aria-labelledby="tab-salary">
                 <div class="calc-box">
                     <div class="input-group-row" style="margin-bottom: 15px;">
                         <label style="width: 100%; display: block; margin-bottom: 5px;">Tax Year</label>
@@ -593,7 +603,7 @@
                         </div>
                     </div>
 
-                    <div id="salaryResult" class="result-box hidden">
+                    <div id="salaryResult" class="result-box hidden" role="status" aria-live="polite">
                         <div class="chart-container">
                             <canvas id="taxChart"></canvas>
                         </div>
@@ -611,7 +621,7 @@
                 </div>
             </div>
 
-            <div id="business" class="tab-content">
+            <div id="business" class="tab-content" role="tabpanel" aria-labelledby="tab-business" hidden>
                 <div class="calc-box">
                     <label>Annual Net Profit (€)</label>
                     <div class="input-group">
@@ -633,7 +643,7 @@
                             <p class="total-net">Net: €<span id="net26">0</span></p>
                         </div>
                     </div>
-                    <div id="verdict" class="verdict-box hidden"></div>
+                    <div id="verdict" class="verdict-box hidden" role="status" aria-live="polite"></div>
                 </div>
             </div>
         </section>
@@ -753,8 +763,8 @@
                 </div>
                 <div id="countdown-box" class="countdown-box">
                     <p class="label">NEXT DEADLINE</p>
-                    <h3 id="next-deadline-title">Loading...</h3>
-                    <div id="days-left">-- Days</div>
+                    <h3 id="next-deadline-title" aria-live="polite">Loading...</h3>
+                    <div id="days-left" aria-live="polite">-- Days</div>
                 </div>
                 <div class="deadline-list">
                     <div class="d-item"><span class="date">Jan 31</span><span class="desc">Deemed Dividend (2023
@@ -774,15 +784,17 @@
                 <p>Direct links to the Tax Department.</p>
                 <div class="download-grid">
                     <a href="https://www.gov.cy/assets/modules/mof/tfa/documents/application-forms/employer-withholding-return-paye/ir59/IR59_2026_English__.pdf"
-                        target="_blank" class="download-btn">
+                        target="_blank" rel="noopener noreferrer" class="download-btn">
                         <span>📄 TD.1 (Employee 2026)</span>
                         <span class="arrow">→</span>
                     </a>
-                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn">
+                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" rel="noopener noreferrer"
+                        class="download-btn">
                         <span>🏢 TD.4 (Company)</span>
                         <span class="arrow">→</span>
                     </a>
-                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" class="download-btn secondary">
+                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" rel="noopener noreferrer"
+                        class="download-btn secondary">
                         <span>🔗 View All Forms</span>
                     </a>
                 </div>
@@ -794,6 +806,7 @@
             </div>
         </section>
     </div>
+    </main>
 
     <footer>
         <div class="container">

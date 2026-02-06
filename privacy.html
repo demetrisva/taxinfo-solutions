@@ -9,13 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942670124765473"
         crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -23,12 +24,13 @@
             <a href="index.html" class="nav-logo">
                 TaxInfo<span class="dot">.</span>
             </a>
-            <button class="hamburger" aria-label="Toggle navigation">
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="primary-navigation">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
-            <div class="nav-menu">
+            <div class="nav-menu" id="primary-navigation">
                 <a href="index.html" class="nav-link">Home</a>
                 <div class="nav-item-dropdown">
                     <a href="#" class="nav-link">Resources ▾</a>
@@ -43,7 +45,7 @@
         </div>
     </nav>
 
-    <div class="container" style="padding-top: 120px; padding-bottom: 80px; min-height: 80vh;">
+    <div id="main-content" class="container" style="padding-top: 120px; padding-bottom: 80px; min-height: 80vh;">
         <h1>Privacy Policy</h1>
         <p><strong>Effective Date:</strong> January 1, 2026</p>
 
@@ -110,7 +112,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

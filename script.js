@@ -9,20 +9,28 @@ function openTab(tabName, targetButton) {
     const contents = document.getElementsByClassName('tab-content');
     for (let content of contents) {
         content.classList.remove('active');
+        content.hidden = true;
     }
     const buttons = document.getElementsByClassName('tab-btn');
     for (let btn of buttons) {
         btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+        btn.setAttribute('tabindex', '-1');
     }
     const activeTab = document.getElementById(tabName);
     if (!activeTab) return;
 
     activeTab.classList.add('active');
+    activeTab.hidden = false;
 
     const activeButton =
-        targetButton || (typeof event !== 'undefined' ? event.currentTarget : null);
+        targetButton ||
+        document.querySelector(`.tab-btn[aria-controls="${tabName}"]`) ||
+        (typeof event !== 'undefined' ? event.currentTarget : null);
     if (activeButton) {
         activeButton.classList.add('active');
+        activeButton.setAttribute('aria-selected', 'true');
+        activeButton.setAttribute('tabindex', '0');
     }
 }
 
@@ -323,13 +331,13 @@ function filterNews(category) {
     const buttons = document.querySelectorAll('.news-tab-btn');
 
     buttons.forEach(btn => {
-        const btnText = btn.innerText.toLowerCase();
-        if (category === 'all' && btnText.includes('all')) {
+        const btnCategory = btn.dataset.category;
+        if (btnCategory === category) {
             btn.classList.add('active');
-        } else if (category !== 'all' && btnText.includes(category)) {
-            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
         } else {
             btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
         }
     });
 
@@ -348,6 +356,8 @@ function filterNews(category) {
 
 function searchContent() {
     const input = document.getElementById('searchInput');
+    if (!input) return;
+
     const filter = input.value.toUpperCase();
     const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
 
@@ -368,16 +378,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector(".nav-menu");
 
     if (hamburger && navMenu) {
+        const closeMenu = () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+            hamburger.setAttribute('aria-expanded', 'false');
+        };
+
+        hamburger.setAttribute('aria-expanded', 'false');
+
         hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
+            const isOpen = hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active", isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
+
         document.querySelectorAll(".nav-link, .btn-nav, .dropdown-item").forEach(n => n.addEventListener("click", () => {
             if (!n.parentElement.classList.contains('nav-item-dropdown')) {
-                hamburger.classList.remove("active");
-                navMenu.classList.remove("active");
+                closeMenu();
             }
         }));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMenu();
+            }
+        });
+    }
+
+    const activeTabBtn = document.querySelector('.tab-btn.active');
+    if (activeTabBtn) {
+        const tabName = activeTabBtn.getAttribute('aria-controls');
+        if (tabName) openTab(tabName, activeTabBtn);
     }
 
     const dropdowns = document.querySelectorAll('.nav-item-dropdown');

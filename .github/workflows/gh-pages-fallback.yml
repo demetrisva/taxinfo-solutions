@@ -1,8 +1,7 @@
 name: Deploy to gh-pages (fallback)
 
 on:
-  push:
-    branches: [ main ]
+  # Manual fallback only. Automatic push deploy is handled by .github/workflows/gh-pages.yml.
   workflow_dispatch:
 
 permissions:
