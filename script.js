@@ -4,6 +4,61 @@ console.log("TaxInfo 2026 Loaded");
 // --- GLOBAL VARIABLES for Chart ---
 let taxChartInstance = null;
 let activeNewsCategory = 'all';
+const THEME_STORAGE_KEY = 'taxinfo_theme';
+
+function getPreferredTheme() {
+    try {
+        const saved = localStorage.getItem(THEME_STORAGE_KEY);
+        if (saved === 'light' || saved === 'dark') return saved;
+    } catch (_) {
+        // Continue with system preference fallback.
+    }
+
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
+}
+
+function updateThemeColorMeta(theme) {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    meta.setAttribute('content', theme === 'dark' ? '#0d1d28' : '#123640');
+}
+
+function updateThemeToggleButtons(theme) {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const buttons = document.querySelectorAll('.theme-toggle');
+
+    buttons.forEach(btn => {
+        btn.textContent = nextTheme === 'dark' ? 'Dark' : 'Light';
+        btn.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    });
+}
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (_) {
+        // Ignore storage failures (private mode/restricted environments).
+    }
+    updateThemeColorMeta(theme);
+    updateThemeToggleButtons(theme);
+}
+
+function initThemeToggle() {
+    const initialTheme = getPreferredTheme();
+    applyTheme(initialTheme);
+
+    const buttons = document.querySelectorAll('.theme-toggle');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+        });
+    });
+}
 
 // --- TAB SWITCHING LOGIC ---
 function openTab(tabName, targetButton) {
@@ -400,6 +455,7 @@ function searchContent() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle();
     initCalendar();
 
     const hamburger = document.querySelector(".hamburger");
