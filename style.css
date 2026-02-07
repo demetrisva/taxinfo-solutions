@@ -4114,6 +4114,11 @@ html[data-theme="light"] .main-wrapper > section.news-hub-section .news-excerpt 
     color: #4d6872;
 }
 
+html:not([data-theme="dark"]) .main-wrapper > section.news-hub-section .news-content,
+html[data-theme="light"] .main-wrapper > section.news-hub-section .news-content {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 251, 252, 0.94) 100%);
+}
+
 html:not([data-theme="dark"]) .main-wrapper > section.news-hub-section .read-more,
 html[data-theme="light"] .main-wrapper > section.news-hub-section .read-more {
     color: #1f7a8c;
