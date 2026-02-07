@@ -3838,6 +3838,12 @@ footer .footer-links-col a:hover {
 /* Dark Theme */
 html[data-theme="dark"] {
     color-scheme: dark;
+    --bg-card: rgba(11, 26, 37, 0.9);
+    --bg-input: rgba(8, 22, 31, 0.95);
+    --border-color: rgba(194, 217, 227, 0.14);
+    --text-main: #e6f0f5;
+    --text-muted: #afc2cb;
+    --card-shadow: 0 18px 34px rgba(0, 0, 0, 0.34);
 }
 
 html[data-theme="dark"] body {
@@ -3988,6 +3994,12 @@ html[data-theme="dark"] .dropdown-item {
 html[data-theme="dark"] .dropdown-item:hover {
     background: rgba(127, 245, 233, 0.14);
     color: #dcfffb;
+}
+
+html[data-theme="dark"] .main-wrapper > section:not(.news-hub-section):not(.calculator-wrapper) {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
 }
 
 html[data-theme="dark"] .main-wrapper > section.news-hub-section {
