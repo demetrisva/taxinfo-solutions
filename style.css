@@ -4247,3 +4247,47 @@ html[data-theme="dark"] #info-section .card {
     border-color: rgba(194, 217, 227, 0.14) !important;
     box-shadow: 0 18px 34px rgba(0, 0, 0, 0.34) !important;
 }
+
+/* =========================
+   30. CALCULATOR UI POLISH
+   ========================= */
+.verdict-box {
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.verdict-box.verdict-positive {
+    background: rgba(42, 160, 95, 0.14);
+    border-color: rgba(39, 132, 81, 0.32);
+    color: #1f6a45;
+}
+
+.verdict-box.verdict-negative {
+    background: rgba(219, 71, 71, 0.14);
+    border-color: rgba(170, 46, 46, 0.3);
+    color: #8d2525;
+}
+
+.verdict-box.verdict-neutral {
+    background: rgba(52, 110, 165, 0.14);
+    border-color: rgba(49, 98, 146, 0.28);
+    color: #264f74;
+}
+
+html[data-theme="dark"] .verdict-box.verdict-positive {
+    background: rgba(58, 184, 118, 0.18);
+    border-color: rgba(92, 218, 153, 0.36);
+    color: #92efc2;
+}
+
+html[data-theme="dark"] .verdict-box.verdict-negative {
+    background: rgba(203, 76, 76, 0.18);
+    border-color: rgba(236, 112, 112, 0.34);
+    color: #ffb3b3;
+}
+
+html[data-theme="dark"] .verdict-box.verdict-neutral {
+    background: rgba(66, 148, 211, 0.18);
+    border-color: rgba(110, 181, 236, 0.32);
+    color: #b7e2ff;
+}

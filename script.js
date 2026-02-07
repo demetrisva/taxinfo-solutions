@@ -6,6 +6,42 @@ let taxChartInstance = null;
 let activeNewsCategory = 'all';
 const THEME_STORAGE_KEY = 'taxinfo_theme';
 
+function getActiveTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
+}
+
+function getChartUiColors(theme) {
+    if (theme === 'dark') {
+        return {
+            legend: '#c5d7df',
+            tooltipBg: 'rgba(8, 20, 30, 0.96)',
+            tooltipTitle: '#e8f2f7',
+            tooltipBody: '#d4e6ee',
+            tooltipBorder: 'rgba(173, 205, 217, 0.2)'
+        };
+    }
+
+    return {
+        legend: '#49626b',
+        tooltipBg: 'rgba(255, 255, 255, 0.96)',
+        tooltipTitle: '#153740',
+        tooltipBody: '#1d4650',
+        tooltipBorder: 'rgba(21, 77, 91, 0.18)'
+    };
+}
+
+function refreshChartTheme(theme = getActiveTheme()) {
+    if (!taxChartInstance) return;
+    const chartUi = getChartUiColors(theme);
+
+    taxChartInstance.options.plugins.legend.labels.color = chartUi.legend;
+    taxChartInstance.options.plugins.tooltip.backgroundColor = chartUi.tooltipBg;
+    taxChartInstance.options.plugins.tooltip.titleColor = chartUi.tooltipTitle;
+    taxChartInstance.options.plugins.tooltip.bodyColor = chartUi.tooltipBody;
+    taxChartInstance.options.plugins.tooltip.borderColor = chartUi.tooltipBorder;
+    taxChartInstance.update();
+}
+
 function getPreferredTheme() {
     try {
         const saved = localStorage.getItem(THEME_STORAGE_KEY);
@@ -44,6 +80,7 @@ function applyTheme(theme) {
     }
     updateThemeColorMeta(theme);
     updateThemeToggleButtons(theme);
+    refreshChartTheme(theme);
 }
 
 function initThemeToggle() {
@@ -243,6 +280,8 @@ function updateChart(net, tax, social) {
         taxChartInstance.destroy();
     }
 
+    const chartUi = getChartUiColors(getActiveTheme());
+
     taxChartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -264,9 +303,14 @@ function updateChart(net, tax, social) {
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: { color: '#b0b0b0' }
+                    labels: { color: chartUi.legend }
                 },
                 tooltip: {
+                    backgroundColor: chartUi.tooltipBg,
+                    titleColor: chartUi.tooltipTitle,
+                    bodyColor: chartUi.tooltipBody,
+                    borderColor: chartUi.tooltipBorder,
+                    borderWidth: 1,
                     callbacks: {
                         label: function (context) {
                             let label = context.label || '';
@@ -329,19 +373,17 @@ function calculateBusiness() {
     const diff = net26 - net25;
     const verdictDiv = document.getElementById('verdict');
     verdictDiv.classList.remove('hidden');
+    verdictDiv.classList.remove('verdict-positive', 'verdict-negative', 'verdict-neutral');
 
     if (diff > 0) {
         verdictDiv.innerText = `You save €${formatMoney(diff)} with the new 2026 rules!`;
-        verdictDiv.style.background = "#e8f5e9";
-        verdictDiv.style.color = "#2e7d32";
+        verdictDiv.classList.add('verdict-positive');
     } else if (diff < 0) {
         verdictDiv.innerText = `You pay €${formatMoney(Math.abs(diff))} more under the new rules.`;
-        verdictDiv.style.background = "#ffebee";
-        verdictDiv.style.color = "#c62828";
+        verdictDiv.classList.add('verdict-negative');
     } else {
         verdictDiv.innerText = "No net difference between the 2025 and 2026 rules.";
-        verdictDiv.style.background = "#eef2ff";
-        verdictDiv.style.color = "#334155";
+        verdictDiv.classList.add('verdict-neutral');
     }
 }
 
