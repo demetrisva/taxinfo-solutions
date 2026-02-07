@@ -52,10 +52,15 @@ function calculateSalary() {
     const gross = parseFloat(document.getElementById('grossSalary').value);
     if (!gross || gross < 0) return;
 
-    // 2. Social Deductions (Standard)
-    // Social Ins: 8.3% | GESY: 2.65% | Total: 10.95%
-    const socialRate = 0.1095;
-    const socialDeductions = gross * socialRate;
+    // 2. Social Deductions (Estimator policy)
+    // Employee SI: 8.8% up to annual cap | GESY: 2.65% on gross
+    const annualSocialInsuranceCap = 66612;
+    const socialInsuranceRate = 0.088;
+    const gesyRate = 0.0265;
+
+    const socialInsurance = Math.min(gross, annualSocialInsuranceCap) * socialInsuranceRate;
+    const gesy = gross * gesyRate;
+    const socialDeductions = socialInsurance + gesy;
 
     // 3. Advanced Deductions
     let totalDeductions = 0;
@@ -129,7 +134,7 @@ function calculateSalary() {
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2026 Rules):";
         if (noteElement) {
-            noteElement.innerText = "*Calculated using 2026 rules, including the €22,000 tax-free threshold.";
+            noteElement.innerText = "*Calculated with 2026 progressive brackets and estimator assumptions (SI cap + GESY).";
         }
     } else {
         // 2025 Progressive Brackets
@@ -156,7 +161,7 @@ function calculateSalary() {
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2025 Rules):";
         if (noteElement) {
-            noteElement.innerText = "*Calculated using 2025 rules, including the €19,500 tax-free threshold.";
+            noteElement.innerText = "*Calculated with 2025 progressive brackets and estimator assumptions (SI cap + GESY).";
         }
     }
 
