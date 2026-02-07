@@ -3,6 +3,7 @@ console.log("TaxInfo 2026 Loaded");
 
 // --- GLOBAL VARIABLES for Chart ---
 let taxChartInstance = null;
+let activeNewsCategory = 'all';
 
 // --- TAB SWITCHING LOGIC ---
 function openTab(tabName, targetButton) {
@@ -333,8 +334,46 @@ function initCalendar() {
 }
 
 // --- NEWS SEARCH & FILTER LOGIC ---
+function applyCardFilters(options = {}) {
+    const { animateNews = false } = options;
+    const input = document.getElementById('searchInput');
+    const query = input ? input.value.trim().toUpperCase() : '';
+
+    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
+
+    allCards.forEach(card => {
+        const text = card.textContent || card.innerText;
+        const matchesSearch = text.toUpperCase().indexOf(query) > -1;
+        const isNews = card.classList.contains('news-card');
+
+        let matchesNewsCategory = true;
+        if (isNews) {
+            const articleCategory = card.getAttribute('data-category');
+            matchesNewsCategory = activeNewsCategory === 'all' || articleCategory === activeNewsCategory;
+        }
+
+        const isVisible = matchesSearch && matchesNewsCategory;
+
+        if (!isVisible) {
+            card.style.display = "none";
+            return;
+        }
+
+        if (isNews) {
+            card.style.display = "flex";
+            if (animateNews) {
+                card.style.animation = 'none';
+                card.offsetHeight;
+                card.style.animation = 'fadeIn 0.4s ease';
+            }
+        } else {
+            card.style.display = "";
+        }
+    });
+}
+
 function filterNews(category) {
-    const allArticles = document.querySelectorAll('.news-card');
+    activeNewsCategory = category;
     const buttons = document.querySelectorAll('.news-tab-btn');
 
     buttons.forEach(btn => {
@@ -348,34 +387,11 @@ function filterNews(category) {
         }
     });
 
-    allArticles.forEach(article => {
-        const articleCategory = article.getAttribute('data-category');
-        if (category === 'all' || articleCategory === category) {
-            article.style.display = 'flex'; // Restore filtered logic
-            article.style.animation = 'none';
-            article.offsetHeight;
-            article.style.animation = 'fadeIn 0.4s ease';
-        } else {
-            article.style.display = 'none';
-        }
-    });
+    applyCardFilters({ animateNews: true });
 }
 
 function searchContent() {
-    const input = document.getElementById('searchInput');
-    if (!input) return;
-
-    const filter = input.value.toUpperCase();
-    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
-
-    allCards.forEach(card => {
-        const text = card.textContent || card.innerText;
-        if (text.toUpperCase().indexOf(filter) > -1) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
+    applyCardFilters();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -437,4 +453,10 @@ document.addEventListener('DOMContentLoaded', () => {
             dropdowns.forEach(d => d.classList.remove('active'));
         }
     });
+
+    const activeNewsBtn = document.querySelector('.news-tab-btn.active');
+    if (activeNewsBtn && activeNewsBtn.dataset.category) {
+        activeNewsCategory = activeNewsBtn.dataset.category;
+    }
+    applyCardFilters();
 });
