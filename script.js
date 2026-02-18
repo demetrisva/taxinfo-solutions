@@ -5,6 +5,62 @@ console.log("TaxInfo 2026 Loaded");
 let taxChartInstance = null;
 let activeNewsCategory = 'all';
 const THEME_STORAGE_KEY = 'taxinfo_theme';
+const THREAD_CATALOG = [
+    {
+        id: 'corporate-transition',
+        title: 'Corporate Tax at 15%: Transitional Questions and Edge Cases',
+        href: 'thread-corporate-tax-transition.html',
+        category: 'Corporate',
+        summary: 'Pinned transition thread for first-year filings, mixed-revenue scenarios, and documentation policy.',
+        replies: 143,
+        updated: 'Feb 18, 2026'
+    },
+    {
+        id: 'dividend-planning',
+        title: 'Dividend SDC at 5%: Distribution Timing Discussion',
+        href: 'thread-dividend-sdc-planning.html',
+        category: 'Corporate',
+        summary: 'Analyst brief covering payout timing, retained earnings, and shareholder communication.',
+        replies: 89,
+        updated: 'Feb 17, 2026'
+    },
+    {
+        id: 'salary-threshold',
+        title: 'EUR 22,000 Tax-Free Threshold: Salary Examples by Income Band',
+        href: 'thread-salary-threshold-examples.html',
+        category: 'Personal',
+        summary: 'Community guide with structured salary examples and assumption-based comparisons.',
+        replies: 201,
+        updated: 'Feb 18, 2026'
+    },
+    {
+        id: 'crypto-evidence',
+        title: 'Crypto 8% Framework: Disposal Evidence and Wallet Tracking',
+        href: 'thread-crypto-disposal-evidence.html',
+        category: 'Crypto',
+        summary: 'Compliance thread on disposal events, record trails, and valuation snapshots.',
+        replies: 67,
+        updated: 'Feb 16, 2026'
+    },
+    {
+        id: 'relief-docs',
+        title: 'Housing and Family Relief: Required Documents by Claim Type',
+        href: 'thread-housing-family-relief-docs.html',
+        category: 'Relief',
+        summary: 'Checklist board for rent, mortgage, and dependent support documentation.',
+        replies: 112,
+        updated: 'Feb 15, 2026'
+    },
+    {
+        id: 'startup-options',
+        title: '8% Treatment for Qualified Stock Options: Startup Scenarios',
+        href: 'thread-startup-stock-options-8.html',
+        category: 'Innovation',
+        summary: 'Startup board discussing vesting structures, qualification tests, and investor updates.',
+        replies: 54,
+        updated: 'Feb 14, 2026'
+    }
+];
 
 function getActiveTheme() {
     return document.documentElement.getAttribute('data-theme') || 'light';
@@ -435,13 +491,55 @@ function initCalendar() {
     }
 }
 
+function getThreadById(threadId) {
+    return THREAD_CATALOG.find(thread => thread.id === threadId) || null;
+}
+
+function syncNewsCardsWithThreadCatalog() {
+    const newsCards = document.querySelectorAll('.news-card[data-thread-id]');
+    if (!newsCards.length) return;
+
+    newsCards.forEach(card => {
+        const threadId = card.getAttribute('data-thread-id');
+        const thread = getThreadById(threadId);
+        if (!thread) return;
+
+        const link = card.querySelector('.read-more');
+        if (link) link.setAttribute('href', thread.href);
+
+        const pills = card.querySelectorAll('.forum-pill');
+        if (pills[0]) pills[0].textContent = `${thread.replies} replies`;
+        if (pills[1]) pills[1].textContent = `Updated ${thread.updated}`;
+    });
+}
+
+function renderThreadDirectory() {
+    const list = document.getElementById('thread-directory-list');
+    if (!list) return;
+
+    const sortedThreads = [...THREAD_CATALOG].sort((a, b) => b.replies - a.replies);
+
+    list.innerHTML = sortedThreads.map(thread => `
+        <article class="thread-directory-card">
+            <p class="thread-directory-cat">${thread.category}</p>
+            <h3 class="thread-directory-title">${thread.title}</h3>
+            <p class="thread-directory-summary">${thread.summary}</p>
+            <p class="thread-directory-meta">
+                <span class="thread-directory-pill">${thread.replies} replies</span>
+                <span class="thread-directory-pill">Updated ${thread.updated}</span>
+            </p>
+            <a class="thread-directory-link" href="${thread.href}">Open Thread</a>
+        </article>
+    `).join('');
+}
+
 // --- NEWS SEARCH & FILTER LOGIC ---
 function applyCardFilters(options = {}) {
     const { animateNews = false } = options;
     const input = document.getElementById('searchInput');
     const query = input ? input.value.trim().toUpperCase() : '';
 
-    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card');
+    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card, .thread-directory-card');
 
     allCards.forEach(card => {
         const text = card.textContent || card.innerText;
@@ -499,6 +597,8 @@ function searchContent() {
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initCalendar();
+    syncNewsCardsWithThreadCatalog();
+    renderThreadDirectory();
 
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");
