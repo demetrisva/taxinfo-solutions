@@ -6,6 +6,8 @@ let taxChartInstance = null;
 let activeNewsCategory = 'all';
 const THEME_STORAGE_KEY = 'taxinfo_theme';
 const CHART_JS_URL = 'https://cdn.jsdelivr.net/npm/chart.js';
+const SITE_CANONICAL_ORIGIN = 'https://taxinfo.solutions';
+const FORUM_COLLECTION_JSONLD_ID = 'forum-collection-jsonld';
 let chartJsLoaderPromise = null;
 const THREAD_CATALOG = [
     {
@@ -20,8 +22,10 @@ const THREAD_CATALOG = [
         summary: 'Pinned transition thread for first-year filings, mixed-revenue scenarios, and documentation policy.',
         replies: 143,
         updated: 'Feb 18, 2026',
+        updatedIso: '2026-02-18',
         cta: 'Open Thread',
-        gradient: 'linear-gradient(135deg, #FF5F6D, #FFC371)'
+        gradient: 'linear-gradient(135deg, #FF5F6D, #FFC371)',
+        keywordChips: ['Cyprus corporate tax 15%', 'Cyprus company tax planning 2026']
     },
     {
         id: 'dividend-planning',
@@ -35,8 +39,10 @@ const THREAD_CATALOG = [
         summary: 'Analyst brief covering payout timing, retained earnings, and shareholder communication.',
         replies: 89,
         updated: 'Feb 17, 2026',
+        updatedIso: '2026-02-17',
         cta: 'View Discussion',
-        gradient: 'linear-gradient(135deg, #11998e, #38ef7d)'
+        gradient: 'linear-gradient(135deg, #11998e, #38ef7d)',
+        keywordChips: ['Cyprus dividend tax 5%', 'Cyprus SDC dividend timing']
     },
     {
         id: 'salary-threshold',
@@ -50,8 +56,10 @@ const THREAD_CATALOG = [
         summary: 'Community guide with structured salary examples and assumption-based comparisons.',
         replies: 201,
         updated: 'Feb 18, 2026',
+        updatedIso: '2026-02-18',
         cta: 'Check Examples',
-        gradient: 'linear-gradient(135deg, #8E2DE2, #4A00E0)'
+        gradient: 'linear-gradient(135deg, #8E2DE2, #4A00E0)',
+        keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax-free threshold 22000']
     },
     {
         id: 'crypto-evidence',
@@ -65,8 +73,10 @@ const THREAD_CATALOG = [
         summary: 'Compliance thread on disposal events, record trails, and valuation snapshots.',
         replies: 67,
         updated: 'Feb 16, 2026',
+        updatedIso: '2026-02-16',
         cta: 'Read Thread',
-        gradient: 'linear-gradient(135deg, #F7971E, #FFD200)'
+        gradient: 'linear-gradient(135deg, #F7971E, #FFD200)',
+        keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
     },
     {
         id: 'relief-docs',
@@ -80,8 +90,10 @@ const THREAD_CATALOG = [
         summary: 'Checklist board for rent, mortgage, and dependent support documentation.',
         replies: 112,
         updated: 'Feb 15, 2026',
+        updatedIso: '2026-02-15',
         cta: 'Review Checklist',
-        gradient: 'linear-gradient(135deg, #3f5efb, #fc466b)'
+        gradient: 'linear-gradient(135deg, #3f5efb, #fc466b)',
+        keywordChips: ['Cyprus family tax relief', 'Cyprus housing deduction documents']
     },
     {
         id: 'startup-options',
@@ -95,8 +107,10 @@ const THREAD_CATALOG = [
         summary: 'Startup board discussing vesting structures, qualification tests, and investor updates.',
         replies: 54,
         updated: 'Feb 14, 2026',
+        updatedIso: '2026-02-14',
         cta: 'Join Startup Thread',
-        gradient: 'linear-gradient(135deg, #0f2027, #2c5364)'
+        gradient: 'linear-gradient(135deg, #0f2027, #2c5364)',
+        keywordChips: ['Cyprus stock options tax 8%', 'Cyprus startup tax forum']
     }
 ];
 
@@ -114,6 +128,183 @@ function loadChartJsIfNeeded() {
     });
 
     return chartJsLoaderPromise;
+}
+
+function toCanonicalUrl(path) {
+    if (!path) return SITE_CANONICAL_ORIGIN;
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    const normalized = path.startsWith('/') ? path : `/${path}`;
+    return `${SITE_CANONICAL_ORIGIN}${normalized}`;
+}
+
+function upsertJsonLdScript(scriptId, schemaObject) {
+    if (!schemaObject) return;
+
+    let scriptTag = document.getElementById(scriptId);
+    if (!scriptTag) {
+        scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.id = scriptId;
+        document.head.appendChild(scriptTag);
+    }
+
+    scriptTag.textContent = JSON.stringify(schemaObject);
+}
+
+function injectForumCollectionStructuredData() {
+    if (!document.getElementById('news-hub')) return;
+
+    const lastReviewedMeta = document.querySelector('meta[name="last-reviewed"]');
+    const dateModified = lastReviewedMeta && lastReviewedMeta.content
+        ? lastReviewedMeta.content
+        : new Date().toISOString().slice(0, 10);
+
+    const aboutTerms = Array.from(new Set(
+        THREAD_CATALOG.flatMap(thread => [
+            `${thread.category} tax Cyprus`,
+            ...(thread.keywordChips || [])
+        ])
+    )).slice(0, 10);
+
+    const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        '@id': `${SITE_CANONICAL_ORIGIN}/#forum`,
+        name: 'Cyprus Tax Forum and Newsroom 2026',
+        url: SITE_CANONICAL_ORIGIN,
+        inLanguage: 'en',
+        dateModified,
+        about: aboutTerms.map(term => ({ '@type': 'Thing', name: term })),
+        mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: THREAD_CATALOG.map((thread, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: thread.title,
+                url: toCanonicalUrl(thread.href)
+            }))
+        }
+    };
+
+    upsertJsonLdScript(FORUM_COLLECTION_JSONLD_ID, schema);
+}
+
+function getKeywordChipEntriesFromCatalog() {
+    const seen = new Set();
+    const chips = [];
+
+    THREAD_CATALOG.forEach(thread => {
+        (thread.keywordChips || []).forEach(label => {
+            const key = `${label.toLowerCase()}|${thread.href}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            chips.push({ label, href: thread.href });
+        });
+    });
+
+    return chips;
+}
+
+function getLatestThreadUpdate() {
+    return [...THREAD_CATALOG]
+        .filter(thread => thread.updatedIso)
+        .sort((a, b) => new Date(b.updatedIso) - new Date(a.updatedIso))[0] || null;
+}
+
+function formatDateLong(isoDate) {
+    if (!isoDate) return '';
+    const date = new Date(`${isoDate}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+}
+
+function formatDateShort(isoDate) {
+    if (!isoDate) return '';
+    const date = new Date(`${isoDate}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric'
+    });
+}
+
+function syncSeoKeywordMetaFromCatalog() {
+    const keywordsMeta = document.querySelector('meta[name="keywords"]');
+    const newsKeywordsMeta = document.querySelector('meta[name="news_keywords"]');
+
+    const keywordPool = Array.from(new Set([
+        'Cyprus tax calculator 2026',
+        'Cyprus tax forum',
+        'Cyprus tax news',
+        ...THREAD_CATALOG.flatMap(thread => thread.keywordChips || [])
+    ]));
+
+    const keywordsValue = keywordPool.slice(0, 14).join(', ');
+    const newsKeywordsValue = keywordPool.slice(0, 8).join(', ');
+
+    if (keywordsMeta) keywordsMeta.setAttribute('content', keywordsValue);
+    if (newsKeywordsMeta) newsKeywordsMeta.setAttribute('content', newsKeywordsValue);
+}
+
+function renderTrendingThreads() {
+    const grid = document.getElementById('trending-grid');
+    if (!grid) return;
+
+    const topThreads = [...THREAD_CATALOG]
+        .sort((a, b) => b.replies - a.replies)
+        .slice(0, 3);
+
+    grid.innerHTML = topThreads.map((thread, index) => `
+        <article class="trending-card">
+            <p class="trending-rank">#${index + 1}</p>
+            <p class="trending-cat">${thread.category}</p>
+            <h3 class="trending-title">${thread.title}</h3>
+            <p class="trending-meta">
+                <span class="trending-pill">${thread.replies} replies</span>
+                <span class="trending-pill">Updated ${thread.updated}</span>
+            </p>
+            <a href="${thread.href}" class="trending-link">Open Thread</a>
+        </article>
+    `).join('');
+}
+
+function renderForumStatsFromCatalog() {
+    const statThreads = document.getElementById('statTrackedThreads');
+    const statReplies = document.getElementById('statCommunityReplies');
+    const statChannels = document.getElementById('statForumChannels');
+    const statLatest = document.getElementById('statLatestUpdate');
+
+    const totalThreads = THREAD_CATALOG.length;
+    const totalReplies = THREAD_CATALOG.reduce((sum, thread) => sum + (thread.replies || 0), 0);
+    const totalChannels = new Set(THREAD_CATALOG.map(thread => thread.categoryKey)).size;
+    const latest = getLatestThreadUpdate();
+    const latestShort = latest ? formatDateShort(latest.updatedIso) : '--';
+
+    if (statThreads) statThreads.textContent = String(totalThreads);
+    if (statReplies) statReplies.textContent = String(totalReplies);
+    if (statChannels) statChannels.textContent = String(totalChannels);
+    if (statLatest) statLatest.textContent = latestShort || '--';
+
+    if (latest && latest.updatedIso) {
+        const lastReviewedBadge = document.getElementById('lastReviewedBadge');
+        const metaLastReviewed = document.getElementById('meta-last-reviewed');
+        const metaOgUpdatedTime = document.getElementById('meta-og-updated-time');
+
+        const latestLong = formatDateLong(latest.updatedIso);
+        if (lastReviewedBadge && latestLong) {
+            lastReviewedBadge.textContent = `Last reviewed: ${latestLong}`;
+        }
+        if (metaLastReviewed) {
+            metaLastReviewed.setAttribute('content', latest.updatedIso);
+        }
+        if (metaOgUpdatedTime) {
+            metaOgUpdatedTime.setAttribute('content', `${latest.updatedIso}T00:00:00+02:00`);
+        }
+    }
 }
 
 function getActiveTheme() {
@@ -589,6 +780,16 @@ function renderThreadDirectory() {
     `).join('');
 }
 
+function renderKeywordChipsFromCatalog() {
+    const grid = document.getElementById('keyword-chip-grid');
+    if (!grid) return;
+
+    const chips = getKeywordChipEntriesFromCatalog();
+    grid.innerHTML = chips.map(chip => `
+        <a href="${chip.href}" class="keyword-chip">${chip.label}</a>
+    `).join('');
+}
+
 function initSearchFromQueryParam() {
     const input = document.getElementById('searchInput');
     if (!input) return;
@@ -606,7 +807,7 @@ function applyCardFilters(options = {}) {
     const input = document.getElementById('searchInput');
     const query = input ? input.value.trim().toUpperCase() : '';
 
-    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card, .thread-directory-card, .keyword-chip, .faq-item');
+    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card, .thread-directory-card, .keyword-chip, .faq-item, .trending-card');
 
     allCards.forEach(card => {
         const text = card.textContent || card.innerText;
@@ -665,6 +866,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initCalendar();
     renderNewsCardsFromCatalog();
+    renderKeywordChipsFromCatalog();
+    renderTrendingThreads();
+    renderForumStatsFromCatalog();
+    syncSeoKeywordMetaFromCatalog();
+    injectForumCollectionStructuredData();
     renderThreadDirectory();
     initSearchFromQueryParam();
 

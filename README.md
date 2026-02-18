@@ -17,6 +17,19 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+## Build fingerprinted assets (cache-safe)
+
+This project includes a local no-dependency build script that:
+- minifies `style.css` and `script.js`
+- generates fingerprinted files like `style.<hash>.min.css` and `script.<hash>.min.js`
+- updates all `.html` pages to reference the latest fingerprinted files
+
+Run:
+
+```bash
+node build-assets.mjs
+```
+
 ## Make it live (GitHub Pages)
 
 1. Push this repo to GitHub (main branch).

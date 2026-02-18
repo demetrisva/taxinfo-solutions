@@ -4801,3 +4801,115 @@ html[data-theme="light"] .faq-item p {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   36. TRENDING SECTION
+   ========================= */
+.trending-section {
+    margin-bottom: 84px;
+}
+
+.trending-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.trending-card {
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+    display: grid;
+    gap: 8px;
+}
+
+.trending-rank {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: #9deaf1;
+}
+
+.trending-cat {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+}
+
+.trending-title {
+    margin: 0;
+    font-size: 1.03rem;
+    line-height: 1.35;
+}
+
+.trending-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+}
+
+.trending-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(73, 146, 164, 0.36);
+    background: rgba(79, 169, 192, 0.16);
+    color: #d8f4fa;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.trending-link {
+    width: fit-content;
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.trending-link:hover {
+    color: var(--accent-hover);
+}
+
+html:not([data-theme="dark"]) .trending-card,
+html[data-theme="light"] .trending-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(20, 68, 82, 0.16);
+    box-shadow: 0 12px 22px rgba(10, 41, 52, 0.08);
+}
+
+html:not([data-theme="dark"]) .trending-rank,
+html[data-theme="light"] .trending-rank {
+    color: #1f6472;
+}
+
+html:not([data-theme="dark"]) .trending-title,
+html[data-theme="light"] .trending-title {
+    color: #173943;
+}
+
+html:not([data-theme="dark"]) .trending-pill,
+html[data-theme="light"] .trending-pill {
+    color: #204d58;
+    border-color: rgba(40, 129, 149, 0.3);
+    background: rgba(117, 181, 197, 0.22);
+}
+
+@media (max-width: 1024px) {
+    .trending-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .trending-grid {
+        grid-template-columns: 1fr;
+    }
+}
