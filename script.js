@@ -533,13 +533,24 @@ function renderThreadDirectory() {
     `).join('');
 }
 
+function initSearchFromQueryParam() {
+    const input = document.getElementById('searchInput');
+    if (!input) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('q') || '').trim();
+    if (!query) return;
+
+    input.value = query;
+}
+
 // --- NEWS SEARCH & FILTER LOGIC ---
 function applyCardFilters(options = {}) {
     const { animateNews = false } = options;
     const input = document.getElementById('searchInput');
     const query = input ? input.value.trim().toUpperCase() : '';
 
-    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card, .thread-directory-card');
+    const allCards = document.querySelectorAll('.news-card, .tp-card, .card, .data-card, .res-card, .exemption-card, .thread-directory-card, .keyword-chip');
 
     allCards.forEach(card => {
         const text = card.textContent || card.innerText;
@@ -599,6 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCalendar();
     syncNewsCardsWithThreadCatalog();
     renderThreadDirectory();
+    initSearchFromQueryParam();
 
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".nav-menu");

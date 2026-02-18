@@ -4352,6 +4352,26 @@ html[data-theme="dark"] .main-wrapper > section.news-hub-section .forum-pill {
     padding-bottom: 72px;
 }
 
+.thread-breadcrumbs {
+    margin-top: 108px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.thread-breadcrumbs a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.thread-breadcrumbs a:hover {
+    color: var(--accent);
+}
+
 .thread-layout {
     margin-bottom: 88px;
 }
@@ -4520,6 +4540,11 @@ html[data-theme="light"] .thread-badge-pinned {
 }
 
 @media (max-width: 680px) {
+    .thread-breadcrumbs {
+        margin-top: 94px;
+        font-size: 0.78rem;
+    }
+
     .thread-summary-card,
     .thread-post,
     .thread-panel,
@@ -4649,5 +4674,75 @@ html[data-theme="light"] .thread-directory-pill {
 @media (max-width: 680px) {
     .thread-directory-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* =========================
+   34. KEYWORD HUB
+   ========================= */
+.keyword-hub-section {
+    margin-bottom: 72px;
+}
+
+.keyword-chip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.keyword-chip {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 54px;
+    border-radius: 999px;
+    border: 1px solid rgba(82, 176, 199, 0.4);
+    background: rgba(76, 165, 188, 0.16);
+    color: #d7f3f9;
+    font-size: 0.84rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.keyword-chip:hover {
+    transform: translateY(-2px);
+    border-color: rgba(130, 220, 242, 0.58);
+    background: rgba(88, 182, 206, 0.25);
+}
+
+html:not([data-theme="dark"]) .keyword-chip,
+html[data-theme="light"] .keyword-chip {
+    color: #1f5160;
+    border-color: rgba(41, 131, 151, 0.36);
+    background: rgba(145, 206, 222, 0.3);
+}
+
+html:not([data-theme="dark"]) .keyword-chip:hover,
+html[data-theme="light"] .keyword-chip:hover {
+    border-color: rgba(35, 117, 135, 0.5);
+    background: rgba(122, 195, 214, 0.38);
+}
+
+@media (max-width: 1024px) {
+    .keyword-chip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 680px) {
+    .keyword-hub-section {
+        margin-bottom: 58px;
+    }
+
+    .keyword-chip-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .keyword-chip {
+        min-height: 50px;
+        border-radius: 14px;
     }
 }
