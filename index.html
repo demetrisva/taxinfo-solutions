@@ -28,8 +28,6 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6942670124765473"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
     <link rel="stylesheet" href="style.css">
 
     <!-- Background is now CSS gradient-based -->
@@ -157,6 +155,20 @@
             }
           }, {
             "@type": "Question",
+            "name": "What is the corporate tax rate used for Cyprus 2026 planning?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This forum newsroom tracks a 15% corporate tax framework for 2026 scenario planning."
+            }
+          }, {
+            "@type": "Question",
+            "name": "What dividend tax (SDC) rate is used in examples?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Forum examples model dividend SDC at 5% in the 2026 package and compare timing scenarios."
+            }
+          }, {
+            "@type": "Question",
             "name": "What is the new Crypto Tax rate?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -206,6 +218,7 @@
                     <div class="dropdown-menu">
                         <a href="#calculator-section" class="dropdown-item">Impact Calculator</a>
                         <a href="#calendar-section" class="dropdown-item">Deadline Tracker</a>
+                        <a href="#faq-section" class="dropdown-item">FAQ</a>
                         <a href="#downloads-section" class="dropdown-item">Source Library</a>
                     </div>
                 </div>
@@ -305,103 +318,20 @@
                     onclick="filterNews('innovation')">Innovation</button>
             </div>
 
-            <div id="news-grid-all" class="news-grid active">
-                <!-- Corporate Article -->
-                <article class="news-card" data-category="corporate" data-thread-id="corporate-transition">
-                    <div class="news-img" style="background: linear-gradient(135deg, #FF5F6D, #FFC371);">
-                        <span class="news-tag">Corporate</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Pinned Thread</p>
-                        <h3 class="news-title">Corporate Tax at 15%: Transitional Questions and Edge Cases</h3>
-                        <p class="news-excerpt">Community members are comparing first-year filing strategies, loss
-                            offsets, and how mixed-revenue companies should model 2026 liability.</p>
-                        <p class="forum-meta"><span class="forum-pill">143 replies</span><span
-                                class="forum-pill">Updated Feb 18, 2026</span></p>
-                        <a href="thread-corporate-tax-transition.html" class="read-more">Open Thread</a>
-                    </div>
-                </article>
-
-                <!-- Dividend Article -->
-                <article class="news-card" data-category="corporate" data-thread-id="dividend-planning">
-                    <div class="news-img" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
-                        <span class="news-tag">Corporate</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Analyst Brief</p>
-                        <h3 class="news-title">Dividend SDC at 5%: Distribution Timing Discussion</h3>
-                        <p class="news-excerpt">A practical thread on dividend calendar planning, retained earnings
-                            scenarios, and shareholder-level impact under the new regime.</p>
-                        <p class="forum-meta"><span class="forum-pill">89 replies</span><span
-                                class="forum-pill">Updated Feb 17, 2026</span></p>
-                        <a href="thread-dividend-sdc-planning.html" class="read-more">View Discussion</a>
-                    </div>
-                </article>
-
-                <!-- Personal Tax Article -->
-                <article class="news-card" data-category="personal" data-thread-id="salary-threshold">
-                    <div class="news-img" style="background: linear-gradient(135deg, #8E2DE2, #4A00E0);">
-                        <span class="news-tag">Personal</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Community Guide</p>
-                        <h3 class="news-title">€22,000 Tax-Free Threshold: Salary Examples by Income Band</h3>
-                        <p class="news-excerpt">Members are posting real salary scenarios and comparing payroll outcomes
-                            between 2025 and 2026 brackets using shared assumptions.</p>
-                        <p class="forum-meta"><span class="forum-pill">201 replies</span><span
-                                class="forum-pill">Updated Feb 18, 2026</span></p>
-                        <a href="thread-salary-threshold-examples.html" class="read-more">Check Examples</a>
-                    </div>
-                </article>
-
-                <!-- Crypto Article -->
-                <article class="news-card" data-category="crypto" data-thread-id="crypto-evidence">
-                    <div class="news-img" style="background: linear-gradient(135deg, #F7971E, #FFD200);">
-                        <span class="news-tag">Crypto</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Compliance Thread</p>
-                        <h3 class="news-title">Crypto 8% Framework: Disposal Evidence and Wallet Tracking</h3>
-                        <p class="news-excerpt">Forum contributors share audit-ready record templates and discuss when a
-                            disposal event is likely to trigger taxable gain recognition.</p>
-                        <p class="forum-meta"><span class="forum-pill">67 replies</span><span
-                                class="forum-pill">Updated Feb 16, 2026</span></p>
-                        <a href="thread-crypto-disposal-evidence.html" class="read-more">Read Thread</a>
-                    </div>
-                </article>
-
-                <!-- Personal Relief Article -->
-                <article class="news-card" data-category="relief" data-thread-id="relief-docs">
-                    <div class="news-img" style="background: linear-gradient(135deg, #3f5efb, #fc466b);">
-                        <span class="news-tag">Relief</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Checklist Board</p>
-                        <h3 class="news-title">Housing and Family Relief: Required Documents by Claim Type</h3>
-                        <p class="news-excerpt">A pinned checklist thread covering rent receipts, mortgage evidence, and
-                            how households are substantiating child-related deductions.</p>
-                        <p class="forum-meta"><span class="forum-pill">112 replies</span><span
-                                class="forum-pill">Updated Feb 15, 2026</span></p>
-                        <a href="thread-housing-family-relief-docs.html" class="read-more">Review Checklist</a>
-                    </div>
-                </article>
-
-                <!-- Crypto Innovation Article -->
-                <article class="news-card" data-category="innovation" data-thread-id="startup-options">
-                    <div class="news-img" style="background: linear-gradient(135deg, #0f2027, #2c5364);">
-                        <span class="news-tag">Innovation</span>
-                    </div>
-                    <div class="news-content">
-                        <p class="news-kicker">Startup Board</p>
-                        <h3 class="news-title">8% Treatment for Qualified Stock Options: Startup Scenarios</h3>
-                        <p class="news-excerpt">Founders and finance teams compare vesting structures, qualification
-                            tests, and investor communication approaches under the proposed framework.</p>
-                        <p class="forum-meta"><span class="forum-pill">54 replies</span><span
-                                class="forum-pill">Updated Feb 14, 2026</span></p>
-                        <a href="thread-startup-stock-options-8.html" class="read-more">Join Startup Thread</a>
-                    </div>
-                </article>
+            <div id="news-grid-all" class="news-grid active" aria-live="polite">
+                <!-- Rendered from THREAD_CATALOG in script.js -->
             </div>
+            <noscript>
+                <div class="thread-directory-noscript">
+                    <p>Thread feed requires JavaScript. Quick links:</p>
+                    <p><a href="thread-corporate-tax-transition.html">Corporate Tax at 15%</a></p>
+                    <p><a href="thread-dividend-sdc-planning.html">Dividend SDC at 5%</a></p>
+                    <p><a href="thread-salary-threshold-examples.html">Salary Threshold Examples</a></p>
+                    <p><a href="thread-crypto-disposal-evidence.html">Crypto Disposal Evidence</a></p>
+                    <p><a href="thread-housing-family-relief-docs.html">Housing and Family Relief</a></p>
+                    <p><a href="thread-startup-stock-options-8.html">Startup Stock Options</a></p>
+                </div>
+            </noscript>
         </section>
 
         <section id="thread-directory-section" class="container thread-directory-section">
@@ -829,7 +759,7 @@
             </div>
         </section>
 
-        <section class="container" style="margin-bottom: 60px;">
+        <section id="knowledge-base-section" class="container" style="margin-bottom: 60px;">
             <h2 class="section-title-center">✨ Pinned Knowledge Base</h2>
             <p class="section-subtitle">Moderator-curated explainers for high-impact tax treatments.</p>
 
@@ -962,6 +892,46 @@
             </div>
         </section>
 
+        <section id="faq-section" class="container faq-section">
+            <div class="section-header">
+                <span class="badge-new">Search-Friendly FAQ</span>
+                <h2>Cyprus Tax <span class="text-accent">FAQ 2026</span></h2>
+                <p>Quick answers to high-intent questions asked by employees, founders, and investors in Cyprus.</p>
+            </div>
+            <div class="faq-grid">
+                <details class="faq-item">
+                    <summary>What is the Cyprus tax-free salary threshold in 2026?</summary>
+                    <p>The estimator and forum guides use a €22,000 annual tax-free threshold for 2026 salary examples.
+                        See worked scenarios in the Salary Board thread.</p>
+                    <a href="thread-salary-threshold-examples.html" class="read-more">Open Salary Examples</a>
+                </details>
+                <details class="faq-item">
+                    <summary>What is the Cyprus corporate tax rate for 2026?</summary>
+                    <p>The forum tracks a 15% corporate tax framework for 2026 planning. Use the Corporate Desk thread
+                        for transition examples and compliance notes.</p>
+                    <a href="thread-corporate-tax-transition.html" class="read-more">Open Corporate Thread</a>
+                </details>
+                <details class="faq-item">
+                    <summary>What is the dividend tax (SDC) rate in Cyprus?</summary>
+                    <p>Current forum analysis models dividend SDC at 5% under the 2026 package. Practical distribution
+                        timing discussion is available in the dedicated thread.</p>
+                    <a href="thread-dividend-sdc-planning.html" class="read-more">Open Dividend Thread</a>
+                </details>
+                <details class="faq-item">
+                    <summary>How is crypto taxed in Cyprus in this estimator?</summary>
+                    <p>Thread guides and examples use an 8% treatment for qualifying crypto disposal scenarios with
+                        emphasis on documentation and wallet evidence.</p>
+                    <a href="thread-crypto-disposal-evidence.html" class="read-more">Open Crypto Thread</a>
+                </details>
+                <details class="faq-item">
+                    <summary>What is the Cyprus Non-Dom benefit?</summary>
+                    <p>The knowledge base explains Non-Dom treatment as a major advantage for qualifying individuals,
+                        including SDC exemptions under the relevant residency and domicile rules.</p>
+                    <a href="#knowledge-base-section" class="read-more">Open Non-Dom Guide</a>
+                </details>
+            </div>
+        </section>
+
         <section id="sources-section" class="container" style="margin-bottom: 80px;">
             <div class="data-card">
                 <div class="section-header">
@@ -1009,6 +979,7 @@
                         <a href="#mission-section">Community</a>
                         <a href="#calculator-section">Calculator</a>
                         <a href="#keyword-hub-section">Search Topics</a>
+                        <a href="#faq-section">FAQ</a>
                     </div>
                 </div>
                 <div class="footer-col">

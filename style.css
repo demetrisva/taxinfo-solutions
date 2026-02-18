@@ -4746,3 +4746,58 @@ html[data-theme="light"] .keyword-chip:hover {
         border-radius: 14px;
     }
 }
+
+/* =========================
+   35. FAQ SECTION
+   ========================= */
+.faq-section {
+    margin-bottom: 80px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 14px 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.faq-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+.faq-item p {
+    margin: 12px 0 10px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+html:not([data-theme="dark"]) .faq-item,
+html[data-theme="light"] .faq-item {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(20, 68, 82, 0.16);
+}
+
+html:not([data-theme="dark"]) .faq-item summary,
+html[data-theme="light"] .faq-item summary {
+    color: #173943;
+}
+
+html:not([data-theme="dark"]) .faq-item p,
+html[data-theme="light"] .faq-item p {
+    color: #4d6872;
+}
+
+@media (max-width: 900px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
