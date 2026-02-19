@@ -12,7 +12,8 @@ function minifyCss(source) {
     return source
         .replace(/\/\*[\s\S]*?\*\//g, '')
         .replace(/\s+/g, ' ')
-        .replace(/\s*([{}:;,>+~])\s*/g, '$1')
+        // Keep whitespace around '+' so calc() expressions stay valid.
+        .replace(/\s*([{}:;,>~])\s*/g, '$1')
         .replace(/;}/g, '}')
         .trim();
 }

@@ -1,24 +1,53 @@
+const assert = require('node:assert/strict');
 
-function testFormatMoney() {
-  console.log("Running tests for formatMoney...");
+function runFormatMoneyAssertions(formatMoneyFn) {
+  console.log('Running tests for formatMoney...');
 
-  // Test case 1: Integer
-  let result = formatMoney(12345);
-  console.assert(result === "12,345", "Test Case 1 Failed: Integer");
+  assert.equal(formatMoneyFn(12345), '12,345', 'Integer formatting');
+  assert.equal(formatMoneyFn(12345.67), '12,346', 'Decimal rounding');
+  assert.equal(formatMoneyFn(0), '0', 'Zero formatting');
+  assert.equal(formatMoneyFn(1000000), '1,000,000', 'Large number formatting');
 
-  // Test case 2: Number with decimals
-  result = formatMoney(12345.67);
-  console.assert(result === "12,346", "Test Case 2 Failed: Number with decimals");
-
-  // Test case 3: Zero
-  result = formatMoney(0);
-  console.assert(result === "0", "Test Case 3 Failed: Zero");
-
-  // Test case 4: Large number
-  result = formatMoney(1000000);
-  console.assert(result === "1,000,000", "Test Case 4 Failed: Large number");
-
-  console.log("Tests for formatMoney finished.");
+  console.log('Tests for formatMoney finished.');
 }
 
-testFormatMoney();
+function runBrowserPath() {
+  if (typeof window === 'undefined') return false;
+  if (typeof window.formatMoney !== 'function') return false;
+  runFormatMoneyAssertions(window.formatMoney);
+  return true;
+}
+
+function loadFormatMoneyFromScriptFile() {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const vm = require('node:vm');
+
+  const scriptPath = path.join(__dirname, 'script.js');
+  const scriptSource = fs.readFileSync(scriptPath, 'utf8');
+
+  const context = {
+    console,
+    Intl,
+    Date,
+    setTimeout,
+    clearTimeout,
+    document: {
+      addEventListener() {}
+    }
+  };
+
+  vm.createContext(context);
+  vm.runInContext(scriptSource, context, { filename: 'script.js' });
+
+  if (typeof context.formatMoney !== 'function') {
+    throw new Error('formatMoney was not found after loading script.js');
+  }
+
+  return context.formatMoney;
+}
+
+if (!runBrowserPath()) {
+  const formatMoney = loadFormatMoneyFromScriptFile();
+  runFormatMoneyAssertions(formatMoney);
+}
