@@ -315,7 +315,7 @@ function renderTrendingThreads() {
             <p class="trending-cat">${thread.category}</p>
             <h3 class="trending-title">${thread.title}</h3>
             <p class="trending-meta">
-                <span class="trending-pill">${thread.replies} replies</span>
+                <span class="trending-pill">${thread.replies} notes</span>
                 <span class="trending-pill">Updated ${thread.updated}</span>
             </p>
             <a href="${thread.href}" class="trending-link">Open Thread</a>
@@ -803,7 +803,7 @@ function renderNewsCardsFromCatalog() {
                 <p class="news-kicker">${thread.kicker}</p>
                 <h3 class="news-title">${thread.title}</h3>
                 <p class="news-excerpt">${thread.excerpt}</p>
-                <p class="forum-meta"><span class="forum-pill">${thread.replies} replies</span><span
+                <p class="forum-meta"><span class="forum-pill">${thread.replies} notes</span><span
                         class="forum-pill">Updated ${thread.updated}</span></p>
                 <a href="${thread.href}" class="read-more">${thread.cta}</a>
             </div>
@@ -823,7 +823,7 @@ function renderThreadDirectory() {
             <h3 class="thread-directory-title">${thread.title}</h3>
             <p class="thread-directory-summary">${thread.summary}</p>
             <p class="thread-directory-meta">
-                <span class="thread-directory-pill">${thread.replies} replies</span>
+                <span class="thread-directory-pill">${thread.replies} notes</span>
                 <span class="thread-directory-pill">Updated ${thread.updated}</span>
             </p>
             <a class="thread-directory-link" href="${thread.href}">Open Thread</a>
