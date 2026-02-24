@@ -4913,3 +4913,116 @@ html[data-theme="light"] .trending-pill {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   37. PWA INSTALL PROMPT
+   ========================= */
+.pwa-install-prompt {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1200;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(147, 211, 227, 0.26);
+    background: linear-gradient(135deg, rgba(7, 21, 31, 0.96), rgba(11, 31, 44, 0.94));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(10px);
+}
+
+.pwa-install-copy {
+    min-width: min(100%, 380px);
+}
+
+.pwa-install-title {
+    margin: 0 0 4px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #f3fcff;
+}
+
+.pwa-install-message {
+    margin: 0;
+    color: #c7dde5;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pwa-install-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pwa-btn {
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid transparent;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+.pwa-btn-primary {
+    background: var(--accent);
+    color: #101010;
+    border-color: var(--accent);
+}
+
+.pwa-btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.pwa-btn-secondary {
+    background: transparent;
+    color: #d8e9ef;
+    border-color: rgba(141, 200, 216, 0.4);
+}
+
+.pwa-btn-secondary:hover {
+    border-color: rgba(182, 226, 237, 0.75);
+    color: #f0fbff;
+}
+
+html:not([data-theme="dark"]) .pwa-install-prompt,
+html[data-theme="light"] .pwa-install-prompt {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(234, 247, 251, 0.95));
+    border-color: rgba(42, 115, 136, 0.28);
+    box-shadow: 0 12px 28px rgba(10, 42, 54, 0.14);
+}
+
+html:not([data-theme="dark"]) .pwa-install-title,
+html[data-theme="light"] .pwa-install-title {
+    color: #133944;
+}
+
+html:not([data-theme="dark"]) .pwa-install-message,
+html[data-theme="light"] .pwa-install-message {
+    color: #3d6070;
+}
+
+html:not([data-theme="dark"]) .pwa-btn-secondary,
+html[data-theme="light"] .pwa-btn-secondary {
+    color: #1c5260;
+    border-color: rgba(34, 116, 137, 0.32);
+}
+
+@media (max-width: 700px) {
+    .pwa-install-prompt {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .pwa-install-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

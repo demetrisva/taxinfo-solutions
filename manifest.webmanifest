@@ -1,0 +1,45 @@
+{
+  "name": "TaxInfo Solutions",
+  "short_name": "TaxInfo",
+  "id": "/?source=pwa",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#123640",
+  "description": "Tax calculators, forum threads, and tax updates from TaxInfo Solutions.",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Salary Calculator",
+      "short_name": "Calculator",
+      "description": "Open the salary calculator",
+      "url": "/index.html#calculator-section"
+    },
+    {
+      "name": "Forum Feed",
+      "short_name": "Forum",
+      "description": "Open latest forum threads",
+      "url": "/index.html#news-hub"
+    }
+  ]
+}
