@@ -1,0 +1,5 @@
+Contact: mailto:info@taxinfo.solutions
+Expires: 2027-03-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://taxinfo.solutions/.well-known/security.txt
+Policy: https://taxinfo.solutions/about.html
