@@ -2750,6 +2750,21 @@ body::before {
     color: var(--primary);
 }
 
+.hero-inline-link {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+}
+
+.hero-inline-link a {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.hero-inline-link a:hover {
+    color: var(--accent-hover);
+}
+
 .stats-bar {
     background: rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(18, 35, 42, 0.09);
@@ -3929,6 +3944,10 @@ html[data-theme="dark"] .btn-hero-secondary {
 html[data-theme="dark"] .btn-hero-secondary:hover {
     background: rgba(13, 42, 57, 0.9);
     color: #f1f7fa;
+}
+
+html[data-theme="dark"] .hero-inline-link {
+    color: #afc2cb;
 }
 
 html[data-theme="dark"] .theme-toggle {
