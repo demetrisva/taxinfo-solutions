@@ -5,9 +5,9 @@
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#050505",
-  "theme_color": "#123640",
-  "description": "Tax calculators, forum threads, and tax updates from TaxInfo Solutions.",
+  "background_color": "#f7f2e8",
+  "theme_color": "#17343d",
+  "description": "Cyprus tax guide, calculators, and source-backed tax updates from TaxInfo Solutions.",
   "icons": [
     {
       "src": "images/icon-192.png",
@@ -30,15 +30,21 @@
   ],
   "shortcuts": [
     {
+      "name": "Cyprus Tax Guide 2026",
+      "short_name": "Tax Guide",
+      "description": "Open the broad Cyprus tax guide",
+      "url": "/cyprus-tax-guide-2026.html"
+    },
+    {
       "name": "Salary Calculator",
       "short_name": "Calculator",
       "description": "Open the salary calculator",
       "url": "/index.html#calculator-section"
     },
     {
-      "name": "Forum Feed",
-      "short_name": "Forum",
-      "description": "Open latest forum threads",
+      "name": "Briefing Hub",
+      "short_name": "Briefings",
+      "description": "Open the latest Cyprus tax briefings",
       "url": "/index.html#news-hub"
     }
   ]

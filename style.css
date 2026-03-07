@@ -2725,6 +2725,31 @@ body::before {
     box-shadow: 0 20px 36px rgba(22, 104, 119, 0.32);
 }
 
+.hero-link-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+
+.btn-hero-secondary {
+    display: inline-block;
+    padding: 15px 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(23, 52, 61, 0.18);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.btn-hero-secondary:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary);
+}
+
 .stats-bar {
     background: rgba(255, 255, 255, 0.5);
     border-top: 1px solid rgba(18, 35, 42, 0.09);
@@ -3893,6 +3918,17 @@ html[data-theme="dark"] .nav-link:hover {
 html[data-theme="dark"] .btn-nav {
     background: linear-gradient(120deg, #2c8ea3 0%, #2f9db1 100%);
     border-color: #2f96ac;
+}
+
+html[data-theme="dark"] .btn-hero-secondary {
+    background: rgba(8, 29, 41, 0.72);
+    border-color: rgba(194, 217, 227, 0.18);
+    color: #dce8ee;
+}
+
+html[data-theme="dark"] .btn-hero-secondary:hover {
+    background: rgba(13, 42, 57, 0.9);
+    color: #f1f7fa;
 }
 
 html[data-theme="dark"] .theme-toggle {

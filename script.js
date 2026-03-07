@@ -294,6 +294,9 @@ function syncSeoKeywordMetaFromCatalog() {
     const newsKeywordsMeta = document.querySelector('meta[name="news_keywords"]');
 
     const keywordPool = Array.from(new Set([
+        'Cyprus tax guide 2026',
+        'tax Cyprus',
+        'Cyprus tax',
         'Cyprus tax calculator 2026',
         'Cyprus tax update 2026',
         'Cyprus tax news',
