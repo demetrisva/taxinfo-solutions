@@ -2594,17 +2594,18 @@ video {
    21. DESIGN REFRESH (VISUAL ONLY)
    ========================= */
 :root {
-    --primary: #123640;
-    --secondary: #56727b;
-    --accent: #1f7a8c;
-    --accent-hover: #166877;
+    --primary: #17343d;
+    --secondary: #546b72;
+    --accent: #117a78;
+    --accent-hover: #0d615f;
+    --accent-alt: #d8a23f;
 
-    --bg-body: #f5f7f2;
+    --bg-body: #f7f2e8;
     --bg-card: rgba(255, 255, 255, 0.86);
     --bg-input: #ffffff;
 
-    --text-main: #12232a;
-    --text-muted: #4e656e;
+    --text-main: #152b33;
+    --text-muted: #536973;
     --border-color: rgba(18, 35, 42, 0.14);
 
     --card-shadow: 0 20px 42px rgba(11, 37, 45, 0.09);
@@ -2619,9 +2620,9 @@ html {
 body {
     color: var(--text-main);
     background-image:
-        radial-gradient(760px 360px at 8% -10%, rgba(255, 159, 67, 0.18) 0%, rgba(255, 159, 67, 0) 68%),
-        radial-gradient(840px 420px at 92% -18%, rgba(31, 122, 140, 0.2) 0%, rgba(31, 122, 140, 0) 66%),
-        linear-gradient(180deg, #f8faf6 0%, #f0f5f6 46%, #f7f8f3 100%);
+        radial-gradient(760px 360px at 8% -10%, rgba(216, 162, 63, 0.2) 0%, rgba(216, 162, 63, 0) 68%),
+        radial-gradient(840px 420px at 92% -18%, rgba(17, 122, 120, 0.18) 0%, rgba(17, 122, 120, 0) 66%),
+        linear-gradient(180deg, #fbf8f0 0%, #eef4f1 46%, #f8f6ef 100%);
     background-size: auto, auto, auto;
     background-attachment: fixed;
 }
@@ -2682,8 +2683,8 @@ body::before {
 .hero-section {
     padding-top: 172px;
     background:
-        radial-gradient(circle at 50% 4%, rgba(31, 122, 140, 0.15) 0%, rgba(31, 122, 140, 0) 58%),
-        radial-gradient(circle at 18% 34%, rgba(255, 159, 67, 0.12) 0%, rgba(255, 159, 67, 0) 52%);
+        radial-gradient(circle at 50% 4%, rgba(17, 122, 120, 0.16) 0%, rgba(17, 122, 120, 0) 58%),
+        radial-gradient(circle at 18% 34%, rgba(216, 162, 63, 0.13) 0%, rgba(216, 162, 63, 0) 52%);
 }
 
 .hero-title {
@@ -2692,7 +2693,7 @@ body::before {
 }
 
 .hero-title .text-gradient {
-    background: linear-gradient(120deg, #123640 0%, #1f7a8c 56%, #ff9f43 100%);
+    background: linear-gradient(120deg, #17343d 0%, #117a78 56%, #d8a23f 100%);
 }
 
 .hero-subtitle {
@@ -2700,15 +2701,15 @@ body::before {
 }
 
 .badge-new {
-    background: rgba(31, 122, 140, 0.12);
-    border: 1px solid rgba(31, 122, 140, 0.36);
-    color: #155868;
+    background: rgba(17, 122, 120, 0.12);
+    border: 1px solid rgba(17, 122, 120, 0.32);
+    color: #0d5f5d;
 }
 
 .stamp-duty-banner {
-    background: rgba(32, 168, 108, 0.13);
-    border: 1px solid rgba(32, 168, 108, 0.4);
-    color: #197d53;
+    background: linear-gradient(120deg, rgba(17, 122, 120, 0.12), rgba(216, 162, 63, 0.14));
+    border: 1px solid rgba(17, 122, 120, 0.28);
+    color: #154f58;
 }
 
 .btn-hero-main {
@@ -2827,7 +2828,7 @@ body::before {
 }
 
 .tax-table th {
-    background: rgba(31, 122, 140, 0.1);
+    background: rgba(17, 122, 120, 0.1);
     color: var(--primary);
 }
 
@@ -2850,7 +2851,7 @@ body::before {
 }
 
 footer {
-    background: linear-gradient(180deg, #11303a 0%, #0b2027 100%);
+    background: linear-gradient(180deg, #15323a 0%, #0c2026 100%);
     border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
@@ -2923,10 +2924,10 @@ footer a {
 }
 
 .news-hub-section {
-    --news-bg-1: #04131d;
-    --news-bg-2: #081f2c;
-    --news-cyan: #33d2c2;
-    --news-gold: #ffb266;
+    --news-bg-1: #0b2830;
+    --news-bg-2: #123641;
+    --news-cyan: #69d1c4;
+    --news-gold: #f1c46f;
     --news-text: #e5eef2;
     --news-muted: #9db4be;
     --news-border: rgba(255, 255, 255, 0.12);
@@ -2938,9 +2939,9 @@ footer a {
     margin-bottom: 88px;
     border-radius: 26px;
     background:
-        radial-gradient(740px 340px at 10% -8%, rgba(51, 210, 194, 0.2) 0%, rgba(51, 210, 194, 0) 66%),
-        radial-gradient(660px 340px at 92% 0%, rgba(255, 178, 102, 0.18) 0%, rgba(255, 178, 102, 0) 68%),
-        linear-gradient(140deg, var(--news-bg-1) 0%, var(--news-bg-2) 56%, #061723 100%);
+        radial-gradient(740px 340px at 10% -8%, rgba(105, 209, 196, 0.2) 0%, rgba(105, 209, 196, 0) 66%),
+        radial-gradient(660px 340px at 92% 0%, rgba(241, 196, 111, 0.18) 0%, rgba(241, 196, 111, 0) 68%),
+        linear-gradient(140deg, var(--news-bg-1) 0%, var(--news-bg-2) 56%, #0d2631 100%);
     border: 1px solid rgba(255, 255, 255, 0.09);
     box-shadow:
         0 28px 66px rgba(2, 11, 16, 0.45),
@@ -3844,13 +3845,15 @@ html[data-theme="dark"] {
     --text-main: #e6f0f5;
     --text-muted: #afc2cb;
     --card-shadow: 0 18px 34px rgba(0, 0, 0, 0.34);
+    --accent: #58c6ba;
+    --accent-hover: #3fa89e;
 }
 
 html[data-theme="dark"] body {
     color: #dce8ee;
     background:
-        radial-gradient(920px 420px at 8% -14%, rgba(34, 195, 183, 0.18) 0%, rgba(34, 195, 183, 0) 66%),
-        radial-gradient(780px 360px at 94% -18%, rgba(255, 170, 106, 0.16) 0%, rgba(255, 170, 106, 0) 68%),
+        radial-gradient(920px 420px at 8% -14%, rgba(88, 198, 186, 0.18) 0%, rgba(88, 198, 186, 0) 66%),
+        radial-gradient(780px 360px at 94% -18%, rgba(216, 162, 63, 0.16) 0%, rgba(216, 162, 63, 0) 68%),
         linear-gradient(180deg, #08151f 0%, #0a1a26 54%, #08151f 100%);
 }
 
@@ -4484,6 +4487,19 @@ html[data-theme="dark"] .main-wrapper > section.news-hub-section .forum-pill {
 
 .thread-panel .footer-links-col a {
     font-size: 0.9rem;
+}
+
+.editorial-callout {
+    position: relative;
+    overflow: hidden;
+}
+
+.editorial-callout::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-alt, #d8a23f));
 }
 
 .thread-cta {

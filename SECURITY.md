@@ -18,6 +18,8 @@ Report security issues to `info@taxinfo.solutions` with:
 - The affected page URL or file path
 - Any proof-of-concept material needed to verify the report
 
+Public disclosure contact metadata is also published at `/.well-known/security.txt`.
+
 Expected handling:
 
 - Initial acknowledgement target: within 5 business days
