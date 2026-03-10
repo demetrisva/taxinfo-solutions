@@ -7,6 +7,7 @@ let activeNewsCategory = 'all';
 const THEME_STORAGE_KEY = 'taxinfo_theme';
 const CHART_JS_URL = 'https://cdn.jsdelivr.net/npm/chart.js';
 const SITE_CANONICAL_ORIGIN = 'https://taxinfo.solutions';
+const SITE_CANONICAL_HOME = `${SITE_CANONICAL_ORIGIN}/`;
 const BRIEFING_COLLECTION_JSONLD_ID = 'briefing-collection-jsonld';
 const PWA_INSTALL_DISMISS_UNTIL_KEY = 'taxinfo_pwa_install_dismiss_until';
 const PWA_IOS_HINT_DISMISS_UNTIL_KEY = 'taxinfo_pwa_ios_hint_dismiss_until';
@@ -27,8 +28,8 @@ const THREAD_CATALOG = [
         href: 'thread-transfer-pricing-playbook.html',
         summary: 'Cross-border tax briefing on treaty expansion, dispute prevention, and global minimum tax monitoring.',
         sources: 2,
-        updated: 'Mar 7, 2026',
-        updatedIso: '2026-03-07',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Briefing',
         gradient: 'linear-gradient(135deg, #0c5c7a, #2ca58d)',
         keywordChips: ['Cyprus Vietnam double tax treaty', 'Cyprus OECD BEPS side-by-side package']
@@ -44,8 +45,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-penalties-calendar.html',
         summary: 'Deadline briefing covering payroll withholding, VAT-touchpoint extensions, and provisional tax planning.',
         sources: 4,
-        updated: 'Mar 7, 2026',
-        updatedIso: '2026-03-07',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'View Dates',
         gradient: 'linear-gradient(135deg, #0a76a8, #6cc3d5)',
         keywordChips: ['Cyprus PAYE deadlines 2026', 'Cyprus provisional tax calendar 2026']
@@ -61,8 +62,8 @@ const THREAD_CATALOG = [
         href: 'thread-payroll-assumptions-log.html',
         summary: 'Employer payroll guide for monthly controls, withholding returns, and deduction support files.',
         sources: 3,
-        updated: 'Mar 6, 2026',
-        updatedIso: '2026-03-06',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Open Guide',
         gradient: 'linear-gradient(135deg, #2c7f5e, #a8d672)',
         keywordChips: ['Cyprus payroll withholding 2026', 'Cyprus TD59 deductions employer']
@@ -78,8 +79,8 @@ const THREAD_CATALOG = [
         href: 'thread-corporate-tax-transition.html',
         summary: 'Corporate reform note on the new 15% income tax rate and governance steps for 2026 close cycles.',
         sources: 3,
-        updated: 'Mar 7, 2026',
-        updatedIso: '2026-03-07',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Reform Note',
         gradient: 'linear-gradient(135deg, #c76829, #f2c14e)',
         keywordChips: ['Cyprus corporate tax 15% 2026', 'Cyprus tax reform company checklist']
@@ -95,8 +96,8 @@ const THREAD_CATALOG = [
         href: 'thread-dividend-sdc-planning.html',
         summary: 'Dividend planning note on SDC, eligibility checks, and evidence expected before payment dates.',
         sources: 2,
-        updated: 'Mar 6, 2026',
-        updatedIso: '2026-03-06',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Dividend Note',
         gradient: 'linear-gradient(135deg, #177e89, #8fc0a9)',
         keywordChips: ['Cyprus dividend tax 5%', 'Cyprus non-dom dividend planning']
@@ -112,8 +113,8 @@ const THREAD_CATALOG = [
         href: 'thread-salary-threshold-examples.html',
         summary: 'Individual tax briefing on salary bands, filing coverage, and employee documentation points.',
         sources: 4,
-        updated: 'Mar 7, 2026',
-        updatedIso: '2026-03-07',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Salary Guide',
         gradient: 'linear-gradient(135deg, #516395, #614385)',
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
@@ -129,8 +130,8 @@ const THREAD_CATALOG = [
         href: 'thread-crypto-disposal-evidence.html',
         summary: 'Crypto tax note focused on disposal evidence, wallet trails, and valuation discipline.',
         sources: 2,
-        updated: 'Mar 5, 2026',
-        updatedIso: '2026-03-05',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Crypto Note',
         gradient: 'linear-gradient(135deg, #f4a261, #e9c46a)',
         keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
@@ -146,8 +147,8 @@ const THREAD_CATALOG = [
         href: 'thread-housing-family-relief-docs.html',
         summary: 'Deduction checklist for TD59 support files and year-end payroll reconciliation.',
         sources: 3,
-        updated: 'Mar 6, 2026',
-        updatedIso: '2026-03-06',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Open Checklist',
         gradient: 'linear-gradient(135deg, #b56576, #e56b6f)',
         keywordChips: ['Cyprus family tax relief 2026', 'Cyprus housing deduction documents']
@@ -163,8 +164,8 @@ const THREAD_CATALOG = [
         href: 'thread-startup-stock-options-8.html',
         summary: 'Startup tax briefing on approved schemes, internal approvals, and vesting evidence.',
         sources: 2,
-        updated: 'Mar 5, 2026',
-        updatedIso: '2026-03-05',
+        updated: 'Mar 10, 2026',
+        updatedIso: '2026-03-10',
         cta: 'Read Startup Guide',
         gradient: 'linear-gradient(135deg, #264653, #2a9d8f)',
         keywordChips: ['Cyprus stock options tax 8%', 'Cyprus startup tax incentives 2026']
@@ -188,7 +189,7 @@ function loadChartJsIfNeeded() {
 }
 
 function toCanonicalUrl(path) {
-    if (!path) return SITE_CANONICAL_ORIGIN;
+    if (!path) return SITE_CANONICAL_HOME;
     if (path.startsWith('http://') || path.startsWith('https://')) return path;
     const normalized = path.startsWith('/') ? path : `/${path}`;
     return `${SITE_CANONICAL_ORIGIN}${normalized}`;
@@ -226,9 +227,9 @@ function injectForumCollectionStructuredData() {
     const schema = {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        '@id': `${SITE_CANONICAL_ORIGIN}/#briefings`,
+        '@id': `${SITE_CANONICAL_HOME}#briefings`,
         name: 'Cyprus Tax and Accounting Briefings 2026',
-        url: SITE_CANONICAL_ORIGIN,
+        url: SITE_CANONICAL_HOME,
         inLanguage: 'en',
         dateModified,
         about: aboutTerms.map(term => ({ '@type': 'Thing', name: term })),
