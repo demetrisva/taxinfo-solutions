@@ -120,6 +120,23 @@ const THREAD_CATALOG = [
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
     },
     {
+        id: 'filing-scope-check',
+        categoryKey: 'individual',
+        category: 'Individuals',
+        tag: 'Individuals',
+        kicker: 'Compliance Reality Check',
+        title: 'Cyprus Filing Scope Reality Check 2026: Who Must File and What to Document',
+        excerpt: 'A practical map of 2026 filing scope triggers, including the resident age 25 to 71 condition, residency tests and document controls that prevent avoidable compliance misses.',
+        href: 'thread-filing-scope-reality-check.html',
+        summary: 'Individual compliance briefing on filing-scope triggers, residency tests, and document controls.',
+        sources: 3,
+        updated: 'Mar 13, 2026',
+        updatedIso: '2026-03-13',
+        cta: 'Read Filing Guide',
+        gradient: 'linear-gradient(135deg, #355070, #6d597a)',
+        keywordChips: ['Cyprus filing obligation 2026', 'Cyprus tax resident 25 to 71']
+    },
+    {
         id: 'crypto-framework',
         categoryKey: 'incentives',
         category: 'Incentives',

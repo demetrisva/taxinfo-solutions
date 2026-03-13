@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://taxinfo.solutions/</loc>
-      <lastmod>2026-03-10</lastmod>
+      <lastmod>2026-03-13</lastmod>
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
    </url>
    <url>
       <loc>https://taxinfo.solutions/cyprus-tax-guide-2026.html</loc>
-      <lastmod>2026-03-10</lastmod>
+      <lastmod>2026-03-13</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.95</priority>
    </url>
@@ -32,7 +32,13 @@
    </url>
    <url>
       <loc>https://taxinfo.solutions/thread-salary-threshold-examples.html</loc>
-      <lastmod>2026-03-10</lastmod>
+      <lastmod>2026-03-13</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://taxinfo.solutions/thread-filing-scope-reality-check.html</loc>
+      <lastmod>2026-03-13</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
    </url>
@@ -68,8 +74,14 @@
    </url>
    <url>
       <loc>https://taxinfo.solutions/about.html</loc>
-      <lastmod>2026-03-10</lastmod>
+      <lastmod>2026-03-13</lastmod>
       <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://taxinfo.solutions/editorial-changelog.html</loc>
+      <lastmod>2026-03-13</lastmod>
+      <changefreq>weekly</changefreq>
       <priority>0.7</priority>
    </url>
    <url>
