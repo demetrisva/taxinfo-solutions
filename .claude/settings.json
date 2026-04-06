@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -i \"google.*ad\\\\|adsbygoogle\\\\|ins\\\\.js\\\\|data-ad\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(grep -h \"meta name=\\\\\"description\\\\\"\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(grep -h \"noindex\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(wc -l /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/thread-*.html)",
+      "Bash(grep -i \"autoplay\\\\|autobuffer\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(grep -l \"noindex\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(grep -c \"style=\\\\\"unsafe-inline\\\\\"\" /Users/demetrisv/Library/CloudStorage/OneDrive-Personal/Documents/Projects/TaxInfo/taxinfo-solutions/*.html)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
+    ]
+  }
+}
