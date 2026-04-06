@@ -1602,6 +1602,17 @@ footer {
     color: var(--accent);
 }
 
+.footer-brand a,
+.table-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer-brand a:hover,
+.table-note a:hover {
+    text-decoration: underline;
+}
+
 .footer-bottom {
     text-align: center;
     border-top: 1px solid var(--border-color);
