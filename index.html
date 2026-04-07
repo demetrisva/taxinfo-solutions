@@ -33,8 +33,7 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.ee2323536d.min.css">
 
-    <!-- Background is now CSS gradient-based -->
-        <meta name="theme-color" content="#17343d">
+    <meta name="theme-color" content="#17343d">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="TaxInfo">
@@ -102,53 +101,6 @@
             "target": "https://taxinfo.solutions/?q={search_term_string}",
             "query-input": "required name=search_term_string"
           }
-        },
-        
-        {
-          "@type": "FAQPage",
-          "mainEntity": [{
-            "@type": "Question",
-            "name": "What personal income tax threshold does the 2026 Cyprus package use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The April 2026 source review for this site continues to use the EUR 22,000 annual tax-free threshold shown in the Ministry of Finance reform material."
-            }
-          }, {
-            "@type": "Question",
-            "name": "What corporate tax rate does this site use for Cyprus 2026 planning?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The site tracks the 15% corporation tax rate described in the Ministry of Finance 2026 reform material and pairs it with governance and close-process notes."
-            }
-          }, {
-            "@type": "Question",
-            "name": "What dividend SDC rate is used in the examples?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The briefings model the 5% dividend SDC rate described in the 2026 reform package and explain where domicile and non-dom status still matter."
-            }
-          }, {
-            "@type": "Question",
-            "name": "How does the site treat crypto gains in Cyprus for 2026?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The site discusses the 8% crypto-disposal treatment referenced in the Ministry of Finance incentives package and places the emphasis on evidence, valuation and disposal records."
-            }
-          }, {
-            "@type": "Question",
-            "name": "How should businesses prepare for the VAT zero-rate period ending in 2026?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Official publications reviewed for this site continue to frame the zero-rate treatment on basic goods as running through December 31, 2026. Businesses should keep SKU mapping, invoice testing evidence and dated transition approvals before year-end."
-            }
-          }, {
-            "@type": "Question",
-            "name": "Why does the site separate enacted rules from interpretation?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Cyprus tax updates are often spread across law changes, administrative notices and business-guidance pages. This site labels those layers separately so readers can see what is enacted and what is operational interpretation."
-            }
-          }]
         }
       ]
     }
@@ -172,26 +124,12 @@
             </button>
             <div class="nav-menu" id="primary-navigation">
                 <a href="cyprus-tax-guide-2026.html" class="nav-link">Tax Guide</a>
-                <div class="nav-item-dropdown">
-                    <a href="#" class="nav-link">Coverage ▾</a>
-                    <div class="dropdown-menu">
-                        <a href="#news-hub" onclick="filterNews('individual')" class="dropdown-item">Individuals</a>
-                        <a href="#news-hub" onclick="filterNews('payroll')" class="dropdown-item">Payroll</a>
-                        <a href="#news-hub" onclick="filterNews('corporate')" class="dropdown-item">Corporate</a>
-                    </div>
-                </div>
-                <div class="nav-item-dropdown">
-                    <a href="#" class="nav-link">Tools ▾</a>
-                    <div class="dropdown-menu">
-                        <a href="#calculator-section" class="dropdown-item">Impact Calculator</a>
-                        <a href="#calendar-section" class="dropdown-item">Deadline Calendar</a>
-                        <a href="#faq-section" class="dropdown-item">FAQ</a>
-                        <a href="#downloads-section" class="dropdown-item">Source Library</a>
-                    </div>
-                </div>
-                <a href="#mission-section" class="nav-link">Editorial Policy</a>
+                <a href="briefings.html" class="nav-link">Briefings</a>
+                <a href="coverage.html" class="nav-link">Coverage</a>
+                <a href="tools.html" class="nav-link">Tools</a>
+                <a href="editorial-standards.html" class="nav-link">Editorial</a>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="#news-hub" class="btn-nav">Latest Briefings</a>
+                <a href="tools.html" class="btn-nav">Try Calculator</a>
             </div>
             <div class="nav-tools">
                 <div class="search-container">
@@ -207,779 +145,148 @@
     </nav>
 
     <main id="main-content">
-    <!-- Hero Section -->
-    <header class="hero-section">
-        <div class="container hero-content-center">
-            <span class="badge-new" id="lastReviewedBadge">Last reviewed: April 6, 2026</span>
-            <div class="stamp-duty-banner">
-                April 6, 2026 review: refreshed every briefing, rechecked current source links, tightened the calculator wording, and updated the regulatory notes that matter most for 2026 filings.
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="container hero-content-center">
+                <span class="badge-new" id="lastReviewedBadge">Last reviewed: April 6, 2026</span>
+                <div class="stamp-duty-banner">
+                    April 6, 2026 review: refreshed every briefing, rechecked current source links, tightened the calculator wording, and updated the regulatory notes that matter most for 2026 filings.
+                </div>
+                <h1 class="hero-title">Cyprus <span class="text-gradient">Tax Guide</span> <br> 2026 Updates</h1>
+                <p class="hero-subtitle">Start here for the current Cyprus tax picture in 2026. The guide covers income tax, payroll, VAT, residency, incentives and corporate topics, then sends you to tighter briefings when the answer needs more detail.</p>
+                <div class="hero-link-row">
+                    <a href="cyprus-tax-guide-2026.html" class="btn-hero-main">Open Tax Guide</a>
+                    <a href="briefings.html" class="btn-hero-secondary">Latest Briefings</a>
+                </div>
             </div>
-            <h1 class="hero-title">Cyprus <span class="text-gradient">Tax Guide</span> <br> 2026 Updates</h1>
-            <p class="hero-subtitle">Start here for the current Cyprus tax picture in 2026. The guide covers income tax, payroll, VAT, residency, incentives and corporate topics, then sends you to tighter briefings when the answer needs more detail.</p>
-            <div class="hero-link-row">
-                <a href="cyprus-tax-guide-2026.html" class="btn-hero-main">Open Tax Guide</a>
-                <a href="#news-hub" class="btn-hero-secondary">Latest Briefings</a>
+        </header>
+
+        <div class="stats-bar">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Primary Briefings</span>
+                    <span class="stat-value" id="statTrackedThreads">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Official Sources</span>
+                    <span class="stat-value" id="statCommunityReplies">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Topic Desks</span>
+                    <span class="stat-value" id="statForumChannels">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Latest Review</span>
+                    <span class="stat-value" id="statLatestUpdate">--</span>
+                </div>
             </div>
-            <p class="hero-inline-link">Looking for the broad answer first? Read the <a href="cyprus-tax-guide-2026.html">Cyprus Tax Guide 2026</a>.</p>
         </div>
-    </header>
 
-    <div class="stats-bar">
-        <div class="container stats-grid">
-            <div class="stat-item">
-                <span class="stat-label">Primary Briefings</span>
-                <span class="stat-value" id="statTrackedThreads">--</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Official Sources</span>
-                <span class="stat-value" id="statCommunityReplies">--</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Topic Desks</span>
-                <span class="stat-value" id="statForumChannels">--</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Latest Review</span>
-                <span class="stat-value" id="statLatestUpdate">--</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-wrapper">
-        <section class="container" style="margin-bottom: 44px;">
-            <div class="section-header">
-                <span class="badge-new">Use It By Situation</span>
-                <h2>Start With the <span class="text-accent">Question You Actually Have</span></h2>
-                <p>Readers do not usually need "Cyprus tax content" in the abstract. They need an answer tied to a filing task, an employment decision, a board action or a VAT process. This section is here to get them to the right page faster.</p>
-            </div>
-            <div class="info-grid">
-                <article class="card">
-                    <div class="icon-circle">👤</div>
-                    <h3>Taking a Salary</h3>
-                    <p>Start with the personal tax guide if you need to compare 2025 and 2026 net pay, understand the EUR 22,000 threshold or check whether filing scope changes your planning.</p>
-                    <p><a href="thread-salary-threshold-examples.html" class="read-more">Open the personal tax guide</a></p>
-                </article>
-                <article class="card">
-                    <div class="icon-circle">🗂️</div>
-                    <h3>Running Payroll</h3>
-                    <p>Use the payroll guide and deadline calendar if you are trying to confirm March and May filing dates, TD59 support, ownership of reconciliations or the evidence you should already have on file.</p>
-                    <p><a href="thread-payroll-assumptions-log.html" class="read-more">Open the payroll guide</a></p>
-                </article>
-                <article class="card">
-                    <div class="icon-circle">🏛️</div>
-                    <h3>Planning a Distribution</h3>
-                    <p>Use the corporate and dividend briefings together if you are preparing board papers, checking post-tax reserves, modelling shareholder outcomes or reviewing non-dom boundaries.</p>
-                    <p><a href="thread-dividend-sdc-planning.html" class="read-more">Open the dividend briefing</a></p>
-                </article>
-                <article class="card">
-                    <div class="icon-circle">🛒</div>
-                    <h3>Checking VAT Exposure</h3>
-                    <p>Go to the VAT operations note if you need to test zero-rate eligibility on basic goods, review SME status, prepare year-end transition controls or sanity-check invoice setup.</p>
-                    <p><a href="thread-vat-zero-rate-exit-readiness.html" class="read-more">Open the VAT operations note</a></p>
-                </article>
-            </div>
-        </section>
-
-        <section id="keyword-hub-section" class="container keyword-hub-section">
-            <div class="section-header">
-                <span class="badge-new">Popular Search Topics</span>
-                <h2>Find Cyprus Tax Topics <span class="text-accent">Fast</span></h2>
-                <p>Readers usually arrive here looking for salary tax, filing scope, payroll deadlines, dividend planning, VAT treatment on basic goods and the main corporate tax changes for 2026.</p>
-            </div>
-            <div id="keyword-chip-grid" class="keyword-chip-grid" aria-live="polite">
-                <!-- Rendered from THREAD_CATALOG in script.js -->
-            </div>
-            <noscript>
-                <div class="keyword-chip-grid">
-                    <a href="thread-salary-threshold-examples.html" class="keyword-chip">Cyprus salary tax calculator 2026</a>
-                    <a href="thread-filing-scope-reality-check.html" class="keyword-chip">Cyprus filing obligation 2026</a>
-                    <a href="thread-corporate-tax-transition.html" class="keyword-chip">Cyprus corporate tax 15%</a>
-                    <a href="thread-dividend-sdc-planning.html" class="keyword-chip">Cyprus dividend tax 5%</a>
-                    <a href="thread-payroll-assumptions-log.html" class="keyword-chip">Cyprus payroll withholding 2026</a>
-                    <a href="thread-vat-zero-rate-exit-readiness.html" class="keyword-chip">Cyprus VAT zero rate 2026</a>
-                </div>
-            </noscript>
-        </section>
-
-        <section class="container" style="margin-bottom: 44px;">
-            <div class="data-card editorial-callout">
-                <div class="section-header" style="margin-bottom: 0;">
-                    <span class="badge-new">Start Here</span>
-                    <h2>New Broad Page: <span class="text-accent">Cyprus Tax Guide 2026</span></h2>
-                    <p>If someone searches for "tax Cyprus", this is the page that should answer the broad question first. It explains the core framework, shows where 2026 changes matter, and points to the deeper briefings when a single rate or deadline is not enough.</p>
-                </div>
-                <p style="margin-top: 14px;"><a href="cyprus-tax-guide-2026.html" class="read-more">Open the Cyprus Tax Guide 2026</a></p>
-            </div>
-        </section>
-
-        <section class="container" style="margin-bottom: 44px;">
-            <div class="grid-2-col-wide">
-                <article class="data-card">
-                    <h3>Who Edits This Site</h3>
-                    <p>TaxInfo Solutions is run as an independent editorial desk focused on Cyprus tax workflow questions. The goal is not to publish the biggest library. The goal is to publish pages that are useful enough to help a taxpayer, payroll owner or finance team decide what to do next.</p>
-                    <ul class="check-list">
-                        <li><strong>Editorial owner:</strong> TaxInfo Solutions Editorial Desk.</li>
-                        <li><strong>Source discipline:</strong> official ministry, Tax For All, Tax Department and Cyprus government material first.</li>
-                        <li><strong>Review method:</strong> rates, filing dates and linked source pages are rechecked before a page gets a new review stamp.</li>
-                    </ul>
-                </article>
-                <article class="data-card">
-                    <h3>What Makes a Page Worth Publishing</h3>
-                    <p>Every primary page should do at least one of three things well: explain a rule in plain language, help someone complete a real compliance task, or show what documents and approvals need to be kept. If a page does not earn its place on that basis, it should not be a primary review target.</p>
-                    <ul class="check-list">
-                        <li><strong>Useful before filing:</strong> checklists, controls, owners and source links matter more than headline rates alone.</li>
-                        <li><strong>Original by design:</strong> pages are rewritten from scratch to answer practical questions, not to paraphrase announcements line by line.</li>
-                        <li><strong>Clear limits:</strong> where a point depends on facts, the page says so and sends the reader back to the primary source.</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="trending-section" class="container trending-section">
-            <div class="section-header">
-                <span class="badge-new">Latest Reviews</span>
-                <h2>Most Relevant <span class="text-accent">Cyprus Tax Briefings</span></h2>
-                <p>Priority ranking based on recency, source coverage and how often the topic affects real filing work.</p>
-            </div>
-            <div id="trending-grid" class="trending-grid" aria-live="polite"></div>
-        </section>
-
-        <section id="news-hub" class="news-hub-section container">
-            <div class="section-header">
-                <span class="badge-new">Briefing Hub</span>
-                <h2>Primary Cyprus Tax <span class="text-accent">Coverage</span></h2>
-                <p>These are the main indexed briefings the site is built around. Each page was rewritten in original language and checked again against official source material on April 6, 2026.</p>
-            </div>
-
-            <div class="news-tabs">
-                <button class="news-tab-btn active btn-all" data-category="all" aria-pressed="true"
-                    onclick="filterNews('all')">All</button>
-                <button class="news-tab-btn btn-personal" data-category="individual" aria-pressed="false"
-                    onclick="filterNews('individual')">Individuals</button>
-                <button class="news-tab-btn btn-corp" data-category="payroll" aria-pressed="false"
-                    onclick="filterNews('payroll')">Payroll</button>
-                <button class="news-tab-btn btn-corp" data-category="corporate" aria-pressed="false"
-                    onclick="filterNews('corporate')">Corporate</button>
-            </div>
-
-            <div id="news-grid-all" class="news-grid active" aria-live="polite">
-                <!-- Rendered from THREAD_CATALOG in script.js -->
-            </div>
-            <noscript>
-                <div class="thread-directory-noscript">
-                    <p>JavaScript is disabled. Direct briefing links:</p>
-                    <p><a href="thread-salary-threshold-examples.html">Cyprus personal tax guide 2026</a></p>
-                    <p><a href="thread-filing-scope-reality-check.html">Cyprus filing scope reality check 2026</a></p>
-                    <p><a href="thread-corporate-tax-transition.html">Corporate tax reform at 15%</a></p>
-                    <p><a href="thread-filing-penalties-calendar.html">Cyprus tax calendar 2026</a></p>
-                    <p><a href="thread-payroll-assumptions-log.html">Payroll operating guide and TD59 support</a></p>
-                    <p><a href="thread-dividend-sdc-planning.html">Dividend SDC planning at 5%</a></p>
-                    <p><a href="thread-vat-zero-rate-exit-readiness.html">VAT zero-rate exit runway 2026</a></p>
-                </div>
-            </noscript>
-        </section>
-
-        <section id="thread-directory-section" class="container thread-directory-section">
-            <div class="section-header">
-                <span class="badge-new">Editorial Index</span>
-                <h2>Primary Published <span class="text-accent">Briefings</span></h2>
-                <p>This directory highlights the site's main indexed briefings so dates, source counts and links stay consistent across the primary content set.</p>
-            </div>
-            <div id="thread-directory-list" class="thread-directory-grid" aria-live="polite"></div>
-            <noscript>
-                <div class="thread-directory-noscript">
-                    <p>Static primary briefing directory:</p>
-                    <p><a href="cyprus-tax-guide-2026.html">Cyprus Tax Guide 2026</a></p>
-                    <p><a href="thread-salary-threshold-examples.html">Cyprus personal tax guide 2026</a></p>
-                    <p><a href="thread-filing-scope-reality-check.html">Cyprus filing scope reality check 2026</a></p>
-                    <p><a href="thread-corporate-tax-transition.html">Corporate tax reform at 15%</a></p>
-                    <p><a href="thread-dividend-sdc-planning.html">Dividend SDC planning at 5%</a></p>
-                    <p><a href="thread-vat-zero-rate-exit-readiness.html">VAT zero-rate exit runway 2026</a></p>
-                    <p><a href="thread-filing-penalties-calendar.html">Cyprus tax calendar 2026</a></p>
-                    <p><a href="thread-payroll-assumptions-log.html">Tax For All payroll guide</a></p>
-                </div>
-            </noscript>
-        </section>
-
-        <section id="info-section" class="info-grid container">
-            <div class="card">
-                <div class="icon-circle">📄</div>
-                <h3>Individuals</h3>
-                <p>Personal tax coverage for the <strong>EUR 22,000 threshold</strong>, revised bands, residency tests, TD59 support and annual filing scope.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle">🧾</div>
-                <h3>Payroll</h3>
-                <p>Employer guidance on <strong>Tax For All</strong>, monthly withholding returns, PAYE timing and payroll-year evidence controls.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle">🏢</div>
-                <h3>Corporate</h3>
-                <p>Practical notes on the <strong>15% corporate tax rate</strong>, <strong>5% dividend SDC</strong> and what boards should document before 2026 filings.</p>
-            </div>
-            <div class="card">
-                <div class="icon-circle">🛒</div>
-                <h3>VAT Operations</h3>
-                <p>Working guidance on <strong>19% VAT</strong>, reduced rates, the temporary zero-rate on basic goods and the controls teams should build before year-end changes.</p>
-            </div>
-        </section>
-
-        <section id="tax-tables-section" class="container" style="margin-bottom: 80px;">
-            <div class="grid-2-col-wide">
-                <div class="data-card">
-                    <div class="card-header-flex">
-                        <h3>Income Tax Snapshot</h3>
-                        <span class="badge-neutral">Effective 1 Jan 2026</span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="tax-table">
-                            <thead>
-                                <tr>
-                                    <th>Band</th>
-                                    <th>2025</th>
-                                    <th>2026</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Tax-free threshold</td>
-                                    <td>EUR 19,500</td>
-                                    <td>EUR 22,000</td>
-                                </tr>
-                                <tr>
-                                    <td>First taxable band</td>
-                                    <td>20% up to EUR 28,000</td>
-                                    <td>20% up to EUR 32,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Mid band</td>
-                                    <td>25% up to EUR 36,300</td>
-                                    <td>25% up to EUR 42,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Top progression before 35%</td>
-                                    <td>30% up to EUR 60,000</td>
-                                    <td>30% up to EUR 72,000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="table-note">This table reflects the personal income tax scale described in the Ministry of Finance reform material reviewed for the site on April 6, 2026.</p>
-                </div>
-
-                <div class="data-card">
-                    <div class="card-header-flex">
-                        <h3>VAT and Payroll Essentials</h3>
-                        <span class="badge-neutral">Operational view</span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="tax-table">
-                            <thead>
-                                <tr>
-                                    <th>Area</th>
-                                    <th>Current pointer</th>
-                                    <th>What to check</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Standard VAT</td>
-                                    <td>19%</td>
-                                    <td>Item classification and invoice wording.</td>
-                                </tr>
-                                <tr>
-                                    <td>Reduced VAT</td>
-                                    <td>9% and 5%</td>
-                                    <td>Hospitality, qualifying housing works and essentials.</td>
-                                </tr>
-                                <tr>
-                                    <td>Basic goods relief</td>
-                                    <td>0% relief through 31 Dec 2026</td>
-                                    <td>Confirm whether your product list falls within the official notice.</td>
-                                </tr>
-                                <tr>
-                                    <td>Payroll funding</td>
-                                    <td>Employee SI 8.8% plus GESY 2.65%</td>
-                                    <td>Apply caps and payroll-year deduction evidence carefully.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="table-note">Small businesses should also review the official note on the new VAT rules for small enterprises from January 1, 2025 and confirm whether 2026 turnover or customer-location facts require a process change.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="residency-section" class="container" style="margin-bottom: 80px;">
-            <div class="section-header">
-                <h2>Residency and <span class="text-accent">Filing Scope</span></h2>
-                <p>The 2026 individual tax changes only help if the taxpayer first confirms which Cyprus residence and filing rules actually apply.</p>
-            </div>
-            <div class="residency-grid">
-                <div class="res-card">
-                    <div class="res-icon">📅</div>
-                    <h3>183-Day Rule</h3>
-                    <p>Residence can still arise by spending more than <strong>183 days</strong> in Cyprus during the calendar year.</p>
-                </div>
-                <div class="res-card">
-                    <div class="res-icon">✈️</div>
-                    <h3>60-Day Rule</h3>
-                    <p>The Cyprus 60-day rule remains important for mobile professionals, but it only works where each statutory condition is met and properly documented.</p>
-                </div>
-                <div class="res-card new-feature">
-                    <div class="res-icon">📝</div>
-                    <h3>Wider Filing Scope</h3>
-                    <p>For 2026, official business guidance indicates broader annual return filing coverage for Cyprus tax residents aged 25 to 71, including nil-income cases, subject to the detailed implementation rules and any exclusions.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="container" style="margin-bottom: 80px;">
-            <div class="data-card editorial-callout">
+        <div class="main-wrapper">
+            <!-- Quick Situations Section -->
+            <section class="container" style="margin-bottom: 44px;">
                 <div class="section-header">
-                    <h2>Editorial Standards <span class="text-accent">on Every Page</span></h2>
-                    <p>This publication is built around official releases, and every calculator result is clearly labelled as an estimate rather than a binding tax opinion.</p>
+                    <span class="badge-new">Use It By Situation</span>
+                    <h2>Start With the <span class="text-accent">Question You Actually Have</span></h2>
+                    <p>Readers do not usually need "Cyprus tax content" in the abstract. They need an answer tied to a filing task, an employment decision, a board action or a VAT process. This section is here to get them to the right page faster.</p>
                 </div>
-                <ul class="check-list">
-                    <li><strong>Original writing:</strong> every article is rewritten in fresh language instead of echoing source wording.</li>
-                    <li><strong>Dated reviews:</strong> pages carry a review date so readers can see when the source check was last completed.</li>
-                    <li><strong>Clear boundaries:</strong> the site explains when a point is practical interpretation and directs readers back to the official authority for final confirmation.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="calculator-section" class="calculator-wrapper container">
-            <div class="section-header">
-                <h2>Impact Calculator</h2>
-                <p>Use the estimator for directional planning only. Final liability depends on the enacted rules, source guidance, deduction support and your actual filing facts.</p>
-            </div>
-
-            <div class="tabs" role="tablist" aria-label="Calculator mode">
-                <button id="tab-salary" class="tab-btn active" role="tab" aria-selected="true"
-                    aria-controls="salary" onclick="openTab('salary', this)">Personal Income</button>
-                <button id="tab-business" class="tab-btn" role="tab" aria-selected="false" aria-controls="business"
-                    onclick="openTab('business', this)">Business Owner</button>
-            </div>
-
-            <div id="salary" class="tab-content active" role="tabpanel" aria-labelledby="tab-salary">
-                <div class="calc-box">
-                    <div class="input-group-row" style="margin-bottom: 15px;">
-                        <label style="width: 100%; display: block; margin-bottom: 5px;">Tax Year</label>
-                        <select id="taxYear"
-                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main);">
-                            <option value="2026">2026 published package</option>
-                            <option value="2025">2025 baseline</option>
-                        </select>
-                    </div>
-
-                    <label>Annual Gross Salary (€)</label>
-                    <div class="input-group">
-                        <input type="number" id="grossSalary" placeholder="e.g. 35000">
-                        <button onclick="calculateSalary()" class="calc-btn">Calculate</button>
-                        <div class="calc-actions-secondary">
-                            <button onclick="multiplyBy12()" class="calc-btn-secondary"
-                                title="Monthly x 12">x12</button>
-                            <button onclick="multiplyBy13()" class="calc-btn-secondary"
-                                title="Monthly x 13">x13</button>
-                        </div>
-
-                    </div>
-                    <!-- Moved Advanced Toggle & Inputs OUTSIDE the flex input-group -->
-                    <div class="advanced-section-wrapper" style="margin-top: 20px;">
-                        <div class="advanced-toggle">
-                            <label class="switch">
-                                <input type="checkbox" id="advancedModeToggle" onchange="toggleAdvancedMode()">
-                                <span class="slider round"></span>
-                            </label>
-                            <span class="toggle-label">Advanced Mode (Deductions and Exemptions)</span>
-                        </div>
-
-                        <div id="advancedInputs" class="advanced-inputs hidden">
-                            <!-- Vertical Stack Layout -->
-                            <div class="input-stack">
-                                <div class="form-item">
-                                    <label>Dependent Children</label>
-                                    <select id="childrenCount" style="width: 100%;">
-                                        <option value="0">None</option>
-                                        <option value="1">1 Child (-€1,000)</option>
-                                        <option value="2">2 Children (-€2,250)</option>
-                                        <option value="3">3 Children (-€3,750)</option>
-                                        <option value="4">4 Children (-€5,500)</option>
-                                        <option value="5">5 Children (-€7,500)</option>
-                                    </select>
-                                </div>
-                                <div class="form-item">
-                                    <label>Housing Loan Interest (€)</label>
-                                    <input type="number" id="housingInterest" placeholder="Max 2000"
-                                        style="width: 100%;">
-                                </div>
-                                <div class="form-item">
-                                    <label>Rent Allowance (€)</label>
-                                    <input type="number" id="rentDeduction" placeholder="Max 2000" style="width: 100%;">
-                                </div>
-                                <div class="form-item">
-                                    <label>Green Investment (€)</label>
-                                    <input type="number" id="greenDeduction" placeholder="Max 1000"
-                                        style="width: 100%;">
-                                </div>
-                                <div class="form-item">
-                                    <label>Other IR59 Deductions (€) <span class="info-tooltip"
-                                            title="Union subscriptions, Professional subscriptions, Donations to approved charities">?</span></label>
-                                    <input type="number" id="ir59Deductions" placeholder="Unions, Charities, Prof. Subs"
-                                        style="width: 100%;">
-                                    <small class="field-note">Trade unions, professional bodies, approved
-                                        charities.</small>
-                                </div>
-                                <div class="form-item checkbox-row">
-                                    <label class="checkbox-container">
-                                        <input type="checkbox" id="expatExemption">
-                                        <span class="checkmark"></span>
-                                        First Employment Relief (50% Exemption)
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="salaryResult" class="result-box hidden" role="status" aria-live="polite">
-                        <div class="chart-container">
-                            <canvas id="taxChart"></canvas>
-                        </div>
-                        <div class="row"><span>Gross Income:</span> <span id="outGross">€0</span></div>
-                        <div class="row text-red"><span>Social Insurance (8.8% capped) + GESY (2.65%):</span> <span>- <span
-                                    id="outSocial">€0</span></span></div>
-                        <div class="row text-red"><span id="outTaxLabel">Income Tax:</span> <span>- <span
-                                    id="outTax">€0</span></span></div>
-                        <div class="total-row">
-                            <span>Net Pay (Yearly):</span>
-                            <span id="outNet">€0</span>
-                        </div>
-                        <p id="taxComputationNote" class="note">*Select a tax year and calculate to view the estimator note for that rule set.</p>
-                    </div>
+                <div class="info-grid">
+                    <article class="card">
+                        <div class="icon-circle">👤</div>
+                        <h3>Taking a Salary</h3>
+                        <p>Start with the personal tax guide if you need to compare 2025 and 2026 net pay, understand the EUR 22,000 threshold or check whether filing scope changes your planning.</p>
+                        <p><a href="thread-salary-threshold-examples.html" class="read-more">Open the personal tax guide</a></p>
+                    </article>
+                    <article class="card">
+                        <div class="icon-circle">🗂️</div>
+                        <h3>Running Payroll</h3>
+                        <p>Use the payroll guide and deadline calendar if you are trying to confirm March and May filing dates, TD59 support, ownership of reconciliations or the evidence you should already have on file.</p>
+                        <p><a href="thread-payroll-assumptions-log.html" class="read-more">Open the payroll guide</a></p>
+                    </article>
+                    <article class="card">
+                        <div class="icon-circle">🏛️</div>
+                        <h3>Planning a Distribution</h3>
+                        <p>Use the corporate and dividend briefings together if you are preparing board papers, checking post-tax reserves, modelling shareholder outcomes or reviewing non-dom boundaries.</p>
+                        <p><a href="thread-dividend-sdc-planning.html" class="read-more">Open the dividend briefing</a></p>
+                    </article>
+                    <article class="card">
+                        <div class="icon-circle">🛒</div>
+                        <h3>Checking VAT Exposure</h3>
+                        <p>Go to the VAT operations note if you need to test zero-rate eligibility on basic goods, review SME status, prepare year-end transition controls or sanity-check invoice setup.</p>
+                        <p><a href="thread-vat-zero-rate-exit-readiness.html" class="read-more">Open the VAT operations note</a></p>
+                    </article>
                 </div>
-            </div>
+            </section>
 
-            <div id="business" class="tab-content" role="tabpanel" aria-labelledby="tab-business" hidden>
-                <div class="calc-box">
-                    <label>Annual Net Profit (€)</label>
-                    <div class="input-group">
-                        <input type="number" id="profitInput" placeholder="e.g. 100000">
-                        <button onclick="calculateBusiness()" class="calc-btn">Compare</button>
+            <!-- Popular Topics Section -->
+            <section id="keyword-hub-section" class="container keyword-hub-section">
+                <div class="section-header">
+                    <span class="badge-new">Popular Search Topics</span>
+                    <h2>Find Cyprus Tax Topics <span class="text-accent">Fast</span></h2>
+                    <p>Readers usually arrive here looking for salary tax, filing scope, payroll deadlines, dividend planning, VAT treatment on basic goods and the main corporate tax changes for 2026.</p>
+                </div>
+                <div id="keyword-chip-grid" class="keyword-chip-grid" aria-live="polite">
+                    <!-- Rendered from THREAD_CATALOG in script.js -->
+                </div>
+                <noscript>
+                    <div class="keyword-chip-grid">
+                        <a href="thread-salary-threshold-examples.html" class="keyword-chip">Cyprus salary tax calculator 2026</a>
+                        <a href="thread-filing-scope-reality-check.html" class="keyword-chip">Cyprus filing obligation 2026</a>
+                        <a href="thread-corporate-tax-transition.html" class="keyword-chip">Cyprus corporate tax 15%</a>
+                        <a href="thread-dividend-sdc-planning.html" class="keyword-chip">Cyprus dividend tax 5%</a>
+                        <a href="thread-payroll-assumptions-log.html" class="keyword-chip">Cyprus payroll withholding 2026</a>
+                        <a href="thread-vat-zero-rate-exit-readiness.html" class="keyword-chip">Cyprus VAT zero rate 2026</a>
                     </div>
+                </noscript>
+            </section>
 
-                    <div id="businessResult" class="result-grid hidden">
-                        <div class="res-col old-rules">
-                            <h4>2025 baseline</h4>
-                            <p>Corp Tax (12.5%): <strong>€<span id="tax25">0</span></strong></p>
-                            <p>Div. Tax (17%): <strong>€<span id="div25">0</span></strong></p>
-                            <p class="total-net">Net: €<span id="net25">0</span></p>
-                        </div>
-                        <div class="res-col new-rules">
-                            <h4>2026 package view</h4>
-                            <p>Corp Tax (15%): <strong>€<span id="tax26">0</span></strong></p>
-                            <p>Div. Tax (5%): <strong>€<span id="div26">0</span></strong></p>
-                            <p class="total-net">Net: €<span id="net26">0</span></p>
-                        </div>
+            <!-- Tax Guide Highlight -->
+            <section class="container" style="margin-bottom: 44px;">
+                <div class="data-card editorial-callout">
+                    <div class="section-header" style="margin-bottom: 0;">
+                        <span class="badge-new">Start Here</span>
+                        <h2>Read the <span class="text-accent">Cyprus Tax Guide 2026</span></h2>
+                        <p>A comprehensive overview of current tax rules, framework changes, and where deep dives are needed for your specific situation.</p>
                     </div>
-                    <div id="verdict" class="verdict-box hidden" role="status" aria-live="polite"></div>
+                    <p style="margin-top: 14px;"><a href="cyprus-tax-guide-2026.html" class="read-more">Open the Cyprus Tax Guide 2026</a></p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="mission-section" class="split-section container">
-            <div class="split-content">
-                <span class="section-tag">Editorial Policy</span>
-                <h2>Why this <br> <span class="text-accent">briefing desk</span> exists</h2>
-                <p>Cyprus tax changes are often announced across multiple official pages, forms and event notices. This site condenses them into readable, dated briefings that are useful in practice without pretending to replace licensed advice.</p>
-                <a href="#news-hub" class="btn-text">Jump to latest briefings →</a>
-            </div>
-            <div class="split-grid">
-                <div class="mini-card">
-                    <h4>Source-first</h4>
-                    <p>Official government material is the starting point for every update.</p>
+            <!-- Coverage Areas -->
+            <section id="info-section" class="info-grid container">
+                <div class="card">
+                    <div class="icon-circle">📄</div>
+                    <h3>Individuals</h3>
+                    <p>Personal tax coverage for the <strong>EUR 22,000 threshold</strong>, revised bands, residency tests, TD59 support and annual filing scope.</p>
                 </div>
-                <div class="mini-card">
-                    <h4>Plain language</h4>
-                    <p>Dense announcements are rewritten into business, payroll and taxpayer actions.</p>
-                </div>
-                <div class="mini-card">
-                    <h4>Transparent estimates</h4>
-                    <p>Calculator outputs are labelled as estimates with explicit assumptions.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="editorial-workflow-section" class="container" style="margin-bottom: 80px;">
-            <div class="section-header">
-                <span class="badge-new">Original Content Standard</span>
-                <h2>How We Build <span class="text-accent">Useful Tax Content</span></h2>
-                <p>Each page is drafted to answer the question a finance team or taxpayer usually asks after reading the official release: what changed, who is affected, and what should be documented next.</p>
-            </div>
-            <div class="grid-2-col-wide">
-                <article class="data-card">
-                    <h3>Editorial Workflow</h3>
-                    <ul class="check-list">
-                        <li><strong>Step 1:</strong> gather official Cyprus government sources and confirm the publication date.</li>
-                        <li><strong>Step 2:</strong> separate enacted rules, administrative deadlines and practical interpretation.</li>
-                        <li><strong>Step 3:</strong> rewrite the material into original language with examples and action lists.</li>
-                        <li><strong>Step 4:</strong> add a review date and keep the source list on-page.</li>
-                    </ul>
-                </article>
-                <article class="data-card">
-                    <h3>Quality Controls</h3>
-                    <ul class="check-list">
-                        <li><strong>No copied commentary:</strong> articles are original rewrites, not scraped summaries.</li>
-                        <li><strong>No simulated user content:</strong> pages do not use invented users, votes, or discussion metrics.</li>
-                        <li><strong>Update trigger:</strong> content is revised when rates, deadlines, forms or official guidance change.</li>
-                        <li><strong>Correction path:</strong> editorial standards and contact details remain available on the <a href="about.html">About page</a>.</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="worked-scenarios-section" class="container" style="margin-bottom: 80px;">
-            <div class="section-header">
-                <span class="badge-new">Practical Use Cases</span>
-                <h2>Where Readers Get <span class="text-accent">Real Value</span></h2>
-                <p>The site is designed for tax work that has to be done, not just read.</p>
-            </div>
-            <div class="info-grid">
-                <article class="card">
-                    <div class="icon-circle">💼</div>
-                    <h3>Employee Offer Review</h3>
-                    <p>Compare 2025 and 2026 salary tax assumptions, then check whether TD59 deductions or first-employment relief may affect the result.</p>
-                    <ul class="check-list-sm">
-                        <li>Annualise the salary first.</li>
-                        <li>Check SI and GESY impact.</li>
-                        <li>Keep evidence for claimed deductions.</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <div class="icon-circle">🏢</div>
-                    <h3>Board Distribution Planning</h3>
-                    <p>Use the corporate and dividend briefings to align profits, board minutes and shareholder assumptions before declaring a 2026 distribution.</p>
-                    <ul class="check-list-sm">
-                        <li>Confirm post-tax reserves.</li>
-                        <li>Check SDC and non-dom status.</li>
-                        <li>Date approvals properly.</li>
-                    </ul>
-                </article>
-                <article class="card">
+                <div class="card">
                     <div class="icon-circle">🧾</div>
-                    <h3>Payroll Year-End Review</h3>
-                    <p>Track deduction support, employee declarations and payroll filings early so the spring 2026 deadlines do not become clean-up exercises.</p>
-                    <ul class="check-list-sm">
-                        <li>Reconcile monthly withholding.</li>
-                        <li>Check cap-driven variances.</li>
-                        <li>Archive deduction evidence by employee.</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section id="knowledge-base-section" class="container" style="margin-bottom: 60px;">
-            <h2 class="section-title-center">Key Cyprus Tax <span class="text-accent">Rules to Know</span></h2>
-            <p class="section-subtitle">Short-form explainers on the regimes readers ask about most often.</p>
-
-            <div class="exemptions-grid">
-                <details class="exemption-card">
-                    <summary>
-                        <div class="summary-flex">
-                            <span class="ex-icon">🌍</span>
-                            <span class="ex-title">Non-Dom Position</span>
-                            <span class="ex-tag">Legacy advantage</span>
-                        </div>
-                    </summary>
-                    <div class="ex-content">
-                        <p>The tax incentives material continues to highlight the appeal of Cyprus for non-domiciled individuals, especially around SDC exposure on dividends, interest and rents. The exact outcome still depends on residence, domicile history and the latest law wording.</p>
-                    </div>
-                </details>
-
-                <details class="exemption-card">
-                    <summary>
-                        <div class="summary-flex">
-                            <span class="ex-icon">🚀</span>
-                            <span class="ex-title">First Employment Relief</span>
-                            <span class="ex-tag">50% exemption</span>
-                        </div>
-                    </summary>
-                    <div class="ex-content">
-                        <p>The incentives package continues to support a <strong>50% first-employment exemption</strong> where statutory conditions are met, including salary thresholds and residence criteria. High earners relocating to Cyprus should document eligibility early.</p>
-                    </div>
-                </details>
-
-                <details class="exemption-card">
-                    <summary>
-                        <div class="summary-flex">
-                            <span class="ex-icon">🏖️</span>
-                            <span class="ex-title">Foreign Pension Option</span>
-                            <span class="ex-tag">5% route</span>
-                        </div>
-                    </summary>
-                    <div class="ex-content">
-                        <p>Cyprus continues to offer a favourable option for foreign pension income, including a <strong>5% tax</strong> route on annual foreign pension amounts above <strong>EUR 3,420</strong>. The choice should be reviewed alongside the standard progressive scale.</p>
-                    </div>
-                </details>
-
-                <details class="exemption-card">
-                    <summary>
-                        <div class="summary-flex">
-                            <span class="ex-icon">🌱</span>
-                            <span class="ex-title">Green and Digital Measures</span>
-                            <span class="ex-tag">2026 changes</span>
-                        </div>
-                    </summary>
-                    <div class="ex-content">
-                        <p>The 2026 package combines an 8% crypto gains rule with deduction support for qualifying green spending. Businesses should also monitor whether the zero-rate VAT relief on basic goods affects their invoicing and product setup through December 31, 2026.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
-
-        <section class="container grid-2-col" style="margin-bottom: 80px; gap: 30px;">
-            <div id="calendar-section" class="calendar-widget">
-                <div class="widget-header">
-                    <h3>Cyprus Deadline Calendar 2026</h3>
-                    <span class="live-dot"></span>
+                    <h3>Payroll</h3>
+                    <p>Employer guidance on <strong>Tax For All</strong>, monthly withholding returns, PAYE timing and payroll-year evidence controls.</p>
                 </div>
-                <div id="countdown-box" class="countdown-box">
-                    <p class="label">NEXT DEADLINE</p>
-                    <h3 id="next-deadline-title" aria-live="polite">Loading...</h3>
-                    <div id="days-left" aria-live="polite">-- Days</div>
+                <div class="card">
+                    <div class="icon-circle">🏢</div>
+                    <h3>Corporate</h3>
+                    <p>Practical notes on the <strong>15% corporate tax rate</strong>, <strong>5% dividend SDC</strong> and what boards should document before 2026 filings.</p>
                 </div>
-                <div class="deadline-list">
-                    <div class="d-item"><span class="date">Mar 31</span><span class="desc">Monthly PAYE submissions for Jul-Dec 2025</span></div>
-                    <div class="d-item"><span class="date">May 31</span><span class="desc">Annual PAYE withholding declaration for 2025</span></div>
-                    <div class="d-item"><span class="date">Jul 31</span><span class="desc">1st provisional tax installment for 2026</span></div>
-                    <div class="d-item"><span class="date">Dec 31</span><span class="desc">2nd provisional tax installment for 2026</span></div>
+                <div class="card">
+                    <div class="icon-circle">🛒</div>
+                    <h3>VAT Operations</h3>
+                    <p>Working guidance on <strong>19% VAT</strong>, reduced rates, the temporary zero-rate on basic goods and the controls teams should build before year-end changes.</p>
                 </div>
-            </div>
+            </section>
 
-            <div id="downloads-section" class="downloads-section">
-                <h3>Source Library and Official Forms</h3>
-                <p>Core links used across the refreshed briefings.</p>
-                <div class="download-grid">
-                    <a href="https://www.gov.cy/assets/modules/mof/tfa/documents/application-forms/employer-withholding-return-paye/ir59/IR59_2026_English__.pdf"
-                        target="_blank" rel="noopener noreferrer" class="download-btn">
-                        <span>TD59 / payroll deduction support</span>
-                        <span class="arrow">→</span>
-                    </a>
-                    <a href="https://www.gov.cy/mof/en/documents/tax-incentives/" target="_blank" rel="noopener noreferrer"
-                        class="download-btn">
-                        <span>Ministry tax incentives pack</span>
-                        <span class="arrow">→</span>
-                    </a>
-                    <a href="https://www.gov.cy/mof/en/documents/foreign-direct-investment-screening/" target="_blank" rel="noopener noreferrer"
-                        class="download-btn secondary">
-                        <span>FDI screening framework</span>
-                    </a>
-                    <a href="https://www.gov.cy/mof-tfa/en/documents/" target="_blank" rel="noopener noreferrer"
-                        class="download-btn secondary">
-                        <span>Tax For All documents and forms</span>
-                    </a>
+            <!-- CTA to All Content -->
+            <section class="container" style="margin-bottom: 80px; text-align: center;">
+                <h2 style="margin-bottom: 20px;">Explore All Resources</h2>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="briefings.html" class="btn-hero-secondary">All Briefings</a>
+                    <a href="tools.html" class="btn-hero-secondary">Tools & Calculator</a>
+                    <a href="coverage.html" class="btn-hero-secondary">Coverage Index</a>
+                    <a href="editorial-standards.html" class="btn-hero-secondary">Editorial Standards</a>
                 </div>
-                <div class="faq-mini">
-                    <h4>Most read now</h4>
-                    <p><strong>Individuals:</strong> personal tax guide and filing-scope check</p>
-                    <p><strong>Corporate:</strong> 15% rate and 5% dividend SDC note</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq-section" class="container faq-section">
-            <div class="section-header">
-                <span class="badge-new">Search-Friendly FAQ</span>
-                <h2>Cyprus Tax <span class="text-accent">FAQ 2026</span></h2>
-                <p>Short answers to the questions that trigger most searches on Cyprus tax and accounting changes.</p>
-            </div>
-            <div class="faq-grid">
-                <details class="faq-item">
-                    <summary>What is the Cyprus tax-free salary threshold in 2026?</summary>
-                    <p>The reviewed 2026 reform material uses a <strong>EUR 22,000</strong> annual tax-free threshold for individuals, replacing the previous EUR 19,500 baseline.</p>
-                    <a href="thread-salary-threshold-examples.html" class="read-more">Read salary reform briefing</a>
-                </details>
-                <details class="faq-item">
-                    <summary>What is the Cyprus corporate tax rate for 2026?</summary>
-                    <p>The Ministry of Finance reform package states a <strong>15%</strong> corporate tax rate effective from January 1, 2026, with related changes for dividend taxation and incentives.</p>
-                    <a href="thread-corporate-tax-transition.html" class="read-more">Read corporate reform briefing</a>
-                </details>
-                <details class="faq-item">
-                    <summary>What is the dividend tax (SDC) rate in Cyprus for 2026?</summary>
-                    <p>The reviewed reform package reduces the dividend SDC rate to <strong>5%</strong> from January 1, 2026, but the shareholder analysis still depends on status, timing and documentation.</p>
-                    <a href="thread-dividend-sdc-planning.html" class="read-more">Read dividend briefing</a>
-                </details>
-                <details class="faq-item">
-                    <summary>What should payroll teams check beyond the tax bands?</summary>
-                    <p>Payroll teams should check monthly withholding timing, annual PAYE filing dates, TD59 deduction support, SI and GESY treatment, and who owns the reconciliation before submission deadlines arrive.</p>
-                    <a href="thread-payroll-assumptions-log.html" class="read-more">Read payroll guide</a>
-                </details>
-                <details class="faq-item">
-                    <summary>What changed for payroll filings in early 2026?</summary>
-                    <p>Tax For All notices in January 2026 extended several monthly employer withholding submissions to March 31, 2026 and the annual 2025 PAYE declaration to May 31, 2026. As of April 6, 2026, no later official extension was identified in the publication stream reviewed for this site.</p>
-                    <a href="thread-filing-penalties-calendar.html" class="read-more">Read deadline calendar</a>
-                </details>
-                <details class="faq-item">
-                    <summary>How should businesses prepare for the VAT zero-rate period ending in 2026?</summary>
-                    <p>Official publications reviewed for this site continue to frame the zero-rate treatment on basic goods as running through December 31, 2026. Businesses should keep SKU-level tax mapping, invoice testing evidence and dated transition approvals before year-end.</p>
-                    <a href="thread-vat-zero-rate-exit-readiness.html" class="read-more">Read VAT transition briefing</a>
-                </details>
-                <details class="faq-item">
-                    <summary>Who must generally file a Cyprus tax return in 2026?</summary>
-                    <p>The current official business guidance indicates broader filing scope, including Cyprus tax residents aged 25 to 71 regardless of income, plus persons with gross income under Article 5, subject to implementation details.</p>
-                    <a href="thread-filing-scope-reality-check.html" class="read-more">Read filing scope briefing</a>
-                </details>
-            </div>
-        </section>
-
-        <section id="sources-section" class="container" style="margin-bottom: 80px;">
-            <div class="data-card">
-                <div class="section-header">
-                    <h2>Editorial Policy and <span class="text-accent">Sources</span></h2>
-                    <p>The site relies on official government sources for current-rule briefings and shows a review date on pages that have been refreshed.</p>
-                </div>
-                <ul class="check-list">
-                    <li><strong>Primary references only:</strong> ministry, Tax For All and official Cyprus business guidance pages are used as the baseline.</li>
-                    <li><strong>Original writing:</strong> articles are rewritten for clarity and practical application instead of repeating source wording.</li>
-                    <li><strong>Interpretation boundary:</strong> estimators and checklists are informational and should be confirmed against legislation, circulars or licensed advice before filing.</li>
-                    <li><strong>Public update transparency:</strong> material editorial corrections are published in the <a href="editorial-changelog.html">Editorial Changelog</a>.</li>
-                </ul>
-                <div class="footer-links-col" style="display: grid; gap: 8px; margin-top: 16px;">
-                    <a href="https://www.gov.cy/mof/en/income-tax-reform-tax-reform-approved-by-the-council-of-ministers-and-explanatory-guide-published/" target="_blank" rel="noopener noreferrer">Ministry of Finance: income tax reform approved and explanatory guide published</a>
-                    <a href="https://www.gov.cy/mof/en/documents/tax-incentives/" target="_blank" rel="noopener noreferrer">Ministry of Finance: tax incentives package</a>
-                    <a href="https://www.gov.cy/mof-tfa/mi-katigoriopoiimeno/forologiki-metarrythmisi-foros-eisodimatos-atomou-diathesimotita-tou-ergaleiou-ypologismou-kai-ypostiriktikou-ylikou/" target="_blank" rel="noopener noreferrer">Tax For All: personal tax reform calculator and support material</a>
-                    <a href="https://www.gov.cy/mof-tfa/mi-katigoriopoiimeno/paratasi-miniaies-kai-etisies-diloseis-parakratisis-forou-eisodimatos-ergodoti-ypochreoseis-kai-nees-kataliktikes-imerominies/" target="_blank" rel="noopener noreferrer">Tax For All: January 27, 2026 payroll withholding extension</a>
-                    <a href="https://www.gov.cy/mof-tfa/en/event/prothesmia-ypovolis-etisias-dilosis-parakratisis-f-e-kai-eisforon-paye-2025/" target="_blank" rel="noopener noreferrer">Tax For All: annual PAYE 2025 deadline event</a>
-                    <a href="https://www.gov.cy/mof-tfa/mi-katigoriopoiimeno/epivoli-midenikou-syntelesti-f-p-a-se-vasika-eidi/" target="_blank" rel="noopener noreferrer">Tax For All: zero-rate VAT on basic goods through 2026</a>
-                    <a href="https://www.businessincyprus.gov.cy/doing-business-in-cyprus/start-your-business/registering-for-income-tax-and-value-added-tax/" target="_blank" rel="noopener noreferrer">Business in Cyprus: income tax registration and rate overview</a>
-                    <a href="https://www.businessincyprus.gov.cy/news/new-vat-rules-for-small-enterprises/" target="_blank" rel="noopener noreferrer">Business in Cyprus: new VAT rules for small enterprises from January 1, 2025</a>
-                    <a href="https://www.mof.gov.cy/mof/tax/taxdep.nsf/ced03_en/ced03_en?OpenDocument" target="_blank" rel="noopener noreferrer">Tax Department: Special Defence Contribution overview</a>
-                    <a href="https://www.gov.cy/en/economy-and-finance/agreement-for-the-avoidance-of-double-taxation-and-the-prevention-of-fiscal-evasion-with-respect-to-taxes-on-income-between-the-republic-of-cyprus-and-the-socialist-republic-of-viet-nam/" target="_blank" rel="noopener noreferrer">Cyprus Government: Vietnam double tax treaty signing</a>
-                    <a href="https://www.gov.cy/mof/en/uncategorized/minister-of-finance-press-release-on-the-side-by-side-package-approved-by-the-oecd-g20-inclusive-framework-on-beps-on-january-5th-2026-2/" target="_blank" rel="noopener noreferrer">Ministry of Finance: OECD/G20 BEPS side-by-side package note</a>
-                    <a href="https://www.gov.cy/mof/en/documents/foreign-direct-investment-screening/" target="_blank" rel="noopener noreferrer">Ministry of Finance: foreign direct investment screening framework</a>
-                    <a href="thread-vat-zero-rate-exit-readiness.html">TaxInfo: VAT operations briefing</a>
-                    <a href="thread-filing-scope-reality-check.html">TaxInfo: filing scope reality check briefing</a>
-                    <a href="editorial-changelog.html">TaxInfo: editorial changelog and correction log</a>
-                    <a href="about.html">TaxInfo editorial standards, updates and correction policy</a>
-                </div>
-                <p class="table-note" style="margin-top: 14px;">Latest source check completed on April 6, 2026. For binding interpretation, rely on the latest legislation, Tax Department guidance and your licensed adviser.</p>
-            </div>
-        </section>
-
-        <section class="container" style="margin-bottom: 80px;">
-            <div class="grid-2-col-wide">
-                <article class="data-card">
-                    <h3>Corrections and Source Updates</h3>
-                    <p>If you spot an outdated deadline, a broken source link or a material wording issue, send the page URL and the exact point to <a href="mailto:info@taxinfo.solutions">info@taxinfo.solutions</a>. Substantive corrections are logged publicly so readers can see what changed and why.</p>
-                    <p><a href="editorial-changelog.html" class="read-more">Open the editorial changelog</a></p>
-                </article>
-                <article class="data-card">
-                    <h3>Who This Site Is For</h3>
-                    <p>The site is written for people who actually have to make the next decision: taxpayers comparing salary outcomes, payroll owners preparing filings, founders planning distributions and operators checking VAT setup. It is not meant to be a generic encyclopedia.</p>
-                    <p><a href="about.html" class="read-more">Read the editorial policy</a></p>
-                </article>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
     </main>
 
     <footer>
@@ -993,13 +300,11 @@
                     <h5>Quick Links</h5>
                     <div class="footer-links-col">
                         <a href="cyprus-tax-guide-2026.html">Tax Guide</a>
-                        <a href="#info-section">Coverage</a>
-                        <a href="#mission-section">Editorial Policy</a>
-                        <a href="editorial-changelog.html">Changelog</a>
+                        <a href="briefings.html">Briefings</a>
+                        <a href="tools.html">Tools</a>
+                        <a href="coverage.html">Coverage</a>
+                        <a href="editorial-standards.html">Editorial</a>
                         <a href="about.html">About</a>
-                        <a href="#calculator-section">Calculator</a>
-                        <a href="#keyword-hub-section">Search Topics</a>
-                        <a href="#faq-section">FAQ</a>
                     </div>
                 </div>
                 <div class="footer-col">
