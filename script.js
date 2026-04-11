@@ -1221,19 +1221,23 @@ document.addEventListener('DOMContentLoaded', () => {
 // ENHANCED PROFESSIONAL FEATURES
 // ========================================
 
-// Smooth scroll behavior for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
-            e.preventDefault();
-            document.querySelector(href).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+// Smooth scroll behavior for anchor links (only in browser)
+if (typeof document !== 'undefined' && typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-        }
+        });
     });
-});
+}
 
 // Print-friendly enhancements
 function enhancePrintability() {
