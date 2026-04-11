@@ -1,8 +1,19 @@
+# Robots.txt for TaxInfo Solutions
+# Allow all search engines to crawl and index public content
+
 User-agent: *
 Allow: /
 Disallow: /test.html
 Disallow: /script.test.js
 Disallow: /build-assets.mjs
 Disallow: /google3d609f1f23ac4dba.html
+Disallow: /.well-known/
 
+# Crawl delay settings for responsible crawling
+Crawl-delay: 1
+
+# Sitemap for search engines
 Sitemap: https://taxinfo.solutions/sitemap.xml
+
+# Additional sitemaps if needed (future expansion)
+# Sitemap: https://taxinfo.solutions/sitemap-news.xml
