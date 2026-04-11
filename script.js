@@ -466,7 +466,8 @@ function getPreferredTheme() {
 function updateThemeColorMeta(theme) {
     const meta = document.querySelector('meta[name="theme-color"]');
     if (!meta) return;
-    meta.setAttribute('content', theme === 'dark' ? '#0d1d28' : '#17343d');
+    // Update theme color for browser chrome
+    meta.setAttribute('content', theme === 'dark' ? '#1a2332' : '#1a3a52');
 }
 
 function updateThemeToggleButtons(theme) {
@@ -474,22 +475,33 @@ function updateThemeToggleButtons(theme) {
     const buttons = document.querySelectorAll('.theme-toggle');
 
     buttons.forEach(btn => {
-        btn.textContent = nextTheme === 'dark' ? 'Dark' : 'Light';
+        btn.textContent = nextTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
         btn.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
         btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        btn.title = `Current: ${theme === 'dark' ? 'Dark' : 'Light'} Mode`;
     });
 }
 
 function applyTheme(theme) {
+    // Add transition class for smooth theme change
+    document.documentElement.classList.add('theme-transitioning');
+
     document.documentElement.setAttribute('data-theme', theme);
+
     try {
         localStorage.setItem(THEME_STORAGE_KEY, theme);
     } catch (_) {
         // Ignore storage failures (private mode/restricted environments).
     }
+
     updateThemeColorMeta(theme);
     updateThemeToggleButtons(theme);
     refreshChartTheme(theme);
+
+    // Remove transition class after transition completes
+    setTimeout(() => {
+        document.documentElement.classList.remove('theme-transitioning');
+    }, 300);
 }
 
 function initThemeToggle() {
@@ -1144,6 +1156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPwaInstallPrompt();
     initThemeToggle();
     initCalendar();
+    initSmoothScroll();
     renderNewsCardsFromCatalog();
     renderKeywordChipsFromCatalog();
     renderTrendingThreads();
@@ -1221,20 +1234,19 @@ document.addEventListener('DOMContentLoaded', () => {
 // ENHANCED PROFESSIONAL FEATURES
 // ========================================
 
-// Smooth scroll behavior for anchor links (only in browser)
-if (typeof document !== 'undefined' && typeof window !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && document.querySelector(href)) {
-                    e.preventDefault();
-                    document.querySelector(href).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+// Smooth scroll behavior for anchor links (only run in browser)
+function initSmoothScroll() {
+    if (typeof document === 'undefined') return;
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && document.querySelector(href)) {
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
 }

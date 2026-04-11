@@ -4,7 +4,7 @@
    ========================= */
 
 :root {
-    /* Professional Corporate Palette */
+    /* Professional Corporate Palette - Light Mode (Default) */
     --primary-dark: #1a3a52;
     --primary-blue: #2c5aa0;
     --accent-teal: #0d8b8b;
@@ -31,6 +31,33 @@
     --font-head: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'Courier New', monospace;
+}
+
+/* Dark Mode Theme */
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+    /* Dark Corporate Palette */
+    --primary-dark: #e8f0f7;
+    --primary-blue: #6db3f2;
+    --accent-teal: #4ecdc4;
+    --accent-gold: #ffd700;
+    --success-green: #66bb6a;
+
+    --bg-body: #0f1419;
+    --bg-card: #1a2332;
+    --bg-light: #242d3d;
+    --bg-section: #1f2937;
+
+    --text-primary: #f5f7fa;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-light: #64748b;
+
+    --border-light: #374151;
+    --border-medium: #4b5563;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 * {
@@ -177,12 +204,28 @@ a:hover {
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .theme-toggle:hover {
     background: var(--primary-blue);
     color: white;
     border-color: var(--primary-blue);
+}
+
+.theme-toggle::before {
+    content: '☀️';
+}
+
+html[data-theme="dark"] .theme-toggle::before {
+    content: '🌙';
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
 }
 
 .hamburger {
@@ -873,6 +916,60 @@ tbody tr:hover {
         --bg-card: #ffffff;
         --text-primary: #1a2332;
     }
+}
+
+/* =========================
+   DARK MODE ENHANCEMENTS
+   ========================= */
+
+html[data-theme="dark"] code {
+    background: var(--bg-light);
+    color: var(--accent-gold);
+}
+
+html[data-theme="dark"] pre {
+    background: var(--bg-section);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+    background: var(--bg-light);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] select:focus,
+html[data-theme="dark"] textarea:focus {
+    background: var(--bg-light);
+    color: var(--text-primary);
+    border-color: var(--primary-blue);
+}
+
+html[data-theme="dark"] .navbar {
+    border-bottom-color: var(--border-light);
+}
+
+html[data-theme="dark"] .badge-new {
+    background: rgba(109, 179, 242, 0.2);
+    border-color: rgba(109, 179, 242, 0.4);
+    color: var(--primary-blue);
+}
+
+html[data-theme="dark"] .thread-summary-card,
+html[data-theme="dark"] .thread-post,
+html[data-theme="dark"] .thread-panel {
+    border-color: var(--border-light);
+}
+
+/* Smooth transition between themes */
+html.theme-transitioning,
+html.theme-transitioning * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+                box-shadow 0.3s ease, text-shadow 0.3s ease !important;
 }
 
 /* =========================
