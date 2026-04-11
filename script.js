@@ -1,7 +1,6 @@
 // --- GLOBAL VARIABLES for Chart ---
 let taxChartInstance = null;
 let activeNewsCategory = 'all';
-const THEME_STORAGE_KEY = 'taxinfo_theme';
 const CHART_JS_URL = 'https://cdn.jsdelivr.net/npm/chart.js';
 const SITE_CANONICAL_ORIGIN = 'https://taxinfo.solutions';
 const SITE_CANONICAL_HOME = `${SITE_CANONICAL_ORIGIN}/`;
@@ -413,109 +412,6 @@ function renderForumStatsFromCatalog() {
             metaOgUpdatedTime.setAttribute('content', `${latest.updatedIso}T00:00:00+02:00`);
         }
     }
-}
-
-function getActiveTheme() {
-    return document.documentElement.getAttribute('data-theme') || 'light';
-}
-
-function getChartUiColors(theme) {
-    if (theme === 'dark') {
-        return {
-            legend: '#c5d7df',
-            tooltipBg: 'rgba(8, 20, 30, 0.96)',
-            tooltipTitle: '#e8f2f7',
-            tooltipBody: '#d4e6ee',
-            tooltipBorder: 'rgba(173, 205, 217, 0.2)'
-        };
-    }
-
-    return {
-        legend: '#49626b',
-        tooltipBg: 'rgba(255, 255, 255, 0.96)',
-        tooltipTitle: '#153740',
-        tooltipBody: '#1d4650',
-        tooltipBorder: 'rgba(21, 77, 91, 0.18)'
-    };
-}
-
-function refreshChartTheme(theme = getActiveTheme()) {
-    if (!taxChartInstance) return;
-    const chartUi = getChartUiColors(theme);
-
-    taxChartInstance.options.plugins.legend.labels.color = chartUi.legend;
-    taxChartInstance.options.plugins.tooltip.backgroundColor = chartUi.tooltipBg;
-    taxChartInstance.options.plugins.tooltip.titleColor = chartUi.tooltipTitle;
-    taxChartInstance.options.plugins.tooltip.bodyColor = chartUi.tooltipBody;
-    taxChartInstance.options.plugins.tooltip.borderColor = chartUi.tooltipBorder;
-    taxChartInstance.update();
-}
-
-function getPreferredTheme() {
-    try {
-        const saved = localStorage.getItem(THEME_STORAGE_KEY);
-        if (saved === 'light' || saved === 'dark') return saved;
-    } catch (_) {
-        // Continue with system preference fallback.
-    }
-
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
-}
-
-function updateThemeColorMeta(theme) {
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta) return;
-    // Update theme color for browser chrome
-    meta.setAttribute('content', theme === 'dark' ? '#1a2332' : '#1a3a52');
-}
-
-function updateThemeToggleButtons(theme) {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    const buttons = document.querySelectorAll('.theme-toggle');
-
-    buttons.forEach(btn => {
-        btn.textContent = nextTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
-        btn.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
-        btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-        btn.title = `Current: ${theme === 'dark' ? 'Dark' : 'Light'} Mode`;
-    });
-}
-
-function applyTheme(theme) {
-    // Add transition class for smooth theme change
-    document.documentElement.classList.add('theme-transitioning');
-
-    document.documentElement.setAttribute('data-theme', theme);
-
-    try {
-        localStorage.setItem(THEME_STORAGE_KEY, theme);
-    } catch (_) {
-        // Ignore storage failures (private mode/restricted environments).
-    }
-
-    updateThemeColorMeta(theme);
-    updateThemeToggleButtons(theme);
-    refreshChartTheme(theme);
-
-    // Remove transition class after transition completes
-    setTimeout(() => {
-        document.documentElement.classList.remove('theme-transitioning');
-    }, 300);
-}
-
-function initThemeToggle() {
-    const initialTheme = getPreferredTheme();
-    applyTheme(initialTheme);
-
-    const buttons = document.querySelectorAll('.theme-toggle');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme') || 'light';
-            const next = current === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-        });
-    });
 }
 
 // --- TAB SWITCHING LOGIC ---
@@ -1154,7 +1050,6 @@ function searchContent() {
 document.addEventListener('DOMContentLoaded', () => {
     registerServiceWorker();
     initPwaInstallPrompt();
-    initThemeToggle();
     initCalendar();
     initSmoothScroll();
     renderNewsCardsFromCatalog();
