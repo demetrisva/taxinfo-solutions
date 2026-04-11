@@ -1216,3 +1216,149 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     applyCardFilters();
 });
+
+// ========================================
+// ENHANCED PROFESSIONAL FEATURES
+// ========================================
+
+// Smooth scroll behavior for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Print-friendly enhancements
+function enhancePrintability() {
+    const printBtn = document.querySelector('[data-print-article]');
+    if (printBtn) {
+        printBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+}
+
+// Table of contents generator for long articles
+function generateTableOfContents() {
+    const article = document.querySelector('article');
+    if (!article) return;
+
+    const headings = article.querySelectorAll('h2, h3');
+    if (headings.length < 3) return;
+
+    const toc = document.createElement('nav');
+    toc.className = 'table-of-contents';
+    toc.innerHTML = '<h3>In This Article</h3><ul></ul>';
+    const list = toc.querySelector('ul');
+
+    let headingId = 0;
+    headings.forEach(heading => {
+        if (!heading.id) {
+            heading.id = `heading-${headingId++}`;
+        }
+        const level = parseInt(heading.tagName[1]);
+        const li = document.createElement('li');
+        li.className = `toc-level-${level}`;
+        li.innerHTML = `<a href="#${heading.id}">${heading.textContent}</a>`;
+        list.appendChild(li);
+    });
+
+    if (list.children.length > 0) {
+        article.insertBefore(toc, article.firstChild);
+    }
+}
+
+// Reading time estimator
+function estimateReadingTime() {
+    const article = document.querySelector('article');
+    if (!article) return null;
+
+    const text = article.innerText;
+    const wordCount = text.split(/\s+/).length;
+    const readingTimeMinutes = Math.ceil(wordCount / 200);
+
+    const badge = document.createElement('span');
+    badge.className = 'reading-time-badge';
+    badge.textContent = `${readingTimeMinutes} min read`;
+
+    const header = article.querySelector('header, .thread-post-head');
+    if (header) {
+        header.appendChild(badge);
+    }
+
+    return readingTimeMinutes;
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey) {
+        switch (e.key) {
+            case 'k':
+            case 'K':
+                e.preventDefault();
+                const searchInput = document.querySelector('[data-search-input]');
+                if (searchInput) searchInput.focus();
+                break;
+            case '/':
+                e.preventDefault();
+                const calculator = document.querySelector('[data-calculator-toggle]');
+                if (calculator) calculator.click();
+                break;
+        }
+    }
+});
+
+// Improved table sorting
+function initTableSorting() {
+    document.querySelectorAll('table[data-sortable]').forEach(table => {
+        const headers = table.querySelectorAll('thead th');
+        headers.forEach((header, index) => {
+            if (header.getAttribute('data-sortable') !== 'false') {
+                header.style.cursor = 'pointer';
+                header.addEventListener('click', () => sortTable(table, index));
+            }
+        });
+    });
+}
+
+function sortTable(table, columnIndex) {
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    const isNumeric = !isNaN(parseFloat(rows[0].children[columnIndex].textContent));
+
+    rows.sort((a, b) => {
+        const aVal = a.children[columnIndex].textContent.trim();
+        const bVal = b.children[columnIndex].textContent.trim();
+
+        if (isNumeric) {
+            return parseFloat(aVal) - parseFloat(bVal);
+        }
+        return aVal.localeCompare(bVal);
+    });
+
+    rows.forEach(row => table.querySelector('tbody').appendChild(row));
+}
+
+// Initialize all enhancements on page load
+document.addEventListener('DOMContentLoaded', () => {
+    enhancePrintability();
+    generateTableOfContents();
+    estimateReadingTime();
+    initTableSorting();
+
+    // Add keyboard hint on pages with search
+    const searchInput = document.querySelector('[data-search-input]');
+    if (searchInput) {
+        const hint = document.createElement('small');
+        hint.className = 'keyboard-hint';
+        hint.innerHTML = '<kbd>Ctrl+K</kbd> to search';
+        searchInput.parentElement.appendChild(hint);
+    }
+});
+
