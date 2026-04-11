@@ -976,7 +976,7 @@ function renderKeywordChipsFromCatalog() {
 }
 
 function initSearchFromQueryParam() {
-    const input = document.getElementById('searchInput');
+    const input = getSearchInputElement();
     if (!input) return;
 
     const params = new URLSearchParams(window.location.search);
@@ -1045,6 +1045,16 @@ function filterNews(category) {
 
 function searchContent() {
     applyCardFilters();
+}
+
+function getSearchInputElement() {
+    return document.querySelector('[data-search-input]') || document.getElementById('searchInput');
+}
+
+function getCalculatorShortcutTarget() {
+    return document.querySelector('[data-calculator-toggle]') ||
+        document.getElementById('tab-salary') ||
+        document.querySelector('.tab-btn');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1214,12 +1224,12 @@ document.addEventListener('keydown', (e) => {
             case 'k':
             case 'K':
                 e.preventDefault();
-                const searchInput = document.querySelector('[data-search-input]');
+                const searchInput = getSearchInputElement();
                 if (searchInput) searchInput.focus();
                 break;
             case '/':
                 e.preventDefault();
-                const calculator = document.querySelector('[data-calculator-toggle]');
+                const calculator = getCalculatorShortcutTarget();
                 if (calculator) calculator.click();
                 break;
         }
@@ -1241,6 +1251,7 @@ function initTableSorting() {
 
 function sortTable(table, columnIndex) {
     const rows = Array.from(table.querySelectorAll('tbody tr'));
+    if (!rows.length) return;
     const isNumeric = !isNaN(parseFloat(rows[0].children[columnIndex].textContent));
 
     rows.sort((a, b) => {
@@ -1264,7 +1275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTableSorting();
 
     // Add keyboard hint on pages with search
-    const searchInput = document.querySelector('[data-search-input]');
+    const searchInput = getSearchInputElement();
     if (searchInput) {
         const hint = document.createElement('small');
         hint.className = 'keyboard-hint';
@@ -1272,4 +1283,3 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.parentElement.appendChild(hint);
     }
 });
-
