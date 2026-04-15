@@ -26,7 +26,7 @@ const THREAD_CATALOG = [
         summary: 'International note on treaty expansion, OECD coordination and Cyprus FDI screening controls.',
         sources: 3,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Briefing',
         gradient: 'linear-gradient(135deg, #0c5c7a, #2ca58d)',
         keywordChips: ['Cyprus Vietnam double tax treaty', 'Cyprus OECD side-by-side package', 'Cyprus FDI screening 2026']
@@ -44,7 +44,7 @@ const THREAD_CATALOG = [
         summary: 'Deadline briefing covering payroll withholding, provisional tax and where to recheck official notices.',
         sources: 5,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'View Dates',
         gradient: 'linear-gradient(135deg, #0a76a8, #6cc3d5)',
         keywordChips: ['Cyprus PAYE deadlines 2026', 'Cyprus provisional tax calendar 2026']
@@ -62,7 +62,7 @@ const THREAD_CATALOG = [
         summary: 'VAT operations note on zero-rate controls, SME checks and year-end transition planning.',
         sources: 3,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read VAT Note',
         gradient: 'linear-gradient(135deg, #006466, #4d908e)',
         keywordChips: ['Cyprus VAT zero rate 2026', 'Cyprus VAT transition 2027', 'Cyprus VAT controls for basic goods']
@@ -80,7 +80,7 @@ const THREAD_CATALOG = [
         summary: 'Employer payroll guide for monthly controls, withholding returns, and deduction support files.',
         sources: 4,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Open Guide',
         gradient: 'linear-gradient(135deg, #2c7f5e, #a8d672)',
         keywordChips: ['Cyprus payroll withholding 2026', 'Cyprus TD59 deductions employer']
@@ -98,7 +98,7 @@ const THREAD_CATALOG = [
         summary: 'Corporate reform note on the new 15% income tax rate and governance steps for 2026 close cycles.',
         sources: 3,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Reform Note',
         gradient: 'linear-gradient(135deg, #c76829, #f2c14e)',
         keywordChips: ['Cyprus corporate tax 15% 2026', 'Cyprus tax reform company checklist']
@@ -116,7 +116,7 @@ const THREAD_CATALOG = [
         summary: 'Dividend planning note on SDC, eligibility checks, and evidence expected before payment dates.',
         sources: 2,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Dividend Note',
         gradient: 'linear-gradient(135deg, #177e89, #8fc0a9)',
         keywordChips: ['Cyprus dividend tax 5%', 'Cyprus non-dom dividend planning']
@@ -134,7 +134,7 @@ const THREAD_CATALOG = [
         summary: 'Individual tax briefing on salary bands, filing coverage, and employee documentation points.',
         sources: 4,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Salary Guide',
         gradient: 'linear-gradient(135deg, #516395, #614385)',
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
@@ -152,7 +152,7 @@ const THREAD_CATALOG = [
         summary: 'Individual compliance briefing on filing-scope triggers, residency tests, and document controls.',
         sources: 3,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Filing Guide',
         gradient: 'linear-gradient(135deg, #355070, #6d597a)',
         keywordChips: ['Cyprus filing obligation 2026', 'Cyprus tax resident 25 to 71']
@@ -170,7 +170,7 @@ const THREAD_CATALOG = [
         summary: 'Crypto tax note focused on disposal evidence, wallet trails, and valuation discipline.',
         sources: 2,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Crypto Note',
         gradient: 'linear-gradient(135deg, #f4a261, #e9c46a)',
         keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
@@ -188,7 +188,7 @@ const THREAD_CATALOG = [
         summary: 'Deduction checklist for TD59 support files and year-end payroll reconciliation.',
         sources: 3,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Open Checklist',
         gradient: 'linear-gradient(135deg, #b56576, #e56b6f)',
         keywordChips: ['Cyprus family tax relief 2026', 'Cyprus housing deduction documents']
@@ -206,7 +206,7 @@ const THREAD_CATALOG = [
         summary: 'Incentives note on what the official January 2026 package actually lists and how founders should read it.',
         sources: 2,
         updated: 'Apr 12, 2026',
-        updatedIso: '2026-04-12',
+        updatedIso: '2026-04-15',
         cta: 'Read Incentives Note',
         gradient: 'linear-gradient(135deg, #264653, #2a9d8f)',
         keywordChips: ['Cyprus tax incentives 2026', 'Cyprus NID IP box securities exemption']
