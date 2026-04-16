@@ -204,6 +204,75 @@
                                 <li>Step 4: only add deductions or reliefs that are documented and currently available.</li>
                             </ul>
                         </article>
+
+                        <article class="thread-post">
+                            <header class="thread-post-head">
+                                <div>
+                                    <h2 class="thread-author">2026 income tax bands and rates</h2>
+                                    <p class="thread-role">Rate reference</p>
+                                </div>
+                                <time class="thread-time" datetime="2026-04-15">April 15, 2026</time>
+                            </header>
+                            <p>The 2026 personal income tax reform introduced a revised set of progressive bands effective from January 1, 2026. The tax-free threshold was increased to EUR 22,000 — up from EUR 19,500. Above the threshold, tax applies progressively across four bands before the top rate takes effect.</p>
+                            <div class="table-responsive">
+                                <table class="tax-table">
+                                    <thead>
+                                        <tr><th>Taxable Income (EUR)</th><th>Rate</th><th>Tax on Band (EUR)</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>0 – 22,000</td><td>0%</td><td>0</td></tr>
+                                        <tr><td>22,001 – 32,000</td><td>20%</td><td>Up to 2,000</td></tr>
+                                        <tr><td>32,001 – 42,000</td><td>25%</td><td>Up to 2,500</td></tr>
+                                        <tr><td>42,001 – 72,000</td><td>30%</td><td>Up to 9,000</td></tr>
+                                        <tr><td>Above 72,000</td><td>35%</td><td>On excess</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>Tax is calculated on taxable income, which is gross income after deductions for social insurance contributions, GESY contributions, and any other allowable deductions (such as life insurance premiums or pension contributions up to permitted limits). These deductions reduce the base to which the above rates apply.</p>
+                        </article>
+
+                        <article class="thread-post">
+                            <header class="thread-post-head">
+                                <div>
+                                    <h2 class="thread-author">Social insurance and GESY contribution rates</h2>
+                                    <p class="thread-role">Contribution reference</p>
+                                </div>
+                                <time class="thread-time" datetime="2026-04-15">April 15, 2026</time>
+                            </header>
+                            <p>Social insurance (SI) and GESY contributions are deducted from gross salary before income tax is calculated on the remaining amount. Both the employee and employer pay contributions, though at different rates. For payroll modelling, these contributions are deducted from the employee's gross pay before applying the income tax bands above.</p>
+                            <div class="table-responsive">
+                                <table class="tax-table">
+                                    <thead>
+                                        <tr><th>Contribution</th><th>Employee Rate</th><th>Employer Rate</th><th>Annual Cap</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Social Insurance (SI)</td><td>8.8%</td><td>8.8%</td><td>EUR 62,868 insurable earnings</td></tr>
+                                        <tr><td>GESY (Health)</td><td>2.65%</td><td>2.90%</td><td>EUR 180,000 insurable earnings</td></tr>
+                                        <tr><td>Redundancy Fund</td><td>—</td><td>1.2%</td><td>Same as SI cap</td></tr>
+                                        <tr><td>Human Resource Dev. Auth.</td><td>—</td><td>0.5%</td><td>Same as SI cap</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p>For a gross monthly salary above the SI cap divided by 12, the SI contribution stops accumulating during the year once the annual insurable earnings ceiling is reached. GESY contributions continue to a higher cap. This phasing is important to model correctly for high earners, as net pay in late months of the year will be higher than earlier months due to SI falling away.</p>
+                        </article>
+
+                        <article class="thread-post">
+                            <header class="thread-post-head">
+                                <div>
+                                    <h2 class="thread-author">First-employment relief and other personal deductions</h2>
+                                    <p class="thread-role">Reliefs and deductions</p>
+                                </div>
+                                <time class="thread-time" datetime="2026-04-15">April 15, 2026</time>
+                            </header>
+                            <p>Several reliefs and deductions can reduce the amount of income subject to tax. The most commonly used ones for employees are outlined below. All require documentation — they cannot be claimed without supporting evidence on file.</p>
+                            <ul class="check-list">
+                                <li><strong>First employment 50% exemption:</strong> eligible employees taking their first employment in Cyprus can claim a 50% exemption on employment income in year one, subject to conditions and an income threshold. Timing and proper registration are essential — the exemption is not automatic.</li>
+                                <li><strong>Life insurance premiums:</strong> premiums paid on qualifying life insurance policies are deductible, subject to a cap of 7% of the sum assured or a percentage of taxable income, whichever is lower.</li>
+                                <li><strong>Pension contributions:</strong> contributions to approved provident or pension funds are deductible within limits set by the relevant fund rules and tax legislation.</li>
+                                <li><strong>TD59 (employee declaration):</strong> employees who wish to claim deductions at source submit a TD59 to their employer. The employer then adjusts monthly withholding to reflect the declared deductions. Without a TD59, the employer withholds on gross income with no relief applied.</li>
+                            </ul>
+                            <p>These deductions reduce taxable income before the rate bands are applied, not after. Their value depends on the taxpayer's marginal rate: a deduction worth EUR 1,000 saves EUR 350 for a taxpayer in the 35% band but only EUR 200 for someone in the 20% band.</p>
+                        </article>
                     </section>
 
                     <aside class="thread-sidebar" aria-label="Briefing tools">
