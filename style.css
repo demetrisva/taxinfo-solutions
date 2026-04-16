@@ -6412,3 +6412,58 @@ html[data-theme="light"] .main-wrapper > section.news-hub-section .forum-pill {
         gap: 12px;
     }
 }
+
+/* =========================
+   PROFESSIONAL RESIDENCY & EXEMPTION CARDS
+   Hide emoji decorators; replace with structural styling only
+   ========================= */
+
+/* Hide all remaining emoji icon elements */
+.res-icon,
+.ex-icon { display: none !important; }
+
+/* Residency cards — clean white panel with left accent line */
+html:not([data-theme="dark"]) .res-card {
+    background: #ffffff;
+    border: 1px solid #d4dce4;
+    border-left: 3px solid #0c6e6c;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(13, 40, 57, 0.06);
+    padding: 24px 26px;
+}
+html:not([data-theme="dark"]) .res-card.new-feature {
+    border-left-color: #b8882a;
+}
+html:not([data-theme="dark"]) .res-card h3 {
+    font-family: var(--font-body, 'Manrope', sans-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #13293a;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+/* Exemption / details accordion — tighten summary row */
+html:not([data-theme="dark"]) .exemption-card {
+    background: #ffffff;
+    border: 1px solid #d4dce4;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(13, 40, 57, 0.05);
+}
+html:not([data-theme="dark"]) .exemption-card summary {
+    font-weight: 600;
+    color: #13293a;
+}
+html:not([data-theme="dark"]) .ex-title {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #13293a;
+}
+html:not([data-theme="dark"]) .ex-tag {
+    background: rgba(12, 110, 108, 0.09);
+    color: #0c6e6c;
+    border-radius: 4px;
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+}
