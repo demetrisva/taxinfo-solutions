@@ -12,7 +12,6 @@ const PWA_IOS_HINT_SNOOZE_DAYS = 30;
 let chartJsLoaderPromise = null;
 let deferredInstallPromptEvent = null;
 let pwaInstallPromptElement = null;
-let pwaPromptTriggerInitialized = false;
 const THREAD_CATALOG = [
     {
         id: 'cross-border-tax-watch',
@@ -214,22 +213,8 @@ const THREAD_CATALOG = [
     }
 ];
 
-function getAllThreads() {
-    return THREAD_CATALOG.slice();
-}
-
 function getPrimaryThreads() {
     return THREAD_CATALOG.filter(thread => thread.primary !== false);
-}
-
-function shouldUseFullCatalog() {
-    if (typeof document === 'undefined') return false;
-    return Boolean(document.getElementById('thread-directory-section')) ||
-        Boolean(document.body && document.body.classList.contains('catalog-page'));
-}
-
-function getDisplayThreads() {
-    return shouldUseFullCatalog() ? getAllThreads() : getPrimaryThreads();
 }
 
 function loadChartJsIfNeeded() {
@@ -295,7 +280,7 @@ function injectForumCollectionStructuredData() {
         about: aboutTerms.map(term => ({ '@type': 'Thing', name: term })),
         mainEntity: {
             '@type': 'ItemList',
-            itemListElement: getAllThreads().map((thread, index) => ({
+            itemListElement: getPrimaryThreads().map((thread, index) => ({
                 '@type': 'ListItem',
                 position: index + 1,
                 name: thread.title,
@@ -311,7 +296,7 @@ function getKeywordChipEntriesFromCatalog() {
     const seen = new Set();
     const chips = [];
 
-    getAllThreads().forEach(thread => {
+    getPrimaryThreads().forEach(thread => {
         (thread.keywordChips || []).forEach(label => {
             const key = `${label.toLowerCase()}|${thread.href}`;
             if (seen.has(key)) return;
@@ -324,7 +309,7 @@ function getKeywordChipEntriesFromCatalog() {
 }
 
 function getLatestThreadUpdate() {
-    return [...getAllThreads()]
+    return [...getPrimaryThreads()]
         .filter(thread => thread.updatedIso)
         .sort((a, b) => new Date(b.updatedIso) - new Date(a.updatedIso))[0] || null;
 }
@@ -361,7 +346,7 @@ function syncSeoKeywordMetaFromCatalog() {
         'Cyprus tax calculator 2026',
         'Cyprus tax update 2026',
         'Cyprus tax news',
-        ...getAllThreads().flatMap(thread => thread.keywordChips || [])
+        ...getPrimaryThreads().flatMap(thread => thread.keywordChips || [])
     ]));
 
     const keywordsValue = keywordPool.slice(0, 14).join(', ');
@@ -375,7 +360,7 @@ function renderTrendingThreads() {
     const grid = document.getElementById('trending-grid');
     if (!grid) return;
 
-    const topThreads = [...getAllThreads()]
+    const topThreads = [...getPrimaryThreads()]
         .sort((a, b) => new Date(b.updatedIso) - new Date(a.updatedIso) || b.sources - a.sources)
         .slice(0, 3);
 
@@ -768,11 +753,6 @@ function isRunningStandalone() {
     return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
 }
 
-function shouldOfferPwaInstall() {
-    if (typeof document === 'undefined' || !document.body) return false;
-    return document.body.classList.contains('home-page');
-}
-
 function isIosSafariBrowser() {
     const ua = window.navigator.userAgent || '';
     const isIos = /iPad|iPhone|iPod/.test(ua);
@@ -835,7 +815,6 @@ function createPwaPrompt(options) {
 
 function showBrowserInstallPrompt() {
     if (!deferredInstallPromptEvent || pwaInstallPromptElement) return;
-    if (!shouldOfferPwaInstall()) return;
     if (isRunningStandalone() || isPromptSnoozed(PWA_INSTALL_DISMISS_UNTIL_KEY)) return;
 
     pwaInstallPromptElement = createPwaPrompt({
@@ -864,7 +843,6 @@ function showBrowserInstallPrompt() {
 }
 
 function showIosInstallHint() {
-    if (!shouldOfferPwaInstall()) return;
     if (!isIosSafariBrowser() || isRunningStandalone() || pwaInstallPromptElement) return;
     if (isPromptSnoozed(PWA_IOS_HINT_DISMISS_UNTIL_KEY)) return;
 
@@ -883,14 +861,10 @@ function showIosInstallHint() {
 }
 
 function initPwaInstallPrompt() {
-    if (!shouldOfferPwaInstall()) {
-        removePwaPrompt();
-        return;
-    }
-
     window.addEventListener('beforeinstallprompt', event => {
         event.preventDefault();
         deferredInstallPromptEvent = event;
+        showBrowserInstallPrompt();
     });
 
     window.addEventListener('appinstalled', () => {
@@ -898,32 +872,11 @@ function initPwaInstallPrompt() {
         removePwaPrompt();
     });
 
-    if (pwaPromptTriggerInitialized) return;
-    pwaPromptTriggerInitialized = true;
-
-    const maybeShowPrompt = () => {
-        if (!shouldOfferPwaInstall()) return;
-        if (window.scrollY < 320 && deferredInstallPromptEvent) return;
-
-        if (deferredInstallPromptEvent) {
-            showBrowserInstallPrompt();
-            return;
-        }
-
-        showIosInstallHint();
-    };
-
-    const handleScroll = () => {
-        if (window.scrollY < 320) return;
-        maybeShowPrompt();
-        window.removeEventListener('scroll', handleScroll);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
     window.setTimeout(() => {
-        maybeShowPrompt();
-    }, 9000);
+        if (!deferredInstallPromptEvent) {
+            showIosInstallHint();
+        }
+    }, 1800);
 }
 
 function registerServiceWorker() {
@@ -975,9 +928,7 @@ function renderNewsCardsFromCatalog() {
     const grid = document.getElementById('news-grid-all');
     if (!grid) return;
 
-    const threads = getDisplayThreads();
-
-    grid.innerHTML = threads.map(thread => `
+    grid.innerHTML = getPrimaryThreads().map(thread => `
         <article class="news-card" data-category="${thread.categoryKey}" data-thread-id="${thread.id}">
             <div class="news-img" style="background: ${thread.gradient};">
                 <span class="news-tag">${thread.tag}</span>
@@ -998,7 +949,7 @@ function renderThreadDirectory() {
     const list = document.getElementById('thread-directory-list');
     if (!list) return;
 
-    const sortedThreads = [...getAllThreads()].sort((a, b) => new Date(b.updatedIso) - new Date(a.updatedIso) || b.sources - a.sources);
+    const sortedThreads = [...getPrimaryThreads()].sort((a, b) => new Date(b.updatedIso) - new Date(a.updatedIso) || b.sources - a.sources);
 
     list.innerHTML = sortedThreads.map(thread => `
         <article class="thread-directory-card">
@@ -1033,31 +984,6 @@ function initSearchFromQueryParam() {
     if (!query) return;
 
     input.value = query;
-}
-
-function getActiveTheme() {
-    if (typeof document === 'undefined' || !document.documentElement) return 'dark';
-    return document.documentElement.getAttribute('data-theme') || 'dark';
-}
-
-function getChartUiColors(themeName = 'dark') {
-    if (themeName === 'light') {
-        return {
-            legend: '#294252',
-            tooltipBg: 'rgba(255, 255, 255, 0.96)',
-            tooltipTitle: '#102233',
-            tooltipBody: '#294252',
-            tooltipBorder: 'rgba(20, 53, 78, 0.16)'
-        };
-    }
-
-    return {
-        legend: '#d9e2ef',
-        tooltipBg: 'rgba(9, 16, 28, 0.96)',
-        tooltipTitle: '#ffffff',
-        tooltipBody: '#d9e2ef',
-        tooltipBorder: 'rgba(242, 185, 109, 0.3)'
-    };
 }
 
 // --- NEWS SEARCH & FILTER LOGIC ---
@@ -1132,10 +1058,6 @@ function getCalculatorShortcutTarget() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.documentElement && !document.documentElement.hasAttribute('data-theme')) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
     registerServiceWorker();
     initPwaInstallPrompt();
     initCalendar();
@@ -1244,26 +1166,10 @@ function enhancePrintability() {
     }
 }
 
-function getArticleContentRoot() {
-    if (typeof document === 'undefined') return null;
-
-    const explicitRoot = document.querySelector('[data-article-root]');
-    if (explicitRoot) return explicitRoot;
-
-    const threadPosts = document.querySelector('.thread-posts');
-    if (threadPosts) return threadPosts;
-
-    const articleWithHeadings = Array.from(document.querySelectorAll('article'))
-        .find(article => article.querySelectorAll('h2, h3').length >= 3);
-    if (articleWithHeadings) return articleWithHeadings;
-
-    return document.querySelector('article');
-}
-
 // Table of contents generator for long articles
 function generateTableOfContents() {
-    const article = getArticleContentRoot();
-    if (!article || document.querySelector('.table-of-contents')) return;
+    const article = document.querySelector('article');
+    if (!article) return;
 
     const headings = article.querySelectorAll('h2, h3');
     if (headings.length < 3) return;
@@ -1292,10 +1198,10 @@ function generateTableOfContents() {
 
 // Reading time estimator
 function estimateReadingTime() {
-    const article = getArticleContentRoot();
+    const article = document.querySelector('article');
     if (!article) return null;
 
-    const text = article.innerText || article.textContent || '';
+    const text = article.innerText;
     const wordCount = text.split(/\s+/).length;
     const readingTimeMinutes = Math.ceil(wordCount / 200);
 
@@ -1303,9 +1209,8 @@ function estimateReadingTime() {
     badge.className = 'reading-time-badge';
     badge.textContent = `${readingTimeMinutes} min read`;
 
-    const summaryRow = document.querySelector('.thread-summary-card .thread-label-row');
-    const header = summaryRow || article.querySelector('header, .thread-post-head');
-    if (header && !header.querySelector('.reading-time-badge')) {
+    const header = article.querySelector('header, .thread-post-head');
+    if (header) {
         header.appendChild(badge);
     }
 
