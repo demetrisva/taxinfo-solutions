@@ -7571,3 +7571,116 @@ html[data-theme="light"] .thread-cta {
 .thread-post::before {
     background: linear-gradient(180deg, #2563eb, rgba(37, 99, 235, 0.2));
 }
+
+/* -------------------------------------------------------
+   HIGH-SPECIFICITY OVERRIDES
+   Earlier sections use html:not([data-theme="dark"]) .X
+   (specificity 0,2,0) which beats plain .X (0,1,0).
+   These rules match that specificity to ensure the new
+   design wins the cascade on light/default theme.
+   ------------------------------------------------------- */
+
+/* Navbar: solid dark navy */
+html:not([data-theme="dark"]) .navbar,
+html[data-theme="light"] .navbar {
+    background: #0c1b2e;
+    border-top: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
+/* Hero: clean white — no teal/amber radial glow */
+html:not([data-theme="dark"]) .hero-section,
+html[data-theme="light"] .hero-section {
+    background: none;
+    padding-top: 168px;
+    padding-bottom: 100px;
+}
+
+/* Hero title gradient: navy → royal blue → amber */
+html:not([data-theme="dark"]) .hero-title .text-gradient,
+html[data-theme="light"] .hero-title .text-gradient {
+    background: linear-gradient(120deg, #0c1b2e 0%, #2563eb 55%, #b45309 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Badge: blue pill */
+html:not([data-theme="dark"]) .badge-new,
+html[data-theme="light"] .badge-new {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+
+/* Primary CTA button: royal blue */
+html:not([data-theme="dark"]) .btn-hero-main,
+html[data-theme="light"] .btn-hero-main {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.26);
+}
+
+html:not([data-theme="dark"]) .btn-hero-main:hover,
+html[data-theme="light"] .btn-hero-main:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    box-shadow: 0 8px 24px rgba(37,99,235,0.32);
+    transform: translateY(-2px);
+}
+
+/* Secondary button: clean white */
+html:not([data-theme="dark"]) .btn-hero-secondary,
+html[data-theme="light"] .btn-hero-secondary {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    box-shadow: none;
+}
+
+html:not([data-theme="dark"]) .btn-hero-secondary:hover,
+html[data-theme="light"] .btn-hero-secondary:hover {
+    background: #f8fafc;
+    color: #0f172a;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(15,23,42,0.08);
+}
+
+/* Stats: royal blue values */
+html:not([data-theme="dark"]) .stat-value,
+html[data-theme="light"] .stat-value {
+    color: #2563eb;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
+}
+
+html:not([data-theme="dark"]) .stat-label,
+html[data-theme="light"] .stat-label {
+    color: #64748b;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+html:not([data-theme="dark"]) .stats-bar,
+html[data-theme="light"] .stats-bar {
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: none;
+}
+
+html:not([data-theme="dark"]) .stat-item,
+html[data-theme="light"] .stat-item {
+    background: transparent;
+    border: none;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: none;
+    border-radius: 0;
+}
