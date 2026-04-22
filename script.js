@@ -1133,6 +1133,19 @@ document.addEventListener('DOMContentLoaded', () => {
         activeNewsCategory = activeNewsBtn.dataset.category;
     }
     applyCardFilters();
+
+    enhancePrintability();
+    generateTableOfContents();
+    estimateReadingTime();
+    initTableSorting();
+
+    const searchInput = getSearchInputElement();
+    if (searchInput) {
+        const hint = document.createElement('small');
+        hint.className = 'keyboard-hint';
+        hint.innerHTML = '<kbd>Ctrl+K</kbd> to search';
+        searchInput.parentElement.appendChild(hint);
+    }
 });
 
 // ========================================
@@ -1267,19 +1280,3 @@ function sortTable(table, columnIndex) {
     rows.forEach(row => table.querySelector('tbody').appendChild(row));
 }
 
-// Initialize all enhancements on page load
-document.addEventListener('DOMContentLoaded', () => {
-    enhancePrintability();
-    generateTableOfContents();
-    estimateReadingTime();
-    initTableSorting();
-
-    // Add keyboard hint on pages with search
-    const searchInput = getSearchInputElement();
-    if (searchInput) {
-        const hint = document.createElement('small');
-        hint.className = 'keyboard-hint';
-        hint.innerHTML = '<kbd>Ctrl+K</kbd> to search';
-        searchInput.parentElement.appendChild(hint);
-    }
-});
