@@ -403,13 +403,13 @@ function renderForumStatsFromCatalog() {
 
         const latestLong = formatDateLong(latest.updatedIso);
         if (lastReviewedBadge && latestLong) {
-            lastReviewedBadge.textContent = `Last reviewed: ${latestLong}`;
+            lastReviewedBadge.textContent = `Source review: ${latestLong}`;
         }
         if (metaLastReviewed) {
             metaLastReviewed.setAttribute('content', latest.updatedIso);
         }
         if (metaOgUpdatedTime) {
-            metaOgUpdatedTime.setAttribute('content', `${latest.updatedIso}T00:00:00+02:00`);
+            metaOgUpdatedTime.setAttribute('content', `${latest.updatedIso}T00:00:00+03:00`);
         }
     }
 }
@@ -1279,4 +1279,3 @@ function sortTable(table, columnIndex) {
 
     rows.forEach(row => table.querySelector('tbody').appendChild(row));
 }
-
