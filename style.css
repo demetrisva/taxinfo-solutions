@@ -50,20 +50,20 @@
 /* Light mode overrides */
 @media (prefers-color-scheme: light) {
     :root {
-        --bg-body:    #f2f5f9;
+        --bg-body:    #f7f9fc;
         --bg-surface: #ffffff;
-        --bg-card:    rgba(255, 255, 255, 0.96);
-        --bg-input:   rgba(0, 0, 0, 0.04);
-        --bg-nav:     rgba(242, 245, 249, 0.94);
+        --bg-card:    rgba(255, 255, 255, 0.99);
+        --bg-input:   rgba(15, 35, 65, 0.055);
+        --bg-nav:     rgba(247, 249, 252, 0.96);
         --bg-footer:  #e6eaf2;
 
-        --text-main:    #1b2a3b;
-        --text-muted:   #52677e;
-        --text-heading: #111e2e;
+        --text-main:    #102033;
+        --text-muted:   #40556f;
+        --text-heading: #09172a;
 
-        --border:       rgba(15, 35, 65, 0.09);
-        --border-mid:   rgba(15, 35, 65, 0.16);
-        --border-hover: rgba(44, 111, 189, 0.45);
+        --border:       rgba(15, 35, 65, 0.13);
+        --border-mid:   rgba(15, 35, 65, 0.24);
+        --border-hover: rgba(37, 99, 235, 0.50);
 
         --shadow-sm: 0 2px 8px rgba(8, 22, 50, 0.06);
         --shadow-md: 0 4px 20px rgba(8, 22, 50, 0.08);
@@ -114,9 +114,9 @@ body {
     body {
         background-image:
             radial-gradient(ellipse 1400px 700px at 50% -60px,
-                rgba(37, 99, 235, 0.06) 0%, transparent 65%),
-            linear-gradient(rgba(15, 40, 90, 0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(15, 40, 90, 0.035) 1px, transparent 1px);
+                rgba(37, 99, 235, 0.045) 0%, transparent 65%),
+            linear-gradient(rgba(15, 40, 90, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(15, 40, 90, 0.05) 1px, transparent 1px);
         background-size: auto, 72px 72px, 72px 72px;
     }
 }
@@ -474,6 +474,21 @@ img, svg, canvas, video { max-width: 100%; height: auto; display: block; }
     color: var(--text-main);
 }
 
+@media (prefers-color-scheme: light) {
+    .hero-route-card {
+        background: rgba(255, 255, 255, 0.98);
+        border-color: rgba(15, 35, 65, 0.24);
+    }
+
+    .hero-route-card:nth-child(2) { border-color: rgba(22, 101, 52, 0.32); }
+    .hero-route-card:nth-child(3) { border-color: rgba(146, 64, 14, 0.34); }
+    .hero-route-card:nth-child(4) { border-color: rgba(15, 118, 110, 0.34); }
+
+    .hero-route-card span {
+        color: #1d4ed8;
+    }
+}
+
 .hero-route-card span {
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -630,7 +645,7 @@ button, .btn, .calc-btn, .tab-btn { min-height: 44px; }
 }
 
 @media (prefers-color-scheme: light) {
-    .stats-bar { background: rgba(0, 0, 0, 0.01); }
+    .stats-bar { background: rgba(255, 255, 255, 0.50); }
 }
 
 .stats-grid {
@@ -2008,7 +2023,10 @@ footer {
 }
 
 @media (max-width: 560px) {
-    .hero-title { font-size: clamp(1.9rem, 10vw, 2.6rem); }
+    .hero-title {
+        font-size: clamp(1.85rem, 9vw, 2.25rem);
+        line-height: 1.12;
+    }
     .stats-grid { grid-template-columns: 1fr; }
     .stat-item { padding: 10px; }
 
