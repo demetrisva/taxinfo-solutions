@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'; connect-src 'self' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com https://www.googleadservices.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://www.googletagservices.com https://partner.googleadservices.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'; connect-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Cookie Policy | TaxInfo.solutions</title>
     <meta name="description"
@@ -72,8 +72,7 @@
         <p>Cookies are small text files stored on your device when you visit a website.</p>
 
         <h2>How we use cookies</h2>
-        <p>We use cookies in two contexts: essential infrastructure security and ad delivery on pages where Google
-            AdSense is enabled.</p>
+        <p>We use cookies and similar browser storage in two contexts: essential infrastructure security and ad delivery on pages where Google AdSense is enabled.</p>
 
         <table
             style="width: 100%; border-collapse: collapse; margin-top: 20px; border: 1px solid var(--border-color);">
@@ -84,10 +83,14 @@
                 <th style="padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color);">Purpose</th>
             </tr>
             <tr>
-                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">NID / AEC / related ad cookies</td>
+                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">NID / AEC / IDE / related ad cookies and local storage</td>
                 <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Google AdSense</td>
-                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Ad delivery, frequency control,
-                    and measurement where ads are shown.</td>
+                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Ad delivery, personalisation where permitted, frequency control, measurement, fraud prevention, and revenue reporting where ads are shown.</td>
+            </tr>
+            <tr>
+                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Consent message storage</td>
+                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Google AdSense / certified CMP</td>
+                <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">Stores advertising consent choices for visitors in regions where a consent message is required.</td>
             </tr>
             <tr>
                 <td style="padding: 15px; border-bottom: 1px solid var(--border-color);">_cf_bm</td>
@@ -96,6 +99,9 @@
                     trusted web traffic and prevent bot attacks.</td>
             </tr>
         </table>
+
+        <h2>Advertising consent choices</h2>
+        <p>For visitors in the European Economic Area, the United Kingdom, or Switzerland, advertising consent must be collected through a Google-certified consent management platform before personalised AdSense ads are served. The consent message for this domain should let you accept, reject, or manage advertising choices where required by law.</p>
 
         <p style="margin-top: 20px;">You can learn more about ad cookies and controls here:
             <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Ads

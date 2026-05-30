@@ -30,6 +30,10 @@ Run:
 node build-assets.mjs
 ```
 
+## AdSense setup
+
+The site includes the AdSense publisher tag on monetizable editorial/reference pages and keeps legal and calculator-first pages unmonetized by default. See `ADSENSE_OPERATIONS.md` for the policy and dashboard checklist before requesting another AdSense review.
+
 ## Make it live (GitHub Pages)
 
 1. Push this repo to GitHub (main branch).
