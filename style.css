@@ -318,6 +318,7 @@ img, svg, canvas, video { max-width: 100%; height: auto; display: block; }
 /* Search */
 .nav-tools { flex-shrink: 0; }
 .search-container { margin-left: 8px; }
+.mobile-search-toggle { display: none; }
 
 #searchInput {
     padding: 7px 14px;
@@ -364,6 +365,73 @@ img, svg, canvas, video { max-width: 100%; height: auto; display: block; }
 @media (max-width: 900px) {
     .hamburger { display: block; }
     .search-container { display: none; }
+    .nav-container { gap: 10px; }
+
+    .mobile-search-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+        margin-left: auto;
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-sm);
+        background: var(--bg-input);
+        color: var(--text-main);
+        cursor: pointer;
+        transition: border-color var(--tr), background var(--tr), box-shadow var(--tr);
+    }
+    .mobile-search-toggle:hover,
+    .mobile-search-toggle[aria-expanded="true"] {
+        border-color: var(--accent);
+        background: var(--accent-dim);
+    }
+    .mobile-search-toggle:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+    }
+    .search-toggle-icon {
+        position: relative;
+        width: 17px;
+        height: 17px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+    }
+    .search-toggle-icon::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 2px;
+        right: -6px;
+        bottom: -3px;
+        background: currentColor;
+        border-radius: 2px;
+        transform: rotate(45deg);
+        transform-origin: center;
+    }
+    .search-container.mobile-search-open {
+        display: block;
+        position: fixed;
+        top: 62px;
+        left: 12px;
+        right: 12px;
+        margin-left: 0;
+        padding: 10px;
+        background: var(--bg-nav);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-md);
+        backdrop-filter: blur(var(--blur));
+        z-index: 1600;
+    }
+    .search-container.mobile-search-open #searchInput,
+    .search-container.mobile-search-open #searchInput:focus {
+        width: 100%;
+    }
+    .search-container.mobile-search-open .keyboard-hint {
+        display: none;
+    }
 
     .nav-menu {
         position: fixed;

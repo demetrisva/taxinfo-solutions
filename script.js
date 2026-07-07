@@ -25,8 +25,8 @@ const THREAD_CATALOG = [
         href: 'thread-transfer-pricing-playbook.html',
         summary: 'International note on Pillar Two compliance, treaty expansion, OECD coordination and Cyprus FDI screening controls.',
         sources: 5,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Briefing',
         gradient: 'linear-gradient(135deg, #0c5c7a, #2ca58d)',
         keywordChips: ['Cyprus Pillar Two 2026', 'Cyprus Vietnam double tax treaty', 'Cyprus FDI screening 2026']
@@ -43,8 +43,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-penalties-calendar.html',
         summary: 'Deadline briefing: employer PAYE, personal return deadline monitoring, provisional tax installments, and where to recheck official notices.',
         sources: 6,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'View Dates',
         gradient: 'linear-gradient(135deg, #0a76a8, #6cc3d5)',
         keywordChips: ['Cyprus PAYE deadlines 2026', 'Cyprus provisional tax calendar 2026']
@@ -61,8 +61,8 @@ const THREAD_CATALOG = [
         href: 'thread-vat-zero-rate-exit-readiness.html',
         summary: 'VAT operations note on zero-rate controls, meat and fish relief, primary-residence VAT transition, SME checks and transition planning.',
         sources: 5,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read VAT Note',
         gradient: 'linear-gradient(135deg, #006466, #4d908e)',
         keywordChips: ['Cyprus VAT zero rate 2026', 'Cyprus VAT meat fish zero rate', 'Cyprus VAT controls for basic goods']
@@ -79,8 +79,8 @@ const THREAD_CATALOG = [
         href: 'thread-payroll-assumptions-log.html',
         summary: 'Employer payroll guide for monthly controls, withholding returns, and deduction support files.',
         sources: 4,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Open Guide',
         gradient: 'linear-gradient(135deg, #2c7f5e, #a8d672)',
         keywordChips: ['Cyprus payroll withholding 2026', 'Cyprus TD59 deductions employer']
@@ -97,8 +97,8 @@ const THREAD_CATALOG = [
         href: 'thread-corporate-tax-transition.html',
         summary: 'Corporate reform note on the new 15% income tax rate and governance steps for 2026 close cycles.',
         sources: 2,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Reform Note',
         gradient: 'linear-gradient(135deg, #c76829, #f2c14e)',
         keywordChips: ['Cyprus corporate tax 15% 2026', 'Cyprus tax reform company checklist']
@@ -115,8 +115,8 @@ const THREAD_CATALOG = [
         href: 'thread-dividend-sdc-planning.html',
         summary: 'Dividend planning note on SDC, eligibility checks, and evidence expected before payment dates.',
         sources: 2,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Dividend Note',
         gradient: 'linear-gradient(135deg, #177e89, #8fc0a9)',
         keywordChips: ['Cyprus dividend tax 5%', 'Cyprus non-dom dividend planning']
@@ -133,8 +133,8 @@ const THREAD_CATALOG = [
         href: 'thread-salary-threshold-examples.html',
         summary: 'Individual tax briefing on salary bands, filing coverage, and employee documentation points.',
         sources: 4,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Salary Guide',
         gradient: 'linear-gradient(135deg, #516395, #614385)',
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
@@ -151,8 +151,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-scope-reality-check.html',
         summary: 'Individual compliance briefing on filing-scope triggers, residency tests, and document controls.',
         sources: 3,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Filing Guide',
         gradient: 'linear-gradient(135deg, #355070, #6d597a)',
         keywordChips: ['Cyprus filing obligation 2026', 'Cyprus tax resident 25 to 71']
@@ -169,8 +169,8 @@ const THREAD_CATALOG = [
         href: 'thread-crypto-disposal-evidence.html',
         summary: 'Crypto tax note focused on disposal evidence, wallet trails, and valuation discipline.',
         sources: 2,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Crypto Note',
         gradient: 'linear-gradient(135deg, #f4a261, #e9c46a)',
         keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
@@ -187,8 +187,8 @@ const THREAD_CATALOG = [
         href: 'thread-housing-family-relief-docs.html',
         summary: 'Deduction and rent-payment checklist for TD59 support files, electronic evidence and year-end payroll reconciliation.',
         sources: 6,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Open Checklist',
         gradient: 'linear-gradient(135deg, #b56576, #e56b6f)',
         keywordChips: ['Cyprus family tax relief 2026', 'Cyprus electronic rent payments', 'Cyprus housing deduction documents']
@@ -205,8 +205,8 @@ const THREAD_CATALOG = [
         href: 'thread-startup-stock-options-8.html',
         summary: 'Incentives note on what the official January 2026 package actually lists and how founders should read it.',
         sources: 2,
-        updated: 'July 3, 2026',
-        updatedIso: '2026-07-03',
+        updated: 'July 7, 2026',
+        updatedIso: '2026-07-07',
         cta: 'Read Incentives Note',
         gradient: 'linear-gradient(135deg, #264653, #2a9d8f)',
         keywordChips: ['Cyprus tax incentives 2026', 'Cyprus NID IP box securities exemption']
@@ -1051,6 +1051,82 @@ function getSearchInputElement() {
     return document.querySelector('[data-search-input]') || document.getElementById('searchInput');
 }
 
+function isMobileNavViewport() {
+    return window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+}
+
+function setMobileSearchState(searchInput, isOpen, options = {}) {
+    const searchContainer = searchInput ? searchInput.closest('.search-container') : null;
+    if (!searchContainer) return false;
+
+    const toggle = document.querySelector('.mobile-search-toggle');
+    searchContainer.classList.toggle('mobile-search-open', isOpen);
+
+    if (toggle) {
+        toggle.classList.toggle('active', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        toggle.setAttribute('aria-label', isOpen ? 'Close search' : 'Open search');
+    }
+
+    if (isOpen && options.focus) {
+        searchInput.focus();
+    }
+
+    return true;
+}
+
+function openMobileSearchForFocus(searchInput) {
+    if (!searchInput || !isMobileNavViewport()) return false;
+    return setMobileSearchState(searchInput, true, { focus: true });
+}
+
+function initMobileSearchToggle(searchInput) {
+    const searchContainer = searchInput ? searchInput.closest('.search-container') : null;
+    const navContainer = searchContainer ? searchContainer.closest('.nav-container') : null;
+    const hamburger = navContainer ? navContainer.querySelector('.hamburger') : null;
+    if (!searchInput || !searchContainer || !navContainer || !hamburger) return;
+    if (navContainer.querySelector('.mobile-search-toggle')) return;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mobile-search-toggle';
+    button.setAttribute('aria-label', 'Open search');
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = '<span class="search-toggle-icon" aria-hidden="true"></span>';
+
+    navContainer.insertBefore(button, hamburger);
+
+    button.addEventListener('click', () => {
+        const isOpen = !searchContainer.classList.contains('mobile-search-open');
+        const openMenu = document.querySelector('.nav-menu.active');
+        const openHamburger = document.querySelector('.hamburger.active');
+
+        if (openMenu) openMenu.classList.remove('active');
+        if (openHamburger) {
+            openHamburger.classList.remove('active');
+            openHamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        setMobileSearchState(searchInput, isOpen, { focus: isOpen });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!isMobileNavViewport()) return;
+        if (event.target.closest('.search-container') || event.target.closest('.mobile-search-toggle')) return;
+        setMobileSearchState(searchInput, false);
+    });
+
+    window.addEventListener('resize', () => {
+        if (!isMobileNavViewport()) {
+            setMobileSearchState(searchInput, false);
+        }
+    });
+
+    if (searchInput.value.trim() && isMobileNavViewport()) {
+        setMobileSearchState(searchInput, true);
+    }
+}
+
 function getCalculatorShortcutTarget() {
     return document.querySelector('[data-calculator-toggle]') ||
         document.getElementById('tab-salary') ||
@@ -1087,6 +1163,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = hamburger.classList.toggle("active");
             navMenu.classList.toggle("active", isOpen);
             hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+            if (isOpen) {
+                const searchInput = getSearchInputElement();
+                setMobileSearchState(searchInput, false);
+            }
         });
 
         document.querySelectorAll(".nav-link, .btn-nav, .dropdown-item").forEach(n => n.addEventListener("click", () => {
@@ -1141,6 +1222,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const searchInput = getSearchInputElement();
     if (searchInput) {
+        initMobileSearchToggle(searchInput);
+
         const hint = document.createElement('small');
         hint.className = 'keyboard-hint';
         hint.innerHTML = '<kbd>Ctrl+K</kbd> to search';
@@ -1238,7 +1321,10 @@ document.addEventListener('keydown', (e) => {
             case 'K':
                 e.preventDefault();
                 const searchInput = getSearchInputElement();
-                if (searchInput) searchInput.focus();
+                if (searchInput) {
+                    openMobileSearchForFocus(searchInput);
+                    searchInput.focus();
+                }
                 break;
             case '/':
                 e.preventDefault();
