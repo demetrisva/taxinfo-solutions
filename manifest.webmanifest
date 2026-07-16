@@ -5,8 +5,8 @@
   "start_url": "/index.html",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#f7f2e8",
-  "theme_color": "#17343d",
+  "background_color": "#f3f6f5",
+  "theme_color": "#0b6b58",
   "description": "Cyprus tax guide, calculators, and source-backed tax updates from TaxInfo Solutions.",
   "icons": [
     {
@@ -39,13 +39,13 @@
       "name": "Salary Calculator",
       "short_name": "Calculator",
       "description": "Open the salary calculator",
-      "url": "/index.html#calculator-section"
+      "url": "/tools.html#calculator-section"
     },
     {
       "name": "Briefing Hub",
       "short_name": "Briefings",
       "description": "Open the latest Cyprus tax briefings",
-      "url": "/index.html#news-hub"
+      "url": "/briefings.html#news-hub"
     }
   ]
 }

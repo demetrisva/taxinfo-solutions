@@ -861,10 +861,17 @@ function showIosInstallHint() {
 }
 
 function initPwaInstallPrompt() {
+    const isPrimaryInstallSurface =
+        window.location.pathname === '/' ||
+        window.location.pathname.endsWith('/index.html') ||
+        window.location.pathname.endsWith('/tools.html');
+
     window.addEventListener('beforeinstallprompt', event => {
         event.preventDefault();
         deferredInstallPromptEvent = event;
-        showBrowserInstallPrompt();
+        if (isPrimaryInstallSurface) {
+            window.setTimeout(showBrowserInstallPrompt, 12000);
+        }
     });
 
     window.addEventListener('appinstalled', () => {
@@ -872,11 +879,13 @@ function initPwaInstallPrompt() {
         removePwaPrompt();
     });
 
-    window.setTimeout(() => {
-        if (!deferredInstallPromptEvent) {
-            showIosInstallHint();
-        }
-    }, 1800);
+    if (isPrimaryInstallSurface) {
+        window.setTimeout(() => {
+            if (!deferredInstallPromptEvent) {
+                showIosInstallHint();
+            }
+        }, 15000);
+    }
 }
 
 function registerServiceWorker() {

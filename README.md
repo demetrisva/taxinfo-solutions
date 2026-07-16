@@ -2,12 +2,13 @@
 
 This repository contains a lightweight static site for TaxInfo Solutions.
 
-## What I changed for mobile
+## Design and responsive behavior
 
-- Added a layered SVG background with a mobile raster fallback.
-- Improved responsive navigation (hamburger + sliding menu).
-- Tuned typography and spacing for small screens.
-- Preloaded background assets for faster first paint.
+- Light-first editorial interface designed for reference reading and repeated use.
+- Responsive navigation with dedicated search and menu controls.
+- Shared layouts for guides, briefings, rate tables, calculators, and legal pages.
+- Fingerprinted CSS/JavaScript assets and a versioned service-worker cache.
+- Mobile layouts tested at compact browser viewports with stable type and controls.
 
 ## Run locally
 
