@@ -1969,6 +1969,23 @@ input:checked + .slider::before {
     background: var(--red-soft);
 }
 
+.current-watch {
+    margin-top: 26px;
+}
+
+.current-watch .alert-box {
+    margin-bottom: 0;
+}
+
+.current-watch h2 {
+    margin: 4px 0 8px;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.current-watch p:last-child {
+    margin-bottom: 0;
+}
+
 .stamp-duty-banner {
     border-color: #b9dcc9;
     background: var(--green-soft);
