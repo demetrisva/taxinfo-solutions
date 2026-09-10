@@ -38,6 +38,12 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Remove non-public files from deploy artifact
+        run: |
+          rm -rf .claude .idx .vscode
+          rm -f .DS_Store script.test.js build-assets.mjs \
+                ADSENSE_OPERATIONS.md DESIGN_OVERHAUL_SUMMARY.md DESIGN_REFERENCE.md
+
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:

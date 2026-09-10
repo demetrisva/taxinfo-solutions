@@ -8,7 +8,6 @@ Allow: /
 Disallow: /claude/
 Disallow: /idx/
 Disallow: /vscode/
-Disallow: /.well-known/
 Disallow: /script.test.js
 Disallow: /build-assets.mjs
 Disallow: /ADSENSE_OPERATIONS.md
