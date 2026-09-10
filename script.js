@@ -1,7 +1,8 @@
 // --- GLOBAL VARIABLES for Chart ---
 let taxChartInstance = null;
 let activeNewsCategory = 'all';
-const CHART_JS_URL = 'https://cdn.jsdelivr.net/npm/chart.js';
+const CHART_JS_URL = 'https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js';
+const CHART_JS_SRI = 'sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ';
 const SITE_CANONICAL_ORIGIN = 'https://taxinfo.solutions';
 const SITE_CANONICAL_HOME = `${SITE_CANONICAL_ORIGIN}/`;
 const BRIEFING_COLLECTION_JSONLD_ID = 'briefing-collection-jsonld';
@@ -224,6 +225,8 @@ function loadChartJsIfNeeded() {
     chartJsLoaderPromise = new Promise(resolve => {
         const script = document.createElement('script');
         script.src = CHART_JS_URL;
+        script.integrity = CHART_JS_SRI;
+        script.crossOrigin = 'anonymous';
         script.async = true;
         script.onload = () => resolve(true);
         script.onerror = () => resolve(false);
