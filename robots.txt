@@ -3,15 +3,20 @@
 
 User-agent: *
 Allow: /
-Disallow: /test.html
+
+# Block internal/editor/build artifacts from indexing (published by the Pages deploy but not public content)
+Disallow: /claude/
+Disallow: /idx/
+Disallow: /vscode/
+Disallow: /.well-known/
 Disallow: /script.test.js
 Disallow: /build-assets.mjs
+Disallow: /ADSENSE_OPERATIONS.md
+Disallow: /DESIGN_OVERHAUL_SUMMARY.md
+Disallow: /DESIGN_REFERENCE.md
 
 # Crawl delay settings for responsible crawling
 Crawl-delay: 1
 
 # Sitemap for search engines
 Sitemap: https://taxinfo.solutions/sitemap.xml
-
-# Additional sitemaps if needed (future expansion)
-# Sitemap: https://taxinfo.solutions/sitemap-news.xml
