@@ -74,12 +74,17 @@ test('lazy-loaded chart renders with its real callback path',async()=>{
     assert.equal(options.type,'doughnut');
     assert.equal(options.data.datasets[0].data.join(','),'20000,1000,3000');
 });
-test('publisher verification retained with no ad loader while CMP is unverified',()=>{
+test('publisher code is limited to editorial pages and ad requests remain paused',()=>{
     assert.equal(fs.readFileSync('ads.txt','utf8').trim(),'google.com, pub-6942670124765473, DIRECT, f08c47fec0942fa0');
     for (const file of fs.readdirSync('.').filter(f=>f.endsWith('.html')&&!f.startsWith('google'))) {
         const html=fs.readFileSync(file,'utf8');
         assert.equal((html.match(/name="google-adsense-account"/g)||[]).length,1,file);
-        assert.ok(!html.includes('pagead/js/adsbygoogle.js'),file);
+        const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html'].includes(file);
+        assert.equal((html.match(/pagead\/js\/adsbygoogle.js/g)||[]).length,eligible ? 1 : 0,file);
+        if (eligible) {
+            assert.ok(html.indexOf('pauseAdRequests = 1') < html.indexOf('pagead/js/adsbygoogle.js'),file);
+            assert.ok(html.includes('client=ca-pub-6942670124765473'),file);
+        }
         assert.ok(!html.includes('unsafe-eval'),file);
     }
 });
