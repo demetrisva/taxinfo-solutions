@@ -2,9 +2,9 @@
 
 ## Release status
 
-**Release checks passed; deployment pending. AdSense: Needs Manual Action.**
+**Deployed successfully. AdSense: Needs Manual Action.**
 
-GitHub authentication was restored by the owner and verified. The release checkout passes 10 regression tests, the 28-page static audit and the public build. Deployment and post-deployment results will be recorded after the workflow completes. The working repository also contains a corrupt Codex checkpoint ref that prevents fetch; it was left intact. A public clean checkout at `175dd37fa93f5832a128eb00fe95e6e8fa57a0d6` was used to reconcile the latest production security/build changes. The pre-existing `.DS_Store` deletion was preserved.
+GitHub authentication was restored by the owner and verified. The release checkout passes 10 regression tests, the 28-page static audit and the public build. Release commit `d0a4001934d028113675279bbb83ad09076aaa40` deployed successfully in [Pages run 34783646472](https://github.com/demetrisva/taxinfo-solutions/actions/runs/34783646472). The working repository also contains a corrupt Codex checkpoint ref that prevents fetch; it was left intact. A public clean checkout at `175dd37fa93f5832a128eb00fe95e6e8fa57a0d6` was used to reconcile the latest production security/build changes. The pre-existing `.DS_Store` deletion was preserved.
 
 ## Implemented corrections
 
@@ -57,3 +57,13 @@ Privacy/legal pages now describe the prepared behavior, but operator/controller 
 ## Remaining release steps
 
 Authentication, reconciliation against current main, diff review and pre-release checks are complete. Deploy via the configured Pages workflow and validate public routes/assets, cache rollover, security headers and ads.txt. Do not restore advertising until the separate CMP/account requirements are satisfied.
+
+## Post-deployment verification
+
+The Pages workflow passed its regression tests, build, staging and deployment. Cloudflare purge was skipped because repository secrets are absent. All 28 content routes plus the Google verification page returned 200; ads.txt, robots.txt and sitemap returned 200; the nonexistent probe returned 404. The live fingerprinted JS/CSS, service worker and ads.txt match the release. HTML and robots differ because of Cloudflare email protection, bot-protection injection and managed robots content; these are not stale release files. HSTS and nosniff remain present. Sampled live pages contain no AdSense loaders.
+
+A fresh live browser visit verified EUR 60,000 gross -> EUR 6,870 contributions, EUR 7,839 income tax and EUR 45,291 net, with no console errors observed. Live search returns the crypto briefing.
+
+Signed-in AdSense inspection after refresh: taxinfo.solutions is **Getting ready**, review requested 14 September 2026 at 00:19 (displayed account time). The current Policy Center says **No current issues**; this is not site approval. The account still reports ads.txt **Not found**, despite the verified public 200 response and matching real seller record. European regulations messaging presents initial setup with no configured message. Metadata verification offered by the dashboard matches the preserved publisher meta tag. No repeat review request, payment change, consent publication or ad enablement was performed.
+
+Outstanding: operator/controller legal details requested from owner; certified CMP setup and regional testing; Google approval and ads.txt recognition; optional CDN headers/cache configuration; remaining tax-source and broader device/performance checks described above. Advertising remains paused.

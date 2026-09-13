@@ -21,3 +21,7 @@ Confirm the operator/controller legal identity, actual vendors and retention pra
 - [Ad placement policies](https://support.google.com/adsense/answer/1346295)
 - [ads.txt guidance](https://support.google.com/adsense/answer/12171612)
 - [EU user consent policy](https://www.google.com/about/company/user-consent-policy/)
+
+## Signed-in inspection after deployment
+
+On 14 September the refreshed site record shows Getting ready, with a review request at 00:19. Policy Center shows No current issues. Ads.txt is publicly accessible with the matching seller entry but Google still reports Not found. European regulations messaging is at initial setup with no configured message. The offered meta-tag verification matches the deployed metadata. Site approval, crawler recognition and CMP configuration are still outstanding; do not interpret a clear Policy Center as approval.
