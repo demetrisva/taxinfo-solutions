@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-ancestors 'none'; connect-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; connect-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https: data:; frame-src https:; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <title>Cyprus Tax Tools 2026 | Calculator, Deadline Calendar & FAQ</title>
@@ -17,7 +17,7 @@
     <meta name="google-adsense-account" content="ca-pub-6942670124765473">
 
     <link rel="canonical" href="https://taxinfo.solutions/tools.html">
-    <link rel="stylesheet" href="style.49651c6937.min.css">
+    <link rel="stylesheet" href="style.e060f30c56.min.css">
     <meta name="theme-color" content="#0b6b58">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.webmanifest">
@@ -28,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <meta name="last-reviewed" content="2026-08-17">
+    <meta name="last-reviewed" content="2026-09-13">
 
     <meta property="og:site_name" content="TaxInfo Solutions">
     <meta property="og:title" content="Cyprus Tax Tools 2026 | Calculator & Resources">
@@ -36,7 +36,7 @@
     <meta property="og:image" content="https://taxinfo.solutions/images/og-image.png">
     <meta property="og:url" content="https://taxinfo.solutions/tools.html">
     <meta property="og:type" content="website">
-    <meta property="og:updated_time" content="2026-08-17T00:00:00+03:00">
+    <meta property="og:updated_time" content="2026-09-13T00:00:00+03:00">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cyprus Tax Tools 2026">
@@ -48,7 +48,7 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "datePublished": "2026-08-17",
-      "dateModified": "2026-08-17",
+      "dateModified": "2026-09-13",
       "mainEntity": [
         {
           "@type": "Question",
@@ -113,7 +113,7 @@
             <div class="nav-tools">
                 <div class="search-container">
                     <input type="text" id="searchInput" data-search-input placeholder="Search tools and FAQ..."
-                        aria-label="Search Cyprus tax tools and FAQ" onkeyup="searchContent()">
+                        aria-label="Search Cyprus tax tools and FAQ">
                 </div>
             </div>
         </div>
@@ -165,13 +165,13 @@
                         <div class="advanced-section-wrapper" style="margin-top: 20px;">
                             <div class="advanced-toggle">
                                 <label class="switch">
-                                    <input type="checkbox" id="advancedModeToggle" onchange="toggleAdvancedMode()">
+                                    <input type="checkbox" id="advancedModeToggle" aria-label="Use advanced deductions and exemptions" onchange="toggleAdvancedMode()">
                                     <span class="slider"></span>
                                 </label>
                                 <span class="toggle-label">Advanced Mode (Deductions and Exemptions)</span>
                             </div>
 
-                            <div id="advancedInputs" class="advanced-inputs hidden">
+                            <div id="advancedInputs" class="advanced-inputs hidden"><p class="field-note">Child, housing/rent and green deductions apply only to the 2026 estimate. Housing interest and rent share one EUR 2,000 cap. Family income limits and single-parent uplift are not assessed here.</p><label class="checkbox-container"><input type="checkbox" id="deductionEligibility"> I have confirmed eligibility, income limits and any exemption conditions for the deductions entered.</label>
                                 <div class="input-stack">
                                     <div class="form-item">
                                         <label for="childrenCount">Dependent Children</label>
@@ -180,8 +180,8 @@
                                             <option value="1">1 Child (-EUR 1,000)</option>
                                             <option value="2">2 Children (-EUR 2,250)</option>
                                             <option value="3">3 Children (-EUR 3,750)</option>
-                                            <option value="4">4 Children (-EUR 5,500)</option>
-                                            <option value="5">5 Children (-EUR 7,500)</option>
+                                            <option value="4">4 Children (-EUR 5,250)</option>
+                                            <option value="5">5 Children (-EUR 6,750)</option>
                                         </select>
                                     </div>
                                     <div class="form-item">
@@ -212,9 +212,10 @@
                             </div>
                         </div>
 
+                        <p id="salaryError" role="alert"></p>
                         <div id="salaryResult" class="result-box hidden" role="status" aria-live="polite">
                             <div class="chart-container">
-                                <canvas id="taxChart"></canvas>
+                                <canvas id="taxChart" role="img" aria-label="Estimated net pay, income tax and social contributions. Amounts are listed below."></canvas>
                             </div>
                             <div class="row"><span>Gross Income:</span> <span id="outGross">EUR 0</span></div>
                             <div class="row text-red"><span>Social Insurance (8.8% capped) + GESY (2.65%):</span> <span>- <span id="outSocial">EUR 0</span></span></div>
@@ -230,12 +231,14 @@
 
                 <div id="business" class="tab-content" role="tabpanel" aria-labelledby="tab-business" hidden>
                     <div class="calc-box">
-                        <label for="profitInput">Annual Net Profit (EUR)</label>
+                        <label for="profitInput">Annual Taxable Profit Before Corporation Tax (EUR)</label>
                         <div class="input-group">
                             <input type="number" id="profitInput" placeholder="e.g. 100000">
                             <button onclick="calculateBusiness()" class="calc-btn">Compare</button>
                         </div>
 
+                        <p id="businessError" role="alert"></p>
+                        <p class="field-note">Enter taxable profit before corporation tax. The 2026 comparison uses 2026 profit reserves and excludes GESY, foreign tax and transitional pre-2026 distributions.</p>
                         <div id="businessResult" class="result-grid hidden">
                             <div class="res-col old-rules">
                                 <h4>2025 baseline</h4>
@@ -265,15 +268,15 @@
                 <div class="grid-2-col-wide" style="gap: 20px;">
                     <div class="data-card">
                         <h3>Personal Income Calculator</h3>
-                        <p>The personal income calculator applies the 2026 Cyprus progressive tax bands to your annual gross salary. It deducts Social Insurance (8.8% on income up to the annual cap of EUR 68,904) and GESY contributions (2.65%) before the income tax calculation. The result is an estimated annual net take-home figure.</p>
-                        <p>In <strong>Advanced Mode</strong>, you can add dependent children (fixed deduction per child), housing loan interest (up to EUR 2,000), rent paid (up to EUR 2,000), green investment spending (up to EUR 1,000), and other approved IR59 deductions such as trade union subscriptions and approved charities. Rent inputs should be supported by an electronic payment trail from July 1, 2026 onward. The First Employment Relief checkbox applies the 50% income exemption available to employees taking their first job in Cyprus.</p>
+                        <p>The personal income calculator applies the 2026 Cyprus progressive tax bands to your annual gross salary. It deducts Social Insurance (8.8%, with an annualised monthly-pay cap of EUR 68,904 for 2026 or EUR 66,612 for 2025) and GESY (2.65% up to EUR 180,000) before the income tax calculation. The result is an estimated annual net take-home figure.</p>
+                        <p>In <strong>Advanced Mode</strong>, you can add dependent children (fixed deduction per child), housing loan interest and rent paid (combined maximum EUR 2,000), green investment spending (up to EUR 1,000), and other approved IR59 deductions such as trade union subscriptions and approved charities. Rent inputs should be supported by an electronic payment trail from July 1, 2026 onward. Selecting First Employment Relief stops this estimate: exemption eligibility and interacting deduction limits require an individual calculation using the official Tax Department calculator or an adviser.</p>
                         <p>The calculator does not account for: loss carryforwards, multiple sources of income, non-resident status, pension contributions, or deductions that require specific documentation and approval from the Tax For All system.</p>
                     </div>
                     <div class="data-card">
                         <h3>Business Owner Comparison</h3>
                         <p>The Business Owner tab compares the total effective tax on a company profit under the 2025 baseline versus the 2026 reform package. The comparison applies the corporate tax rate to net profit, then applies the respective dividend SDC rates to the after-tax balance to show the estimated net after full distribution to a domiciled resident shareholder.</p>
                         <p>The 2026 package uses: 15% corporate tax rate and 5% dividend SDC rate, producing a combined effective rate of approximately 19.25% on gross profit before distribution. The 2025 baseline uses: 12.5% corporate tax rate and 17% dividend SDC rate, producing approximately 27.3% combined effective rate.</p>
-                        <p>This comparison is directional only. Actual effective rates depend on domicile status, corporate expense deductions, dividend declaration timing, and whether the shareholder qualifies for SDC exemption as a non-domiciled individual. Non-dom shareholders face only the 15% corporate layer in 2026, not the 5% SDC layer.</p>
+                        <p>This comparison is directional only. Actual effective rates depend on domicile status, corporate expense deductions, dividend declaration timing, and whether the shareholder qualifies for SDC exemption as a non-domiciled individual. Non-dom status may remove SDC; GESY and any foreign tax must still be assessed separately.</p>
                     </div>
                     <div class="data-card">
                         <h3>Key Calculation Assumptions</h3>
@@ -289,9 +292,9 @@
                     </div>
                     <div class="data-card">
                         <h3>Data Currency and Updates</h3>
-                        <p>The calculator rates were last verified against official source material on August 17, 2026. Cyprus tax legislation can be amended by law, circular, or administrative guidance at any time. The 2026 reform package is treated here as the current baseline, but the estimator still cannot model every transitional rule, election, exemption or taxpayer-specific fact.</p>
+                        <p>Calculator caps and deduction arithmetic were reviewed against official sources on September 13, 2026. Tax legislation may be amended; circulars and administrative guidance may clarify its application. The 2026 reform package is treated here as the current baseline, but the estimator still cannot model every transitional rule, election, exemption or taxpayer-specific fact.</p>
                         <p>The x12 and x13 multiplier buttons in the personal calculator are provided for users who know their monthly gross salary and want to convert to an annual figure quickly. The x13 option reflects the common Cyprus practice of paying a 13th salary as an annual bonus, which is typically taxable in full in the year of payment.</p>
-                        <p>If you identify a discrepancy between a calculator output and a confirmed official rate, please contact us at <a href="mailto:info@taxinfo.solutions">info@taxinfo.solutions</a>. Verified corrections are applied within two working days and reflected in the review date shown on this page.</p>
+                        <p>If you identify a discrepancy between a calculator output and a confirmed official rate, please contact us at <a href="mailto:info@taxinfo.solutions">info@taxinfo.solutions</a>. Verified corrections are recorded in the editorial changelog and the relevant review date.</p>
                     </div>
                 </div>
             </section>
@@ -310,7 +313,7 @@
                     <div class="deadline-list">
                         <div class="d-item"><span class="date">Mar 31</span><span class="desc">Monthly PAYE submissions for Jul-Dec 2025</span></div>
                         <div class="d-item"><span class="date">Sep 30</span><span class="desc">Annual PAYE withholding declaration for 2025</span></div>
-                        <div class="d-item"><span class="date">Jul 31</span><span class="desc">1st provisional tax installment for 2026</span></div>
+                        <div class="d-item"><span class="date">Oct 31</span><span class="desc">2025 individual return (check scope)</span></div><div class="d-item"><span class="date">Jul 31</span><span class="desc">1st provisional tax installment for 2026</span></div>
                         <div class="d-item"><span class="date">Dec 31</span><span class="desc">2nd provisional tax installment for 2026</span></div>
                     </div>
                 </div>
@@ -319,7 +322,7 @@
                     <h3>Source Library and Official Forms</h3>
                     <p>Core links used across the refreshed briefings.</p>
                     <div class="download-grid">
-                        <a href="https://www.gov.cy/assets/modules/mof/tfa/documents/application-forms/employer-withholding-return-paye/ir59/IR59_2026_English__.pdf"
+                        <a href="https://www.gov.cy/media/sites/167/2026/01/TD59A-_-2026_English.pdf"
                             target="_blank" rel="noopener noreferrer" class="download-btn">
                             <span>TD59 / payroll deduction support</span>
                             <span class="arrow">→</span>
@@ -369,7 +372,7 @@
                     </details>
                     <details class="faq-item">
                         <summary>What is the dividend tax (SDC) rate in Cyprus for 2026?</summary>
-                        <p>The reviewed reform package reduces the dividend SDC rate to <strong>5%</strong> from January 1, 2026, but the shareholder analysis still depends on status, timing and documentation.</p>
+                        <p>The reviewed reform package reduces the dividend SDC rate to <strong>5%</strong> for profits earned from January 1, 2026, but the shareholder analysis still depends on status, timing and documentation.</p>
                         <a href="thread-dividend-sdc-planning.html" class="read-more">Read dividend briefing</a>
                     </details>
                     <details class="faq-item">
@@ -432,6 +435,8 @@
                         <a href="privacy.html">Privacy Policy</a>
                         <a href="cookies.html">Cookie Policy</a>
                         <a href="terms.html">Terms of Use</a>
+                        <a href="disclaimer.html">Disclaimer</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                 </div>
             </div>
@@ -441,7 +446,7 @@
         </div>
     </footer>
 
-    <script src="script.5cf4054ae8.min.js" defer></script>
+    <script src="script.71e5e05db9.min.js" defer></script>
 </body>
 
 </html>

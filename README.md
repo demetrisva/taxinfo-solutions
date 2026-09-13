@@ -31,16 +31,14 @@ Run:
 node build-assets.mjs
 ```
 
-## AdSense setup
+## Validate and build
 
-The site includes the AdSense publisher tag on monetizable editorial/reference pages and keeps legal and calculator-first pages unmonetized by default. See `ADSENSE_OPERATIONS.md` for the policy and dashboard checklist before requesting another AdSense review.
+Run `node --test script.test.js site.test.js`, `python audit-site.py`, `node build-assets.mjs`, then `node build-public.mjs`. Preview the staged `dist` directory. The workflows publish only staged public assets, excluding audit scripts, reports and repository files.
 
-## Make it live (GitHub Pages)
+## AdSense
 
-1. Push this repo to GitHub (main branch).
-2. Option A — GitHub Pages (easiest): enable Pages in repository Settings → Pages → branch `gh-pages` (or `main` / `docs/` as you prefer).
-3. Option B — Automated deploy using GitHub Actions (workflow provided). Ensure the repository's default branch is `main` and push.
+Ad serving is paused pending verified CMP configuration. The existing publisher metadata and ads.txt remain in place. See [ADSENSE_OPERATIONS.md](ADSENSE_OPERATIONS.md) for required account and regional testing.
 
-The included workflow `./.github/workflows/gh-pages.yml` will publish the repository contents to the `gh-pages` branch automatically on push to `main`.
+## Release
 
-If you want, I can also help configure a custom domain and HTTPS after deployment.
+The main workflow deploys the staged public directory through GitHub Pages Actions on a push to main. The fallback workflow is separately dispatched. Optional Cloudflare purge requires configured repository secrets. Validate the deployed site after a successful workflow; a local build is not a production release.

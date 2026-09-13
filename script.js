@@ -14,6 +14,7 @@ let chartJsLoaderPromise = null;
 let deferredInstallPromptEvent = null;
 let pwaInstallPromptElement = null;
 const THREAD_CATALOG = [
+{"id": "september-developments", "primary": true, "categoryKey": "international", "category": "Updates", "tag": "Updates", "kicker": "September Review", "title": "Cyprus Developments: August 18\u2013September 13, 2026", "excerpt": "Official updates on fuel relief, proposed child benefit changes, tax-system maintenance, NID and imaging-centre certificates.", "href": "september-2026-developments.html", "summary": "Five dated official announcements with practical follow-up and proposal status.", "sources": 5, "updated": "September 13, 2026", "updatedIso": "2026-09-13", "cta": "Read September Update", "gradient": "linear-gradient(135deg, #0c5c7a, #2ca58d)", "keywordChips": ["Cyprus September 2026 updates", "Cyprus fuel excise relief"]},
     {
         id: 'cross-border-tax-watch',
         primary: false,
@@ -26,8 +27,8 @@ const THREAD_CATALOG = [
         href: 'thread-transfer-pricing-playbook.html',
         summary: 'International note on Pillar Two compliance, treaty expansion, OECD coordination and Cyprus FDI screening controls.',
         sources: 6,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Briefing',
         gradient: 'linear-gradient(135deg, #0c5c7a, #2ca58d)',
         keywordChips: ['Cyprus Pillar Two 2026', 'Cyprus Vietnam double tax treaty', 'Cyprus FDI screening 2026']
@@ -44,8 +45,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-penalties-calendar.html',
         summary: 'Deadline briefing: employer PAYE, VIES/VAT notices, personal return deadline monitoring, provisional tax installments, and where to recheck official notices.',
         sources: 8,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'View Dates',
         gradient: 'linear-gradient(135deg, #0a76a8, #6cc3d5)',
         keywordChips: ['Cyprus PAYE deadlines 2026', 'Cyprus provisional tax calendar 2026']
@@ -62,8 +63,8 @@ const THREAD_CATALOG = [
         href: 'thread-vat-zero-rate-exit-readiness.html',
         summary: 'VAT operations note on zero-rate controls, meat and fish relief, VAT/VIES notices, primary-residence VAT transition, SME checks and transition planning.',
         sources: 7,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read VAT Note',
         gradient: 'linear-gradient(135deg, #006466, #4d908e)',
         keywordChips: ['Cyprus VAT zero rate 2026', 'Cyprus VAT meat fish zero rate', 'Cyprus VAT controls for basic goods']
@@ -80,8 +81,8 @@ const THREAD_CATALOG = [
         href: 'thread-payroll-assumptions-log.html',
         summary: 'Employer payroll guide for monthly controls, withholding returns, and deduction support files.',
         sources: 4,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Open Guide',
         gradient: 'linear-gradient(135deg, #2c7f5e, #a8d672)',
         keywordChips: ['Cyprus payroll withholding 2026', 'Cyprus TD59 deductions employer']
@@ -98,8 +99,8 @@ const THREAD_CATALOG = [
         href: 'thread-corporate-tax-transition.html',
         summary: 'Corporate reform note on the new 15% income tax rate, CY Login, document stamping and governance steps for 2026 close cycles.',
         sources: 4,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Reform Note',
         gradient: 'linear-gradient(135deg, #c76829, #f2c14e)',
         keywordChips: ['Cyprus corporate tax 15% 2026', 'Cyprus tax reform company checklist']
@@ -112,12 +113,12 @@ const THREAD_CATALOG = [
         tag: 'Corporate',
         kicker: 'Shareholder Brief',
         title: 'Dividend SDC at 5%: Distribution Planning, Non-Dom Boundaries and Board Papers',
-        excerpt: 'This briefing focuses on the reduced 5% Special Defence Contribution rate on dividends from January 1, 2026 and the checks shareholders should complete before declaring distributions.',
+        excerpt: 'This briefing focuses on the reduced 5% Special Defence Contribution rate on dividends from profits earned from January 1, 2026 and the checks shareholders should complete before declaring distributions.',
         href: 'thread-dividend-sdc-planning.html',
         summary: 'Dividend planning note on SDC, eligibility checks, and evidence expected before payment dates.',
         sources: 2,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Dividend Note',
         gradient: 'linear-gradient(135deg, #177e89, #8fc0a9)',
         keywordChips: ['Cyprus dividend tax 5%', 'Cyprus non-dom dividend planning']
@@ -134,8 +135,8 @@ const THREAD_CATALOG = [
         href: 'thread-salary-threshold-examples.html',
         summary: 'Individual tax briefing on salary bands, filing coverage, and employee documentation points.',
         sources: 4,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Salary Guide',
         gradient: 'linear-gradient(135deg, #516395, #614385)',
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
@@ -152,8 +153,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-scope-reality-check.html',
         summary: 'Individual compliance briefing on filing-scope triggers, residency tests, and document controls.',
         sources: 3,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Filing Guide',
         gradient: 'linear-gradient(135deg, #355070, #6d597a)',
         keywordChips: ['Cyprus filing obligation 2026', 'Cyprus individual return deadline 2026']
@@ -170,8 +171,8 @@ const THREAD_CATALOG = [
         href: 'thread-crypto-disposal-evidence.html',
         summary: 'Crypto tax note focused on disposal evidence, wallet trails, and valuation discipline.',
         sources: 2,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Crypto Note',
         gradient: 'linear-gradient(135deg, #f4a261, #e9c46a)',
         keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
@@ -188,8 +189,8 @@ const THREAD_CATALOG = [
         href: 'thread-housing-family-relief-docs.html',
         summary: 'Deduction and rent-payment checklist for TD59 support files, electronic evidence and year-end payroll reconciliation.',
         sources: 6,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Open Checklist',
         gradient: 'linear-gradient(135deg, #b56576, #e56b6f)',
         keywordChips: ['Cyprus family tax relief 2026', 'Cyprus electronic rent payments', 'Cyprus housing deduction documents']
@@ -206,8 +207,8 @@ const THREAD_CATALOG = [
         href: 'thread-startup-stock-options-8.html',
         summary: 'Incentives note on what the official January 2026 package actually lists and how founders should read it.',
         sources: 2,
-        updated: 'August 17, 2026',
-        updatedIso: '2026-08-17',
+        updated: 'September 13, 2026',
+        updatedIso: '2026-09-13',
         cta: 'Read Incentives Note',
         gradient: 'linear-gradient(135deg, #264653, #2a9d8f)',
         keywordChips: ['Cyprus tax incentives 2026', 'Cyprus NID IP box securities exemption']
@@ -215,7 +216,7 @@ const THREAD_CATALOG = [
 ];
 
 function getPrimaryThreads() {
-    return THREAD_CATALOG.filter(thread => thread.primary !== false);
+    return THREAD_CATALOG;
 }
 
 function loadChartJsIfNeeded() {
@@ -406,7 +407,7 @@ function renderForumStatsFromCatalog() {
 
         const latestLong = formatDateLong(latest.updatedIso);
         if (lastReviewedBadge && latestLong) {
-            lastReviewedBadge.textContent = `Source review: ${latestLong}`;
+            lastReviewedBadge.textContent = `Editorial review: ${latestLong}`;
         }
         if (metaLastReviewed) {
             metaLastReviewed.setAttribute('content', latest.updatedIso);
@@ -462,16 +463,17 @@ function toggleAdvancedMode() {
 function calculateSalary() {
     // 1. Get Base Inputs
     const gross = parseFloat(document.getElementById('grossSalary').value);
-    if (!gross || gross < 0) return;
+    if (!validateAmount('grossSalary', gross, 'salaryError', 'salaryResult')) return;
+    const year = document.getElementById('taxYear').value;
 
     // 2. Social deductions used by the estimator.
     // Employee SI: 8.8% up to the 2026 annual cap | GESY: 2.65% on gross
-    const annualSocialInsuranceCap = 68904;
+    const annualSocialInsuranceCap = year === '2025' ? 66612 : 68904;
     const socialInsuranceRate = 0.088;
     const gesyRate = 0.0265;
 
     const socialInsurance = Math.min(gross, annualSocialInsuranceCap) * socialInsuranceRate;
-    const gesy = gross * gesyRate;
+    const gesy = Math.min(gross, 180000) * gesyRate;
     const socialDeductions = socialInsurance + gesy;
 
     // 3. Advanced Deductions
@@ -482,28 +484,38 @@ function calculateSalary() {
     let expatExemption = 0;
 
     if (isAdvanced) {
+        for (const id of ['housingInterest', 'rentDeduction', 'greenDeduction', 'ir59Deductions']) {
+            const raw = document.getElementById(id).value;
+            if (raw !== '' && !validateAmount(id, Number(raw), 'salaryError', 'salaryResult')) return;
+        }
+        const eligibility = document.getElementById('deductionEligibility');
+        if (eligibility && !eligibility.checked) {
+            document.getElementById('salaryError').textContent = 'Confirm deduction and exemption eligibility before using Advanced Mode.';
+            document.getElementById('salaryResult').classList.add('hidden');
+            eligibility.focus();
+            return;
+        }
         // A. Children
         const children = parseInt(document.getElementById('childrenCount').value);
-        if (children === 1) totalDeductions += 1000;
-        else if (children === 2) totalDeductions += 2250;
-        else if (children === 3) totalDeductions += 3750;
-        else if (children === 4) totalDeductions += 5500;
-        else if (children === 5) totalDeductions += 7500;
+        if (year === '2026') {
+            if (children >= 1) totalDeductions += 1000;
+            if (children >= 2) totalDeductions += 1250;
+            if (children >= 3) totalDeductions += (children - 2) * 1500;
+        }
 
         // B1. Housing Loan Interest (Max 2000)
         let housingInt = parseFloat(document.getElementById('housingInterest').value) || 0;
         housingInt = Math.min(housingInt, 2000);
-        totalDeductions += housingInt;
 
         // B2. Rent Allowance (Max 2000)
         let rentDed = parseFloat(document.getElementById('rentDeduction').value) || 0;
         rentDed = Math.min(rentDed, 2000);
-        totalDeductions += rentDed;
+        if (year === '2026') totalDeductions += Math.min(housingInt + rentDed, 2000);
 
         // C. Green Investment (Max 1000)
         let green = parseFloat(document.getElementById('greenDeduction').value) || 0;
         green = Math.min(green, 1000);
-        totalDeductions += green;
+        if (year === '2026') totalDeductions += green;
 
         // D. Other IR59 Deductions (Unions, Donations, etc.)
         let ir59 = parseFloat(document.getElementById('ir59Deductions').value) || 0;
@@ -511,8 +523,10 @@ function calculateSalary() {
 
         // D. Expat 50% Exemption
         const isExpat = document.getElementById('expatExemption').checked;
-        if (isExpat && gross > 55000) {
-            expatExemption = gross * 0.5;
+        if (isExpat) {
+            document.getElementById('salaryError').textContent = 'First-employment relief needs an individual calculation, including applicable deduction limits. Use the official Tax Department calculator or your adviser.';
+            document.getElementById('salaryResult').classList.add('hidden');
+            return;
         }
     }
 
@@ -523,7 +537,6 @@ function calculateSalary() {
     if (taxableIncome < 0) taxableIncome = 0;
 
     let tax = 0;
-    const year = document.getElementById('taxYear').value;
     const noteElement = document.getElementById('taxComputationNote');
 
     if (year === '2026') {
@@ -546,7 +559,7 @@ function calculateSalary() {
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2026 Rules):";
         if (noteElement) {
-            noteElement.innerText = "*Calculated with the 2026 published brackets plus estimator assumptions for employee SI and GESY. Use annual figures and confirm deduction eligibility before relying on the result.";
+            noteElement.innerText = "2026 annual estimate: SI capped at EUR 68,904; GESY capped at EUR 180,000. Assumes one employer and regular monthly earnings throughout the year. Family income tests, single-parent uplift and special relief interactions are not calculated. Enter only independently confirmed deductions.";
         }
     } else {
         // 2025 progressive brackets.
@@ -573,7 +586,7 @@ function calculateSalary() {
         }
         document.getElementById('outTaxLabel').innerText = "Income Tax (2025 Rules):";
         if (noteElement) {
-            noteElement.innerText = "*Calculated with the 2025 baseline brackets plus estimator assumptions for employee SI and GESY.";
+            noteElement.innerText = "2025 annual estimate: SI capped at EUR 66,612; GESY capped at EUR 180,000. The new 2026 child, housing/rent and green deductions are excluded. Assumes regular monthly earnings throughout the year; special relief interactions need separate calculation.";
         }
     }
 
@@ -603,7 +616,7 @@ async function updateChart(net, tax, social) {
         taxChartInstance.destroy();
     }
 
-    const chartUi = getChartUiColors(getActiveTheme());
+    const chartUi = { legend: '#334b43', tooltipBg: '#12362f', tooltipTitle: '#ffffff', tooltipBody: '#ffffff', tooltipBorder: '#0b6b58' };
 
     taxChartInstance = new Chart(ctx, {
         type: 'doughnut',
@@ -669,7 +682,10 @@ function multiplyBy13() {
 // --- 2. BUSINESS PROFIT CALCULATOR LOGIC ---
 function calculateBusiness() {
     const profit = parseFloat(document.getElementById('profitInput').value);
-    if (!profit || profit < 0) return;
+    if (!validateAmount('profitInput', profit, 'businessError', 'businessResult')) {
+        document.getElementById('verdict').classList.add('hidden');
+        return;
+    }
 
     // 2025 baseline
     const corpTax25 = profit * 0.125;
@@ -708,6 +724,19 @@ function calculateBusiness() {
         verdictDiv.innerText = "No net difference appears between the 2025 baseline and this simplified 2026 reform scenario.";
         verdictDiv.classList.add('verdict-neutral');
     }
+}
+
+function validateAmount(inputId, amount, errorId, resultId) {
+    const valid = Number.isFinite(amount) && amount >= 0 && amount <= 1000000000;
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    input.setAttribute('aria-invalid', String(!valid));
+    if (error) error.textContent = valid ? '' : 'Enter an amount from EUR 0 to EUR 1,000,000,000.';
+    if (!valid) {
+        document.getElementById(resultId).classList.add('hidden');
+        input.focus();
+    }
+    return valid;
 }
 
 // Helper for currency formatting
@@ -908,22 +937,22 @@ function initCalendar() {
     const deadlines = [
         { date: "2026-03-31", title: "PAYE July-December 2025 submissions" },
         { date: "2026-09-30", title: "Annual PAYE withholding return for 2025" },
+        { date: "2026-10-31", title: "2025 individual income tax return (check scope)" },
         { date: "2026-07-31", title: "1st Provisional Tax Installment" },
         { date: "2026-12-31", title: "2nd Provisional Tax Installment" }
     ];
 
-    const today = new Date();
-    const todayAtMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const todayIso = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Nicosia', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
     const displayBox = document.getElementById("next-deadline-title");
     const daysBox = document.getElementById("days-left");
 
     // Only run if calendar elements exist (e.g. index.html)
     if (!displayBox || !daysBox) return;
 
-    const next = deadlines.find(d => new Date(`${d.date}T00:00:00`) >= todayAtMidnight);
+    const next = getNextDeadline(deadlines, todayIso);
 
     if (next) {
-        const diffTime = Math.abs(new Date(`${next.date}T00:00:00`) - todayAtMidnight);
+        const diffTime = Date.parse(next.date) - Date.parse(todayIso);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
         displayBox.innerText = next.title;
@@ -931,9 +960,13 @@ function initCalendar() {
 
         if (diffDays < 7) daysBox.style.color = "#ff6b6b";
     } else {
-        displayBox.innerText = "All 2026 Deadlines Passed";
+        displayBox.innerText = "No upcoming dates in this calendar; check the Tax Department";
         daysBox.innerText = "✅";
     }
+}
+
+function getNextDeadline(deadlines, todayIso) {
+    return [...deadlines].sort((a, b) => a.date.localeCompare(b.date)).find(d => d.date >= todayIso);
 }
 
 function renderNewsCardsFromCatalog() {
@@ -1056,7 +1089,32 @@ function filterNews(category) {
 }
 
 function searchContent() {
-    applyCardFilters();
+    const input = getSearchInputElement();
+    const query = input ? input.value.trim().toLowerCase() : '';
+    if (document.getElementById('news-hub')) {
+        applyCardFilters();
+        return;
+    }
+    let results = document.getElementById('site-search-results');
+    if (!results && input) {
+        results = document.createElement('div');
+        results.id = 'site-search-results';
+        results.className = 'site-search-results';
+        results.setAttribute('aria-live', 'polite');
+        input.parentElement.appendChild(results);
+    }
+    if (!results) return;
+    results.replaceChildren();
+    results.hidden = !query;
+    if (!query) return;
+    const matches = THREAD_CATALOG.filter(t => `${t.title} ${t.excerpt} ${t.category}`.toLowerCase().includes(query));
+    if (!matches.length) results.textContent = 'No matching briefings. Try VAT, salary or payroll.';
+    matches.forEach(thread => {
+        const anchor = document.createElement('a');
+        anchor.href = thread.href;
+        anchor.textContent = thread.title;
+        results.appendChild(anchor);
+    });
 }
 
 function getSearchInputElement() {
@@ -1225,7 +1283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeNewsBtn && activeNewsBtn.dataset.category) {
         activeNewsCategory = activeNewsBtn.dataset.category;
     }
-    applyCardFilters();
+    if (document.getElementById('news-hub')) applyCardFilters();
 
     enhancePrintability();
     generateTableOfContents();
@@ -1235,6 +1293,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = getSearchInputElement();
     if (searchInput) {
         initMobileSearchToggle(searchInput);
+        searchInput.addEventListener('input', searchContent);
+        if (searchInput.value.trim()) searchContent();
 
         const hint = document.createElement('small');
         hint.className = 'keyboard-hint';

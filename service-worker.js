@@ -1,5 +1,5 @@
-const SHELL_CACHE = 'taxinfo-shell-v11';
-const ASSET_CACHE = 'taxinfo-assets-v11';
+const SHELL_CACHE = 'taxinfo-shell-v12';
+const ASSET_CACHE = 'taxinfo-assets-v12';
 const APP_SHELL_PATHS = [
   '/',
   '/index.html',
@@ -8,6 +8,7 @@ const APP_SHELL_PATHS = [
   '/privacy.html',
   '/terms.html',
   '/cookies.html',
+  '/offline.html',
   '/manifest.webmanifest',
   '/images/icon-192.png',
   '/images/icon-512.png',
@@ -26,7 +27,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => Promise.all(
       cacheNames
-        .filter(name => name !== SHELL_CACHE && name !== ASSET_CACHE)
+        .filter(name => name.startsWith('taxinfo-') && name !== SHELL_CACHE && name !== ASSET_CACHE)
         .map(name => caches.delete(name))
     )).then(() => self.clients.claim())
   );
@@ -61,11 +62,19 @@ async function networkFirst(request) {
   try {
     const response = await fetch(request);
     if (response && response.ok) {
-      cache.put(request, response.clone());
+      await cache.put(request, response.clone());
     }
     return response;
   } catch (_) {
-    return (await cache.match(request)) || (await cache.match('/index.html'));
+    const cached = await cache.match(request);
+    if (cached) {
+      const html = await cached.text();
+      const notice = '<aside role="status" style="position:relative;z-index:10000;padding:1rem;background:#fff3cd;color:#332701">Offline copy: rates and deadlines may have changed. Reconnect and reload before relying on this information.</aside>';
+      return new Response(html.replace(/<body([^>]*)>/i, '<body$1>' + notice), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    return (await cache.match('/offline.html')) || new Response('Offline. Reconnect to view this page.', { status: 503 });
   }
 }
 

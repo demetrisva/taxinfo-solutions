@@ -1,29 +1,23 @@
-# AdSense Operations Checklist
+# AdSense audit — 14 September 2026
 
-This site is prepared for Google AdSense Auto Ads on monetizable editorial and reference pages.
+Assessment: **Needs Manual Action**. Ad serving is paused in this release pending verified consent configuration. The existing publisher metadata and ads.txt seller entry are preserved; no publisher or slot IDs were invented.
 
-## Current implementation
+## Required account work
 
-- Publisher account: `ca-pub-6942670124765473`
-- Authorized seller file: `ads.txt`
-- AdSense loader enabled on the homepage, guide pages, briefing pages, resources, coverage, and editorial transparency pages.
-- AdSense loader intentionally omitted from legal pages, the about page, and calculator-first tool pages to reduce accidental-click and low-content placement risk.
-- Privacy and cookie pages disclose Google AdSense cookies, ad measurement, personalisation where permitted, and consent requirements.
+1. Confirm account ownership, site approval, Policy Center status, crawler access and ads.txt recognition in AdSense.
+2. Configure and publish a Google-certified CMP with IAB TCF support for the exact domain, using Privacy & messaging or a certified provider. Verify the applicable EEA, UK and Switzerland settings. A homemade banner or a stub __tcfapi is not a substitute.
+3. Test fresh and returning visits, acceptance, rejection, granular choices, withdrawal and CMP failure in the relevant regions before restoring the loader. Certification alone does not establish complete legal compliance.
+4. Restore the real publisher loader once per eligible editorial page only after verification; update the regression test deliberately. Keep tools, legal, contact, search, error and offline pages excluded. Review Auto Ads overlays and mobile placements conservatively. Manual units require real account-issued slot IDs, clear Advertisement labels, responsive reserved space and separation from controls.
+5. Verify live behavior after deployment without clicking your own ads.
 
-## Required dashboard checks
+The baseline contained 18 loaders with no duplicate loaders or manual slots found. The audit browser showed no CMP or visible ads, but its ad-host DNS request failed: this does not prove account-wide consent or serving behavior. Dashboard settings and regional consent flows remain unverified.
 
-1. In AdSense, confirm `taxinfo.solutions` is approved under Sites.
-2. Turn on Auto Ads for the approved site.
-3. In Privacy & messaging, create and publish a European regulations message for `taxinfo.solutions`.
-4. Confirm the message uses a Google-certified CMP with IAB TCF support for EEA, UK, and Switzerland visitors.
-5. Keep ad load conservative until the site is reviewed again.
+Confirm the operator/controller legal identity, actual vendors and retention practices against the privacy page before publication. Configure frame-ancestors as an HTTP response header at the CDN if required; a meta CSP cannot enforce it.
 
-## Manual ad units
+## Official references
 
-Manual in-page display units require real `data-ad-slot` IDs generated inside the AdSense dashboard. Do not invent slot IDs in the repo. Once slot IDs exist, add units only:
-
-- between substantial content sections,
-- under the visible label `Advertisement`,
-- away from navigation, forms, calculator inputs, buttons, and download-style links,
-- with responsive sizing and no layout overlap.
-
+- [Certified CMP requirements](https://support.google.com/adsense/answer/13554116)
+- [Publisher policies](https://support.google.com/publisherpolicies/answer/10502938)
+- [Ad placement policies](https://support.google.com/adsense/answer/1346295)
+- [ads.txt guidance](https://support.google.com/adsense/answer/12171612)
+- [EU user consent policy](https://www.google.com/about/company/user-consent-policy/)
