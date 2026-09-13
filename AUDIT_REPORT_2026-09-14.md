@@ -26,11 +26,11 @@ This is not a certification that every tax statement has been independently esta
 
 ## AdSense findings
 
-The baseline contained 18 loaders, no duplicate loaders or manual slots found, and a consistent existing publisher ID. All loaders are removed in this local release pending verified CMP configuration; publisher metadata and the real ads.txt seller entry remain. Baseline live ads.txt returned HTTP 200. No made-up CMP, consent API or slot ID was added.
+The baseline contained 18 loaders, no duplicate loaders or manual slots found, and a consistent existing publisher ID. The release now loads the real publisher tag only on selected editorial pages, with `pauseAdRequests=1`; tools and legal/contact/index utility pages remain excluded. Publisher metadata and the real ads.txt seller entry remain. Baseline live ads.txt returned HTTP 200. No made-up CMP, consent API or slot ID was added.
 
-The audit browser displayed no CMP or visible ads, but the ad host had a DNS failure in this environment. Regional consent, account approval, Policy Center, crawler diagnostics, actual fill and Auto Ads settings remain unverified. Ads being paused eliminates ad placement and ad-request overhead in the prepared build; no numeric Core Web Vitals improvement is claimed.
+The audit browser displayed no CMP or visible ads because this environment resolves the ad host to `0.0.0.0`/`::`. Regional consent and actual fill therefore still require a network that permits Google ad hosts. Ads remain paused in code, eliminating ad-request overhead until a consent decision is available; no numeric Core Web Vitals improvement is claimed.
 
-Privacy/legal pages now describe the prepared behavior, but operator/controller identity, actual vendor configuration and retention require owner confirmation. See ADSENSE_OPERATIONS.md for precise account and regional test steps. AdSense readiness cannot be certified without those checks and live validation.
+Privacy/legal pages now identify Demetris Valakos as the free site's operator and list the public contact email. Actual vendor retention and regional legal configuration still require account-owner review. See ADSENSE_OPERATIONS.md for precise account and regional test steps. AdSense readiness cannot be certified without site approval and live consent validation.
 
 ## Validation evidence and limits
 
@@ -64,6 +64,6 @@ The Pages workflow passed its regression tests, build, staging and deployment. C
 
 A fresh live browser visit verified EUR 60,000 gross -> EUR 6,870 contributions, EUR 7,839 income tax and EUR 45,291 net, with no console errors observed. Live search returns the crypto briefing.
 
-Signed-in AdSense inspection after refresh: taxinfo.solutions is **Getting ready**, review requested 14 September 2026 at 00:19 (displayed account time). The current Policy Center says **No current issues**; this is not site approval. The account still reports ads.txt **Not found**, despite the verified public 200 response and matching real seller record. European regulations messaging presents initial setup with no configured message. Metadata verification offered by the dashboard matches the preserved publisher meta tag. No repeat review request, payment change, consent publication or ad enablement was performed.
+Signed-in AdSense inspection after refresh: taxinfo.solutions is **Getting ready**, review requested 14 September 2026 at 00:19 (displayed account time). The current Policy Center says **No current issues**; this is not site approval. The account still reports ads.txt **Not found**, despite the verified public 200 response and matching real seller record. A TaxInfo-only European regulations message is now **Published**, with Consent, Do not consent and Manage options; its public privacy URL and site name are configured. Auto Ads remains ON, Auto Optimize is OFF, intent and all overlay formats are OFF, and seven page exclusions cover tools, privacy, terms, cookies, contact, disclaimer and about. The code keeps ad requests paused. No payment change or ad enablement was performed.
 
-Outstanding: operator/controller legal details requested from owner; certified CMP setup and regional testing; Google approval and ads.txt recognition; optional CDN headers/cache configuration; remaining tax-source and broader device/performance checks described above. Advertising remains paused.
+Outstanding: test the published consent message on a connection that permits Google ad hosts; wait for Google site approval and ads.txt recognition; decide whether to restore ad requests after that test; optional CDN headers/cache configuration; remaining tax-source and broader device/performance checks described above. Advertising remains paused.

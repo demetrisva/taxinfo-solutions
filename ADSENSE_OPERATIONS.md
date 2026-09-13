@@ -1,6 +1,6 @@
 # AdSense audit — 14 September 2026
 
-Assessment: **Needs Manual Action**. Ad serving is paused in this release pending verified consent configuration. The existing publisher metadata and ads.txt seller entry are preserved; no publisher or slot IDs were invented.
+Assessment: **Needs Manual Action**. The Google European regulations message is published, but ad requests remain paused pending site approval, ads.txt recognition and live regional consent testing. The existing publisher metadata and ads.txt seller entry are preserved; no publisher or slot IDs were invented.
 
 ## Required account work
 
@@ -10,9 +10,9 @@ Assessment: **Needs Manual Action**. Ad serving is paused in this release pendin
 4. Restore the real publisher loader once per eligible editorial page only after verification; update the regression test deliberately. Keep tools, legal, contact, search, error and offline pages excluded. Review Auto Ads overlays and mobile placements conservatively. Manual units require real account-issued slot IDs, clear Advertisement labels, responsive reserved space and separation from controls.
 5. Verify live behavior after deployment without clicking your own ads.
 
-The baseline contained 18 loaders with no duplicate loaders or manual slots found. The audit browser showed no CMP or visible ads, but its ad-host DNS request failed: this does not prove account-wide consent or serving behavior. Dashboard settings and regional consent flows remain unverified.
+The baseline contained 18 loaders with no duplicate loaders or manual slots found. The release tag is present only on selected editorial pages and is paused before ad requests. The audit browser could not load Google’s ad host because local DNS resolves it to `0.0.0.0`/`::`; this does not prove account-wide consent or serving behavior. Dashboard and message setup are configured, but regional consent flows remain unverified.
 
-Confirm the operator/controller legal identity, actual vendors and retention practices against the privacy page before publication. Configure frame-ancestors as an HTTP response header at the CDN if required; a meta CSP cannot enforce it.
+The operator is Demetris Valakos and the public contact is info@taxinfo.solutions. Confirm actual vendors and retention practices against the privacy page. Configure frame-ancestors as an HTTP response header at the CDN if required; a meta CSP cannot enforce it.
 
 ## Official references
 
@@ -24,4 +24,4 @@ Confirm the operator/controller legal identity, actual vendors and retention pra
 
 ## Signed-in inspection after deployment
 
-On 14 September the refreshed site record shows Getting ready, with a review request at 00:19. Policy Center shows No current issues. Ads.txt is publicly accessible with the matching seller entry but Google still reports Not found. European regulations messaging is at initial setup with no configured message. The offered meta-tag verification matches the deployed metadata. Site approval, crawler recognition and CMP configuration are still outstanding; do not interpret a clear Policy Center as approval.
+On 14 September the refreshed site record shows Getting ready, with a review request at 00:19. Policy Center shows No current issues. Ads.txt is publicly accessible with the matching seller entry but Google still reports Not found. The TaxInfo-only European regulations message is Published with three user choices and the privacy URL configured. Auto Optimize is OFF, intent and overlay formats are OFF, and seven page exclusions are saved. The offered meta-tag verification matches the deployed metadata. Site approval, crawler recognition and a permitted-network regional CMP test are still outstanding; do not interpret a clear Policy Center as approval.
