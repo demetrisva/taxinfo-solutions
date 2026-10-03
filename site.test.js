@@ -79,7 +79,7 @@ test('publisher code is limited to editorial pages and ad requests remain paused
     for (const file of fs.readdirSync('.').filter(f=>f.endsWith('.html')&&!f.startsWith('google'))) {
         const html=fs.readFileSync(file,'utf8');
         assert.equal((html.match(/name="google-adsense-account"/g)||[]).length,1,file);
-        const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html'].includes(file);
+        const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html','october-2026-developments.html'].includes(file);
         assert.equal((html.match(/pagead\/js\/adsbygoogle.js/g)||[]).length,eligible ? 1 : 0,file);
         if (eligible) {
             assert.ok(html.indexOf('pauseAdRequests = 1') < html.indexOf('pagead/js/adsbygoogle.js'),file);

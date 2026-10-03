@@ -25,3 +25,15 @@ The operator is Demetris Valakos and the public contact is info@taxinfo.solution
 ## Signed-in inspection after deployment
 
 On 14 September the refreshed site record shows Getting ready, with a review request at 00:19. Policy Center shows No current issues. Ads.txt is publicly accessible with the matching seller entry but Google still reports Not found. The TaxInfo-only European regulations message is Published with three user choices and the privacy URL configured. Auto Optimize is OFF, intent and overlay formats are OFF, and seven page exclusions are saved. The offered meta-tag verification matches the deployed metadata. Site approval, crawler recognition and a permitted-network regional CMP test are still outstanding; do not interpret a clear Policy Center as approval.
+
+## Low value content rejection — 4 October 2026
+
+AdSense reported **Low value content** (screenshot supplied by the owner). Ownership verification is complete. Changes in branch `content-refresh-2026-10-04`:
+
+- Corrected superseded facts: annual PAYE 2025 return now 30 November 2026; zero-rate VAT order K.D.P. 354/2026 (meat/fish to 31 May 2027; bread, milk, coffee, sugar, baby food from 12 October 2026); October VAT/VIES dates; IR4 2024 due 30 November 2026.
+- New `october-2026-developments.html` with worked examples; September update rebuilt on the standard briefing template.
+- Removed internal audit wording from public pages ("source pass", "not verified in this review", "does not invent", audit-report references) and fixed inaccurate section/source badges.
+- Added worked salary examples, a DAC8 section and additional official source links.
+- Added Google's third-party advertising cookie disclosure to privacy and cookie policies.
+
+Not fixable in code: the review also weighs site age, sustained organic traffic and Search Console indexing. Before ticking "I confirm I have fixed the issues": deploy, confirm the new pages are indexed in Search Console (submit the sitemap and request indexing of the October page), and keep publishing dated updates. Requesting review immediately after a rejection without visible changes or traffic growth risks another rejection. Ad requests remain paused in code until approval and the regional consent test are complete.
