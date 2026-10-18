@@ -2,19 +2,52 @@
 
 ## Quick Color Reference
 
+Mediterranean daylight palette (October 2026). All tokens live in `:root` in
+`style.css`, with a matching dark-mode set under `prefers-color-scheme: dark`.
+
 ```
-Primary Dark:     #1a3a52  ████████████████ Navy Blue (headers, navbar)
-Primary Blue:     #2c5aa0  ████████████████ Links, buttons
-Accent Teal:      #0d8b8b  ████████████████ Hover states
-Accent Gold:      #b8860b  ████████████████ Highlights
-Success Green:    #2d7a3e  ████████████████ Confirmations
-Background:       #f5f7fa  ████████████████ Page bg
-Cards:            #ffffff  ████████████████ White
-Text Primary:     #1a2332  ████████████████ Dark gray
-Text Secondary:   #465768  ████████████████ Medium gray
-Text Muted:       #7a8a99  ████████████████ Light gray
-Borders:          #d8dfe8  ████████████████ Very light
+Text-safe colours (AA on white and page background)
+Brand teal:       #0a7a69  --brand        Buttons, links, companies
+Brand strong:     #075d51  --brand-strong Hover, table headers
+Sky blue:         #1d5fc9  --blue         Links, individuals
+Violet:           #6343c9  --violet       Employers / payroll
+Coral:            #c2410c  --coral        VAT and operations
+Amber:            #a85a06  --amber        Watch panels, deadlines
+Heading text:     #102330  --text-heading
+Body text:        #24384a  --text-main
+Muted text:       #556a7c  --text-muted
+Faint text:       #5f7385  --text-faint
+
+Decorative accents (fills, ribbons and bars only, never body text)
+Sea:  #12a58f   Sky: #3b8cf0   Lilac: #8f74f0   Sun: #f6b93b   Peach: #ff8a65
+Ribbon: --ribbon (sea → sky → lilac → sun → peach), used on the navbar,
+footer, hero insight card and data cards.
+
+Surfaces
+Page background:  #f6f8fb  --bg-body
+Cards:            #ffffff  --bg-surface
+Subtle:           #f0f4f8  --bg-subtle
+Footer:           #0c2b38  --bg-footer
 ```
+
+### Audience colour identity
+
+| Audience            | Text token | Fill token |
+|---------------------|-----------|-----------|
+| Individuals         | `--blue`   | `--sky`   |
+| Employers / payroll | `--violet` | `--lilac` |
+| Companies           | `--brand`  | `--sea`   |
+| VAT / operations    | `--coral`  | `--peach` |
+
+Cards in four-column groups (`.hero-route-card`, `.operation-card`,
+`.briefing-panel`) pick these up by position through `--accent`,
+`--accent-fill` and `--accent-soft`.
+
+### Buttons
+
+Primary buttons use `--grad-brand` (teal → sea blue) with `--on-brand` text
+(white in light mode, deep navy in dark mode) and lift 1px on hover. Hover
+movement is disabled under `prefers-reduced-motion`.
 
 ## Component Quick Reference
 
@@ -31,9 +64,9 @@ Borders:          #d8dfe8  ████████████████ Very
 ```
 
 **States:**
-- Default: `#2c5aa0` (Primary Blue)
-- Hover: `#0d8b8b` (Accent Teal) + lift effect
-- Active: Darker shade
+- Default: `--grad-brand` gradient
+- Hover: `--grad-brand-hover` + glow shadow + 1px lift
+- Secondary hover: sky border on `--blue-soft`
 
 ---
 
@@ -55,8 +88,9 @@ Borders:          #d8dfe8  ████████████████ Very
 - White background
 - Light border
 - Small shadow
-- 8px border radius
-- Hover: darker shadow + blue border
+- 12–16px border radius
+- Colored 4px accent bar from the audience palette
+- Hover: medium shadow, accent-tinted border, 2px lift
 
 ---
 
@@ -146,8 +180,8 @@ Borders:          #d8dfe8  ████████████████ Very
 ```
 
 **Styling:**
-- Navy header
-- White text in header
+- Mint-tinted header with brand-strong text and a sea underline
+- Sky-tinted row hover
 - Hover row highlighting
 - Proper borders
 
@@ -385,6 +419,6 @@ Escape           - Close modals/menus
 
 ---
 
-**Last Updated:** April 11, 2026
-**Design System Version:** 1.0
+**Last Updated:** October 19, 2026
+**Design System Version:** 2.0
 **Status:** Active & Maintained
