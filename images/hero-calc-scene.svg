@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640">
+  <!-- Hero scene: calculator, ledger sheet, charts and tax formulas.
+       Used as a CSS mask; alpha sets intensity, colour comes from CSS. -->
+  <defs>
+    <g id="key">
+      <rect width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
+    </g>
+  </defs>
+
+  <!-- Ledger sheet behind the calculator -->
+  <g transform="rotate(4 640 330)">
+    <rect x="470" y="70" width="330" height="430" rx="10" fill="#000" fill-opacity="0.05" stroke="#000" stroke-width="1.6"/>
+    <path d="M470 118H800M470 150H800M470 182H800M470 214H800M470 246H800M470 278H800M470 310H800M470 342H800M470 374H800M470 406H800M470 438H800M470 470H800" stroke="#000" stroke-opacity="0.35"/>
+    <path d="M520 70V500M700 70V500" stroke="#000" stroke-opacity="0.6"/>
+    <g font-family="'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#000">
+      <text x="486" y="104" font-weight="700">2026 PAYE WORKSHEET</text>
+      <text x="530" y="142">Gross salary</text><text x="712" y="142">48,000</text>
+      <text x="530" y="174">SI 8.8%</text><text x="712" y="174">−4,224</text>
+      <text x="530" y="206">GESY 2.65%</text><text x="712" y="206">−1,272</text>
+      <text x="530" y="238">Taxable</text><text x="712" y="238">42,504</text>
+      <text x="530" y="270">20% band</text><text x="712" y="270">2,000</text>
+      <text x="530" y="302">25% · 30%</text><text x="712" y="302">2,651</text>
+      <text x="530" y="334" font-weight="700">Net pay</text><text x="712" y="334" font-weight="700">37,853</text>
+      <text x="486" y="142">01</text><text x="486" y="174">02</text><text x="486" y="206">03</text>
+      <text x="486" y="238">04</text><text x="486" y="270">05</text><text x="486" y="302">06</text><text x="486" y="334">07</text>
+    </g>
+    <path d="M708 340H790M708 344H790" stroke="#000" stroke-width="1.4"/>
+    <!-- tick marks -->
+    <path d="M490 366l6 7 12-14M490 398l6 7 12-14M490 430l6 7 12-14" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <g font-family="'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace" font-size="13" fill="#000" fill-opacity="0.8">
+      <text x="530" y="372">TD7 reconciled</text>
+      <text x="530" y="404">TD63 issued</text>
+      <text x="530" y="436">Due Nov 30</text>
+    </g>
+  </g>
+
+  <!-- Calculator -->
+  <g transform="rotate(-9 330 360)">
+    <rect x="200" y="150" width="270" height="400" rx="26" fill="#000" fill-opacity="0.08" stroke="#000" stroke-width="2.2"/>
+    <rect x="212" y="162" width="246" height="376" rx="20" fill="none" stroke="#000" stroke-opacity="0.4"/>
+    <!-- solar strip -->
+    <rect x="340" y="176" width="100" height="16" rx="3" fill="#000" fill-opacity="0.25" stroke="#000" stroke-width="1.2"/>
+    <path d="M365 176V192M390 176V192M415 176V192" stroke="#000" stroke-opacity="0.6"/>
+    <text x="226" y="190" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#000" fill-opacity="0.8">TAX-12</text>
+    <!-- display -->
+    <rect x="224" y="204" width="222" height="62" rx="8" fill="#000" fill-opacity="0.16" stroke="#000" stroke-width="1.8"/>
+    <text x="436" y="249" text-anchor="end" font-family="'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace" font-size="30" font-weight="700" fill="#000">37,853.00</text>
+    <text x="232" y="222" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#000" fill-opacity="0.8">M  GT  €</text>
+    <!-- keys: 5 rows x 4 cols -->
+    <g font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#000" text-anchor="middle">
+      <use href="#key" x="226" y="284"/><use href="#key" x="282" y="284"/><use href="#key" x="338" y="284"/><use href="#key" x="394" y="284"/>
+      <text x="249" y="307">C</text><text x="305" y="307">%</text><text x="361" y="307">√</text><text x="417" y="307">÷</text>
+      <use href="#key" x="226" y="328"/><use href="#key" x="282" y="328"/><use href="#key" x="338" y="328"/><use href="#key" x="394" y="328"/>
+      <text x="249" y="351">7</text><text x="305" y="351">8</text><text x="361" y="351">9</text><text x="417" y="351">×</text>
+      <use href="#key" x="226" y="372"/><use href="#key" x="282" y="372"/><use href="#key" x="338" y="372"/><use href="#key" x="394" y="372"/>
+      <text x="249" y="395">4</text><text x="305" y="395">5</text><text x="361" y="395">6</text><text x="417" y="395">−</text>
+      <use href="#key" x="226" y="416"/><use href="#key" x="282" y="416"/><use href="#key" x="338" y="416"/>
+      <text x="249" y="439">1</text><text x="305" y="439">2</text><text x="361" y="439">3</text>
+      <rect x="394" y="416" width="46" height="78" rx="8" fill="#000" fill-opacity="0.22" stroke="#000" stroke-width="1.6"/>
+      <text x="417" y="461">+</text>
+      <use href="#key" x="226" y="460"/><use href="#key" x="282" y="460"/><use href="#key" x="338" y="460"/>
+      <text x="249" y="483">0</text><text x="305" y="483">.</text><text x="361" y="483">=</text>
+      <rect x="226" y="504" width="214" height="22" rx="6" fill="#000" fill-opacity="0.06" stroke="#000" stroke-opacity="0.5"/>
+      <text x="333" y="520" font-size="11" font-weight="600" fill-opacity="0.8">M+   M−   MR   GT   TAX+   TAX−</text>
+    </g>
+  </g>
+
+  <!-- Pencil -->
+  <g transform="rotate(32 160 520)" stroke="#000" stroke-width="1.8" fill="none" stroke-linejoin="round">
+    <rect x="70" y="505" width="190" height="20" rx="3" fill="#000" fill-opacity="0.08"/>
+    <path d="M260 505L292 515L260 525Z" fill="#000" fill-opacity="0.15"/>
+    <path d="M70 505V525M92 505V525"/>
+  </g>
+
+  <!-- Bar chart -->
+  <g stroke="#000" stroke-width="1.8" fill="#000">
+    <path d="M840 300V140M840 300H985" fill="none"/>
+    <rect x="852" y="246" width="20" height="54" fill-opacity="0.18"/>
+    <rect x="882" y="218" width="20" height="82" fill-opacity="0.24"/>
+    <rect x="912" y="230" width="20" height="70" fill-opacity="0.18"/>
+    <rect x="942" y="176" width="20" height="124" fill-opacity="0.3"/>
+    <path d="M846 236L892 204L922 214L966 158" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="966" cy="158" r="4"/>
+  </g>
+  <text x="840" y="128" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="13" fill="#000" fill-opacity="0.85">VAT Q1–Q4</text>
+
+  <!-- Donut -->
+  <g fill="none" stroke="#000">
+    <circle cx="905" cy="420" r="52" stroke-width="16" stroke-opacity="0.18"/>
+    <circle cx="905" cy="420" r="52" stroke-width="16" stroke-dasharray="98 229" transform="rotate(-90 905 420)" stroke-opacity="0.55"/>
+    <circle cx="905" cy="420" r="52" stroke-width="16" stroke-dasharray="49 278" stroke-dashoffset="-98" transform="rotate(-90 905 420)" stroke-opacity="0.35"/>
+  </g>
+  <text x="905" y="426" text-anchor="middle" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="16" font-weight="700" fill="#000">15%</text>
+
+  <!-- Formulas -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-style="italic" fill="#000">
+    <text x="40" y="70" font-size="24" fill-opacity="0.9">Tax = Σ ( band<tspan font-size="15" dy="6">i</tspan><tspan dy="-6"> × rate</tspan><tspan font-size="15" dy="6">i</tspan><tspan dy="-6"> )</tspan></text>
+    <text x="60" y="122" font-size="20" fill-opacity="0.75">Net = Gross − SI − GESY − Tax</text>
+    <text x="300" y="614" font-size="22" fill-opacity="0.85">VAT = Net × 19% · 9% · 5% · 0%</text>
+    <text x="40" y="610" font-size="18" fill-opacity="0.7">Profit × 15% = CIT</text>
+  </g>
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="15" fill="#000" fill-opacity="0.75">
+    <text x="820" y="508">0–22k   0%</text>
+    <text x="820" y="534">22–32k 20%</text>
+    <text x="820" y="560">32–42k 25%</text>
+    <text x="820" y="586">42–72k 30%</text>
+    <text x="820" y="612">72k+   35%</text>
+  </g>
+</svg>

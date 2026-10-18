@@ -3772,3 +3772,85 @@ footer::before {
         color: #000000;
     }
 }
+
+/* Accountant's desk backgrounds: ledger paper with calculation marks site-wide,
+   and a calculator, worksheet and chart scene in the hero. Both SVGs are masks
+   so they take theme colours. */
+
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--grad-text);
+    -webkit-mask: url("images/bg-ledger-math.svg") 0 0 / 640px 640px repeat;
+    mask: url("images/bg-ledger-math.svg") 0 0 / 640px 640px repeat;
+    opacity: var(--desk-pattern-opacity, 0.07);
+    pointer-events: none;
+}
+
+.hero-section::before {
+    background-image:
+        linear-gradient(rgba(18, 165, 143, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 140, 240, 0.07) 1px, transparent 1px),
+        linear-gradient(rgba(59, 140, 240, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 165, 143, 0.035) 1px, transparent 1px);
+    background-size: 84px 84px, 84px 84px, 21px 21px, 21px 21px;
+}
+
+.hero-section::after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    background: var(--grad-text);
+    /* Scene layer intersected with a fade so text on the left stays clean. */
+    -webkit-mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.26) 46%, #000 68%);
+    mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.26) 46%, #000 68%);
+    -webkit-mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
+    mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
+    -webkit-mask-size: auto min(92%, 640px), 100% 100%;
+    mask-size: auto min(92%, 640px), 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    opacity: var(--desk-scene-opacity, 0.22);
+    pointer-events: none;
+}
+
+.thread-hero::after {
+    -webkit-mask-size: auto 118%, 100% 100%;
+    mask-size: auto 118%, 100% 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --desk-pattern-opacity: 0.09;
+        --desk-scene-opacity: 0.26;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-section::after {
+        -webkit-mask-position: right -180px top 24px, 0 0;
+        mask-position: right -180px top 24px, 0 0;
+        -webkit-mask-size: auto 520px, 100% 100%;
+        mask-size: auto 520px, 100% 100%;
+        opacity: calc(var(--desk-scene-opacity, 0.22) * 0.45);
+    }
+}
+
+@media print {
+    body::before,
+    .hero-section::after {
+        display: none;
+    }
+}

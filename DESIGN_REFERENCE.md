@@ -43,6 +43,23 @@ Cards in four-column groups (`.hero-route-card`, `.operation-card`,
 `.briefing-panel`) pick these up by position through `--accent`,
 `--accent-fill` and `--accent-soft`.
 
+### Backgrounds
+
+- **Site-wide ledger paper:** `images/bg-ledger-math.svg` (640px tile) is
+  applied as a CSS mask on a fixed `body::before`, filled with `--grad-text`.
+  It shows ruled lines, column rules and calculation marks (€, %, Σ, ×, ÷,
+  mini charts, a small calculator) at `--desk-pattern-opacity` (7% light,
+  9% dark).
+- **Hero desk scene:** `images/hero-calc-scene.svg` (calculator, 2026 PAYE
+  worksheet, VAT chart, 15% donut, band table and formulas) is masked onto
+  `.hero-section::after`, intersected with a left-to-right fade so the
+  heading and intro text stay clean. Opacity is `--desk-scene-opacity`
+  (22% light, 26% dark); smaller and fainter below 900px.
+- The worksheet figures match the site calculator for EUR 48,000 under
+  2026 rules (SI 4,224, GESY 1,272, tax 4,651, net 37,853). Update the SVG if
+  rates change.
+- Both are hidden in print.
+
 ### Buttons
 
 Primary buttons use `--grad-brand` (teal → sea blue) with `--on-brand` text

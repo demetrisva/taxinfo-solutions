@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+  <!-- Accountant's ledger tile: ruled lines, column rules and calculation marks.
+       Used as a CSS mask; only alpha matters. -->
+  <g stroke="#000" fill="none">
+    <g stroke-width="1" stroke-opacity="0.35">
+      <path d="M0 32H640M0 64H640M0 96H640M0 128H640M0 160H640M0 192H640M0 224H640M0 256H640M0 288H640M0 320H640M0 352H640M0 384H640M0 416H640M0 448H640M0 480H640M0 512H640M0 544H640M0 576H640M0 608H640M0 640H640"/>
+    </g>
+    <g stroke-width="1" stroke-opacity="0.6">
+      <path d="M96 0V640M100 0V640M452 0V640M548 0V640"/>
+    </g>
+    <!-- Mini bar chart -->
+    <g stroke-width="1.6" stroke-opacity="0.9">
+      <path d="M486 236V188M502 236V170M518 236V198M534 236V152"/>
+      <path d="M476 237H544"/>
+    </g>
+    <!-- Mini trend line -->
+    <g stroke-width="1.6" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M128 590L168 560L204 572L246 528L290 540"/>
+      <circle cx="246" cy="528" r="3"/>
+      <circle cx="290" cy="540" r="3"/>
+    </g>
+    <!-- Mini pie -->
+    <g stroke-width="1.6" stroke-opacity="0.9">
+      <circle cx="380" cy="400" r="22"/>
+      <path d="M380 400V378M380 400L399 411"/>
+    </g>
+    <!-- Mini calculator -->
+    <g stroke-width="1.4" stroke-opacity="0.9">
+      <rect x="140" y="232" width="44" height="62" rx="6"/>
+      <rect x="147" y="239" width="30" height="12" rx="2"/>
+      <path d="M150 262h6M162 262h6M174 262h4M150 272h6M162 272h6M174 272h4M150 282h6M162 282h6M174 282h4"/>
+    </g>
+  </g>
+  <g fill="#000" font-family="'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace" font-size="15">
+    <text x="112" y="55" fill-opacity="0.9">€ 22,000</text>
+    <text x="300" y="87" fill-opacity="0.9">× 15%</text>
+    <text x="464" y="119" fill-opacity="0.9">= 3,300.00</text>
+    <text x="112" y="183" fill-opacity="0.9">÷ 12 = 1,833.33</text>
+    <text x="300" y="215" fill-opacity="0.9">VAT 19%</text>
+    <text x="224" y="279" fill-opacity="0.9">Gross − SI − GESY</text>
+    <text x="464" y="311" fill-opacity="0.9">+ 5% SDC</text>
+    <text x="112" y="375" fill-opacity="0.9">(a − b) × r</text>
+    <text x="464" y="407" fill-opacity="0.9">Δ 0.8%</text>
+    <text x="300" y="471" fill-opacity="0.9">8.8% SI</text>
+    <text x="112" y="503" fill-opacity="0.9">TD7 · IR4</text>
+    <text x="464" y="599" fill-opacity="0.9">€ 1,250.40</text>
+  </g>
+  <g fill="#000" font-family="Georgia, 'Times New Roman', serif" font-style="italic">
+    <text x="36" y="120" font-size="34" fill-opacity="0.85">Σ</text>
+    <text x="580" y="60" font-size="30" fill-opacity="0.85">%</text>
+    <text x="36" y="440" font-size="30" fill-opacity="0.85">√</text>
+    <text x="580" y="500" font-size="30" fill-opacity="0.85">€</text>
+    <text x="40" y="620" font-size="26" fill-opacity="0.85">π</text>
+    <text x="370" y="150" font-size="26" fill-opacity="0.85">±</text>
+  </g>
+</svg>
