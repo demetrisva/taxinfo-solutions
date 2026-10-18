@@ -3790,7 +3790,7 @@ body::before {
     background: var(--grad-text);
     -webkit-mask: url("images/bg-ledger-math.svg") 0 0 / 640px 640px repeat;
     mask: url("images/bg-ledger-math.svg") 0 0 / 640px 640px repeat;
-    opacity: var(--desk-pattern-opacity, 0.07);
+    opacity: var(--desk-pattern-opacity, 0.13);
     pointer-events: none;
 }
 
@@ -3812,8 +3812,8 @@ body::before {
     height: auto;
     background: var(--grad-text);
     /* Scene layer intersected with a fade so text on the left stays clean. */
-    -webkit-mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.26) 46%, #000 68%);
-    mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.26) 46%, #000 68%);
+    -webkit-mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 30%, #000 50%);
+    mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 30%, #000 50%);
     -webkit-mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
     mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
     -webkit-mask-size: auto min(92%, 640px), 100% 100%;
@@ -3822,7 +3822,7 @@ body::before {
     mask-repeat: no-repeat;
     -webkit-mask-composite: source-in;
     mask-composite: intersect;
-    opacity: var(--desk-scene-opacity, 0.22);
+    opacity: var(--desk-scene-opacity, 0.34);
     pointer-events: none;
 }
 
@@ -3833,8 +3833,8 @@ body::before {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --desk-pattern-opacity: 0.09;
-        --desk-scene-opacity: 0.26;
+        --desk-pattern-opacity: 0.15;
+        --desk-scene-opacity: 0.38;
     }
 }
 
@@ -3844,7 +3844,7 @@ body::before {
         mask-position: right -180px top 24px, 0 0;
         -webkit-mask-size: auto 520px, 100% 100%;
         mask-size: auto 520px, 100% 100%;
-        opacity: calc(var(--desk-scene-opacity, 0.22) * 0.45);
+        opacity: calc(var(--desk-scene-opacity, 0.34) * 0.6);
     }
 }
 

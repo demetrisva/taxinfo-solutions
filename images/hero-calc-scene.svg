@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640">
   <!-- Hero scene: calculator, ledger sheet, charts and tax formulas.
        Used as a CSS mask; alpha sets intensity, colour comes from CSS. -->
-  <defs>
-    <g id="key">
-      <rect width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
-    </g>
-  </defs>
 
   <!-- Ledger sheet behind the calculator -->
   <g transform="rotate(4 640 330)">
@@ -48,17 +43,17 @@
     <text x="232" y="222" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" fill="#000" fill-opacity="0.8">M  GT  €</text>
     <!-- keys: 5 rows x 4 cols -->
     <g font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#000" text-anchor="middle">
-      <use href="#key" x="226" y="284"/><use href="#key" x="282" y="284"/><use href="#key" x="338" y="284"/><use href="#key" x="394" y="284"/>
+      <rect x="226" y="284" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="282" y="284" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="338" y="284" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="394" y="284" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
       <text x="249" y="307">C</text><text x="305" y="307">%</text><text x="361" y="307">√</text><text x="417" y="307">÷</text>
-      <use href="#key" x="226" y="328"/><use href="#key" x="282" y="328"/><use href="#key" x="338" y="328"/><use href="#key" x="394" y="328"/>
+      <rect x="226" y="328" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="282" y="328" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="338" y="328" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="394" y="328" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
       <text x="249" y="351">7</text><text x="305" y="351">8</text><text x="361" y="351">9</text><text x="417" y="351">×</text>
-      <use href="#key" x="226" y="372"/><use href="#key" x="282" y="372"/><use href="#key" x="338" y="372"/><use href="#key" x="394" y="372"/>
+      <rect x="226" y="372" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="282" y="372" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="338" y="372" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="394" y="372" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
       <text x="249" y="395">4</text><text x="305" y="395">5</text><text x="361" y="395">6</text><text x="417" y="395">−</text>
-      <use href="#key" x="226" y="416"/><use href="#key" x="282" y="416"/><use href="#key" x="338" y="416"/>
+      <rect x="226" y="416" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="282" y="416" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="338" y="416" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
       <text x="249" y="439">1</text><text x="305" y="439">2</text><text x="361" y="439">3</text>
       <rect x="394" y="416" width="46" height="78" rx="8" fill="#000" fill-opacity="0.22" stroke="#000" stroke-width="1.6"/>
       <text x="417" y="461">+</text>
-      <use href="#key" x="226" y="460"/><use href="#key" x="282" y="460"/><use href="#key" x="338" y="460"/>
+      <rect x="226" y="460" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="282" y="460" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/><rect x="338" y="460" width="46" height="34" rx="8" fill="#000" fill-opacity="0.10" stroke="#000" stroke-width="1.6"/>
       <text x="249" y="483">0</text><text x="305" y="483">.</text><text x="361" y="483">=</text>
       <rect x="226" y="504" width="214" height="22" rx="6" fill="#000" fill-opacity="0.06" stroke="#000" stroke-opacity="0.5"/>
       <text x="333" y="520" font-size="11" font-weight="600" fill-opacity="0.8">M+   M−   MR   GT   TAX+   TAX−</text>
