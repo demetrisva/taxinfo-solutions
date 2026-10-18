@@ -1,5 +1,5 @@
-const SHELL_CACHE = 'taxinfo-shell-v15';
-const ASSET_CACHE = 'taxinfo-assets-v15';
+const SHELL_CACHE = 'taxinfo-shell-v17';
+const ASSET_CACHE = 'taxinfo-assets-v17';
 const APP_SHELL_PATHS = [
   '/',
   '/index.html',
