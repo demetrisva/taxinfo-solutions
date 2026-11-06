@@ -413,7 +413,7 @@ button, a {
     position: relative;
     padding: 76px 0 58px;
     border-bottom: 1px solid var(--border);
-    background: var(--bg-hero);
+    background: transparent;
     overflow: hidden;
 }
 
@@ -3801,6 +3801,7 @@ body::before {
         linear-gradient(rgba(59, 140, 240, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(18, 165, 143, 0.035) 1px, transparent 1px);
     background-size: 84px 84px, 84px 84px, 21px 21px, 21px 21px;
+    opacity: 0.4;
 }
 
 .hero-section::after {
@@ -3811,40 +3812,38 @@ body::before {
     width: auto;
     height: auto;
     background: var(--grad-text);
-    /* Scene layer intersected with a fade so text on the left stays clean. */
-    -webkit-mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 30%, #000 50%);
-    mask-image: url("images/hero-calc-scene.svg"), linear-gradient(90deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 30%, #000 50%);
-    -webkit-mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
-    mask-position: right max(0px, calc((100vw - 1240px) / 2)) center, 0 0;
-    -webkit-mask-size: auto min(92%, 640px), 100% 100%;
-    mask-size: auto min(92%, 640px), 100% 100%;
+    /* A single alpha mask avoids rectangular compositing artefacts in Safari. */
+    -webkit-mask-image: url("images/hero-calc-scene.svg");
+    mask-image: url("images/hero-calc-scene.svg");
+    -webkit-mask-position: right max(0px, calc((100vw - 1240px) / 2)) center;
+    mask-position: right max(0px, calc((100vw - 1240px) / 2)) center;
+    -webkit-mask-size: auto min(92%, 640px);
+    mask-size: auto min(92%, 640px);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
-    opacity: var(--desk-scene-opacity, 0.34);
+    opacity: var(--desk-scene-opacity, 0.20);
     pointer-events: none;
 }
 
 .thread-hero::after {
-    -webkit-mask-size: auto 118%, 100% 100%;
-    mask-size: auto 118%, 100% 100%;
+    -webkit-mask-size: auto 118%;
+    mask-size: auto 118%;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --desk-pattern-opacity: 0.15;
-        --desk-scene-opacity: 0.38;
+        --desk-scene-opacity: 0.22;
     }
 }
 
 @media (max-width: 900px) {
     .hero-section::after {
-        -webkit-mask-position: right -180px top 24px, 0 0;
-        mask-position: right -180px top 24px, 0 0;
-        -webkit-mask-size: auto 520px, 100% 100%;
-        mask-size: auto 520px, 100% 100%;
-        opacity: calc(var(--desk-scene-opacity, 0.34) * 0.6);
+        -webkit-mask-position: right -180px top 24px;
+        mask-position: right -180px top 24px;
+        -webkit-mask-size: auto 520px;
+        mask-size: auto 520px;
+        opacity: calc(var(--desk-scene-opacity, 0.20) * 0.6);
     }
 }
 
