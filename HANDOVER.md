@@ -22,3 +22,5 @@ Updated: 2026-11-06 (Asia/Nicosia)
 ## Continuity
 
 Original OneDrive checkout remains on its prior branch with existing edits. Do not overwrite it or reapply those edits over current main without comparison. The historical chat index is a pointer only; a sensitive historical title was redacted in this checkout.
+
+Publication review: draft PR https://github.com/demetrisva/taxinfo-solutions/pull/8. Code commit `acca960`; Cloudflare Pages check reports successful branch-preview deployment. Direct preview HTTP checks returned 403, so remote rendering and public-file exclusion were not independently verified. Production publication remains pending the requested decision.

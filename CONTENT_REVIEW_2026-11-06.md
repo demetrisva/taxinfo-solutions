@@ -50,3 +50,7 @@ Direct government requests returned HTTP 403; research used accessible indexed t
 AdSense activation, certified CMP operation, regional consent behavior, live hosting headers and end-to-end advertising behavior were outside this content update. Existing paused-ad behavior was preserved and checked by the test suite. No dependency update or full security audit was performed.
 
 Publication requires merging the reviewed branch into main; that triggers the production Pages workflow. Before merging, check remote main for intervening changes. Then wait for successful deployment and verify the live November page and assets. Reverting the change commit provides the source rollback path.
+
+## Review delivery
+
+Draft PR: https://github.com/demetrisva/taxinfo-solutions/pull/8. Cloudflare Pages reports successful branch-preview deployment for code commit `acca960`. Direct preview requests, including the page/assets and excluded-file probes, returned HTTP 403; no remote rendering or exclusion claim is made from that result. Production publication remains pending the user’s decision.

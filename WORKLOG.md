@@ -21,3 +21,5 @@ verification, relative evidence paths, pending items, and chat ID if known. -->
 - Pending: publication decision and production verification; direct government pages returned 403, mobile and live CMP/ad flows not verified; listed proposals/instruments need specific confirmation before reliance.
 - Live systems changed: none at this preparation stage.
 - Chat ID: `01a1b196-bb49-7962-8685-29fd2badd82a`.
+
+Publication review: draft PR https://github.com/demetrisva/taxinfo-solutions/pull/8. Code commit `acca960`; Cloudflare Pages check reports successful branch-preview deployment. Direct preview HTTP checks returned 403, so remote rendering and public-file exclusion were not independently verified. Production publication remains pending the requested decision.
