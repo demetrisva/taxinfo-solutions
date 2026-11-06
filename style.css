@@ -3854,3 +3854,6 @@ body::before {
         display: none;
     }
 }
+
+/* Keep monthly source reviews comfortable to read on wide displays. */
+.monthly-update { max-width: 960px; }

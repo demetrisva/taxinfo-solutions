@@ -79,7 +79,7 @@ test('publisher code is limited to editorial pages and ad requests remain paused
     for (const file of fs.readdirSync('.').filter(f=>f.endsWith('.html')&&!f.startsWith('google'))) {
         const html=fs.readFileSync(file,'utf8');
         assert.equal((html.match(/name="google-adsense-account"/g)||[]).length,1,file);
-        const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html','october-2026-developments.html'].includes(file);
+        const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html','october-2026-developments.html','november-2026-developments.html'].includes(file);
         assert.equal((html.match(/pagead\/js\/adsbygoogle.js/g)||[]).length,eligible ? 1 : 0,file);
         if (eligible) {
             assert.ok(html.indexOf('pauseAdRequests = 1') < html.indexOf('pagead/js/adsbygoogle.js'),file);
@@ -94,4 +94,24 @@ test('first-employment relief stops estimation until deduction interactions are 
     context.calculateSalary();
     assert.match(el('salaryError').textContent,/individual calculation/);
     assert.equal(el('outNet').innerText,'');
+});
+
+
+test('malformed numeric amounts and unsupported salary years do not yield estimates',()=>{
+    for (const raw of ['123abc','1,000','0xZZ',' ']) {
+        const {context,el}=calculator({grossSalary:raw,taxYear:2026,profitInput:raw});
+        context.calculateSalary(); assert.match(el('salaryError').textContent,/Enter an amount/);
+        context.calculateBusiness(); assert.match(el('businessError').textContent,/Enter an amount/);
+    }
+    const {context,el}=calculator({grossSalary:30000,taxYear:2027});
+    context.calculateSalary(); assert.match(el('salaryError').textContent,/Choose tax year/);
+});
+
+test('calendar shows all obligations sharing the next date',()=>{
+    const {context,el}=calculator();
+    vm.runInContext(`Date = class extends Date { constructor(...args) { super(...(args.length ? args : ['2026-11-20T12:00:00+02:00'])); } };`,context);
+    context.initCalendar();
+    assert.match(el('next-deadline-title').innerText,/conditional filing and payment relief/);
+    assert.match(el('next-deadline-title').innerText,/Annual PAYE 2025/);
+    assert.equal(el('days-left').innerText,'10 Days Left');
 });

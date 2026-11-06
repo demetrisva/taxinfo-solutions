@@ -14,7 +14,8 @@ let chartJsLoaderPromise = null;
 let deferredInstallPromptEvent = null;
 let pwaInstallPromptElement = null;
 const THREAD_CATALOG = [
-{"id": "october-developments", "primary": true, "categoryKey": "international", "category": "Updates", "tag": "Updates", "kicker": "October Review", "title": "Cyprus Tax Developments: September 15\u2013October 19, 2026", "excerpt": "Annual PAYE return extended to November 30, zero-rate VAT on bread, milk, coffee, sugar, baby food, meat and fish to May 31, 2027, IBAN changes through Tax For All, the Pillar Two amending bill and beneficial-ownership confirmation by December 31.", "href": "october-2026-developments.html", "summary": "Ten official developments with worked examples, in-force status and the next ten weeks of deadlines.", "sources": 10, "updated": "October 19, 2026", "updatedIso": "2026-10-19", "cta": "Read October Update", "gradient": "linear-gradient(135deg, #0b6b58, #2ca58d)", "keywordChips": ["Cyprus October 2026 tax updates", "Cyprus zero VAT bread milk 2026", "Cyprus PAYE 2025 extension", "Cyprus beneficial owners confirmation 2026"]},
+{"id": "november-developments", "primary": true, "categoryKey": "international", "category": "Updates", "tag": "Updates", "kicker": "November Review", "title": "Cyprus Tax Updates: November 6, 2026", "excerpt": "Conditional personal-return relief, the confirmed 2027 basic-goods VAT extension, Pillar Two and November filing dates.", "href": "november-2026-developments.html", "summary": "Official October notices and practical November actions, with scope and unresolved measures clearly identified.", "sources": 11, "updated": "November 6, 2026", "updatedIso": "2026-11-06", "cta": "Read November Update", "gradient": "linear-gradient(135deg, #0b6b58, #2ca58d)", "keywordChips": ["Cyprus November 2026 tax updates", "Cyprus November 30 tax relief", "Cyprus VAT 2027"]},
+{"id": "october-developments", "primary": false, "categoryKey": "international", "category": "Updates", "tag": "Updates", "kicker": "October Review", "title": "Cyprus Tax Developments: September 15\u2013October 19, 2026", "excerpt": "Annual PAYE return extended to November 30, zero-rate VAT on bread, milk, coffee, sugar, baby food, meat and fish to May 31, 2027, IBAN changes through Tax For All, the Pillar Two amending bill and beneficial-ownership confirmation by December 31.", "href": "october-2026-developments.html", "summary": "Ten official developments with worked examples, in-force status and the next ten weeks of deadlines.", "sources": 10, "updated": "October 19, 2026", "updatedIso": "2026-10-19", "cta": "Read October Update", "gradient": "linear-gradient(135deg, #0b6b58, #2ca58d)", "keywordChips": ["Cyprus October 2026 tax updates", "Cyprus zero VAT bread milk 2026", "Cyprus PAYE 2025 extension", "Cyprus beneficial owners confirmation 2026"]},
 {"id": "september-developments", "primary": false, "categoryKey": "international", "category": "Updates", "tag": "Updates", "kicker": "September Review", "title": "Cyprus Developments: August 18\u2013September 14, 2026", "excerpt": "Official updates on fuel relief, proposed child benefit changes, tax-system maintenance, NID and imaging-centre certificates.", "href": "september-2026-developments.html", "summary": "Five dated official announcements with practical follow-up and proposal status.", "sources": 5, "updated": "October 19, 2026", "updatedIso": "2026-10-19", "cta": "Read September Update", "gradient": "linear-gradient(135deg, #0c5c7a, #2ca58d)", "keywordChips": ["Cyprus September 2026 updates", "Cyprus fuel excise relief"]},
     {
         id: 'cross-border-tax-watch',
@@ -28,8 +29,8 @@ const THREAD_CATALOG = [
         href: 'thread-transfer-pricing-playbook.html',
         summary: 'International note on Pillar Two compliance, treaty expansion, OECD coordination and Cyprus FDI screening controls.',
         sources: 7,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Briefing',
         gradient: 'linear-gradient(135deg, #0c5c7a, #2ca58d)',
         keywordChips: ['Cyprus Pillar Two 2026', 'Cyprus Vietnam double tax treaty', 'Cyprus FDI screening 2026']
@@ -46,8 +47,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-penalties-calendar.html',
         summary: 'Deadline briefing: employer PAYE, VIES/VAT notices, personal return deadline monitoring, provisional tax installments, and where to recheck official notices.',
         sources: 8,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'View Dates',
         gradient: 'linear-gradient(135deg, #0a76a8, #6cc3d5)',
         keywordChips: ['Cyprus PAYE deadlines 2026', 'Cyprus provisional tax calendar 2026']
@@ -60,12 +61,12 @@ const THREAD_CATALOG = [
         tag: 'Corporate',
         kicker: 'VAT Operations',
         title: 'VAT Operating Notes 2026: Zero-Rate Goods, Housing VAT and SME Scheme Checks',
-        excerpt: 'A VAT operations briefing on the two zero-rate schedules: basic goods to December 31, 2026 and meat, fish, bread, milk, coffee, sugar and baby food to May 31, 2027, plus VAT/VIES dates, housing VAT and SME checks.',
+        excerpt: 'A VAT operations briefing on the two zero-rate schedules: defined basic goods extended to December 31, 2027 and meat, fish, bread, milk, coffee, sugar and baby food to May 31, 2027, plus VAT/VIES dates, housing VAT and SME checks.',
         href: 'thread-vat-zero-rate-exit-readiness.html',
         summary: 'VAT operations note on zero-rate controls, meat and fish relief, VAT/VIES notices, primary-residence VAT transition, SME checks and transition planning.',
         sources: 7,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read VAT Note',
         gradient: 'linear-gradient(135deg, #006466, #4d908e)',
         keywordChips: ['Cyprus VAT zero rate 2026', 'Cyprus VAT meat fish zero rate', 'Cyprus VAT controls for basic goods']
@@ -82,8 +83,8 @@ const THREAD_CATALOG = [
         href: 'thread-payroll-assumptions-log.html',
         summary: 'Employer payroll guide for monthly controls, withholding returns, and deduction support files.',
         sources: 4,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Open Guide',
         gradient: 'linear-gradient(135deg, #2c7f5e, #a8d672)',
         keywordChips: ['Cyprus payroll withholding 2026', 'Cyprus TD59 deductions employer']
@@ -100,8 +101,8 @@ const THREAD_CATALOG = [
         href: 'thread-corporate-tax-transition.html',
         summary: 'Corporate reform note on the new 15% income tax rate, CY Login, document stamping and governance steps for 2026 close cycles.',
         sources: 4,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Reform Note',
         gradient: 'linear-gradient(135deg, #c76829, #f2c14e)',
         keywordChips: ['Cyprus corporate tax 15% 2026', 'Cyprus tax reform company checklist']
@@ -118,8 +119,8 @@ const THREAD_CATALOG = [
         href: 'thread-dividend-sdc-planning.html',
         summary: 'Dividend planning note on SDC, eligibility checks, and evidence expected before payment dates.',
         sources: 2,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Dividend Note',
         gradient: 'linear-gradient(135deg, #177e89, #8fc0a9)',
         keywordChips: ['Cyprus dividend tax 5%', 'Cyprus non-dom dividend planning']
@@ -136,8 +137,8 @@ const THREAD_CATALOG = [
         href: 'thread-salary-threshold-examples.html',
         summary: 'Individual tax briefing on salary bands, filing coverage, and employee documentation points.',
         sources: 4,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Salary Guide',
         gradient: 'linear-gradient(135deg, #516395, #614385)',
         keywordChips: ['Cyprus salary tax calculator 2026', 'Cyprus tax free threshold 22000']
@@ -154,8 +155,8 @@ const THREAD_CATALOG = [
         href: 'thread-filing-scope-reality-check.html',
         summary: 'Individual compliance briefing on filing-scope triggers, residency tests, and document controls.',
         sources: 3,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Filing Guide',
         gradient: 'linear-gradient(135deg, #355070, #6d597a)',
         keywordChips: ['Cyprus filing obligation 2026', 'Cyprus individual return deadline 2026']
@@ -172,8 +173,8 @@ const THREAD_CATALOG = [
         href: 'thread-crypto-disposal-evidence.html',
         summary: 'Crypto tax note focused on disposal evidence, wallet trails, and valuation discipline.',
         sources: 2,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Crypto Note',
         gradient: 'linear-gradient(135deg, #f4a261, #e9c46a)',
         keywordChips: ['Cyprus crypto tax 8%', 'Cyprus crypto disposal evidence']
@@ -190,8 +191,8 @@ const THREAD_CATALOG = [
         href: 'thread-housing-family-relief-docs.html',
         summary: 'Deduction and rent-payment checklist for TD59 support files, electronic evidence and year-end payroll reconciliation.',
         sources: 6,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Open Checklist',
         gradient: 'linear-gradient(135deg, #b56576, #e56b6f)',
         keywordChips: ['Cyprus family tax relief 2026', 'Cyprus electronic rent payments', 'Cyprus housing deduction documents']
@@ -208,8 +209,8 @@ const THREAD_CATALOG = [
         href: 'thread-startup-stock-options-8.html',
         summary: 'Incentives note on what the official January 2026 package actually lists and how founders should read it.',
         sources: 2,
-        updated: 'October 19, 2026',
-        updatedIso: '2026-10-19',
+        updated: 'November 6, 2026',
+        updatedIso: '2026-11-06',
         cta: 'Read Incentives Note',
         gradient: 'linear-gradient(135deg, #264653, #2a9d8f)',
         keywordChips: ['Cyprus tax incentives 2026', 'Cyprus NID IP box securities exemption']
@@ -463,9 +464,15 @@ function toggleAdvancedMode() {
 // --- 1. SALARY CALCULATOR LOGIC ---
 function calculateSalary() {
     // 1. Get Base Inputs
-    const gross = parseFloat(document.getElementById('grossSalary').value);
+    const gross = readAmount('grossSalary');
     if (!validateAmount('grossSalary', gross, 'salaryError', 'salaryResult')) return;
     const year = document.getElementById('taxYear').value;
+
+    if (!['2025', '2026'].includes(year)) {
+        document.getElementById('salaryError').textContent = 'Choose tax year 2025 or 2026.';
+        document.getElementById('salaryResult').classList.add('hidden');
+        return;
+    }
 
     // 2. Social deductions used by the estimator.
     // Employee SI: 8.8% up to the 2026 annual cap | GESY: 2.65% on gross
@@ -682,7 +689,7 @@ function multiplyBy13() {
 
 // --- 2. BUSINESS PROFIT CALCULATOR LOGIC ---
 function calculateBusiness() {
-    const profit = parseFloat(document.getElementById('profitInput').value);
+    const profit = readAmount('profitInput');
     if (!validateAmount('profitInput', profit, 'businessError', 'businessResult')) {
         document.getElementById('verdict').classList.add('hidden');
         return;
@@ -725,6 +732,11 @@ function calculateBusiness() {
         verdictDiv.innerText = "No net difference appears between the 2025 baseline and this simplified 2026 reform scenario.";
         verdictDiv.classList.add('verdict-neutral');
     }
+}
+
+function readAmount(inputId) {
+    const raw = document.getElementById(inputId).value.trim();
+    return raw === '' ? NaN : Number(raw);
 }
 
 function validateAmount(inputId, amount, errorId, resultId) {
@@ -939,10 +951,10 @@ function initCalendar() {
         { date: "2026-03-31", title: "PAYE July-December 2025 submissions" },
         { date: "2026-10-12", title: "VAT return and payment for June-August 2026" },
         { date: "2026-10-15", title: "VIES for September 2026" },
-        { date: "2026-10-31", title: "2025 individual income tax return (check scope)" },
+        { date: "2026-11-30", title: "2025 individual return: conditional filing and payment relief" },
         { date: "2026-11-10", title: "VAT return and payment for July-September 2026" },
         { date: "2026-11-16", title: "VIES for October 2026" },
-        { date: "2026-11-30", title: "Annual PAYE withholding return for 2025 (extended)" },
+        { date: "2026-11-30", title: "Annual PAYE 2025; October monthly PAYE; 2024 accounts-based returns; scoped Pillar Two obligations" },
         { date: "2026-07-31", title: "1st Provisional Tax Installment" },
         { date: "2026-12-31", title: "2nd Provisional Tax Installment" }
     ];
@@ -960,7 +972,7 @@ function initCalendar() {
         const diffTime = Date.parse(next.date) - Date.parse(todayIso);
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-        displayBox.innerText = next.title;
+        displayBox.innerText = deadlines.filter(item => item.date === next.date).map(item => item.title).join(' • ');
         daysBox.innerText = `${diffDays} Days Left`;
 
         if (diffDays < 7) daysBox.style.color = "#ff6b6b";
