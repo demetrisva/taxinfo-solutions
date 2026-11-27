@@ -1372,7 +1372,10 @@ function generateTableOfContents() {
         const level = parseInt(heading.tagName[1]);
         const li = document.createElement('li');
         li.className = `toc-level-${level}`;
-        li.innerHTML = `<a href="#${heading.id}">${heading.textContent}</a>`;
+        const link = document.createElement('a');
+        link.href = `#${encodeURIComponent(heading.id)}`;
+        link.textContent = heading.textContent;
+        li.appendChild(link);
         list.appendChild(li);
     });
 

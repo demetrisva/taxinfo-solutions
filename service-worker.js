@@ -1,5 +1,5 @@
-const SHELL_CACHE = 'taxinfo-shell-v20261106';
-const ASSET_CACHE = 'taxinfo-assets-v20261106';
+const SHELL_CACHE = 'taxinfo-shell-v20261127';
+const ASSET_CACHE = 'taxinfo-assets-v20261127';
 const APP_SHELL_PATHS = [
   '/',
   '/index.html',
@@ -46,7 +46,9 @@ self.addEventListener('fetch', event => {
   }
 
   if (isStaticAsset(request, url)) {
-    event.respondWith(staleWhileRevalidate(request));
+    const refresh = refreshAsset(request);
+    event.waitUntil(refresh);
+    event.respondWith(cachedAsset(request, refresh));
   }
 });
 
@@ -57,39 +59,42 @@ function isStaticAsset(request, url) {
 }
 
 async function networkFirst(request) {
-  const cache = await caches.open(SHELL_CACHE);
+  const cache = await caches.open(SHELL_CACHE).catch(() => null);
 
   try {
-    const response = await fetch(request);
-    if (response && response.ok) {
-      await cache.put(request, response.clone());
+    const response = await fetch(request, { cache: 'no-cache' });
+    if (response.ok && cache) {
+      await cache.put(request, response.clone()).catch(() => {});
     }
     return response;
   } catch (_) {
-    const cached = await cache.match(request);
+    const cached = await cache?.match(request).catch(() => undefined);
     if (cached) {
       const html = await cached.text();
       const notice = '<aside role="status" style="position:relative;z-index:10000;padding:1rem;background:#fff3cd;color:#332701">Offline copy: rates and deadlines may have changed. Reconnect and reload before relying on this information.</aside>';
       return new Response(html.replace(/<body([^>]*)>/i, '<body$1>' + notice), {
-        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }
       });
     }
-    return (await cache.match('/offline.html')) || new Response('Offline. Reconnect to view this page.', { status: 503 });
+    return (await cache?.match('/offline.html').catch(() => undefined)) || new Response('Offline. Reconnect to view this page.', { status: 503 });
   }
 }
 
-async function staleWhileRevalidate(request) {
-  const cache = await caches.open(ASSET_CACHE);
-  const cached = await cache.match(request);
+async function refreshAsset(request) {
+  try {
+    const response = await fetch(request);
+    if (response.ok) {
+      await caches.open(ASSET_CACHE)
+        .then(cache => cache.put(request, response.clone()))
+        .catch(() => {});
+    }
+    return response;
+  } catch (_) {
+    return Response.error();
+  }
+}
 
-  const networkPromise = fetch(request)
-    .then(response => {
-      if (response && response.ok) {
-        cache.put(request, response.clone());
-      }
-      return response;
-    })
-    .catch(() => null);
-
-  return cached || (await networkPromise) || Response.error();
+async function cachedAsset(request, refresh) {
+  const cached = await caches.match(request, { cacheName: ASSET_CACHE }).catch(() => undefined);
+  return cached || refresh;
 }

@@ -1,6 +1,10 @@
 # Handover — taxinfo-solutions
 
-Updated: 2026-11-06 (Asia/Nicosia)
+Updated: 2026-11-27 (Asia/Nicosia)
+
+## Local review branch — not deployed
+
+`hermes/site-review` contains a targeted Gazette-backed VAT correction, aligned guide labels, and a narrowed external script policy. Existing inline scripts and event handlers remain allowed. Node tests (12), static audit (30 pages), asset and public builds, and whitespace checks passed. See `WORKLOG.md` for scope. Next: browser-test navigation, calculator/chart and CMP; review edge anti-framing headers and the remaining articles against authoritative sources before publishing.
 
 ## Latest verified position
 
