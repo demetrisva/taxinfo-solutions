@@ -42,3 +42,9 @@ Publication review: draft PR https://github.com/demetrisva/taxinfo-solutions/pul
 - Verification: Safari desktop preview on Tools shows continuous ledger background, subtle artwork and readable text; 30-page static audit reports no internal issues; fingerprinted public build passes.
 - Evidence: CSS diff on branch `codex/header-background-opacity`; `audit-results/static.json`. Publication verification to follow.
 - Chat ID: `01a1b196-bb49-7962-8685-29fd2badd82a`.
+
+## 2026-11-27 — Local website review (Asia/Nicosia)
+- Request: resume on `hermes/site-review`, commit locally and report verification.
+- Changes: linked the VAT correction to K.D.P. 362/2026 §4 and dated the correction without changing the earlier source-review stamp; aligned guide labels; restricted external scripts to the pinned chart URL and existing paused publisher loader on eligible pages; replaced TOC link HTML interpolation with DOM text; regenerated assets.
+- Verification: `node --test script.test.js site.test.js` (12 passed), `python3 audit-site.py` (30 pages, no internal issues), `node --check script.js`, `node build-assets.mjs`, `node build-public.mjs`, `git diff --check`. Evidence: assertions in `site.test.js`, source linked from `thread-vat-zero-rate-exit-readiness.html`.
+- Pending: full regulatory article review, browser/CMP checks, removal of executable inline code, edge anti-framing configuration. No push or deployment.

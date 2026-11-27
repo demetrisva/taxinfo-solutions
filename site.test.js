@@ -80,9 +80,14 @@ test('publisher code is limited to editorial pages and ad requests remain paused
         const html=fs.readFileSync(file,'utf8');
         assert.equal((html.match(/name="google-adsense-account"/g)||[]).length,1,file);
         const eligible = file.startsWith('thread-') || ['index.html','cyprus-tax-guide-2026.html','resources.html','september-2026-developments.html','october-2026-developments.html','november-2026-developments.html'].includes(file);
-        assert.equal((html.match(/pagead\/js\/adsbygoogle.js/g)||[]).length,eligible ? 1 : 0,file);
+        const loader = /<script\b[^>]*\bsrc="https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js\?/g;
+        const loaders = [...html.matchAll(loader)];
+        assert.equal(loaders.length,eligible ? 1 : 0,file);
+        const sources = html.match(/\bscript-src ([^;]+);/)?.[1].split(/\s+/) || [];
+        assert.deepEqual(sources,["'self'","'unsafe-inline'",'https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js',...(eligible ? ['https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'] : [])],file);
         if (eligible) {
-            assert.ok(html.indexOf('pauseAdRequests = 1') < html.indexOf('pagead/js/adsbygoogle.js'),file);
+            const pause = html.indexOf('pauseAdRequests = 1');
+            assert.ok(pause >= 0 && pause < loaders[0].index,file);
             assert.ok(html.includes('client=ca-pub-6942670124765473'),file);
         }
         assert.ok(!html.includes('unsafe-eval'),file);
