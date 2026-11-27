@@ -116,7 +116,7 @@ test('calendar shows all obligations sharing the next date',()=>{
     const {context,el}=calculator();
     vm.runInContext(`Date = class extends Date { constructor(...args) { super(...(args.length ? args : ['2026-11-20T12:00:00+02:00'])); } };`,context);
     context.initCalendar();
-    assert.match(el('next-deadline-title').innerText,/conditional filing and payment relief/);
+    assert.match(el('next-deadline-title').innerText,/2025 employee return: file and pay for conditional relief/);
     assert.match(el('next-deadline-title').innerText,/Annual PAYE 2025/);
     assert.equal(el('days-left').innerText,'10 Days Left');
 });
